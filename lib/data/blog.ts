@@ -8,14 +8,13 @@ export type BlogPostCard = {
   description: string;
 };
 
-/** Public read — active posts only. No static fallback exists for blog
- * content, so an unreachable database just yields an empty list rather
- * than an error. */
+/** Public read — most recently published post first. No static fallback
+ * exists for blog content, so an unreachable database just yields an empty
+ * list rather than an error. */
 export async function getBlogPosts(): Promise<BlogPostCard[]> {
   try {
     return await prisma.blogPost.findMany({
-      where: { isActive: true },
-      orderBy: { sortOrder: 'asc' },
+      orderBy: { createdAt: 'desc' },
       select: { id: true, image: true, imageAlt: true, title: true, description: true },
     });
   } catch {

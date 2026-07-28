@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 export default async function BlogContentPage() {
   let posts;
   try {
-    posts = await prisma.blogPost.findMany({ orderBy: { sortOrder: 'asc' } });
+    posts = await prisma.blogPost.findMany({ orderBy: { createdAt: 'desc' } });
   } catch {
     return (
       <div className={cardClass}>
@@ -26,8 +26,8 @@ export default async function BlogContentPage() {
       <div>
         <h1 className="font-serif text-[26px] text-navy">Blog</h1>
         <p className="text-[13px] text-muted">
-          Manage posts on the public /blog page. Upload images via Cloudinary, edit content, then
-          save each post.
+          Manage posts on the public /blog page. The most recently added post appears first —
+          nothing else to order.
         </p>
       </div>
 

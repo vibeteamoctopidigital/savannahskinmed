@@ -194,14 +194,14 @@ model MembershipPromoBullet {
 // Blog
 // ---------------------------------------------------------------------------
 
+/// Ordering is always by `createdAt` descending — the most recently
+/// published post appears first. No manual sort order or publish toggle.
 model BlogPost {
   id          String   @id @default(cuid())
   image       String
   imageAlt    String   @default("")
   title       String
   description String
-  sortOrder   Int      @default(0)
-  isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

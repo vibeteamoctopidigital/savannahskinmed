@@ -9,23 +9,19 @@ function revalidateBlogPages() {
   revalidatePath('/admin/dashboard/content/blog');
 }
 
-function toOrder(raw: FormDataEntryValue | null) {
-  return Math.max(0, Number(raw || 1) - 1);
-}
-
 export async function saveBlogPostAction(formData: FormData) {
   const id = String(formData.get('postId') || '');
   if (!id) return;
+
+  const title = String(formData.get('title') || '').trim();
 
   await prisma.blogPost.update({
     where: { id },
     data: {
       image: String(formData.get('image') || ''),
-      imageAlt: String(formData.get('imageAlt') || ''),
-      title: String(formData.get('title') || ''),
+      imageAlt: title,
+      title,
       description: String(formData.get('description') || ''),
-      sortOrder: toOrder(formData.get('sortOrder')),
-      isActive: formData.get('isActive') === 'on',
     },
   });
 
@@ -46,11 +42,9 @@ export async function createBlogPostAction(formData: FormData) {
   await prisma.blogPost.create({
     data: {
       image: String(formData.get('image') || ''),
-      imageAlt: String(formData.get('imageAlt') || ''),
+      imageAlt: title,
       title,
       description: String(formData.get('description') || ''),
-      sortOrder: toOrder(formData.get('sortOrder')),
-      isActive: true,
     },
   });
 

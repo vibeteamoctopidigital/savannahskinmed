@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+
+import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
 import { createBlogPostAction } from '@/app/admin/dashboard/content/blog/actions';
-import { cardClass, inputClass, primaryBtn, smallBtn } from '@/lib/adminUi';
+import { cardClass, inputClass, labelClass, primaryBtn } from '@/lib/adminUi';
 
 export default function AddBlogPostButton() {
   const [open, setOpen] = useState(false);
+  const [image, setImage] = useState('');
 
   return (
     <>
@@ -25,27 +28,20 @@ export default function AddBlogPostButton() {
               Cancel
             </button>
           </div>
-          <form action={createBlogPostAction} className="grid gap-3 sm:grid-cols-2">
-            <div className="sm:col-span-2">
-              <label className="mb-1 block text-[12px] text-muted">Title</label>
+          <form action={createBlogPostAction} className="space-y-4">
+            <input type="hidden" name="image" value={image} />
+            <CloudinaryUpload folder="blog" currentUrl={image} onUploaded={setImage} label="Image" />
+            <div>
+              <label className={labelClass}>Title</label>
               <input name="title" className={inputClass} required />
             </div>
-            <div className="sm:col-span-2">
-              <label className="mb-1 block text-[12px] text-muted">Description</label>
+            <div>
+              <label className={labelClass}>Description</label>
               <textarea name="description" rows={3} className={inputClass} />
             </div>
-            <div>
-              <label className="mb-1 block text-[12px] text-muted">Sort Order</label>
-              <input name="sortOrder" type="number" defaultValue="1" className={inputClass} />
-            </div>
-            <div className="flex items-end">
-              <button type="submit" className={smallBtn}>
-                Add Post
-              </button>
-            </div>
-            <p className="text-[11px] text-muted sm:col-span-2">
-              Upload the image after creating the post, from its Edit panel.
-            </p>
+            <button type="submit" className={primaryBtn}>
+              Add Post
+            </button>
           </form>
         </div>
       )}
