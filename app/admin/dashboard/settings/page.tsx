@@ -43,7 +43,7 @@ export default async function AdminSettingsPage() {
 
       <AdminAccountForm currentEmail={adminUser?.email ?? ''} />
 
-      <form action={updateSettingsAction} className="space-y-8">
+      <form id="settings-save" action={updateSettingsAction} className="space-y-8">
         <section className={cardClass}>
           <h2 className="mb-5 font-serif text-[19px] text-navy">General Settings</h2>
           <div className="grid gap-4">

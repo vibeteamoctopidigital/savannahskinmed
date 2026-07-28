@@ -18,7 +18,8 @@ export default function SiteBrandingUpload({ logoUrl, faviconUrl }: BrandingProp
     <section className={cardClass}>
       <h2 className="mb-2 font-serif text-[19px] text-navy">Branding</h2>
       <p className="mb-5 text-[13px] text-muted">
-        Upload your site logo and favicon. These appear in the header and browser tab.
+        Upload your site logo and favicon, then click <strong>Save Settings</strong> at the bottom
+        of this page to publish them.
       </p>
 
       <div className="grid gap-6 sm:grid-cols-2">
@@ -28,7 +29,7 @@ export default function SiteBrandingUpload({ logoUrl, faviconUrl }: BrandingProp
           onUploaded={setLogo}
           label="Site Logo"
         />
-        <input type="hidden" name="logoUrl" value={logo} />
+        <input type="hidden" name="logoUrl" value={logo} form="settings-save" />
 
         <CloudinaryUpload
           folder="branding"
@@ -37,7 +38,7 @@ export default function SiteBrandingUpload({ logoUrl, faviconUrl }: BrandingProp
           label="Favicon"
           accept="image/*,.ico,.png"
         />
-        <input type="hidden" name="faviconUrl" value={favicon} />
+        <input type="hidden" name="faviconUrl" value={favicon} form="settings-save" />
       </div>
     </section>
   );
