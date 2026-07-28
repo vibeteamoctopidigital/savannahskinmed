@@ -6,9 +6,7 @@ import {
   updateAdminAccountAction,
   type AdminAccountState,
 } from '@/app/admin/dashboard/settings/actions';
-
-const inputClass =
-  'w-full rounded-lg border border-navy/15 px-3.5 py-2.5 text-[14px] text-navy outline-none focus:border-navy';
+import { cardClass, inputClass, labelClass, primaryBtn } from '@/lib/adminUi';
 
 const initialState: AdminAccountState = {};
 
@@ -50,7 +48,7 @@ function PasswordField({
 
   return (
     <div className={className}>
-      <label className="mb-1.5 block text-[13px] font-medium text-navy">
+      <label className={labelClass}>
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       <div className="relative">
@@ -80,7 +78,7 @@ export default function AdminAccountForm({ currentEmail }: { currentEmail: strin
   const [state, formAction, pending] = useActionState(updateAdminAccountAction, initialState);
 
   return (
-    <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
+    <section className={cardClass}>
       <h2 className="mb-1 font-serif text-[19px] text-navy">Admin Account</h2>
       <p className="mb-5 text-[13px] text-muted">
         Change your admin login email and password
@@ -99,9 +97,7 @@ export default function AdminAccountForm({ currentEmail }: { currentEmail: strin
         )}
 
         <div>
-          <label className="mb-1.5 block text-[13px] font-medium text-navy">
-            Email
-          </label>
+          <label className={labelClass}>Email</label>
           <input
             name="newEmail"
             type="email"
@@ -139,11 +135,7 @@ export default function AdminAccountForm({ currentEmail }: { currentEmail: strin
           />
         </div>
 
-        <button
-          type="submit"
-          disabled={pending}
-          className="rounded-lg bg-navy px-6 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-navy-deep disabled:opacity-50"
-        >
+        <button type="submit" disabled={pending} className={primaryBtn}>
           {pending ? 'Updating…' : 'Update Account'}
         </button>
       </form>

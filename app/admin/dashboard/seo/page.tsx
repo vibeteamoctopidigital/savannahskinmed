@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import SeoRouteList from '@/components/admin/SeoRouteList';
 import { getSeoRouteDefault } from '@/lib/seoRoutes';
+import { cardClass, primaryBtn } from '@/lib/adminUi';
 import { syncRoutesAction } from './actions';
 
 export const dynamic = 'force-dynamic';
@@ -11,7 +12,7 @@ export default async function SeoMetaListPage() {
     rows = await prisma.pageSeo.findMany({ orderBy: { route: 'asc' } });
   } catch {
     return (
-      <div className="rounded-2xl bg-white p-8 shadow-card">
+      <div className={cardClass}>
         <h1 className="mb-2 font-serif text-[24px] text-navy">SEO Meta</h1>
         <p className="text-[14px] text-muted">
           Database not connected yet. Set <code>DATABASE_URL</code> and run migrations + seed to
@@ -38,10 +39,7 @@ export default async function SeoMetaListPage() {
           </p>
         </div>
         <form action={syncRoutesAction}>
-          <button
-            type="submit"
-            className="rounded-lg bg-navy px-5 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-navy-deep"
-          >
+          <button type="submit" className={primaryBtn}>
             Sync routes
           </button>
         </form>

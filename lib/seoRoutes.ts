@@ -99,6 +99,12 @@ export const seoRoutes: SeoRouteDefault[] = [
     title: 'Privacy Policy',
     description: 'How Savannah Age Management Medicine collects, uses and protects your information.',
   },
+  {
+    route: '/blog',
+    title: 'Blog',
+    description:
+      'Skincare and aesthetic medicine insights from Savannah Age Management Medicine in Pooler and Statesboro, GA.',
+  },
 ];
 
 export const getSeoRouteDefault = (route: string) =>

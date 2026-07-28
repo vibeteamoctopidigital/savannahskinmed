@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import AdminSpecialCard from '@/components/admin/AdminSpecialCard';
 import AddSpecialCardButton from '@/components/admin/AddSpecialCardButton';
+import { cardClass } from '@/lib/adminUi';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,7 +14,7 @@ export default async function SpecialsContentPage() {
     });
   } catch {
     return (
-      <div className="rounded-2xl bg-white p-8 shadow-card">
+      <div className={cardClass}>
         <h1 className="mb-2 font-serif text-[24px] text-navy">Aesthetic Specials</h1>
         <p className="text-[14px] text-muted">
           Database not connected yet. Set <code>DATABASE_URL</code> and run migrations + seed to

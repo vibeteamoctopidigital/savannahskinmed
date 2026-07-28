@@ -2,25 +2,19 @@
 
 import { useState } from 'react';
 import { createSpecialCardAction } from '@/app/admin/dashboard/content/specials/actions';
-
-const inputClass =
-  'w-full rounded-lg border border-navy/15 px-3 py-2 text-[14px] text-navy outline-none focus:border-navy';
+import { cardClass, inputClass, primaryBtn, smallBtn } from '@/lib/adminUi';
 
 export default function AddSpecialCardButton() {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="rounded-lg bg-navy px-5 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-navy-deep"
-      >
+      <button type="button" onClick={() => setOpen(!open)} className={primaryBtn}>
         + Add Card
       </button>
 
       {open && (
-        <div className="mt-6 rounded-2xl border border-navy/15 bg-white p-6 shadow-card">
+        <div className={`mt-6 ${cardClass}`}>
           <div className="mb-4 flex items-center justify-between">
             <h3 className="font-serif text-[16px] text-navy">New Offer Card</h3>
             <button
@@ -64,10 +58,7 @@ export default function AddSpecialCardButton() {
               <input name="sortOrder" type="number" defaultValue="1" className={inputClass} />
             </div>
             <div className="flex items-end">
-              <button
-                type="submit"
-                className="rounded-lg border border-navy/20 px-4 py-2 text-[12px] font-medium text-navy hover:bg-navy hover:text-white"
-              >
+              <button type="submit" className={smallBtn}>
                 Add Card
               </button>
             </div>

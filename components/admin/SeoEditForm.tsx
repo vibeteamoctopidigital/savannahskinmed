@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { cardClass, inputClass, primaryBtn } from '@/lib/adminUi';
+
 type RobotsDirective = 'INHERIT' | 'INDEX_FOLLOW' | 'NOINDEX_FOLLOW' | 'NOINDEX_NOFOLLOW';
 type SchemaSource = 'AUTO' | 'CUSTOM';
 
@@ -42,9 +44,6 @@ const robotsOptions: { value: RobotsDirective; label: string; description: strin
   },
 ];
 
-const inputClass =
-  'w-full rounded-lg border border-navy/15 px-3.5 py-2.5 text-[14px] text-navy outline-none focus:border-navy';
-
 export default function SeoEditForm(props: SeoEditFormProps) {
   const [description, setDescription] = useState(props.description || props.fallbackDescription);
   const [robots, setRobots] = useState<RobotsDirective>(props.robots);
@@ -63,15 +62,12 @@ export default function SeoEditForm(props: SeoEditFormProps) {
         >
           &larr; All routes
         </Link>
-        <button
-          type="submit"
-          className="rounded-lg bg-navy px-5 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-navy-deep"
-        >
+        <button type="submit" className={primaryBtn}>
           Save
         </button>
       </div>
 
-      <div className="flex items-start gap-3 rounded-2xl bg-white p-6 shadow-card sm:p-8">
+      <div className={`flex items-start gap-3 ${cardClass}`}>
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-navy text-white">
           🌐
         </span>
@@ -84,7 +80,7 @@ export default function SeoEditForm(props: SeoEditFormProps) {
         </div>
       </div>
 
-      <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
+      <section className={cardClass}>
         <h2 className="font-serif text-[19px] text-navy">Search engine metadata</h2>
         <p className="mb-5 text-[13px] text-muted">
           Title, description, keywords. Leave blank to keep the page&rsquo;s built-in fallback.
@@ -183,7 +179,7 @@ export default function SeoEditForm(props: SeoEditFormProps) {
         </div>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
+      <section className={cardClass}>
         <h2 className="font-serif text-[19px] text-navy">JSON-LD schema</h2>
         <p className="mb-5 text-[13px] text-muted">
           Structured data Google reads for rich results. Toggle off on pages that shouldn&rsquo;t
@@ -264,10 +260,7 @@ export default function SeoEditForm(props: SeoEditFormProps) {
         )}
       </section>
 
-      <button
-        type="submit"
-        className="rounded-lg bg-navy px-5 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-navy-deep"
-      >
+      <button type="submit" className={primaryBtn}>
         Save changes
       </button>
     </form>

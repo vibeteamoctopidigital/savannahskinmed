@@ -1,12 +1,10 @@
 import AdminAccountForm from '@/components/admin/AdminAccountForm';
 import SiteBrandingUpload from '@/components/admin/SiteBrandingUpload';
 import { prisma } from '@/lib/prisma';
+import { cardClass, inputClass, labelClass, primaryBtn } from '@/lib/adminUi';
 import { updateSettingsAction } from './actions';
 
 export const dynamic = 'force-dynamic';
-
-const inputClass =
-  'w-full rounded-lg border border-navy/15 px-3.5 py-2.5 text-[14px] text-navy outline-none focus:border-navy';
 
 export default async function AdminSettingsPage() {
   let settings, socials, adminUser;
@@ -18,7 +16,7 @@ export default async function AdminSettingsPage() {
     ]);
   } catch {
     return (
-      <div className="rounded-2xl bg-white p-8 shadow-card">
+      <div className={cardClass}>
         <h1 className="mb-2 font-serif text-[24px] text-navy">Settings</h1>
         <p className="text-[14px] text-muted">
           Database not connected yet. Set <code>DATABASE_URL</code> and run migrations + seed to
@@ -46,7 +44,7 @@ export default async function AdminSettingsPage() {
       <AdminAccountForm currentEmail={adminUser?.email ?? ''} />
 
       <form action={updateSettingsAction} className="space-y-8">
-        <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
+        <section className={cardClass}>
           <h2 className="mb-5 font-serif text-[19px] text-navy">General Settings</h2>
           <div className="grid gap-4">
             <Field label="Site Name" name="name" defaultValue={settings?.name} />
@@ -64,7 +62,7 @@ export default async function AdminSettingsPage() {
           </div>
         </section>
 
-        <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
+        <section className={cardClass}>
           <h2 className="mb-5 font-serif text-[19px] text-navy">Social Links</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Twitter" name="twitter" placeholder="https://twitter.com/…" defaultValue={socialByIcon.twitter} />
@@ -75,7 +73,7 @@ export default async function AdminSettingsPage() {
           </div>
         </section>
 
-        <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
+        <section className={cardClass}>
           <h2 className="font-serif text-[19px] text-navy">Analytics</h2>
           <p className="mb-5 text-[13px] text-muted">
             Add your tracking IDs for analytics and conversion tracking
@@ -94,7 +92,7 @@ export default async function AdminSettingsPage() {
           </div>
         </section>
 
-        <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
+        <section className={cardClass}>
           <h2 className="font-serif text-[19px] text-navy">Tracking Codes</h2>
           <p className="mb-5 text-[13px] text-muted">
             Add custom tracking scripts. Header code is injected in &lt;head&gt; and footer code
@@ -126,10 +124,7 @@ export default async function AdminSettingsPage() {
           </div>
         </section>
 
-        <button
-          type="submit"
-          className="rounded-lg bg-navy px-6 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-navy-deep"
-        >
+        <button type="submit" className={primaryBtn}>
           Save Settings
         </button>
 
@@ -163,7 +158,7 @@ function Field({
 }) {
   return (
     <div>
-      {label && <label className="mb-1.5 block text-[13px] font-medium text-navy">{label}</label>}
+      {label && <label className={labelClass}>{label}</label>}
       {as === 'textarea' ? (
         <textarea
           name={name}

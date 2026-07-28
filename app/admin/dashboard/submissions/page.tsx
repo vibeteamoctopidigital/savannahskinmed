@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { listSubmissions } from '@/lib/data/submissions';
 import { SubmissionStatus, SubmissionType } from '@/lib/generated/prisma/client';
+import { badgeClass, cardClass, dangerBtn, smallBtn } from '@/lib/adminUi';
 import { deleteSubmissionAction, updateStatusAction } from './actions';
 
 export const dynamic = 'force-dynamic';
@@ -54,14 +55,14 @@ export default async function SubmissionsPage({
       </div>
 
       {!result.ok ? (
-        <div className="rounded-2xl bg-white p-8 shadow-card">
+        <div className={cardClass}>
           <p className="text-[14px] text-muted">
             Database not connected yet. Set <code>DATABASE_URL</code> and run migrations to see
             submissions here.
           </p>
         </div>
       ) : result.data.length === 0 ? (
-        <div className="rounded-2xl bg-white p-8 shadow-card">
+        <div className={cardClass}>
           <p className="text-[14px] text-muted">No submissions match this filter yet.</p>
         </div>
       ) : (
@@ -69,14 +70,14 @@ export default async function SubmissionsPage({
           {result.data.map((s) => {
             const name = s.name ?? ([s.firstName, s.lastName].filter(Boolean).join(' ') || '—');
             return (
-              <div key={s.id} className="rounded-2xl bg-white p-6 shadow-card">
+              <div key={s.id} className={`${cardClass} sm:p-6`}>
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <p className="font-sans text-[12px] font-semibold uppercase tracking-widest text-rose-deep">
-                      {typeLabels[s.type]}
-                      {s.offerLabel && <span className="text-muted"> · {s.offerLabel}</span>}
-                    </p>
-                    <p className="mt-1 font-serif text-[19px] text-navy">{name}</p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className={badgeClass(s.type)}>{typeLabels[s.type]}</span>
+                      {s.offerLabel && <span className="text-[12px] text-muted">{s.offerLabel}</span>}
+                    </div>
+                    <p className="mt-2 font-serif text-[19px] text-navy">{name}</p>
                     <p className="mt-1 text-[13px] text-muted">
                       {[s.email, s.phone].filter(Boolean).join(' · ') || 'No contact info'}
                     </p>
@@ -103,7 +104,7 @@ export default async function SubmissionsPage({
                       <select
                         name="status"
                         defaultValue={s.status}
-                        className="rounded-lg border border-navy/15 px-3 py-1.5 text-[13px] text-navy"
+                        className="rounded-xl border border-navy/15 px-3 py-1.5 text-[13px] text-navy outline-none transition-colors focus:border-navy"
                       >
                         {Object.values(SubmissionStatus).map((status) => (
                           <option key={status} value={status}>
@@ -111,20 +112,14 @@ export default async function SubmissionsPage({
                           </option>
                         ))}
                       </select>
-                      <button
-                        type="submit"
-                        className="rounded-lg border border-navy/20 px-3 py-1.5 text-[12px] font-medium text-navy hover:bg-navy hover:text-white"
-                      >
+                      <button type="submit" className={smallBtn}>
                         Update
                       </button>
                     </form>
 
                     <form action={deleteSubmissionAction}>
                       <input type="hidden" name="id" value={s.id} />
-                      <button
-                        type="submit"
-                        className="text-[12px] font-medium text-red-600 hover:underline"
-                      >
+                      <button type="submit" className={dangerBtn}>
                         Delete
                       </button>
                     </form>

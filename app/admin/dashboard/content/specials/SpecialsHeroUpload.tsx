@@ -4,6 +4,7 @@ import { useRef, useState, useTransition } from 'react';
 
 import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
 import { saveHeroAction } from '@/app/admin/dashboard/content/specials/actions';
+import { inputClass, primaryBtn } from '@/lib/adminUi';
 
 type HeroSettings = {
   heroTitle: string;
@@ -12,9 +13,6 @@ type HeroSettings = {
   heroImageAlt: string;
   offersHeading: string;
 } | null;
-
-const inputClass =
-  'w-full rounded-lg border border-navy/15 px-3 py-2 text-[14px] text-navy outline-none focus:border-navy';
 
 export default function SpecialsHeroUpload({ settings }: { settings: HeroSettings }) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -63,12 +61,7 @@ export default function SpecialsHeroUpload({ settings }: { settings: HeroSetting
       </div>
 
       <div className="flex items-center gap-3 border-t border-navy/10 pt-4">
-        <button
-          type="button"
-          onClick={handleSave}
-          disabled={saving}
-          className="rounded-lg bg-navy px-5 py-2.5 text-[12px] font-semibold text-white transition-colors hover:bg-navy-deep disabled:opacity-50"
-        >
+        <button type="button" onClick={handleSave} disabled={saving} className={primaryBtn}>
           {saving ? 'Saving...' : 'Save Hero'}
         </button>
         {saved && (

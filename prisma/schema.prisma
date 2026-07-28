@@ -191,6 +191,22 @@ model MembershipPromoBullet {
 }
 
 // ---------------------------------------------------------------------------
+// Blog
+// ---------------------------------------------------------------------------
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  image       String
+  imageAlt    String   @default("")
+  title       String
+  description String
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
 // Form submissions (booking / claim / membership request / contact)
 // ---------------------------------------------------------------------------
 

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import SeoEditForm from '@/components/admin/SeoEditForm';
 import { getSeoRouteDefault, slugToRoute } from '@/lib/seoRoutes';
+import { cardClass } from '@/lib/adminUi';
 import { updatePageSeoAction } from '../actions';
 
 export const dynamic = 'force-dynamic';
@@ -21,7 +22,7 @@ export default async function SeoRouteEditPage({
     row = await prisma.pageSeo.findUnique({ where: { route } });
   } catch {
     return (
-      <div className="rounded-2xl bg-white p-8 shadow-card">
+      <div className={cardClass}>
         <h1 className="mb-2 font-serif text-[24px] text-navy">SEO Meta</h1>
         <p className="text-[14px] text-muted">
           Database not connected yet. Set <code>DATABASE_URL</code> and run migrations + seed.
@@ -32,7 +33,7 @@ export default async function SeoRouteEditPage({
 
   if (!row) {
     return (
-      <div className="rounded-2xl bg-white p-8 shadow-card">
+      <div className={cardClass}>
         <h1 className="mb-2 font-serif text-[24px] text-navy">Route not found</h1>
         <p className="mb-4 text-[14px] text-muted">
           No SEO row exists yet for <code>{route}</code>. Sync routes first.

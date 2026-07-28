@@ -7,6 +7,7 @@ import {
   deleteSpecialCardAction,
   saveSpecialCardAction,
 } from '@/app/admin/dashboard/content/specials/actions';
+import { inputClass, primaryBtn } from '@/lib/adminUi';
 
 type Tier = { id: string; label: string; detail: string; sortOrder: number };
 
@@ -25,9 +26,6 @@ type SpecialCardProps = {
     tiers: Tier[];
   };
 };
-
-const inputClass =
-  'w-full rounded-lg border border-navy/15 px-3 py-2 text-[14px] text-navy outline-none focus:border-navy';
 
 export default function AdminSpecialCard({ card }: SpecialCardProps) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -256,12 +254,7 @@ export default function AdminSpecialCard({ card }: SpecialCardProps) {
 
               {/* Per-card save button */}
               <div className="flex items-center gap-3 border-t border-navy/10 pt-4">
-                <button
-                  type="button"
-                  onClick={handleSave}
-                  disabled={saving}
-                  className="rounded-lg bg-navy px-5 py-2.5 text-[12px] font-semibold text-white transition-colors hover:bg-navy-deep disabled:opacity-50"
-                >
+                <button type="button" onClick={handleSave} disabled={saving} className={primaryBtn}>
                   {saving ? 'Saving...' : 'Save Card'}
                 </button>
                 {saved && (

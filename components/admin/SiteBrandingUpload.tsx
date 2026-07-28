@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
+import { cardClass } from '@/lib/adminUi';
 
 type BrandingProps = {
   logoUrl: string;
@@ -14,7 +15,7 @@ export default function SiteBrandingUpload({ logoUrl, faviconUrl }: BrandingProp
   const [favicon, setFavicon] = useState(faviconUrl);
 
   return (
-    <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
+    <section className={cardClass}>
       <h2 className="mb-2 font-serif text-[19px] text-navy">Branding</h2>
       <p className="mb-5 text-[13px] text-muted">
         Upload your site logo and favicon. These appear in the header and browser tab.
