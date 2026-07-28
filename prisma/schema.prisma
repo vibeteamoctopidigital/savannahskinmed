@@ -1,0 +1,231 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------------------------------------------------------------------------
+// Admin
+// ---------------------------------------------------------------------------
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Site-wide settings + footer content
+// ---------------------------------------------------------------------------
+
+/// Singleton row (id is always "main").
+model SiteSetting {
+  id            String @id @default("main")
+  name          String
+  description   String @default("")
+  phone         String
+  phoneHref     String
+  email         String
+  emailHref     String
+  address       String @default("")
+  bookingUrl    String
+  copyrightText String
+
+  logoUrl   String @default("")
+  faviconUrl String @default("")
+
+  googleAnalyticsId String @default("")
+  metaPixelId       String @default("")
+
+  headerTrackingCode String @default("")
+  footerTrackingCode String @default("")
+
+  updatedAt DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// SEO / AEO — per-route metadata + structured data
+// ---------------------------------------------------------------------------
+
+enum RobotsDirective {
+  INHERIT
+  INDEX_FOLLOW
+  NOINDEX_FOLLOW
+  NOINDEX_NOFOLLOW
+}
+
+enum SchemaSource {
+  AUTO
+  CUSTOM
+}
+
+model PageSeo {
+  id            String          @id @default(cuid())
+  route         String          @unique
+  title         String          @default("")
+  description   String          @default("")
+  keywords      String          @default("")
+  canonicalUrl  String          @default("")
+  robots        RobotsDirective @default(INHERIT)
+  schemaEnabled Boolean         @default(true)
+  schemaSource  SchemaSource    @default(AUTO)
+  customSchema  String          @default("")
+  updatedAt     DateTime        @updatedAt
+}
+
+model SocialLink {
+  id        String @id @default(cuid())
+  label     String
+  href      String
+  icon      String
+  sortOrder Int    @default(0)
+}
+
+model Location {
+  id           String          @id @default(cuid())
+  city         String
+  badge        String?
+  addressLines Json
+  sortOrder    Int             @default(0)
+  hours        LocationHours[]
+}
+
+enum HoursKind {
+  FULL
+  SHORT
+}
+
+model LocationHours {
+  id         String    @id @default(cuid())
+  location   Location  @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  locationId String
+  kind       HoursKind
+  days       String
+  time       String
+  sortOrder  Int       @default(0)
+}
+
+enum FooterLinkGroup {
+  QUICK_LINK
+  FOOTER_SERVICE
+}
+
+model FooterNavLink {
+  id        String          @id @default(cuid())
+  group     FooterLinkGroup
+  label     String
+  href      String
+  sortOrder Int             @default(0)
+}
+
+// ---------------------------------------------------------------------------
+// Aesthetic Specials page
+// ---------------------------------------------------------------------------
+
+enum SpecialCardVariant {
+  TIERS
+  STORY
+}
+
+model SpecialCard {
+  id          String             @id
+  variant     SpecialCardVariant
+  image       String
+  imageAlt    String
+  title       String?
+  eyebrow     String?
+  headline    String?
+  description String?
+  cta         String             @default("Claim")
+  sortOrder   Int                @default(0)
+  isActive    Boolean            @default(true)
+  locations   Json?
+  tiers       SpecialCardTier[]
+  submissions Submission[]
+}
+
+model SpecialCardTier {
+  id            String      @id @default(cuid())
+  specialCard   SpecialCard @relation(fields: [specialCardId], references: [id], onDelete: Cascade)
+  specialCardId String
+  label         String
+  detail        String
+  sortOrder     Int         @default(0)
+}
+
+/// Singleton row (id is always "main").
+model SpecialsPageSettings {
+  id            String   @id @default("main")
+  heroTitle     String
+  heroIntro     String
+  heroImage     String
+  heroImageAlt  String
+  offersHeading String
+  updatedAt     DateTime @updatedAt
+}
+
+/// Singleton row (id is always "main").
+model MembershipPromo {
+  id              String                  @id @default("main")
+  headingStart    String
+  headingEmphasis String
+  headingEnd      String
+  tagline         String
+  description     String
+  ctaLabel        String
+  image           String
+  updatedAt       DateTime                @updatedAt
+  bullets         MembershipPromoBullet[]
+}
+
+model MembershipPromoBullet {
+  id        String          @id @default(cuid())
+  promo     MembershipPromo @relation(fields: [promoId], references: [id], onDelete: Cascade)
+  promoId   String
+  text      String
+  sortOrder Int             @default(0)
+}
+
+// ---------------------------------------------------------------------------
+// Form submissions (booking / claim / membership request / contact)
+// ---------------------------------------------------------------------------
+
+enum SubmissionType {
+  BOOKING
+  CLAIM
+  MEMBERSHIP_REQUEST
+  CONTACT
+}
+
+enum SubmissionStatus {
+  NEW
+  CONTACTED
+  CLOSED
+}
+
+model Submission {
+  id        String           @id @default(cuid())
+  type      SubmissionType
+  status    SubmissionStatus @default(NEW)
+  createdAt DateTime         @default(now())
+
+  name          String?
+  firstName     String?
+  lastName      String?
+  email         String?
+  phone         String?
+  location      String?
+  service       String?
+  preferredDate String?
+  preferredTime String?
+  notes         String?
+  message       String?
+
+  offer      SpecialCard? @relation(fields: [offerId], references: [id], onDelete: SetNull)
+  offerId    String?
+  offerLabel String?
+}
