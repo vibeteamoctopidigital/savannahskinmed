@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState, useTransition } from 'react';
 
+import { alertError, alertSuccess } from '@/lib/adminAlerts';
 import { cardClass, inputClass, primaryBtn } from '@/lib/adminUi';
 
 type RobotsDirective = 'INHERIT' | 'INDEX_FOLLOW' | 'NOINDEX_FOLLOW' | 'NOINDEX_NOFOLLOW';
@@ -45,13 +46,28 @@ const robotsOptions: { value: RobotsDirective; label: string; description: strin
 ];
 
 export default function SeoEditForm(props: SeoEditFormProps) {
+  const formRef = useRef<HTMLFormElement>(null);
   const [description, setDescription] = useState(props.description || props.fallbackDescription);
   const [robots, setRobots] = useState<RobotsDirective>(props.robots);
   const [schemaEnabled, setSchemaEnabled] = useState(props.schemaEnabled);
   const [schemaSource, setSchemaSource] = useState<SchemaSource>(props.schemaSource);
+  const [saving, startSaveTransition] = useTransition();
+
+  const handleSave = () => {
+    if (!formRef.current) return;
+    const formData = new FormData(formRef.current);
+    startSaveTransition(async () => {
+      try {
+        await props.action(formData);
+        await alertSuccess('SEO settings saved!');
+      } catch (err) {
+        await alertError('Something went wrong', err instanceof Error ? err.message : undefined);
+      }
+    });
+  };
 
   return (
-    <form action={props.action} className="space-y-6">
+    <form ref={formRef} className="space-y-6">
       <input type="hidden" name="id" value={props.id} />
       <input type="hidden" name="slug" value={props.slug} />
 
@@ -62,8 +78,8 @@ export default function SeoEditForm(props: SeoEditFormProps) {
         >
           &larr; All routes
         </Link>
-        <button type="submit" className={primaryBtn}>
-          Save
+        <button type="button" onClick={handleSave} disabled={saving} className={primaryBtn}>
+          {saving ? 'Saving…' : 'Save'}
         </button>
       </div>
 
@@ -260,8 +276,8 @@ export default function SeoEditForm(props: SeoEditFormProps) {
         )}
       </section>
 
-      <button type="submit" className={primaryBtn}>
-        Save changes
+      <button type="button" onClick={handleSave} disabled={saving} className={primaryBtn}>
+        {saving ? 'Saving…' : 'Save changes'}
       </button>
     </form>
   );

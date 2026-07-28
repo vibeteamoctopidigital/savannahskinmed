@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 
 import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
-import { cardClass } from '@/lib/adminUi';
+import { updateFaviconAction, updateLogoAction } from '@/app/admin/dashboard/settings/actions';
+import { alertError, alertSuccess } from '@/lib/adminAlerts';
+import { cardClass, primaryBtn } from '@/lib/adminUi';
 
 type BrandingProps = {
   logoUrl: string;
@@ -13,32 +15,72 @@ type BrandingProps = {
 export default function SiteBrandingUpload({ logoUrl, faviconUrl }: BrandingProps) {
   const [logo, setLogo] = useState(logoUrl);
   const [favicon, setFavicon] = useState(faviconUrl);
+  const [savingLogo, startSaveLogo] = useTransition();
+  const [savingFavicon, startSaveFavicon] = useTransition();
+
+  const saveLogo = () => {
+    startSaveLogo(async () => {
+      try {
+        const formData = new FormData();
+        formData.set('logoUrl', logo);
+        await updateLogoAction(formData);
+        await alertSuccess('Logo saved!');
+      } catch (err) {
+        await alertError('Something went wrong', err instanceof Error ? err.message : undefined);
+      }
+    });
+  };
+
+  const saveFavicon = () => {
+    startSaveFavicon(async () => {
+      try {
+        const formData = new FormData();
+        formData.set('faviconUrl', favicon);
+        await updateFaviconAction(formData);
+        await alertSuccess('Favicon saved!');
+      } catch (err) {
+        await alertError('Something went wrong', err instanceof Error ? err.message : undefined);
+      }
+    });
+  };
 
   return (
     <section className={cardClass}>
       <h2 className="mb-2 font-serif text-[19px] text-navy">Branding</h2>
       <p className="mb-5 text-[13px] text-muted">
-        Upload your site logo and favicon, then click <strong>Save Settings</strong> at the bottom
-        of this page to publish them.
+        Upload your site logo and favicon. These appear in the header and browser tab.
       </p>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <CloudinaryUpload
-          folder="branding"
-          currentUrl={logo}
-          onUploaded={setLogo}
-          label="Site Logo"
-        />
-        <input type="hidden" name="logoUrl" value={logo} form="settings-save" />
+      <div className="grid gap-8 sm:grid-cols-2">
+        <div>
+          <CloudinaryUpload folder="branding" currentUrl={logo} onUploaded={setLogo} label="Site Logo" />
+          <button
+            type="button"
+            onClick={saveLogo}
+            disabled={savingLogo}
+            className={`mt-4 ${primaryBtn}`}
+          >
+            {savingLogo ? 'Saving…' : 'Save Logo'}
+          </button>
+        </div>
 
-        <CloudinaryUpload
-          folder="branding"
-          currentUrl={favicon}
-          onUploaded={setFavicon}
-          label="Favicon"
-          accept="image/*,.ico,.png"
-        />
-        <input type="hidden" name="faviconUrl" value={favicon} form="settings-save" />
+        <div>
+          <CloudinaryUpload
+            folder="branding"
+            currentUrl={favicon}
+            onUploaded={setFavicon}
+            label="Favicon"
+            accept="image/*,.ico,.png"
+          />
+          <button
+            type="button"
+            onClick={saveFavicon}
+            disabled={savingFavicon}
+            className={`mt-4 ${primaryBtn}`}
+          >
+            {savingFavicon ? 'Saving…' : 'Save Favicon'}
+          </button>
+        </div>
       </div>
     </section>
   );

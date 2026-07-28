@@ -1,4 +1,7 @@
 import { prisma } from '@/lib/prisma';
+import AddInlineForm from '@/components/admin/AddInlineForm';
+import DeleteButton from '@/components/admin/DeleteButton';
+import SaveButton from '@/components/admin/SaveButton';
 import { cardClass, dangerBtn, inputClass, primaryBtn, smallBtn } from '@/lib/adminUi';
 import {
   createLocationAction,
@@ -66,12 +69,13 @@ export default async function SiteContentPage() {
                   defaultValue={String(location.sortOrder + 1)}
                 />
                 <div className="flex items-end">
-                  <form action={deleteLocationAction} className="inline">
-                    <input type="hidden" name="id" value={location.id} />
-                    <button type="submit" className={dangerBtn}>
-                      Delete Location
-                    </button>
-                  </form>
+                  <DeleteButton
+                    action={deleteLocationAction}
+                    id={location.id}
+                    itemLabel={`location "${location.city}"`}
+                    label="Delete Location"
+                    className={dangerBtn}
+                  />
                 </div>
               </div>
 
@@ -91,57 +95,75 @@ export default async function SiteContentPage() {
                       <Field label="Days" name={`hour-days-${h.id}`} defaultValue={h.days} />
                       <Field label="Time" name={`hour-time-${h.id}`} defaultValue={h.time} />
                       <Field label="Order" name={`hour-order-${h.id}`} type="number" defaultValue={String(h.sortOrder + 1)} />
-                      <form action={deleteLocationHourAction} className="inline">
-                        <input type="hidden" name="id" value={h.id} />
-                        <button type="submit" className={dangerBtn}>
-                          Delete
-                        </button>
-                      </form>
+                      <DeleteButton
+                        action={deleteLocationHourAction}
+                        id={h.id}
+                        itemLabel="hours row"
+                        className={dangerBtn}
+                      />
                     </div>
                   ))}
                 </div>
 
-                <form
+                <AddInlineForm
                   action={createLocationHourAction}
+                  successMessage="Hours row added!"
                   className="mt-3 grid items-end gap-2 border-t border-navy/10 pt-3 sm:grid-cols-[auto_1fr_1fr_auto_auto]"
                 >
-                  <input type="hidden" name="locationId" value={location.id} />
-                  <div>
-                    <label className="mb-1 block text-[12px] text-muted">Kind</label>
-                    <select name="kind" defaultValue="FULL" className={inputClass}>
-                      <option value="FULL">Full</option>
-                      <option value="SHORT">Short</option>
-                    </select>
-                  </div>
-                  <Field label="Days" name="days" placeholder="Mon to Thu:" noForm />
-                  <Field label="Time" name="time" placeholder="9:00 AM - 5:00 PM" noForm />
-                  <Field label="Order" name="sortOrder" type="number" defaultValue="1" noForm />
-                  <button type="submit" className={smallBtn}>
-                    Add Hours Row
-                  </button>
-                </form>
+                  {(pending) => (
+                    <>
+                      <input type="hidden" name="locationId" value={location.id} />
+                      <div>
+                        <label className="mb-1 block text-[12px] text-muted">Kind</label>
+                        <select name="kind" defaultValue="FULL" className={inputClass}>
+                          <option value="FULL">Full</option>
+                          <option value="SHORT">Short</option>
+                        </select>
+                      </div>
+                      <Field label="Days" name="days" placeholder="Mon to Thu:" noForm />
+                      <Field label="Time" name="time" placeholder="9:00 AM - 5:00 PM" noForm />
+                      <Field label="Order" name="sortOrder" type="number" defaultValue="1" noForm />
+                      <button type="submit" disabled={pending} className={smallBtn}>
+                        {pending ? 'Adding…' : 'Add Hours Row'}
+                      </button>
+                    </>
+                  )}
+                </AddInlineForm>
               </div>
             </div>
           ))}
         </div>
 
-        <form action={createLocationAction} className="mt-6 grid gap-3 border-t border-navy/10 pt-5 sm:grid-cols-2">
-          <Field label="City" name="city" noForm />
-          <Field label="Badge (optional)" name="badge" noForm />
-          <Field label="Address lines (one per line)" name="addressLines" as="textarea" className="sm:col-span-2" noForm />
-          <Field label="Order" name="sortOrder" type="number" defaultValue="1" noForm />
-          <div className="flex items-end">
-            <button type="submit" className={smallBtn}>
-              Add Location
-            </button>
-          </div>
-        </form>
+        <AddInlineForm
+          action={createLocationAction}
+          successMessage="Location added!"
+          className="mt-6 grid gap-3 border-t border-navy/10 pt-5 sm:grid-cols-2"
+        >
+          {(pending) => (
+            <>
+              <Field label="City" name="city" noForm />
+              <Field label="Badge (optional)" name="badge" noForm />
+              <Field label="Address lines (one per line)" name="addressLines" as="textarea" className="sm:col-span-2" noForm />
+              <Field label="Order" name="sortOrder" type="number" defaultValue="1" noForm />
+              <div className="flex items-end">
+                <button type="submit" disabled={pending} className={smallBtn}>
+                  {pending ? 'Adding…' : 'Add Location'}
+                </button>
+              </div>
+            </>
+          )}
+        </AddInlineForm>
       </section>
 
-      <form id={SAVE_FORM_ID} action={saveAllAction}>
-        <button type="submit" className={primaryBtn}>
+      <form id={SAVE_FORM_ID}>
+        <SaveButton
+          formId={SAVE_FORM_ID}
+          action={saveAllAction}
+          successMessage="Changes saved!"
+          className={primaryBtn}
+        >
           Save All Changes
-        </button>
+        </SaveButton>
       </form>
     </div>
   );

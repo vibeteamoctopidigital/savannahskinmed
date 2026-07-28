@@ -3,7 +3,9 @@
 import { useRef, useState, useTransition } from 'react';
 
 import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
+import DeleteButton from '@/components/admin/DeleteButton';
 import { deleteBlogPostAction, saveBlogPostAction } from '@/app/admin/dashboard/content/blog/actions';
+import { alertError, alertSuccess } from '@/lib/adminAlerts';
 import { dangerBtn, inputClass, primaryBtn, labelClass } from '@/lib/adminUi';
 
 type BlogPostCardProps = {
@@ -19,25 +21,18 @@ export default function AdminBlogPostCard({ post }: BlogPostCardProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [image, setImage] = useState(post.image);
   const [saving, startSaveTransition] = useTransition();
-  const [deleting, setDeleting] = useState(false);
-  const [saved, setSaved] = useState(false);
 
   const handleSave = () => {
     if (!formRef.current) return;
     const formData = new FormData(formRef.current);
     startSaveTransition(async () => {
-      await saveBlogPostAction(formData);
-      setSaved(true);
-      setTimeout(() => setSaved(false), 2000);
+      try {
+        await saveBlogPostAction(formData);
+        await alertSuccess('Post saved!');
+      } catch (err) {
+        await alertError('Something went wrong', err instanceof Error ? err.message : undefined);
+      }
     });
-  };
-
-  const handleDelete = async () => {
-    if (!confirm(`Delete post "${post.title}"? This cannot be undone.`)) return;
-    setDeleting(true);
-    const formData = new FormData();
-    formData.set('id', post.id);
-    await deleteBlogPostAction(formData);
   };
 
   return (
@@ -63,10 +58,12 @@ export default function AdminBlogPostCard({ post }: BlogPostCardProps) {
           <button type="button" onClick={handleSave} disabled={saving} className={primaryBtn}>
             {saving ? 'Saving...' : 'Save'}
           </button>
-          <button type="button" onClick={handleDelete} disabled={deleting} className={dangerBtn}>
-            {deleting ? 'Deleting...' : 'Delete'}
-          </button>
-          {saved && <span className="text-[12px] font-medium text-green-600">Saved!</span>}
+          <DeleteButton
+            action={deleteBlogPostAction}
+            id={post.id}
+            itemLabel={`post "${post.title}"`}
+            className={dangerBtn}
+          />
         </div>
       </div>
     </form>

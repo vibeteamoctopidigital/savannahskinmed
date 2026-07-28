@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import AddInlineForm from '@/components/admin/AddInlineForm';
+import DeleteButton from '@/components/admin/DeleteButton';
 import { listSubmissions } from '@/lib/data/submissions';
 import { SubmissionStatus, SubmissionType } from '@/lib/generated/prisma/client';
 import { badgeClass, cardClass, dangerBtn, smallBtn } from '@/lib/adminUi';
@@ -99,30 +101,38 @@ export default async function SubmissionsPage({
                   </div>
 
                   <div className="flex shrink-0 flex-col items-end gap-2">
-                    <form action={updateStatusAction} className="flex items-center gap-2">
-                      <input type="hidden" name="id" value={s.id} />
-                      <select
-                        name="status"
-                        defaultValue={s.status}
-                        className="rounded-xl border border-navy/15 px-3 py-1.5 text-[13px] text-navy outline-none transition-colors focus:border-navy"
-                      >
-                        {Object.values(SubmissionStatus).map((status) => (
-                          <option key={status} value={status}>
-                            {status}
-                          </option>
-                        ))}
-                      </select>
-                      <button type="submit" className={smallBtn}>
-                        Update
-                      </button>
-                    </form>
+                    <AddInlineForm
+                      action={updateStatusAction}
+                      successMessage="Status updated!"
+                      className="flex items-center gap-2"
+                    >
+                      {(pending) => (
+                        <>
+                          <input type="hidden" name="id" value={s.id} />
+                          <select
+                            name="status"
+                            defaultValue={s.status}
+                            className="rounded-xl border border-navy/15 px-3 py-1.5 text-[13px] text-navy outline-none transition-colors focus:border-navy"
+                          >
+                            {Object.values(SubmissionStatus).map((status) => (
+                              <option key={status} value={status}>
+                                {status}
+                              </option>
+                            ))}
+                          </select>
+                          <button type="submit" disabled={pending} className={smallBtn}>
+                            {pending ? 'Updating…' : 'Update'}
+                          </button>
+                        </>
+                      )}
+                    </AddInlineForm>
 
-                    <form action={deleteSubmissionAction}>
-                      <input type="hidden" name="id" value={s.id} />
-                      <button type="submit" className={dangerBtn}>
-                        Delete
-                      </button>
-                    </form>
+                    <DeleteButton
+                      action={deleteSubmissionAction}
+                      id={s.id}
+                      itemLabel={`submission from ${name}`}
+                      className={dangerBtn}
+                    />
                   </div>
                 </div>
               </div>

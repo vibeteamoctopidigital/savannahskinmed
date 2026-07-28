@@ -1,10 +1,13 @@
 import { prisma } from '@/lib/prisma';
 import SeoRouteList from '@/components/admin/SeoRouteList';
+import SaveButton from '@/components/admin/SaveButton';
 import { getSeoRouteDefault } from '@/lib/seoRoutes';
 import { cardClass, primaryBtn } from '@/lib/adminUi';
 import { syncRoutesAction } from './actions';
 
 export const dynamic = 'force-dynamic';
+
+const SYNC_FORM_ID = 'seo-sync';
 
 export default async function SeoMetaListPage() {
   let rows;
@@ -38,10 +41,16 @@ export default async function SeoMetaListPage() {
             {rows.length} routes · per-page title, description, keywords &amp; schema
           </p>
         </div>
-        <form action={syncRoutesAction}>
-          <button type="submit" className={primaryBtn}>
+        <form id={SYNC_FORM_ID}>
+          <SaveButton
+            formId={SYNC_FORM_ID}
+            action={syncRoutesAction}
+            successMessage="Routes synced!"
+            pendingLabel="Syncing…"
+            className={primaryBtn}
+          >
             Sync routes
-          </button>
+          </SaveButton>
         </form>
       </div>
 

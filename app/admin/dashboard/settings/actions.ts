@@ -9,6 +9,24 @@ function digitsOnly(value: string) {
   return value.replace(/[^\d]/g, '');
 }
 
+/** Independent from `updateSettingsAction` on purpose: each Branding upload
+ * gets its own Save button, so saving the logo must never clobber the
+ * favicon (or any other setting) with a blank value from a FormData that
+ * only ever contains one field. */
+export async function updateLogoAction(formData: FormData) {
+  const logoUrl = String(formData.get('logoUrl') || '').trim();
+  await prisma.siteSetting.update({ where: { id: 'main' }, data: { logoUrl } });
+  revalidatePath('/', 'layout');
+  revalidatePath('/admin/dashboard/settings');
+}
+
+export async function updateFaviconAction(formData: FormData) {
+  const faviconUrl = String(formData.get('faviconUrl') || '').trim();
+  await prisma.siteSetting.update({ where: { id: 'main' }, data: { faviconUrl } });
+  revalidatePath('/', 'layout');
+  revalidatePath('/admin/dashboard/settings');
+}
+
 async function upsertSocial(icon: string, label: string, href: string) {
   const existing = await prisma.socialLink.findFirst({ where: { icon } });
 
@@ -41,8 +59,6 @@ export async function updateSettingsAction(formData: FormData) {
       phone,
       phoneHref: phone ? `tel:+1${digitsOnly(phone)}` : '',
       address: get('address'),
-      logoUrl: get('logoUrl'),
-      faviconUrl: get('faviconUrl'),
       googleAnalyticsId: get('googleAnalyticsId'),
       metaPixelId: get('metaPixelId'),
       headerTrackingCode: get('headerTrackingCode'),
@@ -59,8 +75,6 @@ export async function updateSettingsAction(formData: FormData) {
       address: get('address'),
       bookingUrl: '/contact-us',
       copyrightText: `Copyright © ${new Date().getFullYear()} ${get('name')}`,
-      logoUrl: get('logoUrl'),
-      faviconUrl: get('faviconUrl'),
       googleAnalyticsId: get('googleAnalyticsId'),
       metaPixelId: get('metaPixelId'),
       headerTrackingCode: get('headerTrackingCode'),

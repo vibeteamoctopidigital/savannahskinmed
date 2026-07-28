@@ -1,8 +1,11 @@
 import AdminAccountForm from '@/components/admin/AdminAccountForm';
+import SaveButton from '@/components/admin/SaveButton';
 import SiteBrandingUpload from '@/components/admin/SiteBrandingUpload';
 import { prisma } from '@/lib/prisma';
 import { cardClass, inputClass, labelClass, primaryBtn } from '@/lib/adminUi';
 import { updateSettingsAction } from './actions';
+
+const SETTINGS_FORM_ID = 'settings-save';
 
 export const dynamic = 'force-dynamic';
 
@@ -43,7 +46,7 @@ export default async function AdminSettingsPage() {
 
       <AdminAccountForm currentEmail={adminUser?.email ?? ''} />
 
-      <form id="settings-save" action={updateSettingsAction} className="space-y-8">
+      <form id={SETTINGS_FORM_ID} className="space-y-8">
         <section className={cardClass}>
           <h2 className="mb-5 font-serif text-[19px] text-navy">General Settings</h2>
           <div className="grid gap-4">
@@ -124,9 +127,14 @@ export default async function AdminSettingsPage() {
           </div>
         </section>
 
-        <button type="submit" className={primaryBtn}>
+        <SaveButton
+          formId={SETTINGS_FORM_ID}
+          action={updateSettingsAction}
+          successMessage="Settings saved!"
+          className={primaryBtn}
+        >
           Save Settings
-        </button>
+        </SaveButton>
 
         <p className="rounded-lg border border-navy/10 bg-cream/60 p-4 text-[13px] text-muted">
           Changes to these settings will be reflected on your website. Some changes may require a

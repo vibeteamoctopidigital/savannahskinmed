@@ -21,3 +21,17 @@ export async function getBlogPosts(): Promise<BlogPostCard[]> {
     return [];
   }
 }
+
+export type BlogPostDetail = BlogPostCard & { createdAt: Date };
+
+/** Single post for the /blog/[id] detail page. */
+export async function getBlogPostById(id: string): Promise<BlogPostDetail | null> {
+  try {
+    return await prisma.blogPost.findUnique({
+      where: { id },
+      select: { id: true, image: true, imageAlt: true, title: true, description: true, createdAt: true },
+    });
+  } catch {
+    return null;
+  }
+}

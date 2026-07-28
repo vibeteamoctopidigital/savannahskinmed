@@ -4,6 +4,7 @@ import { useRef, useState, useTransition } from 'react';
 
 import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
 import { saveHeroAction } from '@/app/admin/dashboard/content/specials/actions';
+import { alertError, alertSuccess } from '@/lib/adminAlerts';
 import { inputClass, primaryBtn } from '@/lib/adminUi';
 
 type HeroSettings = {
@@ -18,15 +19,17 @@ export default function SpecialsHeroUpload({ settings }: { settings: HeroSetting
   const formRef = useRef<HTMLFormElement>(null);
   const [heroImage, setHeroImage] = useState(settings?.heroImage || '');
   const [saving, startSaveTransition] = useTransition();
-  const [saved, setSaved] = useState(false);
 
   const handleSave = () => {
     if (!formRef.current) return;
     const formData = new FormData(formRef.current);
     startSaveTransition(async () => {
-      await saveHeroAction(formData);
-      setSaved(true);
-      setTimeout(() => setSaved(false), 2000);
+      try {
+        await saveHeroAction(formData);
+        await alertSuccess('Hero saved!');
+      } catch (err) {
+        await alertError('Something went wrong', err instanceof Error ? err.message : undefined);
+      }
     });
   };
 
@@ -64,9 +67,6 @@ export default function SpecialsHeroUpload({ settings }: { settings: HeroSetting
         <button type="button" onClick={handleSave} disabled={saving} className={primaryBtn}>
           {saving ? 'Saving...' : 'Save Hero'}
         </button>
-        {saved && (
-          <span className="text-[12px] font-medium text-green-600">Saved!</span>
-        )}
       </div>
     </form>
   );

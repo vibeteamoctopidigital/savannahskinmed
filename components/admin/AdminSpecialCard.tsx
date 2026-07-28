@@ -3,10 +3,12 @@
 import { useRef, useState, useTransition } from 'react';
 
 import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
+import DeleteButton from '@/components/admin/DeleteButton';
 import {
   deleteSpecialCardAction,
   saveSpecialCardAction,
 } from '@/app/admin/dashboard/content/specials/actions';
+import { alertError, alertSuccess } from '@/lib/adminAlerts';
 import { inputClass, primaryBtn } from '@/lib/adminUi';
 
 type Tier = { id: string; label: string; detail: string; sortOrder: number };
@@ -33,25 +35,18 @@ export default function AdminSpecialCard({ card }: SpecialCardProps) {
   const [image, setImage] = useState(card.image);
   const [active, setActive] = useState(card.isActive);
   const [saving, startSaveTransition] = useTransition();
-  const [deleting, setDeleting] = useState(false);
-  const [saved, setSaved] = useState(false);
 
   const handleSave = () => {
     if (!formRef.current) return;
     const formData = new FormData(formRef.current);
     startSaveTransition(async () => {
-      await saveSpecialCardAction(formData);
-      setSaved(true);
-      setTimeout(() => setSaved(false), 2000);
+      try {
+        await saveSpecialCardAction(formData);
+        await alertSuccess('Card saved!');
+      } catch (err) {
+        await alertError('Something went wrong', err instanceof Error ? err.message : undefined);
+      }
     });
-  };
-
-  const handleDelete = async () => {
-    if (!confirm(`Delete card "${card.id}"? This cannot be undone.`)) return;
-    setDeleting(true);
-    const formData = new FormData();
-    formData.set('id', card.id);
-    await deleteSpecialCardAction(formData);
   };
 
   return (
@@ -136,14 +131,12 @@ export default function AdminSpecialCard({ card }: SpecialCardProps) {
             >
               {expanded ? 'Collapse' : 'Edit Card'}
             </button>
-            <button
-              type="button"
-              onClick={handleDelete}
-              disabled={deleting}
+            <DeleteButton
+              action={deleteSpecialCardAction}
+              id={card.id}
+              itemLabel={`card "${card.id}"`}
               className="rounded-lg px-3 py-2 text-[12px] font-medium text-red-600 transition-colors hover:bg-red-50 disabled:opacity-50"
-            >
-              {deleting ? 'Deleting...' : 'Delete'}
-            </button>
+            />
           </div>
         </div>
 
@@ -257,9 +250,6 @@ export default function AdminSpecialCard({ card }: SpecialCardProps) {
                 <button type="button" onClick={handleSave} disabled={saving} className={primaryBtn}>
                   {saving ? 'Saving...' : 'Save Card'}
                 </button>
-                {saved && (
-                  <span className="text-[12px] font-medium text-green-600">Saved!</span>
-                )}
               </div>
             </div>
           </div>

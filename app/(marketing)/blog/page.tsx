@@ -23,9 +23,9 @@ export default async function BlogPage() {
         image="/images/banner-bg.jpg"
         imageAlt="Savannah Age Management Medicine"
       />
-      <section className="mx-auto max-w-[1200px] px-5 py-20 sm:py-28">
+      <section className="mx-auto max-w-[760px] px-5 py-20 sm:py-28">
         {posts.length > 0 ? (
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
             {posts.map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}

@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useActionState } from 'react';
+import { useEffect, useRef, useState, useActionState } from 'react';
 
 import {
   updateAdminAccountAction,
   type AdminAccountState,
 } from '@/app/admin/dashboard/settings/actions';
+import { alertError, alertSuccess } from '@/lib/adminAlerts';
 import { cardClass, inputClass, labelClass, primaryBtn } from '@/lib/adminUi';
 
 const initialState: AdminAccountState = {};
@@ -76,6 +77,14 @@ function PasswordField({
 
 export default function AdminAccountForm({ currentEmail }: { currentEmail: string }) {
   const [state, formAction, pending] = useActionState(updateAdminAccountAction, initialState);
+  const lastHandled = useRef<AdminAccountState>(initialState);
+
+  useEffect(() => {
+    if (state === lastHandled.current) return;
+    lastHandled.current = state;
+    if (state.success) alertSuccess(state.success);
+    if (state.error) alertError('Could not update account', state.error);
+  }, [state]);
 
   return (
     <section className={cardClass}>
@@ -85,17 +94,6 @@ export default function AdminAccountForm({ currentEmail }: { currentEmail: strin
       </p>
 
       <form action={formAction} className="space-y-4">
-        {state.error && (
-          <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-700">
-            {state.error}
-          </div>
-        )}
-        {state.success && (
-          <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-[13px] text-green-700">
-            {state.success}
-          </div>
-        )}
-
         <div>
           <label className={labelClass}>Email</label>
           <input
