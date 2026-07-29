@@ -1,6 +1,6 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { verifyAdminCredentials } from '@/lib/data/admin';
@@ -21,11 +21,15 @@ export async function loginAction(_prevState: LoginState, formData: FormData): P
     return { error: 'Invalid email or password.' };
   }
 
+  const hdrs = await headers();
+  const proto = hdrs.get('x-forwarded-proto') || hdrs.get('proto') || 'http';
+  const isSecure = proto === 'https';
+
   const store = await cookies();
   store.set(ADMIN_SESSION_COOKIE, ADMIN_SESSION_VALUE, {
     httpOnly: true,
     sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
+    secure: isSecure,
     path: '/',
     maxAge: 60 * 60 * 24 * 7,
   });
