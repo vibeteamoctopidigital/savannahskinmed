@@ -28,7 +28,11 @@ export async function generateMetadata(): Promise<Metadata> {
     // Site-wide default — a route's SEO setting of "Inherit site default"
     // resolves to this (index, follow) unless a page overrides it.
     robots: { index: true, follow: true },
-    icons: settings.faviconUrl ? { icon: settings.faviconUrl } : undefined,
+    icons: {
+      icon: settings.faviconUrl || '/images/fab.png',
+      shortcut: settings.faviconUrl || '/images/fab.png',
+      apple: settings.faviconUrl || '/images/fab.png',
+    },
     openGraph: {
       title: 'Savannah Age Management Medicine',
       description:

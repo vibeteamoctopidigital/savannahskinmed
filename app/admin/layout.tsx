@@ -12,6 +12,11 @@ import '../globals.css';
 export const metadata: Metadata = {
   title: 'Admin',
   robots: { index: false, follow: false },
+  icons: {
+    icon: '/images/fab.png',
+    shortcut: '/images/fab.png',
+    apple: '/images/fab.png',
+  },
 };
 
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {

@@ -15,7 +15,7 @@ export async function getSiteSettings(): Promise<SiteSettingsData> {
       bookingUrl: row.bookingUrl,
       copyrightText: row.copyrightText,
       logoUrl: row.logoUrl,
-      faviconUrl: row.faviconUrl,
+      faviconUrl: row.faviconUrl || '/images/fab.png',
       googleAnalyticsId: row.googleAnalyticsId,
       metaPixelId: row.metaPixelId,
       headerTrackingCode: row.headerTrackingCode,
