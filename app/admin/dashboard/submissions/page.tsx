@@ -3,6 +3,7 @@ import Link from 'next/link';
 import DeleteButton from '@/components/admin/DeleteButton';
 import SubmissionDetailsModal from '@/components/admin/SubmissionDetailsModal';
 import SubmissionStatusSelect from '@/components/admin/SubmissionStatusSelect';
+import DownloadSubmissionsButton from '@/components/admin/DownloadSubmissionsButton';
 import { listSubmissions } from '@/lib/data/submissions';
 import { SubmissionType } from '@/lib/generated/prisma_v2/client';
 import { badgeClass, cardClass, dangerBtn } from '@/lib/adminUi';
@@ -33,7 +34,11 @@ export default async function SubmissionsPage({
   const { type } = await searchParams;
   const activeType = type && type in SubmissionType ? (type as SubmissionType) : undefined;
 
-  const result = await listSubmissions(activeType ? { type: activeType } : undefined);
+  const result = await listSubmissions();
+  const allSubmissions = result.ok ? result.data : [];
+  const currentSubmissions = activeType
+    ? allSubmissions.filter((s) => s.type === activeType)
+    : allSubmissions;
 
   return (
     <div className="space-y-8">
@@ -45,28 +50,37 @@ export default async function SubmissionsPage({
           </p>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2">
-          {filters.map((f) => {
-            const isActive = activeType === f.value;
-            const href = f.value
-              ? `/admin/dashboard/submissions?type=${f.value}`
-              : '/admin/dashboard/submissions';
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2">
+            {filters.map((f) => {
+              const isActive = activeType === f.value;
+              const href = f.value
+                ? `/admin/dashboard/submissions?type=${f.value}`
+                : '/admin/dashboard/submissions';
 
-            return (
-              <Link
-                key={f.label}
-                href={href}
-                className={`rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
-                  isActive
-                    ? 'border-navy bg-navy text-white shadow-xs'
-                    : 'border-navy/20 bg-white text-navy hover:border-navy'
-                }`}
-              >
-                {f.label}
-              </Link>
-            );
-          })}
+              return (
+                <Link
+                  key={f.label}
+                  href={href}
+                  className={`rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
+                    isActive
+                      ? 'border-navy bg-navy text-white shadow-xs'
+                      : 'border-navy/20 bg-white text-navy hover:border-navy'
+                  }`}
+                >
+                  {f.label}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Instant CSV report download button with category menu */}
+          <DownloadSubmissionsButton
+            allSubmissions={allSubmissions}
+            currentSubmissions={currentSubmissions}
+            activeType={activeType}
+          />
         </div>
       </div>
 
@@ -77,7 +91,7 @@ export default async function SubmissionsPage({
             submissions here.
           </p>
         </div>
-      ) : result.data.length === 0 ? (
+      ) : currentSubmissions.length === 0 ? (
         <div className={cardClass}>
           <p className="text-[14px] text-muted">No submissions match this filter yet.</p>
         </div>
@@ -97,7 +111,7 @@ export default async function SubmissionsPage({
               </tr>
             </thead>
             <tbody className="divide-y divide-navy/5">
-              {result.data.map((s) => {
+              {currentSubmissions.map((s) => {
                 const name =
                   s.name ?? ([s.firstName, s.lastName].filter(Boolean).join(' ') || '—');
                 const hasAnyDetails =

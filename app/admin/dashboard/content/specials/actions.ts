@@ -100,14 +100,14 @@ export async function saveSpecialCardAction(formData: FormData): Promise<void> {
     // 2. If tierLabels were passed, sync tiers
     if (tierLabels.length > 0) {
       // Delete existing tiers and insert the new ordered list
-      await tx.specialCardTier.deleteMany({ where: { cardId: id } });
+      await tx.specialCardTier.deleteMany({ where: { specialCardId: id } });
       for (let i = 0; i < tierLabels.length; i++) {
         const label = tierLabels[i]?.trim();
         const detail = tierDetails[i]?.trim() || '';
         if (label) {
           await tx.specialCardTier.create({
             data: {
-              cardId: id,
+              specialCardId: id,
               label,
               detail,
               sortOrder: i,
@@ -186,7 +186,7 @@ export async function createSpecialCardAction(formData: FormData): Promise<void>
         if (label) {
           await tx.specialCardTier.create({
             data: {
-              cardId: id,
+              specialCardId: id,
               label,
               detail,
               sortOrder: i,
@@ -197,8 +197,8 @@ export async function createSpecialCardAction(formData: FormData): Promise<void>
     } else if (variant === SpecialCardVariant.TIERS) {
       await tx.specialCardTier.createMany({
         data: [
-          { cardId: id, label: 'Standard Tier', detail: 'Includes treatment consultation', sortOrder: 0 },
-          { cardId: id, label: 'Premium Tier', detail: 'Includes follow-up session', sortOrder: 1 },
+          { specialCardId: id, label: 'Standard Tier', detail: 'Includes treatment consultation', sortOrder: 0 },
+          { specialCardId: id, label: 'Premium Tier', detail: 'Includes follow-up session', sortOrder: 1 },
         ],
       });
     }
