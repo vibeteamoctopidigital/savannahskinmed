@@ -28,7 +28,7 @@ export default async function TeamContentPage() {
           </p>
         </div>
       ) : (
-        <div className="space-y-5">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 items-start">
           {members.map((member) => (
             <AdminTeamMemberCard key={member.id} member={member} />
           ))}

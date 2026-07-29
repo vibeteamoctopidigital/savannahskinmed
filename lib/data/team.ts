@@ -54,3 +54,28 @@ export async function getAllTeamMembersForAdmin(): Promise<TeamMemberData[]> {
     return buildTeamFallback();
   }
 }
+
+export async function getTeamMemberByIdForAdmin(id: string): Promise<TeamMemberData | null> {
+  try {
+    const member = await prisma.teamMember.findUnique({ where: { id } });
+    if (member) {
+      return {
+        id: member.id,
+        name: member.name,
+        role: member.role,
+        highlight: member.highlight,
+        bio: member.bio,
+        image: member.image,
+        imageAlt: member.imageAlt,
+        sortOrder: member.sortOrder,
+        isActive: member.isActive,
+      };
+    }
+  } catch {
+    // ignore db error, fallback below
+  }
+
+  const fallback = buildTeamFallback().find((m) => m.id === id);
+  return fallback || null;
+}
+

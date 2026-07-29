@@ -7,6 +7,9 @@ import { prisma } from '@/lib/prisma';
 export async function saveTeamMemberAction(formData: FormData): Promise<void> {
   const id = formData.get('id') as string;
   if (!id) throw new Error('Missing ID');
+  if (id === 'new') {
+    return createTeamMemberAction(formData);
+  }
 
   const name = (formData.get('name') as string)?.trim() || 'Unnamed Member';
   const role = (formData.get('role') as string)?.trim() || '';
@@ -78,6 +81,7 @@ export async function createTeamMemberAction(formData: FormData): Promise<void> 
 export async function deleteTeamMemberAction(formData: FormData): Promise<void> {
   const id = formData.get('id') as string;
   if (!id) throw new Error('Missing ID');
+  if (id === 'new') return;
 
   await prisma.teamMember.deleteMany({ where: { id } });
 
