@@ -1,9 +1,7 @@
 /**
  * Pure builder functions that reshape today's static content (`lib/site.ts`,
  * `lib/specialsData.ts`) into the exact shapes the DB-backed data-access
- * layer returns. `prisma/seed.ts` and the runtime fallback path (used when
- * Prisma can't reach a database) both call these same functions, so seed
- * data and fallback data are structurally incapable of drifting apart.
+ * layer returns for runtime fallback paths.
  */
 import {
   footerServices,
