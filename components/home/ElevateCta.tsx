@@ -7,7 +7,7 @@ export default function ElevateCta() {
   return (
     <section className="relative flex min-h-[380px] items-center overflow-hidden bg-[#cbab92] lg:min-h-[492px]">
       <Image
-        src="/images/hero-bg.jpg"
+        src="/images/hero-bg.png"
         alt="Group of women enjoying the results of their aesthetic treatments"
         fill
         sizes="100vw"
