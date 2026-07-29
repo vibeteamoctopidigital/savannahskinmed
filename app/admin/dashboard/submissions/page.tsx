@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
-import AddInlineForm from '@/components/admin/AddInlineForm';
 import DeleteButton from '@/components/admin/DeleteButton';
-import PendingSubmitButton from '@/components/admin/PendingSubmitButton';
+import SubmissionDetailsModal from '@/components/admin/SubmissionDetailsModal';
+import SubmissionStatusSelect from '@/components/admin/SubmissionStatusSelect';
 import { listSubmissions } from '@/lib/data/submissions';
-import { SubmissionStatus, SubmissionType } from '@/lib/generated/prisma/client';
-import { badgeClass, cardClass, dangerBtn, smallBtn } from '@/lib/adminUi';
-import { deleteSubmissionAction, updateStatusAction } from './actions';
+import { SubmissionType } from '@/lib/generated/prisma/client';
+import { badgeClass, cardClass, dangerBtn } from '@/lib/adminUi';
+import { deleteSubmissionAction } from './actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -36,23 +36,31 @@ export default async function SubmissionsPage({
   const result = await listSubmissions(activeType ? { type: activeType } : undefined);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="font-serif text-[26px] text-navy">Submissions</h1>
-        <div className="flex flex-wrap gap-2">
+        <div>
+          <h1 className="font-serif text-[26px] text-navy">Submissions</h1>
+          <p className="text-[13px] text-muted">
+            All leads, booking requests, offer claims, and membership inquiries.
+          </p>
+        </div>
+
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap items-center gap-2">
           {filters.map((f) => {
-            const isActive = f.value === activeType;
+            const isActive = activeType === f.value;
             const href = f.value
               ? `/admin/dashboard/submissions?type=${f.value}`
               : '/admin/dashboard/submissions';
+
             return (
               <Link
                 key={f.label}
                 href={href}
                 className={`rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
                   isActive
-                    ? 'border-navy bg-navy text-white'
-                    : 'border-navy/20 text-navy hover:border-navy'
+                    ? 'border-navy bg-navy text-white shadow-xs'
+                    : 'border-navy/20 bg-white text-navy hover:border-navy'
                 }`}
               >
                 {f.label}
@@ -75,9 +83,9 @@ export default async function SubmissionsPage({
         </div>
       ) : (
         <div className="overflow-x-auto rounded-2xl border border-navy/10 bg-white shadow-card">
-          <table className="w-full min-w-[860px] border-collapse text-left text-[13.5px]">
+          <table className="w-full min-w-[880px] border-collapse text-left text-[13.5px]">
             <thead>
-              <tr className="border-b border-navy/10 bg-cream/60 font-serif text-[13px] font-semibold uppercase tracking-wider text-navy">
+              <tr className="border-b border-navy/10 bg-cream/70 font-serif text-[12px] font-bold uppercase tracking-wider text-navy">
                 <th className="p-4">Type / Offer</th>
                 <th className="p-4">Name</th>
                 <th className="p-4">Contact</th>
@@ -92,70 +100,96 @@ export default async function SubmissionsPage({
               {result.data.map((s) => {
                 const name =
                   s.name ?? ([s.firstName, s.lastName].filter(Boolean).join(' ') || '—');
+                const hasAnyDetails =
+                  Boolean(s.location) ||
+                  Boolean(s.service) ||
+                  Boolean(s.preferredDate) ||
+                  Boolean(s.preferredTime) ||
+                  Boolean(s.message) ||
+                  Boolean(s.notes);
+
+                const createdAtFormatted = `${new Date(s.createdAt).toLocaleDateString()} at ${new Date(s.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+
                 return (
-                  <tr key={s.id} className="transition-colors hover:bg-mist/30">
-                    <td className="p-4 align-top">
+                  <tr key={s.id} className="transition-colors hover:bg-mist/40">
+                    <td className="p-4 align-middle">
                       <span className={badgeClass(s.type)}>{typeLabels[s.type]}</span>
                       {s.offerLabel && (
-                        <p className="mt-1 text-[12px] font-medium text-muted">
+                        <p className="mt-1 text-[12px] font-medium text-rose-deep">
                           {s.offerLabel}
                         </p>
                       )}
                     </td>
-                    <td className="p-4 align-top font-serif text-[15px] font-medium text-navy">
+                    <td className="p-4 align-middle font-serif text-[15px] font-medium text-navy">
                       {name}
                     </td>
-                    <td className="p-4 align-top text-muted">
-                      {s.email && <p className="text-navy">{s.email}</p>}
-                      {s.phone && <p>{s.phone}</p>}
-                      {!s.email && !s.phone && '—'}
-                    </td>
-                    <td className="p-4 align-top text-[12.5px] text-muted">
-                      {s.location && <p>Loc: {s.location}</p>}
-                      {s.service && <p>Svc: {s.service}</p>}
-                      {(s.preferredDate || s.preferredTime) && (
-                        <p>
-                          Pref: {s.preferredDate} {s.preferredTime}
+                    <td className="p-4 align-middle text-[13px] text-muted">
+                      {s.email && (
+                        <p className="font-medium text-navy truncate max-w-[200px]">
+                          <a href={`mailto:${s.email}`} className="hover:text-rose-deep">
+                            {s.email}
+                          </a>
                         </p>
                       )}
-                      {!s.location && !s.service && !s.preferredDate && !s.preferredTime && '—'}
+                      {s.phone && (
+                        <p className="text-[12px] mt-0.5">
+                          <a href={`tel:${s.phone}`} className="hover:text-rose-deep">
+                            {s.phone}
+                          </a>
+                        </p>
+                      )}
+                      {!s.email && !s.phone && '—'}
                     </td>
-                    <td className="max-w-[240px] p-4 align-top text-[13px] leading-snug text-navy">
-                      {s.notes || s.message ? `"${s.notes || s.message}"` : '—'}
+                    <td className="p-4 align-middle">
+                      {hasAnyDetails ? (
+                        <SubmissionDetailsModal
+                          submission={{
+                            id: s.id,
+                            type: s.type,
+                            offerLabel: s.offerLabel,
+                            name,
+                            email: s.email,
+                            phone: s.phone,
+                            location: s.location,
+                            service: s.service,
+                            preferredDate: [s.preferredDate, s.preferredTime]
+                              .filter(Boolean)
+                              .join(' '),
+                            message: s.notes || s.message,
+                            createdAtFormatted,
+                            status: s.status,
+                          }}
+                          badgeClassName={badgeClass(s.type)}
+                          typeLabel={typeLabels[s.type]}
+                        />
+                      ) : (
+                        <span className="text-muted">—</span>
+                      )}
                     </td>
-                    <td className="whitespace-nowrap p-4 align-top text-[12px] text-muted">
-                      {new Date(s.createdAt).toLocaleDateString()}{' '}
-                      <span className="text-muted/70">
+                    <td className="max-w-[180px] p-4 align-middle text-[13px] leading-snug text-navy">
+                      {s.notes || s.message ? (
+                        <p className="truncate" title={s.notes || s.message || ''}>
+                          &ldquo;{s.notes || s.message}&rdquo;
+                        </p>
+                      ) : (
+                        <span className="text-muted">—</span>
+                      )}
+                    </td>
+                    <td className="whitespace-nowrap p-4 align-middle text-[12.5px] text-muted">
+                      <p className="font-medium text-navy">
+                        {new Date(s.createdAt).toLocaleDateString()}
+                      </p>
+                      <p className="text-[11px] text-muted">
                         {new Date(s.createdAt).toLocaleTimeString([], {
                           hour: '2-digit',
                           minute: '2-digit',
                         })}
-                      </span>
+                      </p>
                     </td>
-                    <td className="p-4 align-top">
-                      <AddInlineForm
-                        action={updateStatusAction}
-                        successMessage="Status updated!"
-                        className="flex flex-col gap-1.5"
-                      >
-                        <input type="hidden" name="id" value={s.id} />
-                        <select
-                          name="status"
-                          defaultValue={s.status}
-                          className="rounded-lg border border-navy/15 px-2.5 py-1 text-[12.5px] text-navy outline-none transition-colors focus:border-navy"
-                        >
-                          {Object.values(SubmissionStatus).map((status) => (
-                            <option key={status} value={status}>
-                              {status}
-                            </option>
-                          ))}
-                        </select>
-                        <PendingSubmitButton pendingLabel="Updating…" className={smallBtn}>
-                          Update
-                        </PendingSubmitButton>
-                      </AddInlineForm>
+                    <td className="p-4 align-middle">
+                      <SubmissionStatusSelect id={s.id} currentStatus={s.status} />
                     </td>
-                    <td className="p-4 align-top text-right">
+                    <td className="p-4 align-middle text-right">
                       <DeleteButton
                         action={deleteSubmissionAction}
                         id={s.id}
