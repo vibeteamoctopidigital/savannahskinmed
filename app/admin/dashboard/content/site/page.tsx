@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import AddInlineForm from '@/components/admin/AddInlineForm';
 import DeleteButton from '@/components/admin/DeleteButton';
+import PendingSubmitButton from '@/components/admin/PendingSubmitButton';
 import SaveButton from '@/components/admin/SaveButton';
 import { cardClass, dangerBtn, inputClass, primaryBtn, smallBtn } from '@/lib/adminUi';
 import {
@@ -110,24 +111,20 @@ export default async function SiteContentPage() {
                   successMessage="Hours row added!"
                   className="mt-3 grid items-end gap-2 border-t border-navy/10 pt-3 sm:grid-cols-[auto_1fr_1fr_auto_auto]"
                 >
-                  {(pending) => (
-                    <>
-                      <input type="hidden" name="locationId" value={location.id} />
-                      <div>
-                        <label className="mb-1 block text-[12px] text-muted">Kind</label>
-                        <select name="kind" defaultValue="FULL" className={inputClass}>
-                          <option value="FULL">Full</option>
-                          <option value="SHORT">Short</option>
-                        </select>
-                      </div>
-                      <Field label="Days" name="days" placeholder="Mon to Thu:" noForm />
-                      <Field label="Time" name="time" placeholder="9:00 AM - 5:00 PM" noForm />
-                      <Field label="Order" name="sortOrder" type="number" defaultValue="1" noForm />
-                      <button type="submit" disabled={pending} className={smallBtn}>
-                        {pending ? 'Adding…' : 'Add Hours Row'}
-                      </button>
-                    </>
-                  )}
+                  <input type="hidden" name="locationId" value={location.id} />
+                  <div>
+                    <label className="mb-1 block text-[12px] text-muted">Kind</label>
+                    <select name="kind" defaultValue="FULL" className={inputClass}>
+                      <option value="FULL">Full</option>
+                      <option value="SHORT">Short</option>
+                    </select>
+                  </div>
+                  <Field label="Days" name="days" placeholder="Mon to Thu:" noForm />
+                  <Field label="Time" name="time" placeholder="9:00 AM - 5:00 PM" noForm />
+                  <Field label="Order" name="sortOrder" type="number" defaultValue="1" noForm />
+                  <PendingSubmitButton pendingLabel="Adding…" className={smallBtn}>
+                    Add Hours Row
+                  </PendingSubmitButton>
                 </AddInlineForm>
               </div>
             </div>
@@ -139,19 +136,15 @@ export default async function SiteContentPage() {
           successMessage="Location added!"
           className="mt-6 grid gap-3 border-t border-navy/10 pt-5 sm:grid-cols-2"
         >
-          {(pending) => (
-            <>
-              <Field label="City" name="city" noForm />
-              <Field label="Badge (optional)" name="badge" noForm />
-              <Field label="Address lines (one per line)" name="addressLines" as="textarea" className="sm:col-span-2" noForm />
-              <Field label="Order" name="sortOrder" type="number" defaultValue="1" noForm />
-              <div className="flex items-end">
-                <button type="submit" disabled={pending} className={smallBtn}>
-                  {pending ? 'Adding…' : 'Add Location'}
-                </button>
-              </div>
-            </>
-          )}
+          <Field label="City" name="city" noForm />
+          <Field label="Badge (optional)" name="badge" noForm />
+          <Field label="Address lines (one per line)" name="addressLines" as="textarea" className="sm:col-span-2" noForm />
+          <Field label="Order" name="sortOrder" type="number" defaultValue="1" noForm />
+          <div className="flex items-end">
+            <PendingSubmitButton pendingLabel="Adding…" className={smallBtn}>
+              Add Location
+            </PendingSubmitButton>
+          </div>
         </AddInlineForm>
       </section>
 

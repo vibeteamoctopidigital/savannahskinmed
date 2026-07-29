@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useTransition } from 'react';
+import { createContext, useContext, useRef, useTransition } from 'react';
 
 import { alertError, alertSuccess } from '@/lib/adminAlerts';
 
@@ -8,8 +8,18 @@ type Props = {
   action: (formData: FormData) => Promise<void>;
   successMessage: string;
   className?: string;
-  children: (pending: boolean) => React.ReactNode;
+  children: React.ReactNode;
 };
+
+const PendingContext = createContext(false);
+
+/** Read from `PendingSubmitButton` (or any custom submit control) to reflect
+ * this form's in-flight state without needing a render-prop function — a
+ * plain function can't be passed from a Server Component page into this
+ * Client Component as `children`, so state is shared via context instead. */
+export function usePendingForm() {
+  return useContext(PendingContext);
+}
 
 /** Wraps a small "Add ___" form (Add Location, Add Hours Row, etc.) so
  * submitting it shows a SweetAlert success toast and resets the fields,
@@ -34,7 +44,7 @@ export default function AddInlineForm({ action, successMessage, className, child
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className={className}>
-      {children(pending)}
+      <PendingContext.Provider value={pending}>{children}</PendingContext.Provider>
     </form>
   );
 }

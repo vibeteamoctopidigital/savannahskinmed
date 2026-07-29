@@ -55,7 +55,7 @@ function SelectField({
   placeholder?: string;
 }) {
   return (
-    <div className="relative rounded-lg border border-white/45 px-6 pb-[13px] pt-[11px] transition focus-within:border-white">
+    <div className="relative rounded-lg border border-white/45 pb-[13px] pl-7 pr-6 pt-[11px] transition focus-within:border-white sm:pl-6">
       <label
         htmlFor={id}
         className="block font-sans text-[11px] font-extrabold uppercase tracking-[0.03em] text-white"

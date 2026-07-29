@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import AddInlineForm from '@/components/admin/AddInlineForm';
 import DeleteButton from '@/components/admin/DeleteButton';
+import PendingSubmitButton from '@/components/admin/PendingSubmitButton';
 import { listSubmissions } from '@/lib/data/submissions';
 import { SubmissionStatus, SubmissionType } from '@/lib/generated/prisma/client';
 import { badgeClass, cardClass, dangerBtn, smallBtn } from '@/lib/adminUi';
@@ -106,25 +107,21 @@ export default async function SubmissionsPage({
                       successMessage="Status updated!"
                       className="flex items-center gap-2"
                     >
-                      {(pending) => (
-                        <>
-                          <input type="hidden" name="id" value={s.id} />
-                          <select
-                            name="status"
-                            defaultValue={s.status}
-                            className="rounded-xl border border-navy/15 px-3 py-1.5 text-[13px] text-navy outline-none transition-colors focus:border-navy"
-                          >
-                            {Object.values(SubmissionStatus).map((status) => (
-                              <option key={status} value={status}>
-                                {status}
-                              </option>
-                            ))}
-                          </select>
-                          <button type="submit" disabled={pending} className={smallBtn}>
-                            {pending ? 'Updating…' : 'Update'}
-                          </button>
-                        </>
-                      )}
+                      <input type="hidden" name="id" value={s.id} />
+                      <select
+                        name="status"
+                        defaultValue={s.status}
+                        className="rounded-xl border border-navy/15 px-3 py-1.5 text-[13px] text-navy outline-none transition-colors focus:border-navy"
+                      >
+                        {Object.values(SubmissionStatus).map((status) => (
+                          <option key={status} value={status}>
+                            {status}
+                          </option>
+                        ))}
+                      </select>
+                      <PendingSubmitButton pendingLabel="Updating…" className={smallBtn}>
+                        Update
+                      </PendingSubmitButton>
                     </AddInlineForm>
 
                     <DeleteButton
