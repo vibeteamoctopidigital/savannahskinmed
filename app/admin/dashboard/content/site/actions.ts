@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 
 import { prisma } from '@/lib/prisma';
-import { HoursKind } from '@/lib/generated/prisma/client';
+import { HoursKind } from '@/lib/generated/prisma_v2/client';
 
 function revalidatePublicPages() {
   revalidatePath('/', 'layout');

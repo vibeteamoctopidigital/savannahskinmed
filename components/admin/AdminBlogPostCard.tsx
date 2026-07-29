@@ -1,12 +1,12 @@
 'use client';
 
-import { useRef, useState, useTransition } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
-import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
 import DeleteButton from '@/components/admin/DeleteButton';
-import { deleteBlogPostAction, saveBlogPostAction } from '@/app/admin/dashboard/content/blog/actions';
-import { alertError, alertSuccess } from '@/lib/adminAlerts';
-import { dangerBtn, inputClass, primaryBtn, labelClass } from '@/lib/adminUi';
+import { deleteBlogPostAction } from '@/app/admin/dashboard/content/blog/actions';
+import { dangerBtn, primaryBtn } from '@/lib/adminUi';
 
 type BlogPostCardProps = {
   post: {
@@ -18,54 +18,53 @@ type BlogPostCardProps = {
 };
 
 export default function AdminBlogPostCard({ post }: BlogPostCardProps) {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [image, setImage] = useState(post.image);
-  const [saving, startSaveTransition] = useTransition();
-
-  const handleSave = () => {
-    if (!formRef.current) return;
-    const formData = new FormData(formRef.current);
-    startSaveTransition(async () => {
-      try {
-        await saveBlogPostAction(formData);
-        await alertSuccess('Post saved!');
-      } catch (err) {
-        await alertError('Something went wrong', err instanceof Error ? err.message : undefined);
-      }
-    });
-  };
+  const router = useRouter();
 
   return (
-    <form ref={formRef} className="overflow-hidden rounded-2xl border border-navy/[0.06] bg-white shadow-card">
-      <input type="hidden" name="postId" value={post.id} />
-      <input type="hidden" name="image" value={image} />
-
-      <div className="p-5">
-        <CloudinaryUpload folder="blog" currentUrl={image} onUploaded={setImage} label="Image" />
-
-        <div className="mt-4 space-y-3">
-          <div>
-            <label className={labelClass}>Title</label>
-            <input name="title" defaultValue={post.title} className={inputClass} />
-          </div>
-          <div>
-            <label className={labelClass}>Description</label>
-            <textarea name="description" defaultValue={post.description} rows={4} className={inputClass} />
-          </div>
+    <div className="flex flex-col justify-between overflow-hidden rounded-2xl border border-navy/[0.08] bg-white shadow-card transition-all hover:shadow-card-hover">
+      <div>
+        <div className="relative h-44 w-full overflow-hidden bg-cream/40">
+          {post.image ? (
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover transition-transform duration-300 hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 380px"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-[13px] text-muted">
+              No Image
+            </div>
+          )}
         </div>
 
-        <div className="mt-4 flex items-center gap-3 border-t border-navy/10 pt-4">
-          <button type="button" onClick={handleSave} disabled={saving} className={primaryBtn}>
-            {saving ? 'Saving...' : 'Save'}
-          </button>
-          <DeleteButton
-            action={deleteBlogPostAction}
-            id={post.id}
-            itemLabel={`post "${post.title}"`}
-            className={dangerBtn}
-          />
+        <div className="p-5">
+          <h3 className="font-serif text-[18px] text-navy line-clamp-1">{post.title}</h3>
+          <p className="mt-2 text-[13px] leading-relaxed text-muted line-clamp-2">
+            {post.description.replace(/<[^>]+>/g, '') || 'No content yet...'}
+          </p>
         </div>
       </div>
-    </form>
+
+      <div className="flex items-center justify-between border-t border-navy/[0.06] bg-cream/20 px-5 py-3">
+        <Link
+          href={`/admin/dashboard/content/blog/${post.id}`}
+          className={`${primaryBtn} text-[13px]`}
+        >
+          Edit ✎
+        </Link>
+        <DeleteButton
+          id={post.id}
+          label="Delete"
+          itemLabel={post.title}
+          action={async (formData) => {
+            await deleteBlogPostAction(formData);
+            router.refresh();
+          }}
+          className={dangerBtn}
+        />
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { buildTeamFallback, type TeamMemberData } from '@/lib/data/shape';
-import type { TeamMember } from '@/lib/generated/prisma/client';
+import type { TeamMember } from '@/lib/generated/prisma_v2/client';
 
 /** Public read — returns active team members sorted by sortOrder asc.
  * Falls back to buildTeamFallback() if DB is unreachable or unseeded.

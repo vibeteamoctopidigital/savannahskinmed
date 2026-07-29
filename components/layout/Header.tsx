@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import Logo from './Logo';
 import { locations, primaryNav, services, site, socials } from '@/lib/site';
+import { trackClickToCall } from '@/lib/analytics';
 import {
   ArrowLongRight,
   ArrowRight,
@@ -162,6 +163,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
         <div className="flex items-center gap-3">
           <a
             href={site.phoneHref}
+            onClick={trackClickToCall}
             className="hidden rounded-full bg-navy px-7 py-[13px] font-sans text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-navy-deep xl:inline-block"
           >
             Call: {site.phone}
@@ -170,6 +172,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
           {/* Below the CALL pill's breakpoint the number collapses to a glyph. */}
           <a
             href={site.phoneHref}
+            onClick={trackClickToCall}
             aria-label={`Call ${site.phone}`}
             className="grid h-10 w-10 place-items-center text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)] transition-opacity hover:opacity-75 xl:hidden"
           >
@@ -275,7 +278,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
 
               {/* Contact Card */}
               <div className="mt-12 rounded-xl bg-navy p-6">
-                <a href={site.phoneHref} className="mb-5 flex items-center gap-4 text-white hover:text-rose-light">
+                <a href={site.phoneHref} onClick={trackClickToCall} className="mb-5 flex items-center gap-4 text-white hover:text-rose-light">
                   <PhoneIcon className="h-5 w-5 shrink-0" />
                   <span className="font-sans text-[15px]">{site.phone}</span>
                 </a>

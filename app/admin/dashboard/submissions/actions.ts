@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 
 import { deleteSubmission, updateSubmissionStatus } from '@/lib/data/submissions';
-import { SubmissionStatus } from '@/lib/generated/prisma/client';
+import { SubmissionStatus } from '@/lib/generated/prisma_v2/client';
 
 export async function updateStatusAction(formData: FormData) {
   const id = String(formData.get('id') || '');

@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 
 import { prisma } from '@/lib/prisma';
-import { SpecialCardVariant } from '@/lib/generated/prisma/client';
+import { SpecialCardVariant } from '@/lib/generated/prisma_v2/client';
 
 function revalidateSpecialsPage() {
   revalidatePath('/specials');

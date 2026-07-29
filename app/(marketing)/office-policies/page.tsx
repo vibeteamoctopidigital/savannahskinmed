@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import ButtonLink from '@/components/ui/ButtonLink';
 import Reveal from '@/components/ui/Reveal';
+import TrackedPhoneLink from '@/components/ui/TrackedPhoneLink';
 import { site } from '@/lib/site';
 import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
@@ -69,9 +70,9 @@ export default function OfficePoliciesPage() {
             <ul className="mb-6 list-disc space-y-2 pl-5">
               <li>
                 <strong className="font-bold text-navy">Phone:</strong> Call our clinic at{' '}
-                <a href={site.phoneHref} className="text-rose-deep underline underline-offset-2">
+                <TrackedPhoneLink href={site.phoneHref} className="text-rose-deep underline underline-offset-2">
                   {site.phone.replace(/[()]/g, '').replace(' ', '-')}
-                </a>
+                </TrackedPhoneLink>
                 . If necessary, you may leave a detailed voicemail message.
               </li>
               <li>

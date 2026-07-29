@@ -3,7 +3,7 @@
 import { z } from 'zod';
 
 import { createSubmission } from '@/lib/data/submissions';
-import { SubmissionType } from '@/lib/generated/prisma/client';
+import { SubmissionType } from '@/lib/generated/prisma_v2/client';
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 

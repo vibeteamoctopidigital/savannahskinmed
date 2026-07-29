@@ -22,7 +22,7 @@ export default async function OurExpertsPage() {
       <PageHero
         title="Our Team"
         intro="Savannah Skin and Med Spa is dedicated to helping you look and feel your absolute best at any age with medical aesthetics in Savannah."
-        image="/images/testimonial-2-bg.jpg"
+        image="/images/clinic-hero.jpg"
         imageAlt="Our Team at Savannah Age Management Medicine"
         position="center 45%"
       />

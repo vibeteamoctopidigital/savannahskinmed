@@ -4,7 +4,7 @@ import DeleteButton from '@/components/admin/DeleteButton';
 import SubmissionDetailsModal from '@/components/admin/SubmissionDetailsModal';
 import SubmissionStatusSelect from '@/components/admin/SubmissionStatusSelect';
 import { listSubmissions } from '@/lib/data/submissions';
-import { SubmissionType } from '@/lib/generated/prisma/client';
+import { SubmissionType } from '@/lib/generated/prisma_v2/client';
 import { badgeClass, cardClass, dangerBtn } from '@/lib/adminUi';
 import { deleteSubmissionAction } from './actions';
 

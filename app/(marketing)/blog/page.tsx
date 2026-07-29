@@ -14,28 +14,35 @@ export default async function BlogPage() {
   const posts = await getBlogPosts();
 
   return (
-    <>
+    <div className="min-h-screen bg-[#FDF9F3] pb-24">
       <PageJsonLd route="/blog" />
-      <section className="mx-auto max-w-[1200px] px-5 pb-16 pt-32 sm:pb-20 sm:pt-40 lg:pb-[120px]">
-        <div className="mx-auto max-w-[680px] text-center">
-          <h1 className="display-2">Blog</h1>
-          <p className="mt-4 text-[15px] leading-[1.8] text-muted">
-            Skincare and aesthetic medicine insights from our team.
+      <section className="mx-auto max-w-[1240px] px-6 pt-36 sm:pt-44">
+        <div className="mx-auto max-w-[720px] text-center">
+          <span className="inline-block rounded-full bg-navy/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-navy uppercase">
+            Aesthetic Insights
+          </span>
+          <h1 className="mt-4 font-serif text-4xl font-normal text-navy sm:text-5xl lg:text-6xl">
+            Our Journal
+          </h1>
+          <p className="mt-5 text-[16px] leading-relaxed text-muted">
+            Expert skincare advice, aesthetic treatments, and anti-aging medicine insights from the Savannah Age Management Medicine team.
           </p>
         </div>
 
         {posts.length > 0 ? (
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}
           </div>
         ) : (
-          <p className="mt-14 text-center text-[15px] text-muted">
-            New posts are coming soon &mdash; check back shortly.
-          </p>
+          <div className="mt-16 rounded-2xl border border-navy/10 bg-white p-12 text-center shadow-sm">
+            <p className="text-[15px] text-muted">
+              New posts are coming soon &mdash; check back shortly.
+            </p>
+          </div>
         )}
       </section>
-    </>
+    </div>
   );
 }

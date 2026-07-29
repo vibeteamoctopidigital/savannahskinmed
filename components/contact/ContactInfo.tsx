@@ -1,4 +1,5 @@
 import Reveal from '@/components/ui/Reveal';
+import TrackedPhoneLink from '@/components/ui/TrackedPhoneLink';
 import { locations, site } from '@/lib/site';
 
 const MAP_SRC =
@@ -24,9 +25,9 @@ export default function ContactInfo() {
 
             <div className="mt-9 space-y-6">
               <Row label="Phone:">
-                <a href={site.phoneHref} className="hover:text-rose-deep">
+                <TrackedPhoneLink href={site.phoneHref} className="hover:text-rose-deep">
                   {site.phone}
-                </a>
+                </TrackedPhoneLink>
               </Row>
 
               <Row label="Email:">

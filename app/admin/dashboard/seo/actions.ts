@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { prisma } from '@/lib/prisma';
-import { RobotsDirective, SchemaSource } from '@/lib/generated/prisma/client';
+import { RobotsDirective, SchemaSource } from '@/lib/generated/prisma_v2/client';
 import { syncPageSeoRoutes } from '@/lib/data/pageSeo';
 import { slugToRoute } from '@/lib/seoRoutes';
 

@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { HoursKind, FooterLinkGroup } from '@/lib/generated/prisma/client';
+import { HoursKind, FooterLinkGroup } from '@/lib/generated/prisma_v2/client';
 import { buildFooterFallback, type FooterData } from '@/lib/data/shape';
 
 export async function getFooterData(): Promise<FooterData> {

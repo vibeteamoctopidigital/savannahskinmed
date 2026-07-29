@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import Logo from './Logo';
+import TrackedPhoneLink from '@/components/ui/TrackedPhoneLink';
 import { getFooterData } from '@/lib/data/footer';
 import { getSiteSettings } from '@/lib/data/siteSettings';
 import {
@@ -68,9 +69,9 @@ export default async function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <PhoneIcon className="h-4 w-4 shrink-0 text-navy" />
-                <a href={footer.site.phoneHref} className="text-navy transition-colors duration-300 hover:text-rose-deep">
+                <TrackedPhoneLink href={footer.site.phoneHref} className="text-navy transition-colors duration-300 hover:text-rose-deep">
                   {footer.site.phone}
-                </a>
+                </TrackedPhoneLink>
               </li>
             </ul>
           </div>
@@ -98,7 +99,7 @@ export default async function Footer() {
                     <span>{location.addressLines.join(', ')}</span>
                   </p>
 
-                  <p className="mt-4 font-sans text-[13px] font-semibold text-rose-deep">
+                  <p className="mt-4 font-sans text-[13px] font-semibold text-navy">
                     Office Hours
                   </p>
                   <p className="mt-1.5 flex items-start gap-2.5 text-[14px] text-navy">

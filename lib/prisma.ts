@@ -1,6 +1,6 @@
 import { PrismaPg } from '@prisma/adapter-pg';
 
-import { PrismaClient } from '@/lib/generated/prisma/client';
+import { PrismaClient } from '@/lib/generated/prisma_v2/client';
 
 /**
  * `DATABASE_URL` is optional until the real one is supplied (see lib/data/*).
@@ -13,7 +13,7 @@ const DUMMY_DATABASE_URL = 'postgresql://invalid:invalid@localhost:5432/invalid'
 
 declare global {
   // eslint-disable-next-line no-var
-  var prismaGlobal: PrismaClient | undefined;
+  var prismaGlobal_v2: PrismaClient | undefined;
 }
 
 function createPrismaClient() {
@@ -23,8 +23,8 @@ function createPrismaClient() {
   return new PrismaClient({ adapter });
 }
 
-export const prisma = globalThis.prismaGlobal ?? createPrismaClient();
+export const prisma = globalThis.prismaGlobal_v2 ?? createPrismaClient();
 
 if (process.env.NODE_ENV !== 'production') {
-  globalThis.prismaGlobal = prisma;
+  globalThis.prismaGlobal_v2 = prisma;
 }

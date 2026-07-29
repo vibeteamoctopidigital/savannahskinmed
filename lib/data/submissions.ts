@@ -3,7 +3,7 @@ import type {
   Submission,
   SubmissionStatus,
   SubmissionType,
-} from '@/lib/generated/prisma/client';
+} from '@/lib/generated/prisma_v2/client';
 
 export type CreateSubmissionInput = {
   type: SubmissionType;

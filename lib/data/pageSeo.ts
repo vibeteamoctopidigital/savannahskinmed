@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { getSeoRouteDefault, seoRoutes } from '@/lib/seoRoutes';
-import type { PageSeo } from '@/lib/generated/prisma/client';
+import type { PageSeo } from '@/lib/generated/prisma_v2/client';
 
 export type ResolvedPageSeo = {
   route: string;
