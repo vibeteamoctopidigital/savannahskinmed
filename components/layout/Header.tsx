@@ -25,7 +25,15 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
   const [desktopOpen, setDesktopOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Route changes should always dismiss any open navigation surface.
   useEffect(() => {
@@ -67,10 +75,12 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
   return (
     /* Fixed: the bar stays at the top of the viewport at all times. */
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-transparent`}
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
+      }`}
     >
       <div className="mx-auto flex h-[76px] w-full max-w-[1500px] items-center justify-between px-5 lg:h-[92px] lg:px-10">
-        <Logo variant="light" src={logoUrl} />
+        <Logo variant={scrolled ? 'dark' : 'light'} src={logoUrl} />
 
         {/* ---------------- Desktop navigation ---------------- */}
         <nav aria-label="Primary" className="hidden lg:block">
@@ -86,8 +96,8 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                       aria-current={isActive(item.href) ? 'page' : undefined}
                       className={`block rounded-md px-4 py-2 font-sans text-[13px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
                         isActive(item.href)
-                          ? 'text-white'
-                          : 'text-white/85 hover:text-white'
+                          ? scrolled ? 'text-navy' : 'text-white'
+                          : scrolled ? 'text-navy/80 hover:text-navy' : 'text-white/85 hover:text-white'
                       }`}
                     >
                       {item.label}
@@ -110,8 +120,8 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                     onClick={() => setDesktopOpen((v) => !v)}
                     className={`flex items-center gap-1.5 rounded-md px-4 py-2 font-sans text-[13px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
                       desktopOpen || isActive('/services')
-                        ? 'text-white'
-                        : 'text-white/85 hover:text-white'
+                        ? scrolled ? 'text-navy' : 'text-white'
+                        : scrolled ? 'text-navy/80 hover:text-navy' : 'text-white/85 hover:text-white'
                     }`}
                   >
                     {item.label}
@@ -174,7 +184,9 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
             href={site.phoneHref}
             onClick={trackClickToCall}
             aria-label={`Call ${site.phone}`}
-            className="grid h-10 w-10 place-items-center text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)] transition-opacity hover:opacity-75 xl:hidden"
+            className={`grid h-10 w-10 place-items-center transition-opacity hover:opacity-75 xl:hidden ${
+              scrolled ? 'text-navy' : 'text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)]'
+            }`}
           >
             <PhoneIcon className="h-[22px] w-[22px]" />
           </a>
@@ -184,7 +196,9 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
             onClick={() => setMobileOpen((v) => !v)}
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            className="grid h-10 w-10 place-items-center text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)] transition-opacity hover:opacity-75 lg:hidden"
+            className={`grid h-10 w-10 place-items-center transition-opacity hover:opacity-75 lg:hidden ${
+              scrolled ? 'text-navy' : 'text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)]'
+            }`}
           >
             {mobileOpen ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
           </button>
