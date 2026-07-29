@@ -83,25 +83,38 @@ export default function EditTeamMemberForm({ member }: Props) {
           <div className="grid gap-8 lg:grid-cols-[260px_1fr] items-start">
             {/* Left: Profile Photo Preview & Uploader */}
             <div className="flex flex-col items-center gap-4 rounded-2xl border border-navy/10 bg-cream/50 p-6 text-center">
-              <div className="relative h-44 w-44 overflow-hidden rounded-full border-[6px] border-white shadow-xl">
-                <Image
-                  src={image}
-                  alt={member.name}
-                  fill
-                  className="object-cover object-top"
-                  sizes="176px"
-                />
+              <div className="relative flex h-44 w-44 items-center justify-center overflow-hidden rounded-full border-[6px] border-white bg-navy/10 shadow-xl">
+                {image ? (
+                  <Image
+                    src={image}
+                    alt={member.name || 'Team member'}
+                    fill
+                    className="object-cover object-top"
+                    sizes="176px"
+                  />
+                ) : (
+                  <span className="text-[13px] font-medium text-muted">No Photo Selected</span>
+                )}
               </div>
               <div>
                 <p className="font-serif text-[15px] font-medium text-navy">Profile Image</p>
                 <p className="text-[12px] text-muted">Square ratio recommended (e.g. 600x600)</p>
               </div>
-              <CloudinaryUpload
-                folder="savannahskinmed/team"
-                currentUrl={image}
-                onUploaded={(url) => setImage(url)}
-                label="Upload New Photo"
-              />
+              <div className="w-full space-y-2.5">
+                <CloudinaryUpload
+                  folder="savannahskinmed/team"
+                  currentUrl={image}
+                  onUploaded={(url) => setImage(url)}
+                  label="Upload New Photo"
+                />
+                <input
+                  type="text"
+                  value={image}
+                  onChange={(e) => setImage(e.target.value)}
+                  placeholder="Or paste photo URL..."
+                  className={`${inputClass} text-center text-[12px] font-mono`}
+                />
+              </div>
             </div>
 
             {/* Right: Fields */}

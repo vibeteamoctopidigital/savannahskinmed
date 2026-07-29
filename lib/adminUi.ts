@@ -1,3 +1,11 @@
+/** Convert any text to a URL-friendly slug. */
+export function toSlug(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 /** Shared style tokens for the admin dashboard, so every content/settings
  * page renders consistent inputs, buttons and cards instead of each file
  * redefining its own near-identical class strings. */
@@ -12,6 +20,10 @@ export const labelClass = 'mb-1.5 block text-[12.5px] font-medium text-navy/80';
 /** Solid primary action (e.g. "Save All Changes"). */
 export const primaryBtn =
   'inline-flex items-center justify-center gap-2 rounded-xl bg-navy px-6 py-3 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-navy-deep disabled:cursor-not-allowed disabled:opacity-50';
+
+/** Secondary outlined button (used for "Edit" links). */
+export const secondaryBtn =
+  'rounded-lg border border-navy/15 px-4 py-1.5 text-[12.5px] font-semibold text-navy transition-colors hover:bg-navy hover:text-white';
 
 /** Small outlined button (e.g. "Add Row"). */
 export const smallBtn =

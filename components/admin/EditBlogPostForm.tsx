@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useTransition, KeyboardEvent } from 'react';
+import { useEffect, useState, useRef, useTransition, KeyboardEvent } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -9,7 +9,7 @@ import { saveBlogPostAction, deleteBlogPostAction } from '@/app/admin/dashboard/
 import { alertError, alertSuccess } from '@/lib/adminAlerts';
 import DeleteButton from '@/components/admin/DeleteButton';
 import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
-import { dangerBtn, inputClass, labelClass } from '@/lib/adminUi';
+import { dangerBtn, inputClass, labelClass, toSlug } from '@/lib/adminUi';
 import type { AdminBlogPostData } from '@/lib/data/blog';
 
 type Props = {
@@ -42,6 +42,14 @@ export default function EditBlogPostForm({ post }: Props) {
 
   const [title, setTitle] = useState(post?.title || '');
   const [slug, setSlug] = useState(post?.slug || '');
+  const slugManuallyEdited = useRef(!isNew);
+
+  useEffect(() => {
+    if (isNew && !slugManuallyEdited.current && title) {
+      setSlug(toSlug(title));
+    }
+  }, [title, isNew]);
+
   const [category, setCategory] = useState(post?.category || 'Aesthetic Medicine');
   const [tags, setTags] = useState(post?.tags || 'Aesthetics, Skin Care');
   const [author, setAuthor] = useState(post?.author || 'Savannah Age Management Medicine Team');
@@ -161,7 +169,10 @@ export default function EditBlogPostForm({ post }: Props) {
               <input
                 type="text"
                 value={slug}
-                onChange={(e) => setSlug(e.target.value)}
+                onChange={(e) => {
+                  slugManuallyEdited.current = true;
+                  setSlug(e.target.value);
+                }}
                 placeholder="post-url-slug"
                 className={`${inputClass} font-mono text-[13px]`}
               />

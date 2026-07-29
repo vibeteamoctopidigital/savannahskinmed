@@ -24,7 +24,7 @@ export default async function EditTeamMemberPage({ params }: Props) {
           role: '',
           highlight: '',
           bio: '',
-          image: '/images/team-11-img.png',
+          image: '',
           imageAlt: 'New Team Member',
           sortOrder: 1,
           isActive: true,

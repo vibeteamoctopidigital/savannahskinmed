@@ -10,10 +10,6 @@ function revalidateSpecialsPage() {
   revalidatePath('/admin/dashboard/content/specials');
 }
 
-function toOrder(raw: FormDataEntryValue | null) {
-  return Math.max(0, Number(raw || 1) - 1);
-}
-
 // ---------------------------------------------------------------------------
 // Save hero / heading settings only
 // ---------------------------------------------------------------------------
@@ -44,41 +40,95 @@ export async function saveHeroAction(formData: FormData) {
 }
 
 // ---------------------------------------------------------------------------
-// Save a single card + its tiers
+// Save or create a single card + its tiers
 // ---------------------------------------------------------------------------
 
-export async function saveSpecialCardAction(formData: FormData) {
-  const id = String(formData.get('cardId') || '');
-  if (!id) return;
+export async function saveSpecialCardAction(formData: FormData): Promise<void> {
+  const id = String(formData.get('cardId') || formData.get('id') || '').trim();
+  if (!id) throw new Error('Missing Special Card ID');
 
-  const cardId = id;
+  const isNew = formData.get('isNew') === 'true' || id === 'new';
+  if (isNew && id === 'new') {
+    return createSpecialCardAction(formData);
+  }
+
+  const variantRaw = String(formData.get('variant') || 'STORY');
+  const variant = variantRaw === 'TIERS' ? SpecialCardVariant.TIERS : SpecialCardVariant.STORY;
+  const image = String(formData.get('image') || '').trim();
+  const imageAlt = String(formData.get('imageAlt') || '').trim() || String(formData.get('title') || 'Offer');
+  const title = String(formData.get('title') || '').trim() || null;
+  const headline = String(formData.get('headline') || '').trim() || null;
+  const description = String(formData.get('description') || '').trim() || null;
+  const cta = String(formData.get('cta') || 'Claim Offer').trim();
+  const sortOrder = parseInt(String(formData.get('sortOrder') || '1'), 10);
+  const isActive = formData.get('isActive') === 'true' || formData.get('isActive') === 'on';
+
+  // Read tier arrays if present
   const tierIds = formData.getAll('tierIds').map(String);
+  const tierLabels = formData.getAll('tierLabels').map(String);
+  const tierDetails = formData.getAll('tierDetails').map(String);
 
-  await prisma.$transaction([
-    prisma.specialCard.update({
-      where: { id: cardId },
-      data: {
-        image: String(formData.get('image') || ''),
-        imageAlt: String(formData.get('imageAlt') || ''),
-        title: String(formData.get('title') || '') || null,
-        headline: String(formData.get('headline') || '') || null,
-        description: String(formData.get('description') || '') || null,
-        cta: String(formData.get('cta') || 'Claim'),
-        sortOrder: toOrder(formData.get('sortOrder')),
-        isActive: formData.get('isActive') === 'on',
+  await prisma.$transaction(async (tx) => {
+    // 1. Upsert the card
+    await tx.specialCard.upsert({
+      where: { id },
+      update: {
+        variant,
+        image,
+        imageAlt,
+        title,
+        headline,
+        description,
+        cta,
+        sortOrder,
+        isActive,
       },
-    }),
-    ...tierIds.map((tid) =>
-      prisma.specialCardTier.update({
-        where: { id: tid },
-        data: {
-          label: String(formData.get(`tier-label-${tid}`) || ''),
-          detail: String(formData.get(`tier-detail-${tid}`) || ''),
-          sortOrder: toOrder(formData.get(`tier-order-${tid}`)),
-        },
-      }),
-    ),
-  ]);
+      create: {
+        id,
+        variant,
+        image,
+        imageAlt,
+        title,
+        headline,
+        description,
+        cta,
+        sortOrder,
+        isActive,
+      },
+    });
+
+    // 2. If tierLabels were passed, sync tiers
+    if (tierLabels.length > 0) {
+      // Delete existing tiers and insert the new ordered list
+      await tx.specialCardTier.deleteMany({ where: { cardId: id } });
+      for (let i = 0; i < tierLabels.length; i++) {
+        const label = tierLabels[i]?.trim();
+        const detail = tierDetails[i]?.trim() || '';
+        if (label) {
+          await tx.specialCardTier.create({
+            data: {
+              cardId: id,
+              label,
+              detail,
+              sortOrder: i,
+            },
+          });
+        }
+      }
+    } else if (tierIds.length > 0) {
+      // Update individual existing tiers by ID
+      for (const tid of tierIds) {
+        await tx.specialCardTier.update({
+          where: { id: tid },
+          data: {
+            label: String(formData.get(`tier-label-${tid}`) || ''),
+            detail: String(formData.get(`tier-detail-${tid}`) || ''),
+            sortOrder: parseInt(String(formData.get(`tier-order-${tid}`) || '0'), 10),
+          },
+        });
+      }
+    }
+  });
 
   revalidateSpecialsPage();
 }
@@ -87,40 +137,72 @@ export async function saveSpecialCardAction(formData: FormData) {
 // Delete / create
 // ---------------------------------------------------------------------------
 
-export async function deleteSpecialCardAction(formData: FormData) {
-  const id = String(formData.get('id') || '');
+export async function deleteSpecialCardAction(formData: FormData): Promise<void> {
+  const id = String(formData.get('id') || '').trim();
   if (!id) return;
   await prisma.specialCard.delete({ where: { id } });
   revalidateSpecialsPage();
 }
 
-export async function createSpecialCardAction(formData: FormData) {
-  const variant = String(formData.get('variant')) === 'TIERS' ? SpecialCardVariant.TIERS : SpecialCardVariant.STORY;
+export async function createSpecialCardAction(formData: FormData): Promise<void> {
+  const variantRaw = String(formData.get('variant') || 'STORY');
+  const variant = variantRaw === 'TIERS' ? SpecialCardVariant.TIERS : SpecialCardVariant.STORY;
   const id = String(formData.get('id') || '').trim();
-  if (!id) return;
+  if (!id) throw new Error('Unique Slug / ID is required');
 
-  await prisma.specialCard.create({
-    data: {
-      id,
-      variant,
-      image: String(formData.get('image') || ''),
-      imageAlt: String(formData.get('imageAlt') || ''),
-      title: String(formData.get('title') || '') || null,
-      headline: String(formData.get('headline') || '') || null,
-      description: String(formData.get('description') || '') || null,
-      cta: String(formData.get('cta') || 'Claim'),
-      sortOrder: toOrder(formData.get('sortOrder')),
-      isActive: true,
-      tiers:
-        variant === SpecialCardVariant.TIERS
-          ? {
-              create: [
-                { label: 'Tier 1 label', detail: 'Tier 1 detail', sortOrder: 0 },
-                { label: 'Tier 2 label', detail: 'Tier 2 detail', sortOrder: 1 },
-              ],
-            }
-          : undefined,
-    },
+  const image = String(formData.get('image') || '').trim();
+  const imageAlt = String(formData.get('imageAlt') || '').trim() || String(formData.get('title') || id);
+  const title = String(formData.get('title') || '').trim() || null;
+  const headline = String(formData.get('headline') || '').trim() || null;
+  const description = String(formData.get('description') || '').trim() || null;
+  const cta = String(formData.get('cta') || 'Claim Offer').trim();
+  const sortOrder = parseInt(String(formData.get('sortOrder') || '1'), 10);
+  const isActive = formData.get('isActive') === 'true' || formData.get('isActive') === 'on';
+
+  // Read tier arrays if present
+  const tierLabels = formData.getAll('tierLabels').map(String);
+  const tierDetails = formData.getAll('tierDetails').map(String);
+
+  await prisma.$transaction(async (tx) => {
+    await tx.specialCard.create({
+      data: {
+        id,
+        variant,
+        image,
+        imageAlt,
+        title,
+        headline,
+        description,
+        cta,
+        sortOrder,
+        isActive,
+      },
+    });
+
+    if (tierLabels.length > 0) {
+      for (let i = 0; i < tierLabels.length; i++) {
+        const label = tierLabels[i]?.trim();
+        const detail = tierDetails[i]?.trim() || '';
+        if (label) {
+          await tx.specialCardTier.create({
+            data: {
+              cardId: id,
+              label,
+              detail,
+              sortOrder: i,
+            },
+          });
+        }
+      }
+    } else if (variant === SpecialCardVariant.TIERS) {
+      await tx.specialCardTier.createMany({
+        data: [
+          { cardId: id, label: 'Standard Tier', detail: 'Includes treatment consultation', sortOrder: 0 },
+          { cardId: id, label: 'Premium Tier', detail: 'Includes follow-up session', sortOrder: 1 },
+        ],
+      });
+    }
   });
+
   revalidateSpecialsPage();
 }

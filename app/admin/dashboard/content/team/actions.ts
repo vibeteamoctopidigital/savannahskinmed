@@ -15,7 +15,7 @@ export async function saveTeamMemberAction(formData: FormData): Promise<void> {
   const role = (formData.get('role') as string)?.trim() || '';
   const highlight = (formData.get('highlight') as string)?.trim() || '';
   const bio = (formData.get('bio') as string)?.trim() || '';
-  const image = (formData.get('image') as string)?.trim() || '/images/team-6-img.png';
+  const image = (formData.get('image') as string)?.trim() || '';
   const imageAlt = (formData.get('imageAlt') as string)?.trim() || name;
   const sortOrder = parseInt((formData.get('sortOrder') as string) || '0', 10);
   const isActive = formData.get('isActive') === 'true';
@@ -56,7 +56,7 @@ export async function createTeamMemberAction(formData: FormData): Promise<void> 
   const bio =
     (formData.get('bio') as string)?.trim() ||
     'Dedicated aesthetic professional committed to patient care and natural results.';
-  const image = (formData.get('image') as string)?.trim() || '/images/team-11-img.png';
+  const image = (formData.get('image') as string)?.trim() || '';
   const imageAlt = (formData.get('imageAlt') as string)?.trim() || name;
   const sortOrder = parseInt((formData.get('sortOrder') as string) || '1', 10);
   const isActive = true;

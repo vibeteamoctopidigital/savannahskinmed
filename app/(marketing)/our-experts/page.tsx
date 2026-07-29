@@ -59,14 +59,18 @@ export default async function OurExpertsPage() {
                     : 'rounded-[32px] bg-white p-8 sm:p-12 lg:p-14 shadow-sm border border-navy/[0.04]'
                 }`}
               >
-                <div className="relative h-[240px] w-[240px] sm:h-[280px] sm:w-[280px] lg:h-[320px] lg:w-[320px] shrink-0 overflow-hidden rounded-full border-[6px] border-white shadow-xl">
-                  <Image
-                    src={member.image}
-                    alt={member.imageAlt || member.name}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 240px, 320px"
-                  />
+                <div className="relative flex h-[240px] w-[240px] shrink-0 items-center justify-center overflow-hidden rounded-full border-[6px] border-white bg-navy/5 shadow-xl sm:h-[280px] sm:w-[280px] lg:h-[320px] lg:w-[320px]">
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={member.imageAlt || member.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 240px, 320px"
+                    />
+                  ) : (
+                    <span className="text-[14px] font-medium text-muted">No Photo</span>
+                  )}
                 </div>
                 <div className="min-w-0 flex-1 text-center lg:text-left">
                   <h3 className="font-serif text-[28px] sm:text-[34px] lg:text-[40px] text-navy font-normal leading-tight">

@@ -58,14 +58,18 @@ export default function AdminTeamMemberCard({ member }: TeamMemberProps) {
     <div className={`${cardClass} flex flex-col justify-between h-full`}>
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-navy/10 bg-cream">
-            <Image
-              src={member.image}
-              alt={member.name}
-              fill
-              className="object-cover object-top"
-              sizes="56px"
-            />
+          <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-navy/10 bg-cream">
+            {member.image ? (
+              <Image
+                src={member.image}
+                alt={member.name || 'Team member'}
+                fill
+                className="object-cover object-top"
+                sizes="56px"
+              />
+            ) : (
+              <span className="text-[10px] font-medium text-muted">No photo</span>
+            )}
           </div>
           <div>
             <div className="flex items-center gap-2">

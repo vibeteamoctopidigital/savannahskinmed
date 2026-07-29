@@ -1,17 +1,22 @@
 'use client';
 
-import { useRef, useState, useTransition } from 'react';
+import React, { useState, useTransition } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
 import DeleteButton from '@/components/admin/DeleteButton';
 import {
   deleteSpecialCardAction,
   saveSpecialCardAction,
 } from '@/app/admin/dashboard/content/specials/actions';
-import { alertError, alertSuccess } from '@/lib/adminAlerts';
-import { inputClass, primaryBtn } from '@/lib/adminUi';
+import { cardClass, secondaryBtn } from '@/lib/adminUi';
 
-type Tier = { id: string; label: string; detail: string; sortOrder: number };
+type Tier = {
+  id?: string;
+  label: string;
+  detail: string;
+  sortOrder: number;
+};
 
 type SpecialCardProps = {
   card: {
@@ -30,231 +35,124 @@ type SpecialCardProps = {
 };
 
 export default function AdminSpecialCard({ card }: SpecialCardProps) {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [expanded, setExpanded] = useState(false);
-  const [image, setImage] = useState(card.image);
   const [active, setActive] = useState(card.isActive);
   const [saving, startSaveTransition] = useTransition();
 
-  const handleSave = () => {
-    if (!formRef.current) return;
-    const formData = new FormData(formRef.current);
+  const handleToggleActive = () => {
+    const nextActive = !active;
+    setActive(nextActive);
+
     startSaveTransition(async () => {
       try {
+        const formData = new FormData();
+        formData.append('cardId', card.id);
+        formData.append('id', card.id);
+        formData.append('image', card.image);
+        formData.append('imageAlt', card.imageAlt);
+        if (card.title) formData.append('title', card.title);
+        if (card.headline) formData.append('headline', card.headline);
+        if (card.description) formData.append('description', card.description);
+        formData.append('cta', card.cta);
+        formData.append('sortOrder', String(card.sortOrder));
+        formData.append('variant', card.variant);
+        formData.append('isActive', nextActive ? 'true' : 'false');
+
         await saveSpecialCardAction(formData);
-        await alertSuccess('Card saved!');
-      } catch (err) {
-        await alertError('Something went wrong', err instanceof Error ? err.message : undefined);
+      } catch {
+        setActive(!nextActive);
       }
     });
   };
 
   return (
-    <form ref={formRef} className="group">
-      <input type="hidden" name="cardId" value={card.id} />
-      <input type="hidden" name="image" value={image} />
-      <input type="hidden" name="isActive" value={active ? 'on' : ''} />
-
-      <div
-        className={`overflow-hidden rounded-2xl border transition-all ${
-          active ? 'border-navy/15 bg-white shadow-card' : 'border-navy/10 bg-gray-50 opacity-60'
-        }`}
-      >
-        {/* Visual Card Header */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-navy/5">
-          {image ? (
-            <img
-              src={image}
-              alt={card.imageAlt || card.title || card.id}
-              className="h-full w-full object-cover"
+    <div className={`${cardClass} flex flex-col justify-between h-full space-y-6`}>
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+        {/* Thumbnail Preview */}
+        <div className="relative flex h-24 w-28 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-navy/10 bg-cream/60">
+          {card.image ? (
+            <Image
+              src={card.image}
+              alt={card.imageAlt || card.title || 'Offer'}
+              fill
+              className="object-cover object-center"
+              sizes="112px"
             />
           ) : (
-            <div className="flex h-full items-center justify-center text-[13px] text-muted">
-              No image
-            </div>
+            <span className="text-[11px] font-medium text-muted">No Photo</span>
           )}
-          {card.title && (
-            <>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
-              <h3 className="absolute bottom-4 left-5 right-5 font-serif text-[20px] leading-tight text-white text-shadow-hero">
-                {card.title}
-              </h3>
-            </>
-          )}
-          <div className="absolute left-3 top-3">
-            <span className="rounded-md bg-navy/80 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
-              {card.variant}
-            </span>
-          </div>
         </div>
 
-        {/* Card body — compact summary */}
-        <div className="p-5">
-          <div className="mb-3 flex items-center justify-between">
-            <p className="text-[13px] font-semibold text-navy">{card.id}</p>
-            <label className="flex items-center gap-2 text-[12px] text-navy">
-              <input
-                type="checkbox"
-                checked={active}
-                onChange={(e) => setActive(e.target.checked)}
-              />
-              Active
-            </label>
+        {/* Info */}
+        <div className="min-w-0 flex-1 space-y-1.5">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-md bg-navy/5 px-2 py-0.5 font-mono text-[11px] text-muted">
+              {card.id}
+            </span>
+            <span className="rounded-md bg-amber-50 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-amber-800">
+              {card.variant}
+            </span>
+            {!active && (
+              <span className="rounded-md bg-slate-200 px-2 py-0.5 text-[11px] font-medium text-slate-700">
+                Hidden
+              </span>
+            )}
           </div>
-          {card.variant === 'STORY' && card.headline && (
-            <p className="mb-1 text-[14px] font-bold text-navy">{card.headline}</p>
+
+          <h3 className="font-serif text-[19px] font-medium text-navy leading-snug">
+            {card.title || 'Untitled Offer'}
+          </h3>
+
+          {card.headline && (
+            <p className="text-[13px] font-semibold text-rose-deep line-clamp-1">
+              {card.headline}
+            </p>
           )}
-          {card.variant === 'STORY' && card.description && (
-            <p className="mb-3 text-[13px] leading-relaxed text-muted line-clamp-2">
+
+          {card.description && (
+            <p className="text-[12.5px] text-muted line-clamp-2">
               {card.description}
             </p>
           )}
-          {card.variant === 'TIERS' && card.tiers.length > 0 && (
-            <div className="mb-3 space-y-1">
-              {card.tiers.map((tier) => (
-                <div key={tier.id} className="flex justify-between text-[13px]">
-                  <span className="text-muted">{tier.label}</span>
-                  <span className="font-semibold text-navy">{tier.detail}</span>
-                </div>
-              ))}
-            </div>
-          )}
-          <p className="mb-3 text-[12px] text-muted">
-            CTA: <span className="font-medium text-navy">{card.cta}</span>
-          </p>
 
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={() => setExpanded(!expanded)}
-              className="flex-1 rounded-lg border border-navy/15 px-3 py-2 text-[12px] font-medium text-navy transition-colors hover:bg-navy/5"
-            >
-              {expanded ? 'Collapse' : 'Edit Card'}
-            </button>
-            <DeleteButton
-              action={deleteSpecialCardAction}
-              id={card.id}
-              itemLabel={`card "${card.id}"`}
-              className="rounded-lg px-3 py-2 text-[12px] font-medium text-red-600 transition-colors hover:bg-red-50 disabled:opacity-50"
-            />
+          <div className="pt-1 flex items-center gap-3 text-[11.5px] text-muted">
+            <span>CTA: &ldquo;{card.cta}&rdquo;</span>
+            <span>•</span>
+            <span>{card.tiers?.length || 0} pricing option(s)</span>
           </div>
         </div>
-
-        {/* Expanded editor */}
-        {expanded && (
-          <div className="border-t border-navy/10 bg-cream/30 p-5">
-            <div className="space-y-4">
-              <CloudinaryUpload
-                folder="specials"
-                currentUrl={image}
-                onUploaded={setImage}
-                label="Card Image"
-              />
-
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div>
-                  <label className="mb-1 block text-[12px] text-muted">Image Alt Text</label>
-                  <input
-                    name="imageAlt"
-                    defaultValue={card.imageAlt}
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-[12px] text-muted">Title (overlay on image)</label>
-                  <input
-                    name="title"
-                    defaultValue={card.title ?? ''}
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-[12px] text-muted">CTA Label</label>
-                  <input
-                    name="cta"
-                    defaultValue={card.cta}
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-[12px] text-muted">Sort Order</label>
-                  <input
-                    name="sortOrder"
-                    type="number"
-                    defaultValue={String(card.sortOrder + 1)}
-                    className={inputClass}
-                  />
-                </div>
-              </div>
-
-              {card.variant === 'STORY' && (
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="sm:col-span-2">
-                    <label className="mb-1 block text-[12px] text-muted">Headline</label>
-                    <input
-                      name="headline"
-                      defaultValue={card.headline ?? ''}
-                      className={inputClass}
-                    />
-                  </div>
-                  <div className="sm:col-span-2">
-                    <label className="mb-1 block text-[12px] text-muted">Description</label>
-                    <textarea
-                      name="description"
-                      defaultValue={card.description ?? ''}
-                      rows={3}
-                      className={inputClass}
-                    />
-                  </div>
-                </div>
-              )}
-
-              {card.variant === 'TIERS' && card.tiers.length > 0 && (
-                <div className="space-y-3">
-                  <p className="text-[13px] font-semibold text-navy">Pricing Tiers</p>
-                  {card.tiers.map((tier) => (
-                    <div key={tier.id} className="grid items-end gap-2 sm:grid-cols-[2fr_2fr_auto]">
-                      <input type="hidden" name="tierIds" value={tier.id} />
-                      <div>
-                        <label className="mb-1 block text-[12px] text-muted">Label</label>
-                        <input
-                          name={`tier-label-${tier.id}`}
-                          defaultValue={tier.label}
-                          className={inputClass}
-                        />
-                      </div>
-                      <div>
-                        <label className="mb-1 block text-[12px] text-muted">Detail</label>
-                        <input
-                          name={`tier-detail-${tier.id}`}
-                          defaultValue={tier.detail}
-                          className={inputClass}
-                        />
-                      </div>
-                      <div>
-                        <label className="mb-1 block text-[12px] text-muted">Order</label>
-                        <input
-                          name={`tier-order-${tier.id}`}
-                          type="number"
-                          defaultValue={String(tier.sortOrder + 1)}
-                          className={inputClass}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Per-card save button */}
-              <div className="flex items-center gap-3 border-t border-navy/10 pt-4">
-                <button type="button" onClick={handleSave} disabled={saving} className={primaryBtn}>
-                  {saving ? 'Saving...' : 'Save Card'}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
-    </form>
+
+      {/* Footer Actions */}
+      <div className="flex items-center justify-between border-t border-navy/10 pt-4">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={handleToggleActive}
+            disabled={saving}
+            className={`rounded-lg px-2.5 py-1 text-[12px] font-medium transition-colors ${
+              active
+                ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'
+                : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+            }`}
+          >
+            {saving ? 'Saving...' : active ? 'Active' : 'Hidden'}
+          </button>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <DeleteButton
+            id={card.id}
+            action={deleteSpecialCardAction}
+            redirectTo="/admin/dashboard/content/specials"
+          />
+          <Link
+            href={`/admin/dashboard/content/specials/${card.id}`}
+            className={secondaryBtn}
+          >
+            Edit Offer Card →
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
