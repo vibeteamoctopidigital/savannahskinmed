@@ -127,14 +127,16 @@ export default async function AdminSettingsPage() {
           </div>
         </section>
 
-        <SaveButton
-          formId={SETTINGS_FORM_ID}
-          action={updateSettingsAction}
-          successMessage="Settings saved!"
-          className={primaryBtn}
-        >
-          Save Settings
-        </SaveButton>
+        <div className="sticky bottom-4 z-20 flex justify-end rounded-2xl border border-navy/10 bg-white/95 p-4 shadow-card backdrop-blur-md">
+          <SaveButton
+            formId={SETTINGS_FORM_ID}
+            action={updateSettingsAction}
+            successMessage="Settings saved!"
+            className={primaryBtn}
+          >
+            Save Settings
+          </SaveButton>
+        </div>
 
         <p className="rounded-lg border border-navy/10 bg-cream/60 p-4 text-[13px] text-muted">
           Changes to these settings will be reflected on your website. Some changes may require a

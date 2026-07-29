@@ -14,7 +14,7 @@ const highPriorityRoutes = new Set([
   '/specials',
 ]);
 
-const mediumPriorityRoutes = new Set(['/our-clinic', '/services', '/contact-us']);
+const mediumPriorityRoutes = new Set(['/our-clinic', '/our-experts', '/services', '/contact-us']);
 
 function priorityFor(route: string) {
   if (route === '/') return 1;

@@ -10,6 +10,7 @@ import {
   buildSiteSettingsFallback,
   buildSpecialsFallback,
   buildSpecialsPageSettingsFallback,
+  buildTeamFallback,
 } from '../lib/data/shape';
 import { seoRoutes } from '../lib/seoRoutes';
 
@@ -38,6 +39,7 @@ async function main() {
     data: footer.socials.map((s, i) => ({ ...s, sortOrder: i })),
   });
 
+  await prisma.locationHours.deleteMany();
   await prisma.location.deleteMany();
   for (const [i, location] of footer.locations.entries()) {
     await prisma.location.create({
@@ -48,8 +50,12 @@ async function main() {
         sortOrder: i,
         hours: {
           create: [
-            ...location.hours.map((h, j) => ({ ...h, kind: HoursKind.FULL, sortOrder: j })),
-            ...location.hoursShort.map((h, j) => ({
+            ...location.hours.map((h: { days: string; time: string }, j: number) => ({
+              ...h,
+              kind: HoursKind.FULL,
+              sortOrder: j,
+            })),
+            ...location.hoursShort.map((h: { days: string; time: string }, j: number) => ({
               ...h,
               kind: HoursKind.SHORT,
               sortOrder: j,
@@ -99,11 +105,18 @@ async function main() {
         description: card.description,
         cta: card.cta,
         sortOrder: i,
-        tiers: { create: card.tiers.map((t, j) => ({ ...t, sortOrder: j })) },
+        tiers: {
+          create: card.tiers?.map((tier, j) => ({
+            label: tier.label,
+            detail: tier.detail,
+            sortOrder: j,
+          })),
+        },
       },
     });
   }
 
+  console.log('Seeding membership promo…');
   const promo = buildMembershipPromoFallback();
   await prisma.membershipPromo.upsert({
     where: { id: 'main' },
@@ -131,6 +144,25 @@ async function main() {
   await prisma.membershipPromoBullet.createMany({
     data: promo.bullets.map((text, i) => ({ text, sortOrder: i, promoId: 'main' })),
   });
+
+  console.log('Seeding team members…');
+  const teamMembers = buildTeamFallback();
+  await prisma.teamMember.deleteMany();
+  for (const member of teamMembers) {
+    await prisma.teamMember.create({
+      data: {
+        id: member.id,
+        name: member.name,
+        role: member.role,
+        highlight: member.highlight || '',
+        bio: member.bio,
+        image: member.image,
+        imageAlt: member.imageAlt || member.name,
+        sortOrder: member.sortOrder,
+        isActive: member.isActive,
+      },
+    });
+  }
 
   console.log('Ensuring SEO rows exist for every known route…');
   for (const { route } of seoRoutes) {

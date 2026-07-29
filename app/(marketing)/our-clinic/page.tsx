@@ -156,7 +156,7 @@ export default function OurClinicPage() {
                 naturally.
               </p>
 
-              <ButtonLink href="/contact-us" className="mt-9">
+              <ButtonLink href="/our-experts" className="mt-9">
                 Meet Our Experts
               </ButtonLink>
             </Reveal>

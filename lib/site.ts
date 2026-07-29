@@ -35,6 +35,7 @@ export const primaryNav = [
 export const quickLinks: ServiceLink[] = [
   { label: 'Home', href: '/' },
   { label: 'Our Clinic', href: '/our-clinic' },
+  { label: 'Our Experts', href: '/our-experts' },
   { label: 'Financing Options', href: '/financing-options' },
   { label: 'Office Policies', href: '/office-policies' },
   { label: 'Aesthetic Specials', href: '/specials' },

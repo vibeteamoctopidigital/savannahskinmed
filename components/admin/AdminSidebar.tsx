@@ -22,6 +22,7 @@ const sections: NavSection[] = [
   {
     heading: 'Content',
     items: [
+      { href: '/admin/dashboard/content/team', label: 'Our Team', icon: '👥', color: '#a855f7' },
       { href: '/admin/dashboard/content/site', label: 'Locations & Hours', icon: '▦', color: '#2dd4bf' },
       { href: '/admin/dashboard/content/specials', label: 'Aesthetic Specials', icon: '★', color: '#fbbf24' },
       { href: '/admin/dashboard/content/blog', label: 'Blog', icon: '✎', color: '#f472b6' },
@@ -61,8 +62,8 @@ export default function AdminSidebar({ email }: { email: string }) {
     href === '/admin/dashboard' ? pathname === href : pathname.startsWith(href);
 
   return (
-    <div className="shrink-0 rounded-[26px] bg-gradient-to-b from-violet-500 via-fuchsia-500 to-rose-400 p-[2px] shadow-menu">
-      <aside className="flex h-full w-[228px] flex-col rounded-[24px] bg-[#0d0f24] text-white">
+    <div className="sticky top-4 self-start h-[calc(100vh-2rem)] shrink-0 rounded-[26px] bg-gradient-to-b from-violet-500 via-fuchsia-500 to-rose-400 p-[2px] shadow-menu z-30">
+      <aside className="flex h-full w-[228px] flex-col rounded-[24px] bg-[#0d0f24] text-white overflow-hidden">
         {/* Header — never shrinks, always fully visible */}
         <div className="flex shrink-0 items-center gap-2.5 px-5 py-5">
           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 font-serif text-[15px] font-semibold text-white shadow-[0_4px_14px_-2px_rgba(129,79,255,0.55)]">

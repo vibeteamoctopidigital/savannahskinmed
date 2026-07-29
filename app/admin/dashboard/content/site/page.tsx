@@ -148,7 +148,10 @@ export default async function SiteContentPage() {
         </AddInlineForm>
       </section>
 
-      <form id={SAVE_FORM_ID}>
+      <form
+        id={SAVE_FORM_ID}
+        className="sticky bottom-4 z-20 flex justify-end rounded-2xl border border-navy/10 bg-white/95 p-4 shadow-card backdrop-blur-md"
+      >
         <SaveButton
           formId={SAVE_FORM_ID}
           action={saveAllAction}

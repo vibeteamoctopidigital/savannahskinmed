@@ -19,6 +19,12 @@ export const seoRoutes: SeoRouteDefault[] = [
       'Customized medical aesthetic solutions to enhance your glow and restore youthful skin. Medical-grade facials, laser treatments, injectables and IV therapy in Pooler and Statesboro, GA.',
   },
   {
+    route: '/our-experts',
+    title: 'Our Experts | Savannah Age Management Medicine',
+    description:
+      'Meet our team of highly trained medical professionals, nurses, and aestheticians dedicated to delivering personalized, state-of-the-art treatments in Savannah.',
+  },
+  {
     route: '/medical-grade-facials',
     title: 'Medical Grade Facials',
     description:
