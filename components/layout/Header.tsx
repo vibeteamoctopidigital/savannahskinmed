@@ -73,12 +73,13 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
     href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return (
-    /* Fixed: the bar stays at the top of the viewport at all times. */
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
-      }`}
-    >
+    <>
+      {/* Fixed: the bar stays at the top of the viewport at all times. */}
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        }`}
+      >
       <div className="mx-auto flex h-[76px] w-full max-w-[1500px] items-center justify-between px-5 lg:h-[92px] lg:px-10">
         <Logo variant={scrolled ? 'dark' : 'light'} src={logoUrl} />
 
@@ -204,19 +205,20 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
           </button>
         </div>
       </div>
+      </header>
 
       {/* ---------------- Mobile drawer ---------------- */}
       {mobileOpen && (
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 z-40 bg-black/50 transition-opacity lg:hidden"
+            className="fixed inset-0 z-[60] bg-black/50 transition-opacity lg:hidden"
             onClick={() => setMobileOpen(false)}
             aria-hidden="true"
           />
 
           {/* Drawer */}
-          <div className="fixed inset-y-0 right-0 z-50 flex w-[85%] max-w-sm flex-col bg-white shadow-2xl lg:hidden">
+          <div className="fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col bg-white shadow-2xl lg:hidden">
             {/* Drawer Header */}
             <div className="flex h-[76px] items-center border-b border-navy/10 px-6 lg:h-[92px]">
               <button 
@@ -329,6 +331,6 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
           </div>
         </>
       )}
-    </header>
+    </>
   );
 }

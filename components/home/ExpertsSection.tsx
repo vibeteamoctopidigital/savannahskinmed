@@ -8,7 +8,7 @@ export default function ExpertsSection() {
     <section className="grid lg:grid-cols-2">
       <div className="relative h-[380px] bg-navy-deep sm:h-[480px] lg:h-auto lg:min-h-[560px]">
         <Image
-          src="/images/clinic-hero.jpg"
+          src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785410530/asstechin_bpi1bv.jpg"
           alt="Licensed aesthetic provider at Savannah Age Management Medicine"
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"

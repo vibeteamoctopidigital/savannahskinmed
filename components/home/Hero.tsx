@@ -18,9 +18,9 @@ export default function Hero() {
         className="object-cover object-[85%_center] sm:object-[72%_center]"
       />
 
-      {/* The original banner runs "no-gradient" — keep this light, just enough
-          to hold the headline together over the pale backdrop. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/28 via-black/6 to-transparent" />
+      {/* Added a subtle dark overlay to improve text readability */}
+      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
 
       <div className="shell relative z-10 pt-20">
         {/* Centred through tablet, left-aligned from desktop up. */}

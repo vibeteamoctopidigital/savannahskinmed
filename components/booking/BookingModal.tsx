@@ -37,7 +37,7 @@ function Field({
         autoComplete={autoComplete}
         placeholder={label}
         required
-        className="w-full rounded-lg border border-white/45 bg-transparent px-6 py-[18px] font-sans text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
+        className="w-full rounded-lg border border-white/45 bg-transparent px-4 py-2.5 sm:px-6 sm:py-[18px] font-sans text-[13px] sm:text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
       />
     </div>
   );
@@ -55,10 +55,10 @@ function SelectField({
   placeholder?: string;
 }) {
   return (
-    <div className="relative rounded-lg border border-white/45 pb-[13px] pl-7 pr-6 pt-[11px] transition focus-within:border-white sm:pl-6">
+    <div className="relative rounded-lg border border-white/45 pb-[6px] pl-4 pr-5 pt-[6px] transition focus-within:border-white sm:pb-[13px] sm:pl-6 sm:pt-[11px]">
       <label
         htmlFor={id}
-        className="block font-sans text-[11px] font-extrabold uppercase tracking-[0.03em] text-white"
+        className="block font-sans text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.03em] text-white"
       >
         {label}
       </label>
@@ -67,7 +67,7 @@ function SelectField({
         name={id}
         required
         defaultValue={placeholder ? '' : options[0]}
-        className="w-full appearance-none bg-transparent pr-6 font-sans text-[16px] text-white outline-none"
+        className="w-full appearance-none bg-transparent pr-6 font-sans text-[13px] sm:text-[16px] text-white outline-none"
       >
         {placeholder && (
           <option value="" className="bg-navy text-white">
@@ -82,7 +82,7 @@ function SelectField({
       </select>
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-[18px] right-6 border-x-[5px] border-t-[6px] border-x-transparent border-t-white"
+        className="pointer-events-none absolute bottom-[10px] sm:bottom-[18px] right-4 sm:right-6 border-x-[5px] border-t-[6px] border-x-transparent border-t-white"
       />
     </div>
   );
@@ -178,7 +178,7 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
   // would otherwise become the containing block for this fixed overlay.
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/40 px-4 py-8 backdrop-blur-md sm:py-12"
+      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/40 px-4 py-4 backdrop-blur-md sm:py-12"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -188,19 +188,19 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="booking-title"
-        className="relative w-full max-w-[600px] rounded-2xl bg-navy px-6 pb-12 pt-16 shadow-menu sm:px-14"
+        className="relative w-full max-w-[600px] rounded-2xl bg-navy px-4 pb-6 pt-8 shadow-menu sm:px-14 sm:pb-12 sm:pt-16"
       >
         <button
           ref={closeRef}
           type="button"
           onClick={onClose}
           aria-label="Close booking form"
-          className="absolute right-6 top-6 grid h-11 w-11 place-items-center rounded-full bg-white/25 text-white transition-colors hover:bg-white/40"
+          className="absolute right-3 top-3 sm:right-6 sm:top-6 grid h-8 w-8 sm:h-11 sm:w-11 place-items-center rounded-full bg-white/25 text-white transition-colors hover:bg-white/40"
         >
           <CloseIcon className="h-5 w-5" />
         </button>
 
-        <h2 id="booking-title" className="display-3 text-center text-white">
+        <h2 id="booking-title" className="display-3 !text-[20px] sm:!text-[26px] lg:!text-[30px] text-center text-white">
           Book Appointment
         </h2>
 
@@ -219,7 +219,7 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="mt-9 space-y-4">
+          <form onSubmit={handleSubmit} className="mt-4 sm:mt-9 space-y-2 sm:space-y-4">
             {step === 1 ? (
               <>
                 <Field id="name" label="Name" autoComplete="name" />
@@ -251,9 +251,9 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
                   <textarea
                     id="notes"
                     name="notes"
-                    rows={4}
+                    rows={3}
                     placeholder="Anything we should know?"
-                    className="w-full resize-y rounded-lg border border-white/45 bg-transparent px-6 py-[18px] font-sans text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
+                    className="w-full resize-y rounded-lg border border-white/45 bg-transparent px-4 py-2.5 sm:px-6 sm:py-[18px] font-sans text-[13px] sm:text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
                   />
                 </div>
 
@@ -276,7 +276,7 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
             <button
               type="submit"
               disabled={submitting}
-              className="!mt-8 w-full rounded-full bg-teal px-8 py-[19px] font-sans text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark disabled:opacity-60"
+              className="!mt-5 sm:!mt-8 w-full rounded-full bg-teal px-8 py-3 sm:py-[19px] font-sans text-[13px] sm:text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark disabled:opacity-60"
             >
               {submitting ? 'Sending…' : step === 1 ? 'Next Step' : 'Request Appointment'}
             </button>
