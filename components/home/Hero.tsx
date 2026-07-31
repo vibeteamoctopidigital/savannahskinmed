@@ -23,19 +23,19 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
 
       <div className="shell relative z-10 pt-20">
-        {/* Centered at every breakpoint. */}
-        <div className="mx-auto max-w-[780px] text-center">
+        {/* Centred through tablet, left-aligned from desktop up. */}
+        <div className="mx-auto max-w-[780px] text-center lg:mx-0 lg:text-left">
           <h1 className="display-1 animate-fadeUp text-white text-shadow-hero [text-wrap:initial]">
             Redefining Beauty With
             <br className="hidden lg:block" /> Precision And Care
           </h1>
 
-          <p className="mx-auto mt-7 max-w-[645px] animate-fadeUp text-[20px] leading-[1.7] text-white text-shadow-hero [animation-delay:120ms]">
+          <p className="mx-auto mt-7 max-w-[645px] animate-fadeUp text-[20px] leading-[1.7] text-white text-shadow-hero [animation-delay:120ms] lg:mx-0">
             Customized medical aesthetic solutions to enhance your glow and restore youthful
             skin.
           </p>
 
-          <div className="mt-9 flex animate-fadeUp flex-wrap items-center justify-center gap-x-8 gap-y-4 [animation-delay:240ms]">
+          <div className="mt-9 flex animate-fadeUp flex-wrap items-center justify-center gap-x-8 gap-y-4 [animation-delay:240ms] lg:justify-start">
             <BookAppointmentButton />
 
             <Link
