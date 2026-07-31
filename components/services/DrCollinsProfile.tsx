@@ -19,7 +19,7 @@ export default function DrCollinsProfile() {
               </div>
             </div>
 
-            <div className="md:order-2 md:pt-8 text-center md:text-left">
+            <div className="md:order-2 md:pt-8 text-center">
               <h2 className="font-serif text-[36px] text-navy md:text-[44px]">
                 Harry S. Collins, DO, FACOG, Medical Director
               </h2>

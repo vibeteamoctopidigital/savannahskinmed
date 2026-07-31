@@ -40,15 +40,18 @@ export default function LaserRejuvenationOfferings() {
               </div>
             </div>
 
-            <div className="mt-12 flex flex-col gap-8 text-[15.5px] leading-[1.8] text-ink">
+            <div className="mx-auto mt-12 max-w-[680px] flex flex-col gap-8 text-left text-[15.5px] leading-[1.8] text-ink">
               {offerings.map((offering, i) => (
-                <div key={i} className="relative">
-                  <h3 className="font-sans text-[17px] sm:text-[18px] font-bold text-navy">
-                    {offering.title}
-                  </h3>
-                  <p className="mt-2 text-muted">
-                    {offering.description}
-                  </p>
+                <div key={i} className="flex items-start gap-3">
+                  <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                  <div>
+                    <h3 className="font-sans text-[17px] sm:text-[18px] font-bold text-navy">
+                      {offering.title}
+                    </h3>
+                    <p className="mt-2 text-muted">
+                      {offering.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

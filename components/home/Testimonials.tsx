@@ -128,14 +128,14 @@ export default function Testimonials() {
           />
 
           <Reveal className="relative z-10">
-            {/* Centred stack on phones; heading left with arrows right from lg. */}
-            <div className="flex flex-col items-center gap-8 text-center lg:flex-row lg:items-end lg:justify-between lg:text-left">
+            {/* Centered stack at every breakpoint; arrows sit alongside from lg. */}
+            <div className="flex flex-col items-center gap-8 text-center lg:flex-row lg:items-end lg:justify-between">
               <div className="lg:max-w-[660px]">
                 <p className="eyebrow mb-4 text-white/85">Patient Testimonials</p>
                 <h2 className="display-2 text-white [text-wrap:initial]">
                   Real Results, True Confidence
                 </h2>
-                <p className="mx-auto mt-5 max-w-[420px] text-[16px] leading-[1.75] text-white/90 lg:mx-0 lg:text-[14.5px] lg:leading-[1.85]">
+                <p className="mx-auto mt-5 max-w-[420px] text-[16px] leading-[1.75] text-white/90 lg:text-[14.5px] lg:leading-[1.85]">
                   Our clients love their transformations. See how we&rsquo;ve helped them look and
                   feel their best.
                 </p>

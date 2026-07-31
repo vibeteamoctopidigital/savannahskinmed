@@ -72,7 +72,7 @@ export default async function OurExpertsPage() {
                     <span className="text-[14px] font-medium text-muted">No Photo</span>
                   )}
                 </div>
-                <div className="min-w-0 flex-1 text-center lg:text-left">
+                <div className="min-w-0 flex-1 text-center">
                   <h3 className="font-serif text-[28px] sm:text-[34px] lg:text-[40px] text-navy font-normal leading-tight">
                     {member.name}
                   </h3>

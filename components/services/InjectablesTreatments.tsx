@@ -18,7 +18,7 @@ export default function InjectablesTreatments() {
               </p>
             </div>
 
-            <div className="mt-12 flex flex-col gap-10 text-[15.5px] leading-[1.8] text-ink">
+            <div className="mx-auto mt-12 max-w-[680px] flex flex-col gap-10 text-center text-[15.5px] leading-[1.8] text-ink">
               {/* Dermal Filler Section */}
               <div>
                 <h3 className="font-sans text-[18px] font-bold text-navy">Dermal Filler</h3>
@@ -26,21 +26,36 @@ export default function InjectablesTreatments() {
                   Add volume, smooth deep creases, and enhance facial contours with our selection of high-quality dermal fillers. Results are immediate and can last from six months to over a year, depending on the product used and the treatment area.
                 </p>
                 <p className="mt-4 font-semibold text-navy">Dermal filler can be used to provide:</p>
-                <ul className="mt-3 flex flex-col gap-2 pl-2">
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    <strong className="text-navy">Cheek contouring:</strong> Create definition, add youthful volume, or gently lift the lower face by restoring lost structure in the mid-face.
+                <ul className="mx-auto mt-4 max-w-[580px] flex flex-col gap-3 text-left">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>
+                      <strong className="text-navy">Cheek contouring:</strong> Create definition, add youthful volume, or gently lift the lower face by restoring lost structure in the mid-face.
+                    </span>
                   </li>
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    <strong className="text-navy">Jawline sculpting:</strong> Define the jawline, minimize jowls, and create a more structured, youthful profile.
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>
+                      <strong className="text-navy">Jawline sculpting:</strong> Define the jawline, minimize jowls, and create a more structured, youthful profile.
+                    </span>
                   </li>
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    <strong className="text-navy">Nose contouring:</strong> A non-surgical option to smooth bumps, lift the tip, or refine the shape of the nose with minimal downtime.
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>
+                      <strong className="text-navy">Nose contouring:</strong> A non-surgical option to smooth bumps, lift the tip, or refine the shape of the nose with minimal downtime.
+                    </span>
                   </li>
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    <strong className="text-navy">Lip enhancement:</strong> Restore lost volume, smooth vertical lip lines, or simply add subtle, hydrating plumpness tailored to your facial proportions.
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>
+                      <strong className="text-navy">Lip enhancement:</strong> Restore lost volume, smooth vertical lip lines, or simply add subtle, hydrating plumpness tailored to your facial proportions.
+                    </span>
                   </li>
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    <strong className="text-navy">Mid-face enhancement:</strong> Soften the nasolabial folds (smile lines) and marionette lines for a rejuvenated, rested appearance.
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>
+                      <strong className="text-navy">Marionette line reduction:</strong> Add fullness back to the nasolabial folds and reduce the appearance of deep lines.
+                    </span>
                   </li>
                 </ul>
                 <p className="mt-5 text-[12.5px] leading-[1.6] text-[#8e95a3]">
@@ -58,24 +73,30 @@ export default function InjectablesTreatments() {
                   Soften dynamic wrinkles and prevent new lines from forming with our precise, expert application of neuromodulators (like Botox, Dysport, or Xeomin). Results appear within days and typically last 3 to 4 months.
                 </p>
                 <p className="mt-4 font-semibold text-navy">Neurotoxins target concerns such as:</p>
-                <ul className="mt-3 flex flex-col gap-2 pl-2 text-muted">
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    Frown lines (the 11s) and forehead lines
+                <ul className="mx-auto mt-4 max-w-[580px] flex flex-col gap-3 text-left text-muted">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>Frown lines (the 11s) and forehead lines</span>
                   </li>
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    Crows feet lines
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>Crows feet lines</span>
                   </li>
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    Lip flip or gummy smile
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>Lip flip or gummy smile</span>
                   </li>
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    Masseter muscle (for jaw clenching or slimming)
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>Masseter muscle (for jaw clenching or slimming)</span>
                   </li>
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    Platysmal bands in the neck
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>Platysmal bands in the neck</span>
                   </li>
-                  <li className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                    Hyperhidrosis (excess sweating)
+                  <li className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                    <span>Hyperhidrosis (excess sweating)</span>
                   </li>
                 </ul>
                 <p className="mt-5 text-[12.5px] leading-[1.6] text-[#8e95a3]">

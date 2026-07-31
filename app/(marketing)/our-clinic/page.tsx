@@ -111,7 +111,7 @@ export default function OurClinicPage() {
             </Reveal>
 
             <Reveal delay={100}>
-              <div className="mx-auto max-w-[460px] text-center lg:mx-0 lg:text-left">
+              <div className="mx-auto max-w-[460px] text-center">
                 <p className="eyebrow mb-4 text-rose-deep">Cutting-Edge Technology</p>
 
                 <h2 className="display-2 [text-wrap:initial]">
@@ -136,7 +136,7 @@ export default function OurClinicPage() {
       <section className="bg-haze">
         <div className="grid lg:grid-cols-2">
           <div className="order-2 flex items-center px-5 py-16 sm:px-8 lg:order-1 lg:justify-end lg:py-24 lg:pl-12 lg:pr-14 xl:pl-16">
-            <Reveal className="w-full max-w-[500px] text-center lg:text-left">
+            <Reveal className="mx-auto w-full max-w-[500px] text-center">
               <p className="eyebrow mb-4 text-rose-deep">Synergistic Wellness</p>
 
               <h2 className="display-2 [text-wrap:initial]">

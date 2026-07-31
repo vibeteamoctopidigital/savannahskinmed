@@ -29,7 +29,7 @@ export default function BeautyWithoutGuesswork() {
 
               {/* Text Side */}
               <div className="flex w-full flex-col justify-center px-8 py-12 md:w-1/2 md:p-14 lg:p-16 order-2 md:order-2">
-                <div className="text-center md:text-left">
+                <div className="text-center">
                   <p className="eyebrow mb-4 text-navy">WHY MEMBERSHIP</p>
                   <h3 className="display-3 mb-6">Consistency That Delivers Results</h3>
                   <p className="mb-8 text-[15px] leading-[1.75] text-muted">
