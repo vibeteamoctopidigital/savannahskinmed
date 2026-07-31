@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import AdminSidebar from '@/components/admin/AdminSidebar';
-import { getLoggedInAdminEmail } from '@/lib/adminAuth';
+import { getLoggedInAdminEmail } from '@/lib/data/admin';
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard | Savannah Age Management Medicine',

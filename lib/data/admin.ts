@@ -1,6 +1,8 @@
 import bcrypt from 'bcryptjs';
+import { cookies } from 'next/headers';
 
 import { prisma } from '@/lib/prisma';
+import { ADMIN_EMAIL_COOKIE } from '@/lib/adminAuth';
 import { ADMIN_FALLBACK_EMAIL, ADMIN_FALLBACK_PASSWORD_HASH } from '@/lib/data/shape';
 
 /**
@@ -18,4 +20,27 @@ export async function verifyAdminCredentials(email: string, password: string): P
     if (email.toLowerCase() !== ADMIN_FALLBACK_EMAIL) return false;
     return bcrypt.compare(password, ADMIN_FALLBACK_PASSWORD_HASH);
   }
+}
+
+export async function getLoggedInAdminEmail(): Promise<string> {
+  try {
+    const store = await cookies();
+    const cookieEmail = store.get(ADMIN_EMAIL_COOKIE)?.value?.trim();
+    if (cookieEmail) {
+      return cookieEmail;
+    }
+  } catch {
+    // Ignore cookie read error in non-request contexts
+  }
+
+  try {
+    const admin = await prisma.adminUser.findFirst();
+    if (admin?.email) {
+      return admin.email;
+    }
+  } catch {
+    // Database fallback
+  }
+
+  return ADMIN_FALLBACK_EMAIL;
 }

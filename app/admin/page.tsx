@@ -1,8 +1,5 @@
 import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 
-import { ADMIN_SESSION_COOKIE, ADMIN_SESSION_VALUE } from '@/lib/adminAuth';
 import { cardClass } from '@/lib/adminUi';
 import AdminLoginForm from './AdminLoginForm';
 
@@ -11,12 +8,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function AdminLoginPage() {
-  const store = await cookies();
-  if (store.get(ADMIN_SESSION_COOKIE)?.value === ADMIN_SESSION_VALUE) {
-    redirect('/admin/dashboard');
-  }
-
+export default function AdminLoginPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#f5f5f7] px-5">
       <div className={`w-full max-w-[400px] ${cardClass} sm:p-10`}>

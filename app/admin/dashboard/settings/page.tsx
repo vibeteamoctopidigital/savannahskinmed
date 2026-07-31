@@ -1,7 +1,7 @@
 import AdminAccountForm from '@/components/admin/AdminAccountForm';
 import SaveButton from '@/components/admin/SaveButton';
 import SiteBrandingUpload from '@/components/admin/SiteBrandingUpload';
-import { getLoggedInAdminEmail } from '@/lib/adminAuth';
+import { getLoggedInAdminEmail } from '@/lib/data/admin';
 import { prisma } from '@/lib/prisma';
 import { cardClass, inputClass, labelClass, primaryBtn } from '@/lib/adminUi';
 import { updateSettingsAction } from './actions';
