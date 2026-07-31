@@ -42,7 +42,7 @@ export default function OurClinicPage() {
         intro="Our clinic is your destination for advanced, personalized aesthetic treatments that promote healthy, radiant skin and a more confident you."
         image="/images/banner-13-bg.jpg"
         imageAlt="The waiting lounge at Savannah Age Management Medicine"
-        position="center 45%"
+        position="center 15%"
       />
 
       {/* ---------------- Welcome + image mosaic ---------------- */}

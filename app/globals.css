@@ -12,9 +12,11 @@
     -webkit-text-size-adjust: 100%;
   }
 
-  /* Matches the original: 16px Manrope / 1.5 line-height. */
+  /* Matches the original: 16px Manrope / 1.5 line-height. Body copy reads
+     as a darker, slightly heavier weight than plain "muted" gray/regular —
+     matching the reference design's actual boldness and color. */
   body {
-    @apply bg-white font-sans text-[16px] leading-[1.6] text-muted antialiased;
+    @apply bg-white font-sans text-[16px] font-medium leading-[1.6] text-ink antialiased;
   }
 
   /* Scroll-reveal starting state — see components/ui/Reveal.tsx */

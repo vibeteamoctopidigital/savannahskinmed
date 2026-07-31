@@ -1,5 +1,6 @@
 type SectionHeadingProps = {
   eyebrow?: string;
+  eyebrowClassName?: string;
   title: React.ReactNode;
   intro?: React.ReactNode;
   align?: 'center' | 'left';
@@ -9,6 +10,7 @@ type SectionHeadingProps = {
 
 export default function SectionHeading({
   eyebrow,
+  eyebrowClassName,
   title,
   intro,
   align = 'center',
@@ -17,14 +19,17 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   const centered = align === 'center';
 
+  const defaultEyebrowStyle =
+    tone === 'white'
+      ? 'text-white/80 font-semibold text-[13px] sm:text-[14px]'
+      : 'text-navy font-semibold text-[13px] sm:text-[14px]';
+
   return (
     <div
       className={`${centered ? 'mx-auto max-w-[940px] text-center' : 'max-w-[680px]'} ${className}`}
     >
       {eyebrow && (
-        <p
-          className={`eyebrow mb-4 ${tone === 'white' ? 'text-white/80' : 'text-rose-deep'}`}
-        >
+        <p className={`eyebrow mb-4 ${eyebrowClassName || defaultEyebrowStyle}`}>
           {eyebrow}
         </p>
       )}
