@@ -22,7 +22,7 @@ export default async function AestheticSpecialsPage() {
         intro={settings.heroIntro}
         image={settings.heroImage}
         imageAlt={settings.heroImageAlt}
-        position="center 30%"
+        position="center 20%"
       />
       <SpecialsContent
         offersHeading={settings.offersHeading}
