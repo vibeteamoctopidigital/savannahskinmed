@@ -22,10 +22,10 @@ export default function InjectablesPage() {
       <ServiceHero
         eyebrow="SERVICES"
         title="Injectables & Wrinkle Prevention"
-        intro="Subtle yet transformative enhancements designed to rejuvenate your natural beauty."
+        intro="Subtle yet transformative enhancements, designed to rejuvenate your natural beauty."
         image="/images/banner-6-bg.jpg"
         imageAlt="A client receiving an injectable treatment"
-        position="center"
+        position="center 35%"
       />
       
       <InjectablesTreatments />

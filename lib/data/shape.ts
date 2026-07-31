@@ -251,14 +251,14 @@ export function buildTeamFallback(): TeamMemberData[] {
     },
     {
       id: 'rebecca',
-      name: 'Rebecca Speck',
-      role: 'LEAD AESTHETICIAN / LASER SPECIALIST',
+      name: 'Rebecca Spacek',
+      role: '',
       highlight: '',
       image: '/images/team-11-img.png',
-      imageAlt: 'Rebecca Speck',
+      imageAlt: 'Rebecca Spacek',
       sortOrder: 2,
       isActive: true,
-      bio: `Rebecca is a Licensed Aesthetician and Laser Specialist with a passion for helping her patients achieve their skincare goals. She brings extensive experience and a tailored approach to every treatment.\n\nShe believes that the best results are achieved through a combination of in-office treatments and a customized at-home skincare regimen. She works closely with each patient to develop a personalized plan that addresses their unique needs and concerns.\n\nRebecca is dedicated to continuing her education and staying up-to-date on the latest advancements in medical aesthetics. She is certified in a wide range of treatments, including laser hair removal, chemical peels, and microneedling, and is committed to providing her patients with the highest level of care.`,
+      bio: `Rebecca Spacek is an Assistant Cosmetic Laser Practitioner, a Master Cosmetologist, and has been a professional Aesthetician and Certified Lasographer for 12 years.\n\nShe is licensed in the State of Georgia and studied at the Scottsdale's Institute for Medical Aesthetics in Arizona. Becca began her professional career as an Assistant Cosmetic Laser Practitioner and Aesthetician in Savannah and has been helping to establish multiple med spas here in the local area. She is most proud of her work at Cannon Plastic and Reconstructive Surgery and Cannon MedSpa where she worked closely with cancer patients. Becca provided these vulnerable patients with treatment plans that helped rid them of the scarring caused by radiation treatments and surgeries. The services Becca provides helped boost the confidence of her patients while ensuring they remained completely comfortable during her services. Becca holds 12 different certificates, loves her work and prides herself on getting outstanding results for her patients.`,
     },
     {
       id: 'eseta',

@@ -12,7 +12,7 @@ export default function ExpertProfile() {
               <div className="relative h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px]">
                 <Image
                   src="/images/photo-content-10-img.jpg"
-                  alt="Rebecca Sproul - Licensed Aesthetician"
+                  alt="Rebecca Spacek - Licensed Aesthetician"
                   fill
                   sizes="(max-width: 768px) 340px, 400px"
                   className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
@@ -21,26 +21,17 @@ export default function ExpertProfile() {
             </div>
 
             <div className="text-center md:order-2 md:pt-8 md:text-left">
-              <h2 className="font-serif text-[36px] text-navy md:text-[44px]">Rebecca Sproul</h2>
+              <h2 className="font-serif text-[36px] text-navy md:text-[44px]">Rebecca Spacek</h2>
               <p className="eyebrow mt-3 text-rose">
                 Licensed Aesthetician &amp; Laser Specialist
               </p>
 
               <div className="mt-8 space-y-6 text-[16px] leading-[1.8] text-muted">
                 <p>
-                  Rebecca is a Licensed Aesthetician with a passion for helping her patients achieve
-                  their skincare goals.
+                  Rebecca Spacek is an Assistant Cosmetic Laser Practitioner, a Master Cosmetologist, and has been a professional Aesthetician and Certified Lasographer for 12 years.
                 </p>
                 <p>
-                  She believes that the best results are achieved through a combination of in-office
-                  treatments and a customized at-home skincare regimen. She works closely with each
-                  patient to develop a personalized plan that addresses their unique needs and concerns.
-                </p>
-                <p>
-                  Rebecca is dedicated to continuing her education and staying up-to-date on the
-                  latest advancements in medical aesthetics. She is certified in a wide range of
-                  treatments, including laser hair removal, chemical peels, and microneedling, and
-                  is committed to providing her patients with the highest level of care.
+                  She is licensed in the State of Georgia and studied at the Scottsdale&apos;s Institute for Medical Aesthetics in Arizona. Becca began her professional career as an Assistant Cosmetic Laser Practitioner and Aesthetician in Savannah and has been helping to establish multiple med spas here in the local area. She is most proud of her work at Cannon Plastic and Reconstructive Surgery and Cannon MedSpa where she worked closely with cancer patients. Becca provided these vulnerable patients with treatment plans that helped rid them of the scarring caused by radiation treatments and surgeries. The services Becca provides helped boost the confidence of her patients while ensuring they remained completely comfortable during her services. Becca holds 12 different certificates, loves her work and prides herself on getting outstanding results for her patients.
                 </p>
               </div>
             </div>
