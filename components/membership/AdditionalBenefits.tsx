@@ -15,7 +15,7 @@ export default function AdditionalBenefits() {
   return (
     <section className="bg-cream py-16 lg:py-24">
       <div className="shell max-w-[1000px]">
-        <Reveal className="mb-12">
+        <Reveal className="mb-12 text-center">
           <p className="eyebrow mb-4 text-navy">BEYOND THE BASICS</p>
           <h2 className="display-3 italic text-navy">Additional Benefits</h2>
         </Reveal>

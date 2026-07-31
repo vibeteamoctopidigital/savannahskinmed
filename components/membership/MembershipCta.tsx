@@ -8,7 +8,7 @@ export default function MembershipCta() {
       <div className="flex flex-col lg:flex-row min-h-[480px]">
         {/* Text Side */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 py-16 lg:px-16 xl:px-20 lg:py-20 bg-[#f8f7f5]">
-          <Reveal className="max-w-[480px] mx-auto lg:ml-auto lg:mr-0 xl:mr-16">
+          <Reveal className="max-w-[480px] mx-auto text-center lg:ml-auto lg:mr-0 lg:text-left xl:mr-16">
             <p className="eyebrow mb-4 text-navy">JOIN TODAY</p>
             <h2 className="display-3 italic mb-6 text-navy">Ready To Experience Membership?</h2>
             

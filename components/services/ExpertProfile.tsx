@@ -20,7 +20,7 @@ export default function ExpertProfile() {
               </div>
             </div>
 
-            <div className="md:order-2 md:pt-8">
+            <div className="text-center md:order-2 md:pt-8 md:text-left">
               <h2 className="font-serif text-[36px] text-navy md:text-[44px]">Rebecca Sproul</h2>
               <p className="eyebrow mt-3 text-rose">
                 Licensed Aesthetician &amp; Laser Specialist

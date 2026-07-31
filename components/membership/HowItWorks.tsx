@@ -36,9 +36,11 @@ export default function HowItWorks() {
 
         {/* Text Side */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 py-16 lg:px-16 xl:px-20 lg:py-20 bg-[#fbfbfb]">
-          <Reveal className="max-w-[480px]">
-            <p className="eyebrow mb-4 text-navy">SIMPLE. STRUCTURED. EFFECTIVE.</p>
-            <h2 className="display-3 italic mb-10 text-navy">How It Works</h2>
+          <Reveal className="mx-auto max-w-[480px] lg:mx-0">
+            <div className="text-center lg:text-left">
+              <p className="eyebrow mb-4 text-navy">SIMPLE. STRUCTURED. EFFECTIVE.</p>
+              <h2 className="display-3 italic mb-10 text-navy">How It Works</h2>
+            </div>
 
             <div className="space-y-10">
               {steps.map((step, index) => (

@@ -26,7 +26,7 @@ export default function SectionHeading({
 
   return (
     <div
-      className={`${centered ? 'mx-auto max-w-[940px] text-center' : 'max-w-[680px]'} ${className}`}
+      className={`${centered ? 'mx-auto max-w-[940px] text-center' : 'mx-auto max-w-[680px] text-center lg:mx-0 lg:text-left'} ${className}`}
     >
       {eyebrow && (
         <p className={`eyebrow mb-4 ${eyebrowClassName || defaultEyebrowStyle}`}>
