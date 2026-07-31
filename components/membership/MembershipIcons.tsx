@@ -52,3 +52,57 @@ export function BloomIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function CreditsIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <circle cx="12" cy="7.5" r="4" {...stroke} />
+      <path d="M12 5v5M10.5 6.5h2a1 1 0 0 1 0 2h-1a1 1 0 0 0 0 2h2.5" {...stroke} />
+      <path d="M12 11.5V21" {...stroke} />
+      <path d="M12 17.5C9.5 17.5 8 15.5 8 13.5c1.5 0 3 1.5 4 4Z" {...stroke} />
+      <path d="M12 17.5c2.5 0 4-2 4-4-1.5 0-3 1.5-4 4Z" {...stroke} />
+    </svg>
+  );
+}
+
+export function MemberPricingIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <circle cx="9.5" cy="9.5" r="5.5" {...stroke} />
+      <circle cx="14.5" cy="14.5" r="6.5" {...stroke} />
+      <path
+        d="m14.5 11.5 1 2 2.2.3-1.6 1.6.4 2.2-2-1.1-2 1.1.4-2.2-1.6-1.6 2.2-.3z"
+        {...stroke}
+      />
+    </svg>
+  );
+}
+
+export function SyringeIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path d="m18 2 4 4" {...stroke} />
+      <path d="m17 7 3-3" {...stroke} />
+      <path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5" {...stroke} />
+      <path d="m9 11 4 4" {...stroke} />
+      <path d="m11 13-1.5 1.5" {...stroke} />
+      <path d="m13 11-1.5 1.5" {...stroke} />
+      <path d="m5 19-3 3" {...stroke} />
+      <path d="m14 4 6 6" {...stroke} />
+    </svg>
+  );
+}
+
+export function BirthdayPerksIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <rect x="10" y="10" width="4" height="7" rx="1" {...stroke} />
+      <path d="M12 9c0-1.5 1-2.5 1-4-1 1-2 2-2 3.5 0 0.5 0.5 0.5 1 0.5Z" {...stroke} />
+      <path d="M16 6l.5 1.5L18 8l-1.5.5L16 10l-.5-1.5L14 8l1.5-.5Z" {...stroke} />
+      <path d="M7 9l.5 1L9 10.5 7.5 11 7 12l-.5-1L5 10.5 6.5 10Z" {...stroke} />
+      <path d="M8 17h8c0 2-1.5 3.5-4 3.5S8 19 8 17Z" {...stroke} />
+      <path d="M6 18c0 1.5 1.5 2.5 3 2.5M18 18c0 1.5-1.5 2.5-3 2.5M6 17c0-2 1.5-3 3-3M18 17c0-2-1.5-3-3-3" {...stroke} />
+    </svg>
+  );
+}
+
