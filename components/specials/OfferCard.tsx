@@ -8,13 +8,21 @@ const ctaClassName =
 
 export default function OfferCard({ card }: { card: SpecialCardData }) {
   const offerLabel = card.title ?? card.headline ?? undefined;
+  const imageSrc =
+    typeof card?.image === 'string' && card.image.trim() !== '' && card.image !== '{}'
+      ? card.image
+      : '/images/grid-img.jpg';
+  const imageAltText =
+    typeof card?.imageAlt === 'string' && card.imageAlt.trim() !== ''
+      ? card.imageAlt
+      : 'Special offer';
 
   return (
     <div className="group overflow-hidden rounded-[18px] bg-white shadow-card transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-navy/15">
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
-          src={card.image}
-          alt={card.imageAlt}
+          src={imageSrc}
+          alt={imageAltText}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
