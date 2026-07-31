@@ -1,6 +1,9 @@
-import { Manrope, Playfair_Display, Inter, Sora } from 'next/font/google';
+import { Manrope, Bodoni_Moda, Inter, Sora } from 'next/font/google';
 
-export const playfair = Playfair_Display({
+// Bodoni 72 itself isn't a licensable web font (it's an Apple system font);
+// Bodoni Moda is Google Fonts' own modern digitization of the same
+// high-contrast Bodoni style and is the closest self-hostable match.
+export const playfair = Bodoni_Moda({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-playfair',
