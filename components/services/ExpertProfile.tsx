@@ -23,12 +23,12 @@ export default function ExpertProfile() {
             <div className="text-center md:order-2 md:pt-8">
               <h2 className="font-serif text-[36px] text-navy md:text-[44px]">Rebecca Spacek</h2>
               <p className="eyebrow mt-3 text-navy font-semibold uppercase tracking-widest2">
-                AESTHETICIAN &amp; LASER PRACTITIONER
+                Laser Practitioner &amp; Aesthetician
               </p>
 
               <div className="mt-8 space-y-6 text-[16px] leading-[1.8] text-muted">
                 <p>
-                  Rebecca Spacek is an Assistant Cosmetic Laser Practitioner, a Master Cosmetologist, and has been a professional Aesthetician and Certified Lasographer for 12 years.
+                  Rebecca Spacek is an Assistant Cosmetic Laser Practitioner, a Master Cosmetologist, and has been a professional Aesthetician and Certified Lasographer for 22 years.
                 </p>
                 <p>
                   She is licensed in the State of Georgia and studied at the Scottsdale&apos;s Institute for Medical Aesthetics in Arizona. Becca began her professional career as an Assistant Cosmetic Laser Practitioner and Aesthetician in Savannah and has been helping to establish multiple med spas here in the local area. She is most proud of her work at Cannon Plastic and Reconstructive Surgery and Cannon MedSpa where she worked closely with cancer patients. Becca provided these vulnerable patients with treatment plans that helped rid them of the scarring caused by radiation treatments and surgeries. The services Becca provides helped boost the confidence of her patients while ensuring they remained completely comfortable during her services. Becca holds 12 different certificates, loves her work and prides herself on getting outstanding results for her patients.
