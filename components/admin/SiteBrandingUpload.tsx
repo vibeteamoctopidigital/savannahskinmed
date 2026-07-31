@@ -71,6 +71,7 @@ export default function SiteBrandingUpload({ logoUrl, faviconUrl }: BrandingProp
             onUploaded={setFavicon}
             label="Favicon"
             accept="image/*,.ico,.png"
+            toPng
           />
           <button
             type="button"

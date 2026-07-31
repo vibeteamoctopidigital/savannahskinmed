@@ -7,7 +7,12 @@
  * resources). The preset itself must be set to "Unsigned" in the Cloudinary
  * dashboard (Settings -> Upload -> Upload presets) for this to work.
  */
-export async function uploadImage(file: Buffer, folder: string): Promise<string> {
+export async function uploadImage(
+  file: Buffer,
+  folder: string,
+  filename = 'upload',
+  mimeType = '',
+): Promise<string> {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
 
@@ -16,7 +21,7 @@ export async function uploadImage(file: Buffer, folder: string): Promise<string>
   }
 
   const form = new FormData();
-  form.append('file', new Blob([new Uint8Array(file)]), 'upload');
+  form.append('file', new Blob([new Uint8Array(file)], mimeType ? { type: mimeType } : undefined), filename);
   form.append('upload_preset', uploadPreset);
   form.append('folder', `${process.env.CLOUDINARY_FOLDER || 'site'}/${folder}`);
 

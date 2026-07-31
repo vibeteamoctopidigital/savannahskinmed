@@ -9,7 +9,58 @@ type CloudinaryUploadProps = {
   label?: string;
   className?: string;
   accept?: string;
+  /** Convert .ico files to PNG before uploading (favicons) so they are never
+   * rejected by the image upload pipeline. */
+  toPng?: boolean;
 };
+
+function isIconFile(file: File) {
+  return /\.ico$/i.test(file.name) || /icon/.test(file.type);
+}
+
+function convertIcoToPng(file: File): Promise<File | null> {
+  return new Promise((resolve) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const width = img.naturalWidth || img.width;
+      const height = img.naturalHeight || img.height;
+      if (!width || !height) {
+        resolve(null);
+        return;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        resolve(null);
+        return;
+      }
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          resolve(null);
+          return;
+        }
+        resolve(new File([blob], file.name.replace(/\.ico$/i, '.png'), { type: 'image/png' }));
+      }, 'image/png');
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      resolve(null);
+    };
+    img.src = url;
+  });
+}
+
+async function icoToPng(file: File): Promise<File | null> {
+  return Promise.race([
+    convertIcoToPng(file),
+    new Promise<null>((resolve) => setTimeout(() => resolve(null), 5000)),
+  ]);
+}
 
 export default function CloudinaryUpload({
   folder,
@@ -18,6 +69,7 @@ export default function CloudinaryUpload({
   label = 'Upload Image',
   className = '',
   accept = 'image/*',
+  toPng = false,
 }: CloudinaryUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
@@ -29,8 +81,14 @@ export default function CloudinaryUpload({
 
     setUploading(true);
     try {
+      let uploadFile = file;
+      if (toPng && isIconFile(file)) {
+        const converted = await icoToPng(file);
+        if (converted) uploadFile = converted;
+      }
+
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', uploadFile);
       formData.append('folder', folder);
 
       const res = await fetch('/api/upload', { method: 'POST', body: formData });
@@ -44,6 +102,7 @@ export default function CloudinaryUpload({
       alert('Failed to upload image. Please try again.');
     } finally {
       setUploading(false);
+      if (e.target) e.target.value = '';
     }
   };
 
