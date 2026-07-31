@@ -154,8 +154,8 @@ export default async function Footer() {
         </div>
 
         {/* ---------------- Legal bar ---------------- */}
-        <div className="mt-[72px] border-t border-navy/10 py-8">
-          <p className="text-center font-sans text-[11px] uppercase tracking-[0.08em] text-navy/70">
+        <div className="mt-[72px] flex flex-col items-center justify-between gap-4 border-t border-navy/10 py-8 font-sans text-[11px] uppercase tracking-[0.08em] text-navy/70 sm:flex-row">
+          <p className="text-center sm:text-left">
             {footer.site.copyrightText}
             <span className="px-2.5 text-navy/30">|</span>
             All Rights Reserved
@@ -163,6 +163,18 @@ export default async function Footer() {
             <Link href="/privacy-policy" className="transition-colors duration-300 hover:text-rose-deep">
               Privacy Policy
             </Link>
+          </p>
+
+          <p className="text-center sm:text-right">
+            Developed by{' '}
+            <a
+              href="https://ghlprime.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="font-semibold text-navy transition-colors duration-300 hover:text-rose-deep"
+            >
+              GHL Prime
+            </a>
           </p>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { verifyAdminCredentials } from '@/lib/data/admin';
-import { ADMIN_SESSION_COOKIE, ADMIN_SESSION_VALUE } from '@/lib/adminAuth';
+import { ADMIN_SESSION_COOKIE, ADMIN_SESSION_VALUE, ADMIN_EMAIL_COOKIE } from '@/lib/adminAuth';
 
 export type LoginState = { error?: string };
 
@@ -33,6 +33,13 @@ export async function loginAction(_prevState: LoginState, formData: FormData): P
     path: '/',
     maxAge: 60 * 60 * 24 * 7,
   });
+  store.set(ADMIN_EMAIL_COOKIE, email, {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: isSecure,
+    path: '/',
+    maxAge: 60 * 60 * 24 * 7,
+  });
 
   redirect('/admin/dashboard');
 }
@@ -40,5 +47,7 @@ export async function loginAction(_prevState: LoginState, formData: FormData): P
 export async function logoutAction() {
   const store = await cookies();
   store.delete(ADMIN_SESSION_COOKIE);
+  store.delete(ADMIN_EMAIL_COOKIE);
   redirect('/admin');
 }
+

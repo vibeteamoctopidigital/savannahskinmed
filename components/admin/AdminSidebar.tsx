@@ -103,6 +103,7 @@ const navItems: NavItem[] = [
 
 export default function AdminSidebar({ email }: { email: string }) {
   const pathname = usePathname();
+  const displayEmail = email || 'admin@gmail.com';
 
   const isActive = (item: NavItem) =>
     item.exactOnly ? pathname === item.href : pathname.startsWith(item.href);
@@ -182,10 +183,10 @@ export default function AdminSidebar({ email }: { email: string }) {
         {/* User Info */}
         <div className="mt-2 flex items-center gap-2.5 rounded-xl bg-white/60 px-3 py-2 border border-[#D9EFE2]">
           <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#059669] text-[11px] font-semibold text-white">
-            {email.charAt(0).toUpperCase()}
+            {displayEmail.charAt(0).toUpperCase()}
           </span>
           <div className="min-w-0">
-            <p className="truncate text-[12px] font-semibold text-[#064E3B]">{email}</p>
+            <p className="truncate text-[12px] font-semibold text-[#064E3B]">{displayEmail}</p>
             <p className="text-[10px] text-slate-500">Administrator</p>
           </div>
         </div>

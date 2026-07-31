@@ -24,7 +24,29 @@ export async function getFooterData(): Promise<FooterData> {
         bookingUrl: siteSetting.bookingUrl,
         copyrightText: siteSetting.copyrightText,
       },
-      socials: socialLinks.map((s) => ({ label: s.label, href: s.href, icon: s.icon })),
+      socials: (() => {
+        const list =
+          socialLinks.length > 0
+            ? socialLinks.map((s) => ({ label: s.label, href: s.href, icon: s.icon }))
+            : buildFooterFallback().socials;
+        const hasInsta = list.some((s) => s.icon === 'instagram');
+        const mapped = list.map((s) =>
+          s.icon === 'instagram' &&
+          (!s.href ||
+            s.href === 'https://www.instagram.com/' ||
+            s.href === 'https://www.instagram.com')
+            ? { ...s, href: 'https://www.instagram.com/savannah_age_management' }
+            : s,
+        );
+        if (!hasInsta) {
+          mapped.push({
+            label: 'Instagram',
+            href: 'https://www.instagram.com/savannah_age_management',
+            icon: 'instagram',
+          });
+        }
+        return mapped;
+      })(),
       locations: locations.map((location) => ({
         city: location.city,
         badge: location.badge ?? undefined,

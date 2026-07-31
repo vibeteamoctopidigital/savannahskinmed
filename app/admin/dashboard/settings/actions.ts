@@ -2,7 +2,9 @@
 
 import bcrypt from 'bcryptjs';
 import { revalidatePath } from 'next/cache';
+import { cookies, headers } from 'next/headers';
 
+import { ADMIN_EMAIL_COOKIE } from '@/lib/adminAuth';
 import { prisma } from '@/lib/prisma';
 
 function digitsOnly(value: string) {
@@ -150,6 +152,26 @@ export async function updateAdminAccountAction(
     data: updateData,
   });
 
+  if (updateData.email) {
+    try {
+      const hdrs = await headers();
+      const proto = hdrs.get('x-forwarded-proto') || hdrs.get('proto') || 'http';
+      const isSecure = proto === 'https';
+      const store = await cookies();
+      store.set(ADMIN_EMAIL_COOKIE, updateData.email, {
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: isSecure,
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    } catch {
+      // Ignore cookie error in non-request context
+    }
+  }
+
+  revalidatePath('/admin', 'layout');
+  revalidatePath('/admin/dashboard', 'layout');
   revalidatePath('/admin/dashboard/settings');
 
   const changes: string[] = [];

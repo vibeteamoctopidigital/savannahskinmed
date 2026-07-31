@@ -1,6 +1,7 @@
 import AdminAccountForm from '@/components/admin/AdminAccountForm';
 import SaveButton from '@/components/admin/SaveButton';
 import SiteBrandingUpload from '@/components/admin/SiteBrandingUpload';
+import { getLoggedInAdminEmail } from '@/lib/adminAuth';
 import { prisma } from '@/lib/prisma';
 import { cardClass, inputClass, labelClass, primaryBtn } from '@/lib/adminUi';
 import { updateSettingsAction } from './actions';
@@ -44,7 +45,7 @@ export default async function AdminSettingsPage() {
         faviconUrl={settings?.faviconUrl || ''}
       />
 
-      <AdminAccountForm currentEmail={adminUser?.email ?? ''} />
+      <AdminAccountForm currentEmail={adminUser?.email || (await getLoggedInAdminEmail())} />
 
       <form id={SETTINGS_FORM_ID} className="space-y-8">
         <section className={cardClass}>
