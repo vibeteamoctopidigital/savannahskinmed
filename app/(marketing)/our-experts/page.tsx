@@ -4,6 +4,7 @@ import Image from 'next/image';
 import ElevateCta from '@/components/home/ElevateCta';
 import ButtonLink from '@/components/ui/ButtonLink';
 import PageHero from '@/components/ui/PageHero';
+import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 import { getTeamMembers } from '@/lib/data/team';
 import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
@@ -30,18 +31,21 @@ export default async function OurExpertsPage() {
       {/* Intro Header Section */}
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="shell text-center">
-          <p className="eyebrow mb-4 text-rose-deep">
-            SAVANNAH&apos;S PREMIER AESTHETICS TEAM
+          <p className="eyebrow mb-4 text-navy font-semibold text-[12px] sm:text-[13px] uppercase tracking-widest2">
+            EXPERIENCE THE EXPERTISE
           </p>
           <h2 className="display-2 mx-auto max-w-4xl text-navy">
             Beauty, Precision, And Excellence
           </h2>
-          <p className="mx-auto mt-6 max-w-[840px] text-[15px] leading-[1.9] text-muted">
-            At Savannah Skin and Med Spa, we believe that looking your best starts with feeling confident in your skin. Our team of highly trained medical professionals, nurses, and aestheticians is dedicated to delivering personalized, state-of-the-art treatments that enhance your natural beauty. Combining years of clinical experience with a passion for aesthetic excellence, we are committed to helping you achieve your unique aesthetic goals.
+          <p className="mx-auto mt-6 max-w-[840px] text-[15.5px] sm:text-[16.5px] leading-[1.8] text-ink">
+            We believe that the key to timeless beauty lies in a personalized approach to care. Our team&apos;s mission is to provide exceptional, results-driven treatments tailored to each client&apos;s individual goals, all while maintaining the highest standards of safety, comfort, and luxury. We combine cutting-edge medical advancements with an artist&apos;s touch, ensuring that every treatment leaves you feeling rejuvenated, radiant, and confident.
           </p>
-          <ButtonLink href="/contact-us" className="mt-8">
-            Book a Consultation
-          </ButtonLink>
+          <div className="mt-8 flex justify-center">
+            <BookAppointmentButton className="inline-flex items-center gap-2 rounded-full bg-navy px-8 py-3.5 text-[13px] font-bold tracking-widest2 text-white uppercase transition-colors hover:bg-navy-deep">
+              <span>BOOK APPOINTMENT</span>
+              <span className="text-[16px] leading-none">&rarr;</span>
+            </BookAppointmentButton>
+          </div>
         </div>
       </section>
 
@@ -77,7 +81,7 @@ export default async function OurExpertsPage() {
                     {member.name}
                   </h3>
                   {member.role && (
-                    <p className="mt-2.5 text-[12px] sm:text-[13px] font-semibold uppercase tracking-widest2 text-rose-deep">
+                    <p className="mt-2.5 text-[12px] sm:text-[13px] font-semibold uppercase tracking-widest2 text-navy">
                       {member.role}
                     </p>
                   )}

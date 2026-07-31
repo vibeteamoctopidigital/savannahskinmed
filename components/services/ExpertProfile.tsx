@@ -22,8 +22,8 @@ export default function ExpertProfile() {
 
             <div className="text-center md:order-2 md:pt-8">
               <h2 className="font-serif text-[36px] text-navy md:text-[44px]">Rebecca Spacek</h2>
-              <p className="eyebrow mt-3 text-rose">
-                Licensed Aesthetician &amp; Laser Specialist
+              <p className="eyebrow mt-3 text-navy font-semibold uppercase tracking-widest2">
+                AESTHETICIAN &amp; LASER PRACTITIONER
               </p>
 
               <div className="mt-8 space-y-6 text-[16px] leading-[1.8] text-muted">
