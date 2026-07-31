@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import ButtonLink from '@/components/ui/ButtonLink';
+import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 import Reveal from '@/components/ui/Reveal';
 import SectionHeading from '@/components/ui/SectionHeading';
 import {
@@ -73,7 +73,7 @@ export default function ServicesSection() {
         </div>
 
         <Reveal className="mt-11 flex justify-center" delay={120}>
-          <ButtonLink href="/contact-us">Book Appointment</ButtonLink>
+          <BookAppointmentButton />
         </Reveal>
       </div>
     </section>

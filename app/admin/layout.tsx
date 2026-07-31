@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   title: 'Admin',
   robots: { index: false, follow: false },
   icons: {
-    icon: '/images/fab.png',
-    shortcut: '/images/fab.png',
-    apple: '/images/fab.png',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
   },
 };
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 
+import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 import ButtonLink from '@/components/ui/ButtonLink';
 import PageHero from '@/components/ui/PageHero';
 import Reveal from '@/components/ui/Reveal';
@@ -67,7 +68,7 @@ export default function OurClinicPage() {
             </p>
 
             <div className="mt-10 flex justify-center">
-              <ButtonLink href="/contact-us">Book Appointment</ButtonLink>
+              <BookAppointmentButton />
             </div>
           </Reveal>
 

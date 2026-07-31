@@ -1,3 +1,4 @@
+import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 import ButtonLink from '@/components/ui/ButtonLink';
 import PageHero from '@/components/ui/PageHero';
 import Reveal from '@/components/ui/Reveal';
@@ -43,7 +44,11 @@ export default function SimplePage({
             ))}
 
             <div className="mt-10">
-              <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
+              {cta.label.toLowerCase().includes('book appointment') ? (
+                <BookAppointmentButton>{cta.label}</BookAppointmentButton>
+              ) : (
+                <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
+              )}
             </div>
           </Reveal>
         </div>

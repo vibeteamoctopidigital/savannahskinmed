@@ -29,9 +29,9 @@ export async function generateMetadata(): Promise<Metadata> {
     // resolves to this (index, follow) unless a page overrides it.
     robots: { index: true, follow: true },
     icons: {
-      icon: settings.faviconUrl || '/images/fab.png',
-      shortcut: settings.faviconUrl || '/images/fab.png',
-      apple: settings.faviconUrl || '/images/fab.png',
+      icon: settings.faviconUrl || '/favicon.ico',
+      shortcut: settings.faviconUrl || '/favicon.ico',
+      apple: settings.faviconUrl || '/favicon.ico',
     },
     openGraph: {
       title: 'Savannah Age Management Medicine',

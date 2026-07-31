@@ -57,7 +57,7 @@ export function buildSiteSettingsFallback(): SiteSettingsData {
     bookingUrl: site.bookingUrl,
     copyrightText: 'Copyright © 2026 Savannah Age Management Medicine',
     logoUrl: '',
-    faviconUrl: '/images/fab.png',
+    faviconUrl: '/favicon.ico',
     googleAnalyticsId: '',
     metaPixelId: '',
     headerTrackingCode: '',

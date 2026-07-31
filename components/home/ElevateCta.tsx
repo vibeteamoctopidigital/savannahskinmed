@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import ButtonLink from '@/components/ui/ButtonLink';
+import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 import Reveal from '@/components/ui/Reveal';
 
 export default function ElevateCta() {
@@ -28,9 +28,7 @@ export default function ElevateCta() {
             Start your journey toward a more radiant, youthful appearance.
           </p>
 
-          <ButtonLink href="/contact-us" className="mt-9">
-            Book Appointment
-          </ButtonLink>
+          <BookAppointmentButton className="mt-9" />
         </Reveal>
       </div>
     </section>
