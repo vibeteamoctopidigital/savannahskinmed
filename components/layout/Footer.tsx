@@ -84,7 +84,7 @@ export default async function Footer() {
               {footer.locations.map((location) => (
                 <div key={location.city}>
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <p className="font-sans text-[14px] font-semibold text-navy">
+                    <p className="font-sans text-[14px] font-semibold text-black">
                       {location.city}
                     </p>
                     {location.badge && (
@@ -94,15 +94,15 @@ export default async function Footer() {
                     )}
                   </div>
 
-                  <p className="mt-2 flex items-start gap-2.5 text-[14px] text-navy">
+                  <p className="mt-2 flex items-start gap-2.5 text-[14px] text-black">
                     <PinIcon className="mt-[3px] h-4 w-4 shrink-0" />
                     <span>{location.addressLines.join(', ')}</span>
                   </p>
 
-                  <p className="mt-4 font-sans text-[13px] font-semibold text-navy">
+                  <p className="mt-4 font-sans text-[13px] font-semibold text-black">
                     Office Hours
                   </p>
-                  <p className="mt-1.5 flex items-start gap-2.5 text-[14px] text-navy">
+                  <p className="mt-1.5 flex items-start gap-2.5 text-[14px] text-black">
                     <ClockIcon className="mt-[3px] h-4 w-4 shrink-0" />
                     <span>
                       {location.hoursShort.map((entry, i) => (
@@ -126,7 +126,7 @@ export default async function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[14px] text-navy transition-colors duration-300 hover:text-rose-deep"
+                    className="text-[14px] text-black transition-colors duration-300 hover:text-rose-deep"
                   >
                     {link.label}
                   </Link>
@@ -143,7 +143,7 @@ export default async function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[14px] text-navy transition-colors duration-300 hover:text-rose-deep"
+                    className="text-[14px] text-black transition-colors duration-300 hover:text-rose-deep"
                   >
                     {link.label}
                   </Link>

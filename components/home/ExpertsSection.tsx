@@ -17,10 +17,12 @@ export default function ExpertsSection() {
       </div>
 
       <div className="flex items-center bg-cream px-6 py-16 sm:px-10 lg:px-[86px] lg:py-20">
-        <Reveal className="mx-auto  text-left">
+        <Reveal className="mx-auto max-w-[560px] text-left lg:max-w-none">
           <p className="eyebrow mb-4  text-black">Who We Are</p>
 
-          <h2 className="display-2">Experts In Aesthetic <br/> Excellence</h2>
+          <h2 className="display-2">
+            Experts In Aesthetic <br className="hidden lg:inline" /> Excellence
+          </h2>
 
           <p className="mt-6 text-[16px] leading-[1.8] lg:text-[14.5px] lg:leading-[1.9]">
             Committed to enhancing your beauty and confidence through advanced aesthetic
