@@ -6,9 +6,9 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef(null);
-  const autoPlayRef = useRef(null);
+  const autoPlayRef = useRef<any>(null);
   const isProgrammaticScroll = useRef(false);
-  const scrollTimeout = useRef(null);
+  const scrollTimeout = useRef<any>(null);
 
   const totalSlides = testimonials.length;
 
@@ -21,7 +21,7 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   }, [totalSlides]);
 
-  const goToSlide = useCallback((index) => {
+  const goToSlide = useCallback((index:any) => {
     setCurrentIndex(index);
   }, []);
 
@@ -38,7 +38,7 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
 
   // ─── Scroll to current slide ────────────────────────────────
   useEffect(() => {
-    const container = containerRef.current;
+    const container = containerRef.current as any
     if (!container) return;
 
     const slide = container.querySelector('.testimonial-slide');
@@ -55,7 +55,7 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
     });
 
     // Clear the flag after the scroll completes (or after a delay)
-    clearTimeout(scrollTimeout.current);
+    clearTimeout(scrollTimeout.current as any);
     scrollTimeout.current = setTimeout(() => {
       isProgrammaticScroll.current = false;
     }, 400); // matches smooth scroll duration
@@ -66,7 +66,7 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
     // Ignore if programmatic scroll or still dragging
     if (isProgrammaticScroll.current) return;
 
-    const container = containerRef.current;
+    const container = containerRef.current as any
     if (!container) return;
 
     const slide = container.querySelector('.testimonial-slide');
@@ -88,8 +88,8 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
   const [dragStartX, setDragStartX] = useState(0);
   const [scrollStart, setScrollStart] = useState(0);
 
-  const startDrag = (clientX) => {
-    const container = containerRef.current;
+  const startDrag = (clientX:any) => {
+    const container = containerRef.current as any;
     if (!container) return;
     setIsDragging(true);
     setIsPaused(true);
@@ -98,9 +98,9 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
     setScrollStart(container.scrollLeft);
   };
 
-  const moveDrag = (clientX) => {
+  const moveDrag = (clientX:any) => {
     if (!isDragging) return;
-    const container = containerRef.current;
+    const container = containerRef.current as any ;
     if (!container) return;
     const rect = container.getBoundingClientRect();
     const x = clientX - rect.left;
@@ -115,8 +115,8 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
   };
 
   // Mouse
-  const onMouseDown = (e) => startDrag(e.clientX);
-  const onMouseMove = (e) => moveDrag(e.clientX);
+  const onMouseDown = (e:any) => startDrag(e.clientX);
+  const onMouseMove = (e:any) => moveDrag(e.clientX);
   const onMouseUp = endDrag;
   const onMouseLeaveContainer = () => {
     if (isDragging) endDrag();
@@ -124,11 +124,11 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
   };
 
   // Touch
-  const onTouchStart = (e) => {
+  const onTouchStart = (e:any) => {
     const touch = e.touches[0];
     if (touch) startDrag(touch.clientX);
   };
-  const onTouchMove = (e) => {
+  const onTouchMove = (e:any) => {
     const touch = e.touches[0];
     if (touch) moveDrag(touch.clientX);
   };
@@ -149,12 +149,12 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        // onMouseLeave={handleMouseLeave as any}
         tabIndex={0}
         role="region"
         aria-label="Testimonials carousel"
       >
-        {testimonials.map((t) => (
+        {testimonials.map((t:any) => (
           <div
             key={t.name}
             className="testimonial-slide border border-gray-200 rounded-lg p-4 flex-shrink-0 snap-start w-[78%] xs:w-[70%] sm:w-[45%] lg:w-[31%] bg-white shadow-sm"
@@ -183,7 +183,7 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
 
       {/* Dots */}
       <div className="flex justify-center gap-2 mt-2">
-        {testimonials.map((_, index) => (
+        {testimonials.map((_:any, index:number) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
@@ -218,7 +218,7 @@ const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
   );
 };
 
-const StarIcon = ({ filled }) => (
+const StarIcon = ({ filled }: { filled: boolean }) => (
   <svg
     className={`w-3 h-3 ${filled ? 'text-yellow-400' : 'text-gray-300'}`}
     fill="currentColor"

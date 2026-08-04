@@ -103,13 +103,13 @@ export default function VaginalRejuvenationOfferings() {
               <Link href="/iv-infusion-therapy-vitamin-injections/" className="  flex items-center gap-2 font-medium cursor-pointer hover:text-gray-400 transition-colors">
         
                 
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
                 IV Infusion Therapy
               </Link>
               <BookAppointmentButton className="rounded-full bg-navy px-8 py-3 text-[13px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
               </BookAppointmentButton>
-              <Link href="/medical-grade-facials/" className=" flex items-center gap-2 font-medium cursor-pointer hover:text-gray-400 transition-colors">
+              <Link href="/medical-grade-Ffacials/" className=" flex items-center gap-2 font-medium cursor-pointer hover:text-gray-400 transition-colors">
                 Medical-Grade Facials  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
               </Link>
             </div>
