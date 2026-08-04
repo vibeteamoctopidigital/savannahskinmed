@@ -287,3 +287,39 @@ export function BloomIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function CreditCoinIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
+      <circle cx="16" cy="18.5" r="7.2" {...stroke} />
+      <path d="M16 14.7v7.6" {...stroke} />
+      <path
+        d="M18.3 16.4c-.4-.9-1.3-1.4-2.3-1.4-1.3 0-2.4.7-2.4 1.7 0 1 .9 1.4 2.4 1.7 1.5.3 2.4.8 2.4 1.9 0 1-1.1 1.7-2.4 1.7-1 0-1.9-.5-2.3-1.4"
+        {...stroke}
+      />
+      <path d="M17 10.5c1.2-2.3 3.4-3.8 5.2-4.2-.3 2.4-1.8 4.6-4 5.5" {...stroke} />
+    </svg>
+  );
+}
+
+export function SparkleClusterIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
+      <path d="M16 6.5 17.3 10.7 21.5 12 17.3 13.3 16 17.5 14.7 13.3 10.5 12 14.7 10.7 16 6.5Z" {...stroke} />
+      <path d="M23 17.5 23.7 19.8 26 20.5 23.7 21.2 23 23.5 22.3 21.2 20 20.5 22.3 19.8 23 17.5Z" {...stroke} />
+      <path d="M9.5 19 10 20.6 11.6 21.1 10 21.6 9.5 23.2 9 21.6 7.4 21.1 9 20.6 9.5 19Z" {...stroke} />
+    </svg>
+  );
+}
+
+export function GiftPerkIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
+      <rect x="8" y="14.5" width="16" height="11.5" rx="2" {...stroke} />
+      <path d="M8 19h16" {...stroke} />
+      <path d="M16 14.5v11.5" {...stroke} />
+      <path d="M16 14.5c-1.6 0-3-.9-3-2.2S13.6 10 15.2 10c1.3 0 .8 2.5.8 4.5Z" {...stroke} />
+      <path d="M16 14.5c1.6 0 3-.9 3-2.2S17.4 10 15.8 10c-1.3 0-.8 2.5-.8 4.5Z" {...stroke} />
+    </svg>
+  );
+}

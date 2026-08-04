@@ -35,7 +35,7 @@ export default function SectionHeading({
       )}
 
       <h2
-        className={`display-2 [text-wrap:initial] ${tone === 'white' ? 'text-white' : 'text-navy'}`}
+        className={`display-2 [text-wrap:initial]  ${tone === 'white' ? 'text-white' : 'text-navy'}`}
       >
         {title}
       </h2>

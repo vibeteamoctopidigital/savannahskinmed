@@ -92,6 +92,35 @@ export const locations: Location[] = [
   },
 ];
 
+/**
+ * Clinic slugs used to tag which offers run at which office. Kept separate from
+ * `locations` above because that list is keyed on `city` ("Savannah") while
+ * offers and the booking form both refer to the office as "Pooler".
+ */
+export type SpecialLocation = { slug: string; label: string };
+
+export const specialLocations: SpecialLocation[] = [
+  { slug: 'statesboro', label: 'Statesboro' },
+  { slug: 'pooler', label: 'Pooler' },
+];
+
+/**
+ * Normalizes the free-form `SpecialCard.locations` JSON column into known
+ * slugs. An empty result means "runs at every location", which is what every
+ * pre-existing row (locations = null) should keep doing.
+ */
+export function normalizeSpecialLocations(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+
+  const valid = new Set(specialLocations.map((l) => l.slug));
+  const slugs = value
+    .filter((entry): entry is string => typeof entry === 'string')
+    .map((entry) => entry.trim().toLowerCase())
+    .filter((entry) => valid.has(entry));
+
+  return [...new Set(slugs)];
+}
+
 export const socials = [
   { label: 'Facebook', href: 'https://www.facebook.com/SavannahAgeManagementMedicine', icon: 'facebook' as const },
   { label: 'Instagram', href: 'https://www.instagram.com/savannah_age_management', icon: 'instagram' as const },

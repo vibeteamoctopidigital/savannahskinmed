@@ -55,6 +55,8 @@ export default function LaserSkinRejuvenationPage() {
         imageAlt="A client receiving laser skin rejuvenation treatment"
         position="center"
       />
+
+      <div className="bg-[#F7F8F2]">
       
       <LaserRejuvenationOfferings />
       
@@ -65,10 +67,13 @@ export default function LaserSkinRejuvenationPage() {
         title="Results You Can See, Confidence You Can Feel"
         slides={laserRejuvenationSlides}
         labelStyle="bottom"
+        bg="bg-[#F1F3EC]"
       />
       
       <FaqAccordion faqs={laserRejuvenationFaqs} noTopPadding />
       
+</div>
+
       <ExpertProfile />
       
       <Testimonials />

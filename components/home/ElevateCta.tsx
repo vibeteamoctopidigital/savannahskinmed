@@ -16,10 +16,11 @@ export default function ElevateCta() {
 
       {/* Soft left scrim so the headline stays legible over the tan backdrop */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-black/22 via-black/5 to-transparent"
+        className="absolute inset-0 bg-gradient-to-r from-black/22 via-black/25 to-transparent"
         aria-hidden="true"
       />
-
+ <div className="absolute inset-0 bg-black/25 sm:hidden" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/12 to-black/22 sm:hidden" />
       <div className="shell relative z-10 py-16">
         <Reveal className="mx-auto container text-center sm:text-left">
           <h2 className="display-2 text-white text-shadow-hero text-[48px] ">Elevate And Enhance</h2>

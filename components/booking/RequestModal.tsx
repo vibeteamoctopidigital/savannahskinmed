@@ -36,7 +36,7 @@ function Field({
         autoComplete={autoComplete}
         placeholder={label}
         required
-        className="w-full rounded-lg border border-white/45 bg-transparent px-6 py-[18px] font-sans text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
+        className="w-full rounded-lg border border-white/45 bg-transparent px-5 py-3 font-sans text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
       />
     </div>
   );
@@ -54,7 +54,7 @@ function SelectField({
   placeholder?: string;
 }) {
   return (
-    <div className="relative rounded-lg border border-white/45 px-6 pb-[13px] pt-[11px] transition focus-within:border-white">
+    <div className="relative rounded-lg border border-white/45 px-5 pb-2 pt-1.5 transition focus-within:border-white">
       <label
         htmlFor={id}
         className="block font-sans text-[11px] font-extrabold uppercase tracking-[0.03em] text-white"
@@ -79,7 +79,7 @@ function SelectField({
           </option>
         ))}
       </select>
-      <div className="pointer-events-none absolute bottom-0 right-5 top-0 flex items-center pt-3 text-white">
+      <div className="pointer-events-none absolute bottom-0 right-5 top-0 flex items-center pt-2.5 text-white">
         <svg width="10" height="6" fill="none" viewBox="0 0 10 6">
           <path
             stroke="currentColor"
@@ -151,7 +151,7 @@ export default function RequestModal({ open, onClose }: RequestModalProps) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/40 px-4 py-8 backdrop-blur-md sm:py-12"
+      className="fixed inset-0 z-[100]  h-screen flex items-start justify-center overflow-y-auto bg-black/40 px-4 py-6 backdrop-blur-md sm:py-8"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -161,14 +161,14 @@ export default function RequestModal({ open, onClose }: RequestModalProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="booking-title"
-        className="relative w-full max-w-[600px] rounded-2xl bg-navy px-6 pb-12 pt-16 shadow-menu sm:px-14"
+        className="relative w-full max-w-[600px] my-auto rounded-2xl bg-navy px-5 pb-8 pt-10 shadow-menu sm:px-12"
       >
         <button
           ref={closeRef}
           type="button"
           onClick={onClose}
           aria-label="Close form"
-          className="absolute right-6 top-6 grid h-11 w-11 place-items-center rounded-full bg-white/25 text-white transition-colors hover:bg-white/40"
+          className="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-full bg-white/25 text-white transition-colors hover:bg-white/40"
         >
           <CloseIcon className="h-5 w-5" />
         </button>
@@ -178,20 +178,20 @@ export default function RequestModal({ open, onClose }: RequestModalProps) {
         </h2>
 
         {sent ? (
-          <div className="mt-10 text-center">
+          <div className="mt-8 text-center">
             <p className="text-[16px] leading-[1.8] text-white">
               Thank you — your request has been received. Our team will contact you shortly to provide more details.
             </p>
             <button
               type="button"
               onClick={onClose}
-              className="mt-8 w-full rounded-full bg-teal px-8 py-[19px] font-sans text-[14px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark"
+              className="mt-6 w-full rounded-full bg-teal px-8 py-[17px] font-sans text-[14px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark"
             >
               Close
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="mt-9 space-y-4">
+          <form onSubmit={handleSubmit} className="mt-7 space-y-3">
             <Field id="name" label="Name" autoComplete="name" />
             <Field id="email" label="E-mail Address" type="email" autoComplete="email" />
             <Field id="phone" label="Phone" type="tel" autoComplete="tel" />
@@ -209,9 +209,9 @@ export default function RequestModal({ open, onClose }: RequestModalProps) {
               <textarea
                 id="message"
                 name="message"
-                rows={4}
+                rows={3}
                 placeholder="Message"
-                className="w-full resize-y rounded-lg border border-white/45 bg-transparent px-6 py-[18px] font-sans text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
+                className="w-full resize-y rounded-lg border border-white/45 bg-transparent px-5 py-3 font-sans text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
               />
             </div>
 
@@ -224,16 +224,16 @@ export default function RequestModal({ open, onClose }: RequestModalProps) {
             <button
               type="submit"
               disabled={submitting}
-              className="!mt-8 w-full rounded-full bg-teal px-8 py-[19px] font-sans text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark disabled:opacity-60"
+              className="!mt-6 w-full rounded-full bg-teal px-8 py-[17px] font-sans text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark disabled:opacity-60"
             >
               {submitting ? 'Sending…' : 'Next Step'}
             </button>
           </form>
         )}
 
-        <hr className="mt-12 border-white/25" />
+        <hr className="mt-8 border-white/25" />
 
-        <p className="mt-8 text-[9px] uppercase leading-relaxed tracking-widest text-white/50">
+        <p className="mt-5 text-[9px] uppercase leading-relaxed tracking-widest text-white/50">
           BY COMPLETING AND SUBMITTING THIS FORM, I HEREBY PROVIDE EXPLICIT WRITTEN CONSENT TO
           RECEIVE COMMUNICATIONS THROUGH TEXT MESSAGES AND PHONE CALLS, INCLUDING THOSE TO WIRELESS
           NUMBERS OR NUMBERS REGISTERED ON AN INTERNAL DO NOT CALL REGISTRY. I ACKNOWLEDGE THAT

@@ -8,6 +8,7 @@ import ExpertProfile from '@/components/services/ExpertProfile';
 import Testimonials from '@/components/home/Testimonials';
 import ElevateCta from '@/components/home/ElevateCta';
 import { buildPageMetadata, FaqJsonLd, PageJsonLd } from '@/lib/seo';
+import LaserHairRemovalOfferings from '@/components/LaserHairRemoveServices';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata('/laser-hair-removal');
@@ -49,7 +50,8 @@ export default function LaserHairRemovalPage() {
         position="center"
       />
       
-      <LaserOfferingsList />
+      <LaserHairRemovalOfferings/>
+      {/* <LaserOfferingsList /> */}
       
       <BeforeAfter 
         eyebrow="WHAT TO EXPECT BEFORE AND AFTER"

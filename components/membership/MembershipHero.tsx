@@ -17,13 +17,13 @@ export default function MembershipHero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 sm:bg-gradient-to-r sm:from-black/40 sm:via-black/10 sm:to-transparent" />
       <div className="absolute inset-0 bg-black/10" />
 
-      <div className="shell relative z-10 pt-10 lg:pt-20">
-        <div className="mx-auto max-w-[780px] text-center">
+      <div className="mx-auto relative z-10 pt-10 lg:pt-20">
+        <div className="text-center">
           <h1 className="display-1 animate-fadeUp text-white text-shadow-hero [text-wrap:initial] [animation-delay:100ms]">
             Aesthetic Membership Program
           </h1>
 
-          <p className="mx-auto mt-7 max-w-[645px] animate-fadeUp text-[20px] leading-[1.7] text-white text-shadow-hero [animation-delay:150ms]">
+          <p className="mx-auto mt-7 max-w-[670px] animate-fadeUp text-[20px] leading-[1.7] text-white text-shadow-hero [animation-delay:150ms]">
             A smarter way to maintain your aesthetic results with exclusive member pricing, flexible monthly credits, and a plan designed around you.
           </p>
 
@@ -32,6 +32,6 @@ export default function MembershipHero() {
           </div>
         </div>
       </div>
-    </section>
+  </section>
   );
 }

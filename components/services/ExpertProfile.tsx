@@ -1,32 +1,28 @@
 import Image from 'next/image';
 import Reveal from '@/components/ui/Reveal';
 
-export default function ExpertProfile() {
+export default function ExpertProfile({}) {
   return (
     <section className="section bg-white">
-      <div className="shell">
+      
         <Reveal>
-          <div className="mx-auto flex max-w-[1000px] flex-col items-center gap-12 md:flex-row md:items-start md:gap-16">
-            <div className="group relative shrink-0 overflow-hidden rounded-full border-8 border-cream shadow-xl transition-shadow duration-500 hover:shadow-2xl md:order-1">
-              {/* Using a placeholder portrait image from the existing assets */}
+          <div className="mx-auto flex container flex-col items-start gap-10 md:flex-row md:gap-16">
+            <div className="relative shrink-0 overflow-hidden rounded-full">
               <div className="relative h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px]">
                 <Image
                   src="/images/photo-content-10-img.jpg"
                   alt="Rebecca Spacek - Licensed Aesthetician"
                   fill
                   sizes="(max-width: 768px) 340px, 400px"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="object-cover object-top"
                 />
               </div>
             </div>
 
-            <div className="text-center md:order-2 md:pt-8">
-              <h2 className="font-serif text-[36px] text-navy md:text-[44px]">Rebecca Spacek</h2>
-              <p className="eyebrow mt-3 text-navy font-semibold uppercase tracking-widest2">
-                Laser Practitioner &amp; Aesthetician
-              </p>
+            <div className="text-left md:pt-2">
+              <h2 className="font-serif text-[36px] text-navy md:text-[42px]">Rebecca Spacek</h2>
 
-              <div className="mt-8 space-y-6 text-[16px] leading-[1.8] text-muted">
+              <div className="mt-6 space-y-5 text-[16px] leading-[1.8] text-muted">
                 <p>
                   Rebecca Spacek is an Assistant Cosmetic Laser Practitioner, a Master Cosmetologist, and has been a professional Aesthetician and Certified Lasographer for 22 years.
                 </p>
@@ -37,7 +33,7 @@ export default function ExpertProfile() {
             </div>
           </div>
         </Reveal>
-      </div>
+     
     </section>
   );
 }

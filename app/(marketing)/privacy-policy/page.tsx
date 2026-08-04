@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 /* The notice renders its inline <span> copy in a soft blue and its <strong>
    copy in navy; links sit a shade brighter. Both tokens live here so the
    colour is changed in one place. */
-const blue = 'text-[#5A7DA6]';
+const blue = 'text-[#000000]';
 const linkCls =
   'text-blue-600 underline underline-offset-2 decoration-blue-600/50 transition-colors hover:text-blue-800 hover:decoration-blue-800 break-words';
 
@@ -136,14 +136,14 @@ export default function PrivacyPolicyPage() {
 
             <p className={`mb-6 ${blue}`}>
               This privacy notice for Savannah Age Management Medicine (&ldquo;
-              <strong className="font-bold text-navy">Company</strong>,&rdquo; &ldquo;
-              <strong className="font-bold text-navy">we</strong>,&rdquo; &ldquo;
-              <strong className="font-bold text-navy">us</strong>,&rdquo; or &ldquo;
-              <strong className="font-bold text-navy">our</strong>&rdquo;), describes how and why we
+              <strong className="font-bold text-black">Company</strong>,&rdquo; &ldquo;
+              <strong className="font-bold text-black">we</strong>,&rdquo; &ldquo;
+              <strong className="font-bold text-black">us</strong>,&rdquo; or &ldquo;
+              <strong className="font-bold text-black">our</strong>&rdquo;), describes how and why we
               might collect, store, use, and/or share (&ldquo;
-              <strong className="font-bold text-navy">process</strong>&rdquo;) your information when
+              <strong className="font-bold text-black">process</strong>&rdquo;) your information when
               you use our services (&ldquo;
-              <strong className="font-bold text-navy">Services</strong>&rdquo;), such as when you:
+              <strong className="font-bold text-black">Services</strong>&rdquo;), such as when you:
             </p>
 
             <ul className={`mb-6 list-disc space-y-2 pl-6 ${blue}`}>

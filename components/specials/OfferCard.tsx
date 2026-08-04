@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import ClaimButton from '@/components/booking/ClaimButton';
 import type { SpecialCardData } from '@/lib/data/shape';
+import BookAppointmentButton from '../booking/BookAppointmentButton';
 
 const ctaClassName =
   'rounded-full bg-navy px-8 py-3 text-[12px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep';
@@ -19,6 +20,7 @@ export default function OfferCard({ card }: { card: SpecialCardData }) {
 
   return (
     <div className="group overflow-hidden rounded-[18px] bg-white shadow-card transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-navy/15">
+   
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={imageSrc}
@@ -54,7 +56,7 @@ export default function OfferCard({ card }: { card: SpecialCardData }) {
               offerId={card.id}
               offerLabel={offerLabel}
             >
-              {card.cta}
+              { card.variant === 'TIERS' ?  "Book Appointment" : card.cta} 
             </ClaimButton>
           </>
         ) : (
@@ -71,8 +73,9 @@ export default function OfferCard({ card }: { card: SpecialCardData }) {
               offerId={card.id}
               offerLabel={offerLabel}
             >
-              {card.cta}
+              
             </ClaimButton>
+
           </>
         )}
       </div>

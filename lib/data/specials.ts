@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import { normalizeSpecialLocations } from '@/lib/site';
 import {
   buildMembershipPromoFallback,
   buildSpecialsFallback,
@@ -47,6 +48,7 @@ export async function getSpecialsPageData(): Promise<SpecialsPageData> {
         headline: card.headline,
         description: card.description,
         cta: card.cta,
+        locations: normalizeSpecialLocations(card.locations),
         tiers: card.tiers.map((t) => ({ label: t.label, detail: t.detail })),
       })),
       membershipPromo: {

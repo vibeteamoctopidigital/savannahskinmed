@@ -34,27 +34,28 @@ const reviews = [
   },
 ];
 
-/** Stacked and centred on phones, left-aligned from md up. */
 function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & { className?: string }) {
   return (
     <article
-      className={`flex h-full flex-col items-center rounded-2xl bg-white p-8 text-center transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl md:items-start md:rounded-xl md:p-9 md:text-left ${className}`}
+      className={`flex h-full flex-col items-center rounded-2xl bg-white p-6 text-center transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl sm:p-8 md:items-start md:rounded-xl md:p-9 md:text-left ${className}`}
     >
-      <QuoteMark className="h-8 w-11 text-teal md:h-6 md:w-8" />
+      <QuoteMark className="h-6 w-8 text-teal sm:h-8 sm:w-11 md:h-6 md:w-8" />
 
-      <p className="mt-6 flex-1 text-[16px] leading-[1.75] text-muted md:mt-5 md:text-[13.5px] md:leading-[1.85]">
+      <p className="mt-5 flex-1 text-[15px] leading-[1.7] text-ink sm:text-[16px] sm:leading-[1.75] md:mt-5 md:text-[13.5px] md:leading-[1.85]">
         {quote}
       </p>
 
-      <div className="mt-8 flex flex-col items-center gap-3 md:mt-7 md:flex-row md:items-center md:gap-3.5">
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white shadow-[0_2px_10px_rgba(19,40,92,0.16)] md:h-9 md:w-9">
-          <GoogleGlyph className="h-[22px] w-[22px] md:h-[18px] md:w-[18px]" />
+      <div className="mt-6 flex flex-col items-center gap-3 sm:mt-8 md:mt-7 md:flex-row md:items-center md:gap-3.5">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white shadow-[0_2px_10px_rgba(19,40,92,0.16)] sm:h-11 sm:w-11 md:h-9 md:w-9">
+          <GoogleGlyph className="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px] md:h-[18px] md:w-[18px]" />
         </span>
         <div>
-          <p className="font-sans text-[17px] font-semibold text-navy md:text-[14px]">{name}</p>
-          <div className="mt-1 flex justify-center gap-[3px] text-[#F5A623] md:mt-0.5 md:justify-start">
+          <p className="font-sans text-base font-semibold text-navy sm:text-[17px] md:text-[14px]">
+            {name}
+          </p>
+          <div className="mt-1 flex justify-center gap-[2px] text-[#F5A623] sm:gap-[3px] md:mt-0.5 md:justify-start">
             {Array.from({ length: 5 }).map((_, i) => (
-              <StarIcon key={i} className="h-[18px] w-[18px] md:h-3.5 md:w-3.5" />
+              <StarIcon key={i} className="h-4 w-4 sm:h-[18px] sm:w-[18px] md:h-3.5 md:w-3.5" />
             ))}
           </div>
         </div>
@@ -70,7 +71,7 @@ export default function Testimonials() {
   const scrollTo = (i: number) => {
     if (!scrollRef.current) return;
     const childWidth = (scrollRef.current.children[0] as HTMLElement)?.offsetWidth || 0;
-    const gap = 24; // gap-6 is 24px
+    const gap = 24; // gap-6
     scrollRef.current.scrollTo({ left: i * (childWidth + gap), behavior: 'smooth' });
   };
 
@@ -100,13 +101,9 @@ export default function Testimonials() {
   const rotate = (step: number) => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    
-    // Check boundaries
     if (step === -1 && index === 0) {
-      // jump to end
       scrollTo(reviews.length - 1);
     } else if (step === 1 && scrollLeft + clientWidth >= scrollWidth - 10) {
-      // jump to start
       scrollTo(0);
     } else {
       scrollTo(index + step);
@@ -114,83 +111,84 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="pb-16 sm:pb-20 lg:pb-[104px]">
-      <div className="shell-wide">
-        <div className="relative overflow-hidden rounded-[26px] bg-rose px-6 py-14 sm:px-10 lg:px-16 lg:py-[104px]">
-          {/* The site's own rose panel artwork — a faint helix watermark */}
-          <Image
-            src="/images/contact-bg.jpg"
-            alt=""
-            fill
-            sizes="(max-width: 1760px) 100vw, 1700px"
-            className="object-cover"
-            aria-hidden="true"
-          />
+    <section className="relative overflow-hidden bg-rose py-12 sm:py-14 lg:py-[104px]">
+      {/* Full-bleed photo, tinted with the panel's own rose so it reads as a
+          colored band with a faint portrait watermark, not a bare photo. */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/contact-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-90"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-rose/80 mix-blend-multiply" aria-hidden="true" />
+        <div className="absolute inset-0 bg-rose/25" aria-hidden="true" />
+      </div>
 
-          <Reveal className="relative z-10">
-            {/* Centered stack at every breakpoint; arrows sit alongside from lg. */}
-            <div className="flex flex-col items-center gap-8 text-center lg:flex-row lg:items-end lg:justify-between">
-              <div className="lg:max-w-[660px]">
-                <p className="eyebrow mb-4 text-white/85">Patient Testimonials</p>
-                <h2 className="display-2 text-white [text-wrap:initial]">
-                  Real Results, True Confidence
-                </h2>
-                <p className="mx-auto mt-5 max-w-[420px] text-[16px] leading-[1.75] text-white/90 lg:text-[14.5px] lg:leading-[1.85]">
-                  Our clients love their transformations. See how we&rsquo;ve helped them look and
-                  feel their best.
-                </p>
+      <div className="shell-wide relative z-10 px-4 sm:px-6 lg:px-16">
+        <Reveal>
+          <div className="flex flex-col items-center gap-6 text-center sm:gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex items-start flex-col gap-2 sm:gap-3 lg:gap-2">
+              <p className="eyebrow mb-3 text-white sm:mb-4">Patient Testimonials</p>
+              <h2 className="display-2 text-white text-shadow-hero text-3xl sm:text-4xl lg:text-[44px] xl:text-5xl [text-wrap:initial]">
+                Real Results, True Confidence
+              </h2>
+              <p className=" mt-4 text-[15px] leading-[1.7] text-white sm:mt-5 sm:text-[16px] sm:leading-[1.75] lg:text-[14.5px] lg:leading-[1.85]">
+                Our clients love their transformations. See how we&rsquo;ve helped them look and
+                feel their best.
+              </p>
+            </div>
+
+            <div className="flex gap-3 sm:gap-4 lg:gap-3">
+              <button
+                type="button"
+                onClick={() => rotate(-1)}
+                aria-label="Previous testimonial"
+                className="grid h-11 w-11 place-items-center rounded-full bg-white text-rose transition-colors hover:bg-cream sm:h-[52px] sm:w-[52px] lg:h-10 lg:w-10"
+              >
+                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 lg:h-4 lg:w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => rotate(1)}
+                aria-label="Next testimonial"
+                className="grid h-11 w-11 place-items-center rounded-full bg-white text-rose transition-colors hover:bg-cream sm:h-[52px] sm:w-[52px] lg:h-10 lg:w-10"
+              >
+                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 lg:h-4 lg:w-4" />
+              </button>
+            </div>
+          </div>
+
+          <div
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="mt-8 grid grid-flow-col auto-cols-[100%] gap-6 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] sm:mt-10 md:auto-cols-[calc(50%-12px)] lg:mt-14 lg:auto-cols-[calc(33.333333%-16px)]"
+            aria-live="polite"
+          >
+            {reviews.map((review) => (
+              <div key={review.name} className="snap-start h-full">
+                <ReviewCard {...review} />
               </div>
+            ))}
+          </div>
 
-              <div className="flex gap-4 lg:gap-3">
-                <button
-                  type="button"
-                  onClick={() => rotate(-1)}
-                  aria-label="Previous testimonial"
-                  className="grid h-[52px] w-[52px] place-items-center rounded-full bg-white text-rose transition-colors hover:bg-cream lg:h-10 lg:w-10"
-                >
-                  <ChevronLeft className="h-5 w-5 lg:h-4 lg:w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => rotate(1)}
-                  aria-label="Next testimonial"
-                  className="grid h-[52px] w-[52px] place-items-center rounded-full bg-white text-rose transition-colors hover:bg-cream lg:h-10 lg:w-10"
-                >
-                  <ChevronRight className="h-5 w-5 lg:h-4 lg:w-4" />
-                </button>
-              </div>
-            </div>
-
-            <div
-              ref={scrollRef}
-              onScroll={handleScroll}
-              className="mt-10 grid grid-flow-col auto-cols-[100%] md:auto-cols-[calc(50%-12px)] lg:auto-cols-[calc(33.333333%-16px)] gap-6 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:mt-14"
-              aria-live="polite"
-            >
-              {reviews.map((review) => (
-                <div key={review.name} className="snap-start h-full">
-                  <ReviewCard {...review} />
-                </div>
-              ))}
-            </div>
-
-            {/* Progress dots */}
-            <div className="mt-8 flex justify-center gap-2">
-              {reviews.map((review, i) => (
-                <button
-                  key={review.name}
-                  type="button"
-                  onClick={() => scrollTo(i)}
-                  aria-label={`Show testimonial ${i + 1}`}
-                  aria-current={i === index}
-                  className={`h-[5px] rounded-full transition-all duration-300 ${
-                    i === index ? 'w-10 bg-white' : 'w-6 bg-white/45'
-                  }`}
-                />
-              ))}
-            </div>
-          </Reveal>
-        </div>
+          <div className="mt-6 flex justify-center gap-2 sm:mt-8">
+            {reviews.map((review, i) => (
+              <button
+                key={review.name}
+                type="button"
+                onClick={() => scrollTo(i)}
+                aria-label={`Show testimonial ${i + 1}`}
+                aria-current={i === index}
+                className={`h-[5px] rounded-full transition-all duration-300 ${
+                  i === index ? 'w-8 bg-white sm:w-10' : 'w-5 bg-white/45 sm:w-6'
+                }`}
+              />
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

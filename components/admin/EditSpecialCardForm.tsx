@@ -13,6 +13,7 @@ import {
 } from '@/app/admin/dashboard/content/specials/actions';
 import { alertError, alertSuccess } from '@/lib/adminAlerts';
 import { cardClass, dangerBtn, inputClass, primaryBtn, toSlug } from '@/lib/adminUi';
+import { normalizeSpecialLocations, specialLocations } from '@/lib/site';
 
 type Tier = {
   id?: string;
@@ -32,6 +33,8 @@ type SpecialCardData = {
   cta: string;
   sortOrder: number;
   isActive: boolean;
+  /** Raw JSON column — normalized to known slugs on load. */
+  locations?: unknown;
   tiers: Tier[];
 };
 
@@ -48,6 +51,9 @@ export default function EditSpecialCardForm({ card, isNew = false }: Props) {
   const [active, setActive] = useState(card.isActive);
   const [variant, setVariant] = useState(card.variant || 'STORY');
   const [title, setTitle] = useState(card.title || '');
+  const [cardLocations, setCardLocations] = useState<string[]>(() =>
+    normalizeSpecialLocations(card.locations),
+  );
   const [slug, setSlug] = useState(isNew ? '' : card.id);
   const slugManuallyEdited = useRef(false);
 
@@ -83,6 +89,12 @@ export default function EditSpecialCardForm({ card, isNew = false }: Props) {
     setTiers(updated);
   };
 
+  const toggleLocation = (slug: string) => {
+    setCardLocations((current) =>
+      current.includes(slug) ? current.filter((s) => s !== slug) : [...current, slug],
+    );
+  };
+
   const handleSave = () => {
     if (!formRef.current) return;
     const formData = new FormData(formRef.current);
@@ -92,6 +104,10 @@ export default function EditSpecialCardForm({ card, isNew = false }: Props) {
       formData.append('tierLabels', tier.label);
       formData.append('tierDetails', tier.detail);
     });
+
+    // Always sent, so clearing every location is saved as "all locations".
+    formData.set('hasLocations', 'true');
+    cardLocations.forEach((slug) => formData.append('locations', slug));
 
     startSaveTransition(async () => {
       try {
@@ -317,6 +333,46 @@ export default function EditSpecialCardForm({ card, isNew = false }: Props) {
                     />
                   </button>
                 </div>
+              </div>
+
+              {/* Location targeting */}
+              <div className="space-y-3 rounded-2xl border border-navy/10 bg-navy/[0.015] p-5">
+                <div>
+                  <h3 className="font-serif text-[16px] font-semibold text-navy">
+                    Available At
+                  </h3>
+                  <p className="text-[12px] text-muted">
+                    Controls the &ldquo;Select Your Location&rdquo; filter on the public specials
+                    page. Leave every option unchecked to run this offer at all locations.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  {specialLocations.map((location) => {
+                    const checked = cardLocations.includes(location.slug);
+                    return (
+                      <button
+                        key={location.slug}
+                        type="button"
+                        onClick={() => toggleLocation(location.slug)}
+                        aria-pressed={checked}
+                        className={`rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
+                          checked
+                            ? 'border-navy bg-navy text-white'
+                            : 'border-navy/15 bg-white text-navy hover:border-navy/40'
+                        }`}
+                      >
+                        {location.label}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <p className="text-[12px] text-muted">
+                  {cardLocations.length === 0
+                    ? 'Currently showing at every location.'
+                    : `Currently showing at ${cardLocations.length} of ${specialLocations.length} locations.`}
+                </p>
               </div>
 
               {/* Tiers / Bullets Management */}

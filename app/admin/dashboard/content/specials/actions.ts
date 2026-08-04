@@ -4,6 +4,17 @@ import { revalidatePath } from 'next/cache';
 
 import { prisma } from '@/lib/prisma';
 import { SpecialCardVariant } from '@/lib/generated/prisma_v2/client';
+import { normalizeSpecialLocations } from '@/lib/site';
+
+/**
+ * Reads the location checkboxes. Forms that do not carry the `hasLocations`
+ * marker are left untouched, so an older form post cannot silently wipe an
+ * offer's targeting.
+ */
+function readLocations(formData: FormData): string[] | undefined {
+  if (formData.get('hasLocations') !== 'true') return undefined;
+  return normalizeSpecialLocations(formData.getAll('locations').map(String));
+}
 
 function revalidateSpecialsPage() {
   revalidatePath('/specials');
@@ -62,6 +73,7 @@ export async function saveSpecialCardAction(formData: FormData): Promise<void> {
   const cta = String(formData.get('cta') || 'Claim Offer').trim();
   const sortOrder = parseInt(String(formData.get('sortOrder') || '1'), 10);
   const isActive = formData.get('isActive') === 'true' || formData.get('isActive') === 'on';
+  const locations = readLocations(formData);
 
   // Read tier arrays if present
   const tierIds = formData.getAll('tierIds').map(String);
@@ -82,6 +94,7 @@ export async function saveSpecialCardAction(formData: FormData): Promise<void> {
         cta,
         sortOrder,
         isActive,
+        ...(locations ? { locations } : {}),
       },
       create: {
         id,
@@ -94,6 +107,7 @@ export async function saveSpecialCardAction(formData: FormData): Promise<void> {
         cta,
         sortOrder,
         isActive,
+        locations: locations ?? [],
       },
     });
 
@@ -158,6 +172,7 @@ export async function createSpecialCardAction(formData: FormData): Promise<void>
   const cta = String(formData.get('cta') || 'Claim Offer').trim();
   const sortOrder = parseInt(String(formData.get('sortOrder') || '1'), 10);
   const isActive = formData.get('isActive') === 'true' || formData.get('isActive') === 'on';
+  const locations = readLocations(formData);
 
   // Read tier arrays if present
   const tierLabels = formData.getAll('tierLabels').map(String);
@@ -176,6 +191,7 @@ export async function createSpecialCardAction(formData: FormData): Promise<void>
         cta,
         sortOrder,
         isActive,
+        locations: locations ?? [],
       },
     });
 

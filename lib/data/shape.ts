@@ -138,6 +138,8 @@ export type SpecialCardData = {
   headline: string | null;
   description: string | null;
   cta: string;
+  /** Clinic slugs this offer runs at. Empty = every location. */
+  locations: string[];
   tiers: SpecialTierData[];
 };
 
@@ -169,6 +171,8 @@ function toSpecialCardData(card: StaticSpecialCard): SpecialCardData {
     title: 'title' in card ? card.title ?? null : null,
     eyebrow: 'eyebrow' in card ? card.eyebrow ?? null : null,
     cta: card.cta,
+    // The static fallback deck is not location-tagged, so it shows everywhere.
+    locations: [] as string[],
   };
 
   if (card.variant === 'tiers') {

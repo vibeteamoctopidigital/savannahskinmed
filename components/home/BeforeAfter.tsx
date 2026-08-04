@@ -20,6 +20,8 @@ type BeforeAfterProps = {
   eyebrow?: string;
   slides?: BeforeAfterSlide[];
   labelStyle?: 'bottom' | 'pill';
+  bg?:string
+
 };
 
 const defaultSlides: BeforeAfterSlide[] = [
@@ -38,6 +40,7 @@ export default function BeforeAfter({
   eyebrow = 'Before & After Procedures',
   slides = defaultSlides,
   labelStyle = 'bottom',
+  bg,
 }: BeforeAfterProps) {
   const [index, setIndex] = useState(0);
   const [pos, setPos] = useState(50);
@@ -75,8 +78,8 @@ export default function BeforeAfter({
   const slide = slides[index];
 
   return (
-    <section className="section bg-white pt-0 lg:pt-0">
-      <div className="shell">
+    <section className={`section ${bg || 'bg-white'} pt-4 lg:pt-8`}>
+
         <Reveal>
           <SectionHeading
             eyebrow={eyebrow}
@@ -219,7 +222,7 @@ export default function BeforeAfter({
             {`Result ${index + 1} of ${slides.length}: ${slide.procedure}`}
           </p>
         </div>
-      </div>
+   
     </section>
   );
 }

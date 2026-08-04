@@ -32,6 +32,7 @@ export default async function EditSpecialCardPage({ params }: Props) {
           cta: 'Claim Offer',
           sortOrder: 1,
           isActive: true,
+          locations: [],
           tiers: [
             { label: 'Standard Option', detail: 'Includes treatment consultation', sortOrder: 0 },
           ],

@@ -32,44 +32,85 @@ const offerings = [
 
 export default function VaginalRejuvenationOfferings() {
   return (
-    <section id="offerings" className="section bg-mist pt-0 lg:pt-0">
-      <div className="shell relative z-20 -mt-16 sm:-mt-24 lg:-mt-32">
+    <section id="offerings" className="section bg-mist pt-8 lg:pt-16">
+      <div className="shell relative ">
         <Reveal>
-          <div className="mx-auto max-w-[900px] rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
+          <div className="mx-auto container rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
             <div className="text-center">
-              <h2 className="display-3 mb-4 text-navy">Vaginal Rejuvenation Offerings</h2>
+              <h2 className="display-3 mb-4 font-semibold text-navy">
+                Vaginal Rejuvenation Offerings
+              </h2>
               <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
                 In-office rejuvenation treatments help stimulate blood flow, regeneration in the vaginal region. Treatment is delivered using a small wand, which is inserted into the vagina and gently rotated, delivering pulses to the surrounding tissues.
               </p>
-              <div className="mx-auto mt-8 inline-flex rounded-full bg-cream px-8 py-3">
-                <span className="font-sans text-[15px] font-bold tracking-widest text-navy">
-                  Vaginal rejuvenation offers a variety of benefits, including the following:
-                </span>
+              <div className="mx-auto mt-8 w-full rounded-full bg-slate-100 py-4 text-center">
+                <span className="font-sans text-[15px] font-bold text-navy">Vaginal rejuvenation offers a variety of benefits, including the following:</span>
               </div>
             </div>
 
-            <div className="mt-12 flex flex-col gap-8 text-[15.5px] leading-[1.8] text-ink text-center md:text-left">
-              {offerings.map((offering, i) => (
-                <div key={i}>
-                  <h3 className="font-sans text-[17px] font-bold text-navy">
-                    {offering.title}
-                  </h3>
-                  <p className="mt-2 text-muted">
-                    {offering.description}
-                  </p>
-                </div>
-              ))}
+            <div className="mt-12 flex flex-col w-[80%] mx-auto gap-8 text-[15.5px] leading-[1.8] text-ink">
+              <div>
+                <h3 className="font-sans text-[22px] font-bold text-black">
+                 Vaginal Tightening & Incontinence Reduction
+                </h3>
+                <p className="mt-2 text-black">
+                 Increase vaginal tightness and reduce symptoms of incontinence, improving both physical function and quality of life.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-sans text-[22px] font-bold text-black">
+                 Elasticity & Strength Improvement
+                </h3>
+                <p className="mt-2 text-black">
+                 Restores vaginal elasticity and strength, helping to reduce laxity and providing a firmer, more youthful appearance.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-sans text-[22px] font-bold text-black">
+               Reduction of Loose Skin
+                </h3>
+                <p className="mt-2 text-black">
+                  Effectively reduces the appearance of loose skin for a more toned and firm vaginal area.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-sans text-[18px] font-bold text-black">
+                 Vaginal Dryness Treatment
+                </h3>
+                <p className="mt-2 text-black">
+                 Helps alleviates dryness, increasing comfort and moisture for a more pleasant, natural sensation.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-sans text-[18px] font-bold text-black">
+                 Improved Vaginal Sensation
+                </h3>
+                <p className="mt-2 text-black">
+                Enhances sensation, improving sexual comfort and intimacy, restoring confidence and pleasure.
+                </p>
+              </div>
+
+             
+
+              
             </div>
-            
+
             <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
-              <Link href="/iv-infusion-therapy-vitamin-injections" className="font-medium cursor-pointer hover:text-rose transition-colors">
-                &larr; IV INFUSION THERAPY
+              <Link href="/iv-infusion-therapy-vitamin-injections/" className="  flex items-center gap-2 font-medium cursor-pointer hover:text-gray-400 transition-colors">
+        
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+                IV Infusion Therapy
               </Link>
               <BookAppointmentButton className="rounded-full bg-navy px-8 py-3 text-[13px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
               </BookAppointmentButton>
-              <Link href="/medical-grade-facials" className="font-medium cursor-pointer hover:text-rose transition-colors">
-                MEDICAL-GRADE FACIALS &rarr;
+              <Link href="/medical-grade-facials/" className=" flex items-center gap-2 font-medium cursor-pointer hover:text-gray-400 transition-colors">
+                Medical-Grade Facials  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
               </Link>
             </div>
           </div>

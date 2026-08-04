@@ -27,8 +27,9 @@ export default function InjectablesPage() {
         imageAlt="A client receiving an injectable treatment"
         position="center 35%"
       />
-      
       <InjectablesTreatments />
+      
+      {/* <InjectablesTreatments /> */}
       
       <BeforeAfter 
         eyebrow="BEFORE & AFTER PROCEDURES"

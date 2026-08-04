@@ -4,89 +4,88 @@ import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 
 export default function IvInfusionContent() {
   return (
-    <section id="offerings" className="section bg-mist pt-0 lg:pt-0">
-      <div className="shell relative z-20 -mt-16 sm:-mt-24 lg:-mt-32">
+    <section id="offerings" className="section bg-mist pt-8 lg:pt-16">
+      <div className="shell relative ">
         <Reveal>
-          <div className="mx-auto max-w-[900px] rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
+          <div className="mx-auto container rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
             <div className="text-center">
-              <h2 className="display-3 mb-4 text-navy">
-                IV Infusion Therapy & Vitamin Injections Offerings
+              <h2 className="display-3 mb-4 font-semibold text-navy">
+                IV Infusion Therapy & Vitamin <br/> Injections Offerings
               </h2>
               <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
                 Custom-designed therapies to enhance your overall health, boost immunity, improve skin radiance, and support mental clarity and physical stamina.
               </p>
-              <div className="mx-auto mt-8 inline-flex rounded-full bg-cream px-8 py-3">
-                <span className="font-sans text-[15px] font-bold tracking-widest text-navy uppercase">
-                  Service
-                </span>
+              <div className="mx-auto mt-8 w-full rounded-full bg-slate-100 py-4 text-center">
+                <span className="font-sans text-[15px] font-bold text-navy">Service</span>
               </div>
             </div>
 
-            <div className="mt-12 flex flex-col gap-8 text-[15.5px] leading-[1.8] text-ink">
+            <div className="mt-12 flex flex-col w-[80%] mx-auto gap-8 text-[15.5px] leading-[1.8] text-ink">
               <div>
-                <h3 className="font-sans text-[17px] font-bold text-navy">
+                <h3 className="font-sans text-[22px] font-bold text-black">
                   Hydration Boost IV Therapy
                 </h3>
-                <p className="mt-2 text-muted">
-                  A premium hydration infusion that restores moisture, replenishes fluids, and ensures optimal water balance. Every cell will be invigorated with moisture.
+                <p className="mt-2 text-black">
+                  A systemic hydration therapy that restores balance, replenishes fluids, and ensures essential nutrients reach every cell for maximum health benefits.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-sans text-[17px] font-bold text-navy">
+                <h3 className="font-sans text-[22px] font-bold text-black">
                   Immunity Boost Infusion
                 </h3>
-                <p className="mt-2 text-muted">
+                <p className="mt-2 text-black">
                   Custom-formulated IV therapy rich in antioxidants and vitamins to fortify your immune system and support overall health, especially during cold and flu seasons.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-sans text-[17px] font-bold text-navy">
+                <h3 className="font-sans text-[22px] font-bold text-black">
                   Glow & Radiance IV Therapy
                 </h3>
-                <p className="mt-2 text-muted">
+                <p className="mt-2 text-black">
                   A beauty-boosting infusion designed to improve skin hydration, texture, and glow, nourishing your body from the inside out for a radiant complexion.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-sans text-[17px] font-bold text-navy">
+                <h3 className="font-sans text-[18px] font-bold text-black">
                   Cognitive Support Infusion
                 </h3>
-                <p className="mt-2 text-muted">
-                  This tailored IV treatment is designed to enhance focus, and mental clarity, perfect for those seeking an optimal neuroprotective and brain health.
+                <p className="mt-2 text-black">
+                  This tailored formula enhances cognitive function, focus, and mental clarity, perfect for those needing support with concentration and brain health.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-sans text-[17px] font-bold text-navy">
+                <h3 className="font-sans text-[18px] font-bold text-black">
                   Healing & Recovery Infusion
                 </h3>
-                <p className="mt-2 text-muted">
-                  Excellent choice for those healing a procedure, optimal without rapid post-procedure recovery while reducing inflammation.
+                <p className="mt-2 text-black">
+                  Boosts the body&rsquo;s natural healing processes, aiding in tissue repair and post-procedure recovery while reducing inflammation.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-sans text-[17px] font-bold text-navy">
+                <h3 className="font-sans text-[22px] font-bold text-black">
                   Energy & Stamina Boost IV Therapy
                 </h3>
-                <p className="mt-2 text-muted">
+                <p className="mt-2 text-black">
                   Designed to combat fatigue and boost energy levels, this infusion replenishes essential vitamins and minerals to improve endurance and vitality.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-sans text-[17px] font-bold text-navy">
+                                <h3 className="font-sans text-[22px] font-bold text-black">
+
                   Vitamin B12 Injection
                 </h3>
-                <p className="mt-2 text-muted">
-                  A quick, energy-boosting shot that is an enormous advantage in maximizing your overall performance with health with a pure fat dose of vitamin B12.
+                <p className="mt-2 text-black">
+                  A quick energy booster, this injection enhances metabolism, combats fatigue, and supports overall health with a powerful dose of vitamin B12.
                 </p>
-                
-                <p className="mt-6 text-[12px] italic text-muted">
-                  Packages also configured at our clinic for discount pricing for team building, bachelorette/bachelor parties, etc.
+
+                <p className="mt-6 text-[12px] italic text-black">
+                  Packages offer savings and are perfect for those looking to maintain long-term wellness and vitality.
                 </p>
               </div>
             </div>
