@@ -18,7 +18,7 @@ export default function ContactInfo() {
   return (
     <section className="bg-white py-16 sm:py-20 lg:py-[80px]">
       <div className="shell">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-0">
           {/* ---------------- Details ---------------- */}
           <Reveal>
             <h2 className="display-3">Contact Information</h2>

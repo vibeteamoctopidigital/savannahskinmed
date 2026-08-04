@@ -6,6 +6,7 @@ import Reveal from '@/components/ui/Reveal';
 import TrackedPhoneLink from '@/components/ui/TrackedPhoneLink';
 import { site } from '@/lib/site';
 import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
+import TextHero from '@/components/TextHero';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata('/office-policies');
@@ -15,13 +16,10 @@ export default function OfficePoliciesPage() {
   return (
     <>
       <PageJsonLd route="/office-policies" />
-      <PageHero
-        title="Office Policies"
-        intro="A few things worth knowing before your visit, so your appointment runs smoothly."
-        image="/images/banner-13-bg.jpg"
-        imageAlt="Savannah Age Management Medicine"
-        position="center 40%"
-      />
+    <TextHero
+    
+    title='Office Policies'
+    />
 
       <section className="section bg-white">
         <div className="shell-narrow">
@@ -70,21 +68,21 @@ export default function OfficePoliciesPage() {
             <ul className="mb-6 list-disc space-y-2 pl-5">
               <li>
                 <strong className="font-bold text-navy">Phone:</strong> Call our clinic at{' '}
-                <TrackedPhoneLink href={site.phoneHref} className="text-rose-deep underline underline-offset-2">
+                <TrackedPhoneLink href={site.phoneHref} className="text-blue-400 hover:text-blue-300 underline underline-offset-2">
                   {site.phone.replace(/[()]/g, '').replace(' ', '-')}
                 </TrackedPhoneLink>
                 . If necessary, you may leave a detailed voicemail message.
               </li>
               <li>
                 <strong className="font-bold text-navy">Text:</strong> Send a message to{' '}
-                <a href={site.phoneHref} className="text-rose-deep underline underline-offset-2">
+                <a href={site.phoneHref} className="text-blue-400 hover:text-blue-300 underline underline-offset-2">
                   {site.phone.replace(/[()]/g, '').replace(' ', '-')}
                 </a>{' '}
                 or reply to one of the automated appointment reminders.
               </li>
               <li>
                 <strong className="font-bold text-navy">Email:</strong> Send an email to{' '}
-                <a href={site.emailHref} className="text-rose-deep underline underline-offset-2">
+                <a href={site.emailHref} className="text-blue-400 hover:text-blue-300 underline underline-offset-2">
                   {site.email}
                 </a>{' '}
                 with your full name and the appointment details you wish to cancel.
@@ -114,9 +112,7 @@ export default function OfficePoliciesPage() {
               exceptions to this policy can be made at the discretion of clinic management.
             </p>
 
-            <div className="mt-10">
-              <ButtonLink href="/contact-us">Contact The Office</ButtonLink>
-            </div>
+          
           </Reveal>
         </div>
       </section>

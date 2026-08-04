@@ -8,7 +8,7 @@ import { getSiteSettings } from '@/lib/data/siteSettings';
 import { getFooterData } from '@/lib/data/footer';
 import { OrganizationJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/siteUrl';
-import '../globals.css';
+import '@/app/globals.css';
 
 // Safety net so the DB-backed Footer picks up admin edits (or a newly
 // connected database) within a few minutes even without an explicit

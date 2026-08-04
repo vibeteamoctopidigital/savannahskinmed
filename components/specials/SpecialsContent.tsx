@@ -22,7 +22,7 @@ export default function SpecialsContent({
         </Reveal>
       </div>
 
-      <Reveal className="mb-14 mx-auto max-w-[1440px] relative">
+      <Reveal className="mb-14 mx-auto max-w-[1340] relative">
         <MembershipPromoBanner promo={membershipPromo} />
       </Reveal>
 

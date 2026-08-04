@@ -19,16 +19,15 @@ export default function Logo({ variant = 'light', className = '', src }: LogoPro
     <Link
       href="/"
       aria-label="Savannah Age Management Medicine — home"
-      className={`block w-[132px] shrink-0 min-[380px]:w-[150px] lg:w-[124px] ${className}`}
+      className={`block w-[132px] shrink-0 min-[380px]:w-[150px] lg:w-[192px] ${className}`}
     >
       {variant === 'light' ? (
-        <Image
+        <img
           src={logoSrc}
           alt="Savannah Age Management Medicine"
-          width={LOGO_W}
-          height={LOGO_H}
-          priority
-          className="h-auto w-full"
+         
+          
+          className="h-auto w-[192px]"
         />
       ) : (
         /* The artwork is white-on-transparent, so its alpha drives a navy mask. */

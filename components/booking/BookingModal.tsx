@@ -37,7 +37,7 @@ function Field({
         autoComplete={autoComplete}
         placeholder={label}
         required
-        className="w-full rounded-lg border border-white/45 bg-transparent px-4 py-2.5 sm:px-6 sm:py-[18px] font-sans text-[13px] sm:text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
+        className="w-full rounded-lg border border-white/45 bg-transparent px-3 py-2 sm:px-4 sm:py-3 font-sans text-[13px] sm:text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
       />
     </div>
   );
@@ -55,7 +55,7 @@ function SelectField({
   placeholder?: string;
 }) {
   return (
-    <div className="relative rounded-lg border border-white/45 pb-[6px] pl-4 pr-5 pt-[6px] transition focus-within:border-white sm:pb-[13px] sm:pl-6 sm:pt-[11px]">
+    <div className="relative rounded-lg border border-white/45 pb-1 pl-3 pr-4 pt-1 transition focus-within:border-white sm:pb-2 sm:pl-4 sm:pt-1.5">
       <label
         htmlFor={id}
         className="block font-sans text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.03em] text-white"
@@ -82,7 +82,7 @@ function SelectField({
       </select>
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-[10px] sm:bottom-[18px] right-4 sm:right-6 border-x-[5px] border-t-[6px] border-x-transparent border-t-white"
+        className="pointer-events-none absolute bottom-1.5 sm:bottom-2.5 right-3 sm:right-4 border-x-[5px] border-t-[6px] border-x-transparent border-t-white"
       />
     </div>
   );
@@ -152,20 +152,10 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (step === 1) {
-      setStepOneData(new FormData(event.currentTarget));
-      setStep(2);
-      return;
-    }
-
+  const data = new FormData(event.currentTarget);
     setError(null);
     setSubmitting(true);
-    const stepTwoData = new FormData(event.currentTarget);
-    const merged = new FormData();
-    stepOneData?.forEach((value, key) => merged.set(key, value));
-    stepTwoData.forEach((value, key) => merged.set(key, value));
-
-    const result = await submitBooking(merged);
+    const result = await submitBooking(data);
     setSubmitting(false);
     if (result.ok) {
       setSent(true);
@@ -178,7 +168,7 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
   // would otherwise become the containing block for this fixed overlay.
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/40 px-4 py-4 backdrop-blur-md sm:py-12"
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/40 px-4 py-4 backdrop-blur-md sm:py-8"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -188,14 +178,14 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="booking-title"
-        className="relative w-full max-w-[600px] rounded-2xl bg-navy px-4 pb-6 pt-8 shadow-menu sm:px-14 sm:pb-12 sm:pt-16"
+        className="relative w-full max-w-[600px] rounded-2xl bg-[#14214B] px-4 pb-4 pt-6 shadow-menu sm:px-10 sm:pb-8 sm:pt-10"
       >
         <button
           ref={closeRef}
           type="button"
           onClick={onClose}
           aria-label="Close booking form"
-          className="absolute right-3 top-3 sm:right-6 sm:top-6 grid h-8 w-8 sm:h-11 sm:w-11 place-items-center rounded-full bg-white/25 text-white transition-colors hover:bg-white/40"
+          className="absolute right-3 top-3 sm:right-5 sm:top-5 grid h-8 w-8 sm:h-10 sm:w-10 place-items-center rounded-full bg-white/25 text-white transition-colors hover:bg-white/40"
         >
           <CloseIcon className="h-5 w-5" />
         </button>
@@ -205,7 +195,7 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
         </h2>
 
         {sent ? (
-          <div className="mt-10 text-center">
+          <div className="mt-6 text-center">
             <p className="text-[16px] leading-[1.8] text-white">
               Thank you — your request has been received. Our team will contact you shortly to
               confirm your appointment.
@@ -213,15 +203,14 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="mt-8 w-full rounded-full bg-teal px-8 py-[19px] font-sans text-[14px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark"
+              className="mt-6 w-full rounded-full bg-teal px-8 py-3 sm:py-4 font-sans text-[14px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark"
             >
               Close
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="mt-4 sm:mt-9 space-y-2 sm:space-y-4">
-            {step === 1 ? (
-              <>
+          <form onSubmit={handleSubmit} className="mt-2 sm:mt-4 space-y-1 sm:space-y-2">
+           <div className="space-y-3 sm:space-y-4">
                 <Field id="name" label="Name" autoComplete="name" />
                 <Field id="email" label="E-mail Address" type="email" autoComplete="email" />
                 <Field id="phone" label="Phone" type="tel" autoComplete="tel" />
@@ -238,34 +227,7 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
                   placeholder="Choose A Service"
                   options={footerServices.map((service) => service.label)}
                 />
-              </>
-            ) : (
-              <>
-                <Field id="preferredDate" label="Preferred Date" type="date" />
-                <Field id="preferredTime" label="Preferred Time" type="time" />
-
-                <div>
-                  <label htmlFor="notes" className="sr-only">
-                    Anything we should know?
-                  </label>
-                  <textarea
-                    id="notes"
-                    name="notes"
-                    rows={3}
-                    placeholder="Anything we should know?"
-                    className="w-full resize-y rounded-lg border border-white/45 bg-transparent px-4 py-2.5 sm:px-6 sm:py-[18px] font-sans text-[13px] sm:text-[16px] text-white outline-none transition placeholder:text-white/90 focus:border-white focus:bg-white/10"
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="font-sans text-[13px] uppercase tracking-widest2 text-white/80 underline underline-offset-4 transition-colors hover:text-white"
-                >
-                  Back
-                </button>
-              </>
-            )}
+              </div>
 
             {error && (
               <p role="alert" className="text-[13px] text-rose-light">
@@ -276,16 +238,16 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
             <button
               type="submit"
               disabled={submitting}
-              className="!mt-5 sm:!mt-8 w-full rounded-full bg-teal px-8 py-3 sm:py-[19px] font-sans text-[13px] sm:text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark disabled:opacity-60"
+              className="!mt-3 sm:!mt-4 w-full rounded-full bg-teal px-8 py-2.5 sm:py-3.5 font-sans text-[13px] sm:text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark disabled:opacity-60"
             >
-              {submitting ? 'Sending…' : step === 1 ? 'Next Step' : 'Request Appointment'}
+              {submitting ? 'Sending…' : 'Next Step'}
             </button>
           </form>
         )}
 
-        <hr className="mt-12 border-white/25" />
+        <hr className="mt-8 border-white/25" />
 
-        <p className="mt-7 font-sans text-[12px] uppercase leading-[1.55] tracking-[0.01em] text-white/70">
+        <p className="mt-4 font-sans text-[10px] uppercase leading-[1.10] tracking-[0.01em] text-white/70">
           By completing and submitting this form, I hereby provide explicit written consent to
           receive communications through text messages and phone calls, including those to
           wireless numbers or numbers registered on an internal do not call registry. I

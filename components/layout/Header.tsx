@@ -80,7 +80,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
           scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
         }`}
       >
-      <div className="mx-auto flex h-[76px] w-full max-w-[1500px] items-center justify-between px-5 lg:h-[92px] lg:px-10">
+      <div className="mx-auto flex  w-full container items-center justify-between  py-4 px-5 lg:h-[110px] lg:px-10">
         <Logo variant={scrolled ? 'dark' : 'light'} src={logoUrl} />
 
         {/* ---------------- Desktop navigation ---------------- */}

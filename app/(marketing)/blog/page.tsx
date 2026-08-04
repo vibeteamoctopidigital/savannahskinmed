@@ -16,7 +16,7 @@ export default async function BlogPage() {
   return (
     <div className="min-h-screen bg-[#FDF9F3] pb-24">
       <PageJsonLd route="/blog" />
-      <section className="mx-auto max-w-[1240px] px-6 pt-36 sm:pt-44">
+      <section className="mx-auto max-w-[1340px] px-6 pt-36 sm:pt-44">
         <div className="mx-auto max-w-[720px] text-center">
           <span className="inline-block rounded-full bg-navy/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-navy uppercase">
             Aesthetic Insights

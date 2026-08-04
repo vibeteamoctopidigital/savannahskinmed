@@ -10,7 +10,7 @@ const config: Config = {
     container: {
       center: true,
       padding: { DEFAULT: '1.25rem', lg: '2rem' },
-      screens: { '2xl': '1240px' },
+      screens: { '2xl': '1340' },
     },
     extend: {
       colors: {
@@ -46,7 +46,7 @@ const config: Config = {
         widest3: '0.3em',
       },
       maxWidth: {
-        shell: '1240px',
+        shell: '1340px',
       },
       boxShadow: {
         card: '0 18px 40px -24px rgba(19, 40, 92, 0.35)',

@@ -50,11 +50,11 @@ export default function OurClinicPage() {
       <section className="bg-white py-16 sm:py-20 lg:pb-[72px] lg:pt-[96px]">
         <div className="shell">
           <Reveal className="mx-auto max-w-[900px] text-center">
-            <p className="eyebrow mb-4 text-navy">
+            <p className="eyebrow mb-4 text-navy font-semibold">
               Welcome To Savannah Age Management Medicine
             </p>
 
-            <h2 className="display-2 [text-wrap:initial]">
+            <h2 className="display-2 [text-wrap:initial] font-bold">
               A Destination For Bespoke
               <br className="hidden sm:block" /> Aesthetic Care
             </h2>
@@ -112,10 +112,10 @@ export default function OurClinicPage() {
             </Reveal>
 
             <Reveal delay={100}>
-              <div className="mx-auto max-w-[460px] text-center">
-                <p className="eyebrow mb-4 text-rose-deep">Cutting-Edge Technology</p>
+              <div className="mx-auto max-w-[460px] text-center lg:mx-0 lg:text-left">
+                <p className="eyebrow mb-4 text-navy-deep font-semibold text-[16px]">Cutting-Edge Technology</p>
 
-                <h2 className="display-2 [text-wrap:initial]">
+                <h2 className="display-2 [text-wrap:initial] font-medium">
                   Crafting Beauty With
                   <br className="hidden sm:block" /> Precision And Passion
                 </h2>
@@ -134,47 +134,49 @@ export default function OurClinicPage() {
       </section>
 
       {/* ---------------- The inside-out approach ---------------- */}
-      <section className="bg-haze">
-        <div className="grid lg:grid-cols-2">
-          <div className="order-2 flex items-center px-5 py-16 sm:px-8 lg:order-1 lg:justify-end lg:py-24 lg:pl-12 lg:pr-14 xl:pl-16">
-            <Reveal className="mx-auto w-full max-w-[500px] text-center">
-              <p className="eyebrow mb-4 text-rose-deep">Synergistic Wellness</p>
+   <section className="bg-haze">
+  <div className="flex flex-col-reverse lg:flex-row">
+    {/* Text block – on desktop: left, on mobile: below image (due to reverse) */}
+    <div className="flex items-center py-16 lg:py-24 lg:pr-14 xl:pl-24 lg:w-1/2">
+      <Reveal className="mx-auto w-full text-center lg:text-left pl-4">
+        <p className="eyebrow mb-4 text-navy-soft-deep font-bold text-[14px]">
+          Synergistic Wellness
+        </p>
 
-              <h2 className="display-2 [text-wrap:initial]">
-                The Inside-Out
-                <br className="hidden sm:block" /> Approach
-              </h2>
+        <h2 className="display-2 [text-wrap:initial] font-bold">
+          The Inside-Out Approach
+        </h2>
 
-              <p className="mt-6 text-[15px] leading-[1.9]">
-                At Savannah Age Management Medicine, we believe that true transformation begins
-                from the inside out. Our regenerative therapies, including Bioidentical Hormone
-                Replacement Therapy (BHRT) and medical weight loss, work in harmony with aesthetic
-                treatments to enhance your health and appearance. By optimizing your internal
-                wellness, these therapies support your body&rsquo;s natural vitality, creating the
-                perfect foundation for achieving sustainable and visible results. Experience the
-                power of integrated care that prioritizes both how you look and how you
-                feel&mdash;because when your inner health is thriving, your outer glow follows
-                naturally.
-              </p>
+        <p className="mt-6 text-[15px] leading-[1.9]">
+          At Savannah Age Management Medicine, we believe that true transformation begins
+          from the inside out. Our regenerative therapies, including Bioidentical Hormone
+          Replacement Therapy (BHRT) and medical weight loss, work in harmony with aesthetic
+          treatments to enhance your health and appearance. By optimizing your internal
+          wellness, these therapies support your body&rsquo;s natural vitality, creating the
+          perfect foundation for achieving sustainable and visible results. Experience the
+          power of integrated care that prioritizes both how you look and how you
+          feel&mdash;because when your inner health is thriving, your outer glow follows
+          naturally.
+        </p>
 
-              <ButtonLink href="/our-experts" className="mt-9">
-                Meet Our Experts
-              </ButtonLink>
-            </Reveal>
-          </div>
+        <ButtonLink href="/our-experts" className="mt-9">
+          Meet Our Experts
+        </ButtonLink>
+      </Reveal>
+    </div>
 
-          {/* Bleeds to the right edge of the viewport */}
-          <div className="relative order-1 min-h-[340px] sm:min-h-[440px] lg:order-2 lg:min-h-[620px]">
-            <Image
-              src="/images/photo-content-12-img.jpg"
-              alt="A consultation at Savannah Age Management Medicine"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-[center_30%]"
-            />
-          </div>
-        </div>
-      </section>
+    {/* Image block – on desktop: right, on mobile: top (due to flex-col-reverse) */}
+    <div className="relative min-h-[340px] sm:min-h-[440px] lg:min-h-[620px] lg:w-1/2">
+      <Image
+        src="/images/photo-content-12-img.jpg"
+        alt="A consultation at Savannah Age Management Medicine"
+        fill
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="object-cover object-[center_30%]"
+      />
+    </div>
+  </div>
+</section>
     </>
   );
 }

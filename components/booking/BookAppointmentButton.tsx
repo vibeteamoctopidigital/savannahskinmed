@@ -31,10 +31,12 @@ export default function BookAppointmentButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`group inline-flex items-center justify-center gap-3 rounded-full px-10 py-[19px] font-sans text-[13px] font-medium uppercase tracking-widest2 transition-colors duration-300 ${variants[variant]} ${className}`}
+        className={`group inline-flex items-center  justify-center gap-3 rounded-full sm:px-10 px-6 py-[15px] font-sans text-[13px] font-medium uppercase tracking-widest2 transition-colors duration-300 ${variants[variant]} ${className}`}
       >
         {children}
-        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+        {/* <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" /> */}
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
       </button>
 
       <BookingModal open={open} onClose={() => setOpen(false)} />
