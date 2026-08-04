@@ -32,8 +32,8 @@ const offerings = [
 
 export default function OfferingsList() {
   return (
-    <section id="offerings" className="section bg-mist pt-0 lg:pt-0">
-      <div className="shell relative z-20 -mt-16 sm:-mt-24 lg:-mt-32">
+    <section id="offerings" className="section bg-mist pt-8 lg:pt-16">
+      <div className="shell relative z-20 ">
         <Reveal>
           <div className="mx-auto min-w-full rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
             <div className="text-center">
