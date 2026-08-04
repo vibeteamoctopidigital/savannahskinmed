@@ -1,6 +1,8 @@
+//@ts-ignore
+
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
-const TestimonialsCarousel = ({ testimonials }) => {
+const TestimonialsCarousel = ({ testimonials }:{testimonials:any}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef(null);
