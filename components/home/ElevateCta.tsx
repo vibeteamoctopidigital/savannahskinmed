@@ -5,7 +5,7 @@ import Reveal from '@/components/ui/Reveal';
 
 export default function ElevateCta() {
   return (
-    <section className="relative flex min-h-[380px] items-center overflow-hidden bg-[#cbab92] lg:min-h-[492px]">
+    <section className="relative flex min-h-[380px] items-center overflow-hidden bg-[#cbab92] lg:min-h-[440px]">
       <Image
         src="/images/hero-bg.png"
         alt="Group of women enjoying the results of their aesthetic treatments"
@@ -21,7 +21,7 @@ export default function ElevateCta() {
       />
  <div className="absolute inset-0 bg-black/25 sm:hidden" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/12 to-black/22 sm:hidden" />
-      <div className="shell relative z-10 py-16">
+      <div className=" shell sm:container mx-auto relative z-10 py-16">
         <Reveal className="mx-auto container text-center sm:text-left">
           <h2 className="display-2 text-white text-shadow-hero text-[48px] ">Elevate And Enhance</h2>
 

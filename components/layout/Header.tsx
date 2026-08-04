@@ -76,8 +76,9 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
     <>
       {/* Fixed: the bar stays at the top of the viewport at all times. */}
       <header
-        className={ ' absolute top-0 left-0 z-50 inset-0 bg-transparent'
-        }
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        }`}
       >
       <div className="mx-auto flex w-full container items-center justify-between pt-8 pb-4 px-5 lg:pt-8 lg:pb-4 lg:min-h-[110px] lg:px-10">
         <Logo variant={scrolled ? 'dark' : 'light'} src={logoUrl} />

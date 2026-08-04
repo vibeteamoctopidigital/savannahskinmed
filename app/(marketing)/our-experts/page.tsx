@@ -76,7 +76,7 @@ export default async function OurExpertsPage() {
                     <span className="text-[14px] font-medium text-muted">No Photo</span>
                   )}
                 </div>
-                <div className="min-w-0 flex-1 text-center">
+                <div className="min-w-0 w-full flex-1 text-center lg:text-left">
                   <h3 className="font-serif text-[28px] sm:text-[34px] lg:text-[40px] text-navy font-normal leading-tight">
                     {member.name}
                   </h3>
@@ -86,14 +86,21 @@ export default async function OurExpertsPage() {
                     </p>
                   )}
                   {member.highlight && (
-                    <p className="mt-1 text-[13px] font-medium text-navy-soft">
+                    <p className="mt-1 text-[13px] font-medium italic text-navy-soft">
                       {member.highlight}
                     </p>
                   )}
                   <div className="mt-6 space-y-5 text-[15px] leading-[1.85] text-muted">
-                    {member.bio.split('\n\n').map((paragraph, i) => (
-                      <p key={i}>{paragraph}</p>
-                    ))}
+                    {member.bio.split('\n\n').map((paragraph, i) => {
+                      // Some bios lead with a pull-quote instead of using the
+                      // dedicated `highlight` field — style it the same way.
+                      const isQuote = i === 0 && /^[“"]/.test(paragraph);
+                      return (
+                        <p key={i} className={isQuote ? 'italic text-navy-soft' : undefined}>
+                          {paragraph}
+                        </p>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
