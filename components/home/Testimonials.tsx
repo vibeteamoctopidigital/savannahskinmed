@@ -111,20 +111,21 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-rose py-12 sm:py-14 lg:py-[104px]">
+    <section className="relative overflow-hidden  ">
       {/* Full-bleed photo, tinted with the panel's own rose so it reads as a
           colored band with a faint portrait watermark, not a bare photo. */}
-      <div className="absolute inset-0">
+   <div className="container relative py-12 sm:py-14 lg:py-[104px] mb-16 ">
+       <div className="absolute inset-0">
         <Image
-          src="/images/contact-bg.jpg"
+          src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg"
           alt=""
           fill
           sizes="100vw"
           className="object-cover opacity-90"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-rose/80 mix-blend-multiply" aria-hidden="true" />
-        <div className="absolute inset-0 bg-rose/25" aria-hidden="true" />
+        {/* <div className="absolute inset-0 bg-rose/80 mix-blend-multiply" aria-hidden="true" />
+        <div className="absolute inset-0 bg-rose/25" aria-hidden="true" /> */}
       </div>
 
       <div className="shell-wide relative z-10 px-4 sm:px-6 lg:px-16">
@@ -190,6 +191,7 @@ export default function Testimonials() {
           </div>
         </Reveal>
       </div>
+   </div>
     </section>
   );
 }

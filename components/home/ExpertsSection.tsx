@@ -18,7 +18,7 @@ export default function ExpertsSection() {
 
       <div className="flex items-center bg-cream px-6 py-16 sm:px-10 lg:px-[86px] lg:py-20">
         <Reveal className="mx-auto max-w-[460px] text-center">
-          <p className="eyebrow mb-4 text-rose-deep">Who We Are</p>
+          <p className="eyebrow mb-4 text-black">Who We Are</p>
 
           <h2 className="display-2">Experts In Aesthetic Excellence</h2>
 
