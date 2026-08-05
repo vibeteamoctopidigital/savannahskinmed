@@ -11,7 +11,7 @@ export default function ElevateCta() {
         alt="Group of women enjoying the results of their aesthetic treatments"
         fill
         sizes="100vw"
-        className="object-cover object-[85%_center] sm:object-center"
+        className="object-cover object-[85%_20%] sm:object-[center_15%]"
       />
 
       {/* Soft left scrim so the headline stays legible over the tan backdrop */}

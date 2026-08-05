@@ -67,7 +67,7 @@ export default function LaserSkinRejuvenationPage() {
         title="Results You Can See, Confidence You Can Feel"
         slides={laserRejuvenationSlides}
         labelStyle="bottom"
-        bg="bg-[#F1F3EC]"
+        bg="bg-[#F7F8F2]"
       />
       
       <FaqAccordion faqs={laserRejuvenationFaqs} noTopPadding />
@@ -76,7 +76,7 @@ export default function LaserSkinRejuvenationPage() {
 
       <ExpertProfile />
       
-      <Testimonials />
+      <Testimonials width='full' imageUrl='https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg' />
       
       <ElevateCta />
     </>

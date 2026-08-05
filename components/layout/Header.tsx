@@ -82,7 +82,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
       >
 
  
-      <div className={`mx-auto flex items-center justify-between pt-8 pb-4 px-5  lg:min-h-[110px] lg:px-10 max-w-7xl ${scrolled ? 'lg:pt-4 lg:pb-2' : 'lg:pt-8 lg:pb-4'}`}>
+      <div className={`mx-auto flex items-center justify-between py-4 px-4 sm:py-5 sm:px-6 lg:min-h-[110px] lg:px-12 max-w-7xl ${scrolled ? 'lg:py-3' : 'lg:py-6'}`}>
         <Logo variant={scrolled ? 'dark' : 'light'} src={logoUrl} />
 
         {/* ---------------- Desktop navigation ---------------- */}
@@ -173,7 +173,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
         </nav>
 
         {/* ---------------- Call to action / mobile toggle ---------------- */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4 sm:gap-5 lg:gap-3">
           <a
             href={site.phoneHref}
             onClick={trackClickToCall}
@@ -187,11 +187,11 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
             href={site.phoneHref}
             onClick={trackClickToCall}
             aria-label={`Call ${site.phone}`}
-            className={`grid h-10 w-10 place-items-center transition-opacity hover:opacity-75 xl:hidden ${
+            className={`grid h-9 w-9 sm:h-10 sm:w-10 place-items-center transition-opacity hover:opacity-75 xl:hidden ${
               scrolled ? 'text-navy' : 'text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)]'
             }`}
           >
-            <PhoneIcon className="h-[22px] w-[22px]" />
+            <PhoneIcon className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
           </a>
 
           <button
@@ -199,11 +199,11 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
             onClick={() => setMobileOpen((v) => !v)}
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            className={`grid h-10 w-10 place-items-center transition-opacity hover:opacity-75 lg:hidden ${
+            className={`grid h-9 w-9 sm:h-10 sm:w-10 place-items-center transition-opacity hover:opacity-75 lg:hidden ${
               scrolled ? 'text-navy' : 'text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)]'
             }`}
           >
-            {mobileOpen ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+            {mobileOpen ? <CloseIcon className="h-5 w-5 sm:h-6 sm:w-6" /> : <MenuIcon className="h-5 w-5 sm:h-6 sm:w-6" />}
           </button>
         </div>
       </div>
@@ -222,7 +222,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
           {/* Drawer */}
           <div className="fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col bg-white shadow-2xl lg:hidden">
             {/* Drawer Header */}
-            <div className="flex h-[76px] items-center border-b border-navy/10 px-6 lg:h-[92px]">
+            <div className="flex h-[70px] sm:h-[76px] items-center border-b border-navy/10 px-6 lg:h-[92px]">
               <button 
                 type="button"
                 onClick={() => setMobileOpen(false)}
@@ -230,7 +230,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                 className="flex items-center gap-4 text-navy transition-opacity hover:opacity-75"
               >
                 <MenuIcon className="h-6 w-6" />
-                <span className="font-sans text-[15px] font-bold tracking-wide">MAIN MENU</span>
+                <span className="font-sans text-[13px] sm:text-[15px] font-bold tracking-wide">MAIN MENU</span>
               </button>
             </div>
 
@@ -245,7 +245,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                       <li key={item.href}>
                         <Link
                           href={item.href}
-                          className="font-sans text-[15px] font-medium uppercase tracking-[0.02em] text-navy"
+                          className="font-sans text-[13px] sm:text-[15px] font-medium uppercase tracking-[0.02em] text-navy"
                         >
                           {item.label}
                         </Link>
@@ -259,7 +259,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                         type="button"
                         onClick={() => setMobileServicesOpen((v) => !v)}
                         aria-expanded={mobileServicesOpen}
-                        className="flex w-full items-center justify-between font-sans text-[15px] font-medium uppercase tracking-[0.02em] text-navy"
+                        className="flex w-full items-center justify-between font-sans text-[13px] sm:text-[15px] font-medium uppercase tracking-[0.02em] text-navy"
                       >
                         {item.label}
                         <ChevronDown
@@ -277,7 +277,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                                 href={service.href}
                                 target={service.href.startsWith('http') ? '_blank' : undefined}
                                 rel={service.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                className={`block font-sans text-[14px] transition-colors ${
+                                className={`block font-sans text-[12px] sm:text-[14px] transition-colors ${
                                   service.label === 'Health & Wellness Services'
                                     ? 'font-semibold text-navy'
                                     : 'text-navy/80 hover:text-navy'
@@ -298,11 +298,11 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
               <div className="mt-12 rounded-xl bg-navy p-6">
                 <a href={site.phoneHref} onClick={trackClickToCall} className="mb-5 flex items-center gap-4 text-white hover:text-rose-light">
                   <PhoneIcon className="h-5 w-5 shrink-0" />
-                  <span className="font-sans text-[15px]">{site.phone}</span>
+                  <span className="font-sans text-[13px] sm:text-[15px]">{site.phone}</span>
                 </a>
                 <div className="flex items-start gap-4 text-white">
                   <PinIcon className="mt-0.5 h-5 w-5 shrink-0" />
-                  <div className="flex flex-col font-sans text-[14px] leading-relaxed">
+                  <div className="flex flex-col font-sans text-[12px] sm:text-[14px] leading-relaxed">
                     <span>{locations[0].address[0]},</span>
                     <span>{locations[0].address[1]}</span>
                   </div>
@@ -325,7 +325,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                     );
                   })}
                 </div>
-                <p className="font-sans text-[13px] leading-snug text-navy">
+                <p className="font-sans text-[11px] sm:text-[13px] leading-snug text-navy">
                   Copyright © 2026 Savannah Age Management Medicine
                 </p>
               </div>

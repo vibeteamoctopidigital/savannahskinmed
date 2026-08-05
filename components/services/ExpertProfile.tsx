@@ -4,9 +4,9 @@ import Reveal from '@/components/ui/Reveal';
 export default function ExpertProfile({}) {
   return (
     <section className="section bg-white">
-      
+
         <Reveal>
-          <div className="mx-auto flex container flex-col items-start gap-10 md:flex-row md:gap-16">
+          <div className="shell flex flex-col items-center md:items-start gap-10 md:flex-row md:gap-16">
             <div className="relative shrink-0 overflow-hidden rounded-full">
               <div className="relative h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px]">
                 <Image
@@ -20,9 +20,9 @@ export default function ExpertProfile({}) {
             </div>
 
             <div className="text-left md:pt-2">
-              <h2 className="font-serif text-[36px] text-navy sm:display-1v2">Rebecca Spacek</h2>
+              <h2 className="font-serif text-[28px] sm:text-[36px] lg:text-[40px] text-navy font-medium">Rebecca Spacek</h2>
 
-              <div className="mt-6 space-y-5 text-[16px] leading-[1.8] text-[#0b2055]">
+              <div className="mt-6 space-y-5 text-[14px] sm:text-[16px] leading-[1.8] text-[#0b2055]">
                 <p>
                   Rebecca Spacek is an Assistant Cosmetic Laser Practitioner, a Master Cosmetologist, and has been a professional Aesthetician and Certified Lasographer for 22 years.
                 </p>

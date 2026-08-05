@@ -136,8 +136,8 @@ export default function OurClinicPage() {
    <section className="bg-haze">
   <div className="flex flex-col-reverse lg:flex-row">
     {/* Text block – on desktop: left, on mobile: below image (due to reverse) */}
-    <div className="flex items-center py-16 lg:py-24 lg:pr-14 xl:pl-24 lg:w-1/2">
-      <Reveal className="mx-auto w-full text-center lg:text-left pl-4">
+    <div className="flex items-center py-16 sm:py-20 lg:py-24 lg:pr-14 xl:pl-24 lg:w-1/2">
+      <Reveal className="mx-auto w-full text-center lg:text-left px-6 sm:px-8 lg:px-0">
         <p className="eyebrow mb-4 text-[#0b2055] font-bold text-[14px]">
           Synergistic Wellness
         </p>
@@ -146,7 +146,7 @@ export default function OurClinicPage() {
           The Inside-Out Approach
         </h2>
 
-        <p className="mt-6 text-[16px] text-[#0b2055] ffont-semibold leading-[1.9]">
+        <p className="mt-6 text-[16px] text-[#0b2055] font-semibold leading-[1.9]">
           At Savannah Age Management Medicine, we believe that true transformation begins
           from the inside out. Our regenerative therapies, including Bioidentical Hormone
           Replacement Therapy (BHRT) and medical weight loss, work in harmony with aesthetic

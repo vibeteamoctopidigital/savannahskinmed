@@ -18,7 +18,7 @@ const treatmentAreas = [
 
 export default function LaserHairRemovalOfferings() {
   return (
-    <section id="offerings" className="section bg-mist pt-8 lg:pt-16">
+    <section id="offerings" className="section bg-[#F7F8F2] pt-8 lg:pt-16">
 <div className="shell relative z-20 ">
 
         <Reveal>
@@ -28,8 +28,8 @@ export default function LaserHairRemovalOfferings() {
               <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
                 We provide an array of laser hair removal services for various parts of the body, committed to quality, precision, and safety:
               </p>
-              <div className="mx-auto mt-8 flex w-full max-w-[720px] items-center justify-center rounded-full bg-[#f1f1ee] px-8 py-4">
-                <span className="font-sans text-[15px] font-bold tracking-widest text-navy uppercase">
+              <div className="mx-auto mt-8 flex w-full max-w-[1035px] items-center justify-center rounded-full bg-[#f1f1ee] px-8 py-4">
+                <span className="font-sans text-[16px] font-bold tracking-widest text-navy uppercase">
                   Treatment Areas
                 </span>
               </div>
@@ -37,7 +37,7 @@ export default function LaserHairRemovalOfferings() {
 
             <div className="mx-auto mt-12 grid max-w-[600px] grid-cols-1 gap-x-16 gap-y-5 text-center sm:grid-cols-2">
               {treatmentAreas.flat().filter(Boolean).map((area, i) => (
-                <span key={i} className="font-sans text-[16px] font-bold text-navy">
+                <span key={i} className="font-sans text-[24px] font-bold text-black">
                   {area}
                 </span>
               ))}

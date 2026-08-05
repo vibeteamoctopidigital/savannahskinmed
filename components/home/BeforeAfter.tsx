@@ -59,13 +59,8 @@ export default function BeforeAfter({
     setPos(50); // every slide opens on an even split
   }, []);
 
-  // Advance automatically, but never while the visitor is interacting with it.
   useEffect(() => {
-    // Autoplay disabled as per request
-    // if (paused) return;
-    // if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    // const timer = setInterval(() => go(1), AUTOPLAY_MS);
-    // return () => clearInterval(timer);
+ 
   }, [paused, go]);
 
   const setFromClientX = useCallback((clientX: number) => {

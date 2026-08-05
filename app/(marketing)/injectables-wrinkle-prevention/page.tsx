@@ -17,7 +17,7 @@ const injectablesSlides: BeforeAfterSlide[] = [
 
 export default function InjectablesPage() {
   return (
-    <>
+    <section className='bg-[#F1F3EC]'>
       <PageJsonLd route="/injectables-wrinkle-prevention" isService />
       <ServiceHero
         eyebrow="SERVICES"
@@ -36,11 +36,12 @@ export default function InjectablesPage() {
         title="Results You Can See, Confidence You Can Feel"
         slides={injectablesSlides}
         labelStyle="bottom"
+        bg='bg-[#F1F3EC]'
       />
       
-      <Testimonials />
+      <Testimonials width='full'  imageUrl='https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg'/>
       
       <ElevateCta />
-    </>
+    </section>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import ServiceHero from '@/components/services/ServiceHero';
 import LaserOfferingsList from '@/components/services/LaserOfferingsList';
-import BeforeAfter, { BeforeAfterSlide } from '@/components/home/BeforeAfter';
+import BeforeAfterStatic, { BeforeAfterSlide } from '@/components/home/BeforeAfterStatic';
 import FaqAccordion, { type FaqItem } from '@/components/services/FaqAccordion';
 import ExpertProfile from '@/components/services/ExpertProfile';
 import Testimonials from '@/components/home/Testimonials';
@@ -38,7 +38,7 @@ const laserFaqs: FaqItem[] = [
 
 export default function LaserHairRemovalPage() {
   return (
-    <>
+    <section className='bg-[#F7F8F2]'>
       <PageJsonLd route="/laser-hair-removal" isService />
       <FaqJsonLd faqs={laserFaqs} />
       <ServiceHero
@@ -53,20 +53,20 @@ export default function LaserHairRemovalPage() {
     <LaserHairRemovalOfferings/>
       {/* <LaserOfferingsList /> */}
       
-      <BeforeAfter 
+      <BeforeAfterStatic
         eyebrow="WHAT TO EXPECT BEFORE AND AFTER"
         title="Results You Can See, Confidence You Can Feel"
         slides={laserSlides}
-        labelStyle="pill"
+        bg='bg-[#F7F8F2]'
       />
       
-      <FaqAccordion faqs={laserFaqs} />
+      <FaqAccordion faqs={laserFaqs} noTopPadding />
       
       <ExpertProfile />
       
-      <Testimonials />
+      <Testimonials width='full'  />
       
       <ElevateCta />
-    </>
+    </section>
   );
 }

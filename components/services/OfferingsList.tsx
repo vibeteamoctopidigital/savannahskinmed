@@ -48,10 +48,10 @@ export default function OfferingsList() {
               </div>
             </div>
 
-            <div className="mx-auto mt-12 flex max-w-[870px] flex-col gap-9 text-left text-[15.5px] leading-[1.8] text-ink">
+            <div className="mx-auto mt-12 flex max-w-[870px] flex-col gap-9 text-left text-[14px] sm:text-[15.5px] leading-[1.8] text-ink">
               {offerings.map((offering, i) => (
                 <div key={i}>
-                  <h3 className="font-sans text-[24px] font-bold text-black">
+                  <h3 className="font-sans text-[20px] sm:text-[24px] font-bold text-black">
                     {offering.title}
                   </h3>
                   <p className="mt-2 text-[#111214]">
@@ -61,7 +61,7 @@ export default function OfferingsList() {
               ))}
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
+            <div className="mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
               <Link
                 href="/iv-infusion-therapy-vitamin-injections"
                 className="inline-flex items-center gap-2 font-medium text-[14px] text-[#8a8f99] transition-colors hover:text-rose"

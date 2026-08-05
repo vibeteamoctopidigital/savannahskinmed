@@ -38,37 +38,37 @@ const neurotoxinUses = [
 
 export default function NeurotoxinsAndFillerOfferings() {
   return (
-    <section id="offerings" className="section bg-mist pt-8 lg:pt-16">
+    <section id="offerings" className="section bg-[] pt-8 lg:pt-16">
       <Reveal>
-        <div className="mx-auto container rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
+        <div className="mx-auto max-w-[1260px] rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
           <div className="text-center">
             <h2 className="mb-5 font-serif text-[36px] sm:text-[48px] leading-[1.1] text-[#051E5C]">Neurotoxins And Filler</h2>
             <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
               Enhance your natural beauty with precision and care. Ensure a customized, natural-looking result every visit.
             </p>
-            <div className="mx-auto mt-8 flex w-full max-w-[720px] items-center justify-center rounded-full bg-[#f1f1ee] px-8 py-4">
-              <span className="font-sans text-[15px] font-bold tracking-widest text-navy uppercase">
+            <div className="mx-auto mt-8 flex w-full max-w-[1052px] items-center justify-center rounded-full bg-[#f1f1ee] py-3">
+              <span className="font-sans text-[16px] font-bold text-black">
                 Treatments
               </span>
             </div>
           </div>
 
-          <div className="mx-auto mt-12 w-[80%] text-left">
+          <div className="mx-auto mt-12 w-full max-w-[870px] text-left">
             {/* Dermal Filler */}
             <div>
-              <h3 className="font-sans text-[20px] font-bold text-black ">Dermal Filler</h3>
-              <p className="mt-3 text-[15.5px] leading-[1.8] text-muted">
+              <h3 className="font-sans text-[24px] font-bold text-black">Dermal Filler</h3>
+              <p className="mt-3 text-[15.5px] leading-[1.8] text-black">
                 Add volume, reduce the appearance of wrinkles, fine lines, and boost sagging skin. Ideal for adding cheek structure, enhancing lips, or creating volume in areas that need a subtle lift to restore a youthful, plump look to the skin.
               </p>
-              <p className="mt-5 text-[15.5px] font-bold text-navy">
+              <p className="mt-5 text-[15.5px] font-bold text-black">
                 Dermal filler can be used to provide:
               </p>
               <div className="mt-4 flex flex-col gap-3">
                 {dermalFillerUses.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right text-[#9BC0BF] transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-                    <p className="text-[15.5px] leading-[1.8] text-muted">
-                      <span className="font-bold text-navy">{item.label}:</span> {item.description}
+                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right text-[#9BC0BF] transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+                    <p className="text-[15.5px] leading-[1.8] text-black">
+                      <span className="font-bold text-black">{item.label}:</span> {item.description}
                     </p>
                   </div>
                 ))}
@@ -80,18 +80,18 @@ export default function NeurotoxinsAndFillerOfferings() {
 
             {/* Neurotoxins */}
             <div className="mt-12">
-              <h3 className="font-sans text-[20px] font-bold text-black">Neurotoxins</h3>
-              <p className="mt-3 text-[15.5px] leading-[1.8] text-muted">
+              <h3 className="font-sans text-[24px] font-bold text-black">Neurotoxins</h3>
+              <p className="mt-3 text-[15.5px] leading-[1.8] text-black">
                 We offer botulinum toxin type A injections. These drugs work by temporarily paralyzing or weakening targeted muscles, which can reduce or eliminate wrinkles, lines, and other cosmetic concerns.
               </p>
-              <p className="mt-5 text-[15.5px] font-bold text-navy">
+              <p className="mt-5 text-[15.5px] font-bold text-black">
                 Neruotoxin injections are used to:
               </p>
               <div className="mt-4 flex flex-col gap-3">
                 {neurotoxinUses.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right text-[#9BC0BF] transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-                    <p className="text-[15.5px] leading-[1.8] text-muted">{item}</p>
+                    <p className="text-[15.5px] leading-[1.8] text-black">{item}</p>
                   </div>
                 ))}
               </div>

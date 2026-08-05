@@ -26,29 +26,29 @@ const offerings = [
 
 export default function LaserRejuvenationOfferings() {
   return (
-    <section id="offerings" className="section bg-mist pt-8 lg:pt-16">
+    <section id="offerings" className="section bg-mist pt-8 lg:pt-24">
       <div className="shell relative z-20 ">
         <Reveal>
-          <div className="mx-auto container rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
+          <div className="mx-auto max-w-[1245px] rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
             <div className="text-center">
               <h2 className="mb-5 font-serif text-[36px] sm:text-[48px] leading-[1.1] text-[#051E5C]">Laser Skin Rejuvenation Offerings</h2>
               <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8]">
                 We offer a number of state-of-the-art laser and non-laser procedures, designed to provide a range of solutions based on comfort level, price point, and number of desired treatments.
               </p>
-              <div className="mt-8 rounded-full bg-[#FAF9F5] py-3.5 text-center font-sans text-[16px] sm:text-[17px] font-semibold text-navy">
+              <div className="mt-8 rounded-full bg-[#FAF9F5] max-w-[1050px] py-3.5 text-center font-sans text-[16px] sm:text-[17px] font-semibold text-navy">
                 Treatments
               </div>
             </div>
 
-            <div className="mx-auto mt-12 max-w-[680px] flex flex-col gap-8 text-left text-[15.5px] leading-[1.8] text-ink">
+            <div className="mx-auto mt-12 max-w-[852px] flex flex-col gap-8 text-left text-[15.5px] leading-[1.8] text-ink">
               {offerings.map((offering, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <span className="mt-0.5 shrink-0 font-bold text-teal text-[18px] leading-none">&rarr;</span>
+                 
                   <div>
-                    <h3 className="font-sans text-[17px] sm:text-[18px] font-bold text-navy">
+                    <h3 className="font-sans text-[17px] sm:text-[24px] font-bold text-black">
                       {offering.title}
                     </h3>
-                    <p className="mt-2 text-muted">
+                    <p className="mt-2 text-black">
                       {offering.description}
                     </p>
                   </div>

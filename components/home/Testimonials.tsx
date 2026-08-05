@@ -46,8 +46,8 @@ function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & 
       </p>
 
       <div className="mt-6 flex flex-col items-center gap-3 sm:mt-8 md:mt-7 md:flex-row md:items-center md:gap-3.5">
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white shadow-[0_2px_10px_rgba(19,40,92,0.16)] sm:h-11 sm:w-11 md:h-9 md:w-9">
-          <GoogleGlyph className="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px] md:h-[18px] md:w-[18px]" />
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white shadow-md sm:h-11 sm:w-11 md:h-9 md:w-9">
+          <GoogleGlyph className="h-[18px] w-[18px] sm:h-[30px] sm:w-[30px] md:h-[35px] md:w-[35px] " />
         </span>
         <div>
           <p className="font-sans text-[16px] font-bold text-ink">
@@ -64,7 +64,7 @@ function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & 
   );
 }
 
-export default function Testimonials({width}:{width?:string}) {
+export default function Testimonials({width,imageUrl}:{width?:string,imageUrl?:string}) {
   const [index, setIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -120,7 +120,7 @@ export default function Testimonials({width}:{width?:string}) {
    <div className={`${width === "full" ? "w-full px-0" : "container rounded-[20px] mb-16" } relative py-12 sm:py-14 lg:py-[104px]   overflow-hidden`}>
        <div className="absolute inset-0">
         <Image
-          src= {width === "full" ?  "/testimonial-2-bg.jpg" : "https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg"}
+          src= { width === "full" ?   "/testimonial-2-bg.jpg" : imageUrl ? `${imageUrl}` : "https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg"}
           alt=""
           fill
           sizes="100vw"

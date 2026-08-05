@@ -27,7 +27,7 @@ const config: Config = {
           deep: '#B0798A',
         },
         cream: '#F6F4EC',
-        mist: '#F1F3EC',
+        mist: '#F7F8F2',
         haze: '#EAECE6',
         sand: '#D3A277',
         mint: '#F1F6F2',
