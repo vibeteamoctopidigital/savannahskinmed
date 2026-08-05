@@ -20,9 +20,7 @@ export default function SectionHeading({
   const centered = align === 'center';
 
   const defaultEyebrowStyle =
-    tone === 'white'
-      ? 'text-white/80 font-semibold text-[13px] sm:text-[14px]'
-      : 'text-navy font-semibold text-[13px] sm:text-[14px]';
+    tone === 'white' ? 'text-white font-bold text-[14px]' : 'text-navy font-bold text-[14px]';
 
   return (
     <div
@@ -35,15 +33,15 @@ export default function SectionHeading({
       )}
 
       <h2
-        className={`font-serif font-medium text-[32px] leading-[1.2] sm:text-[48px] sm:leading-[48px] [text-wrap:initial] ${tone === 'white' ? 'text-white' : 'text-navy'}`}
+        className={`font-serif font-medium text-[36px] leading-[1.1] sm:text-[48px] [text-wrap:initial] ${tone === 'white' ? 'text-white' : 'text-navy'}`}
       >
         {title}
       </h2>
 
       {intro && (
         <p
-          className={`mt-5 text-[16px] leading-[1.75] lg:text-[15px] lg:leading-[1.85] ${
-            tone === 'white' ? 'text-white/85' : 'text-muted'
+          className={`mt-5 font-sans text-[20px] leading-[1.5] ${
+            tone === 'white' ? 'text-white' : 'text-ink'
           } ${centered ? 'mx-auto max-w-[620px]' : ''}`}
         >
           {intro}

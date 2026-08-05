@@ -42,7 +42,7 @@ export default function NeurotoxinsAndFillerOfferings() {
       <Reveal>
         <div className="mx-auto container rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
           <div className="text-center">
-            <h2 className="display-3 mb-4 text-navy font-semibold text-[40px]">Neurotoxins And Filler</h2>
+            <h2 className="mb-5 font-serif text-[36px] sm:text-[48px] leading-[1.1] text-[#051E5C]">Neurotoxins And Filler</h2>
             <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
               Enhance your natural beauty with precision and care. Ensure a customized, natural-looking result every visit.
             </p>

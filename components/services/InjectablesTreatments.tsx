@@ -42,7 +42,7 @@ export default function NeurotoxinsAndFillerOfferings() {
       <Reveal>
         <div className="mx-auto container rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
           <div className="text-center">
-            <h2 className="display-3 mb-4 text-navy font-semibold text-[40px]">Neurotoxins And Filler</h2>
+            <h2 className="mb-5 font-serif text-[36px] sm:text-[48px] leading-[1.1] text-[#051E5C]">Neurotoxins And Filler</h2>
             <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
               Enhance your natural beauty with precision and care. Ensure a customized, natural-looking result every visit.
             </p>
@@ -66,7 +66,7 @@ export default function NeurotoxinsAndFillerOfferings() {
               <div className="mt-4 flex flex-col gap-3">
                 {dermalFillerUses.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-move-right-icon lucide-move-right text-[#9BC0BF] transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right text-[#9BC0BF] transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
                     <p className="text-[15.5px] leading-[1.8] text-muted">
                       <span className="font-bold text-navy">{item.label}:</span> {item.description}
                     </p>
@@ -90,7 +90,7 @@ export default function NeurotoxinsAndFillerOfferings() {
               <div className="mt-4 flex flex-col gap-3">
                 {neurotoxinUses.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
-                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-move-right-icon lucide-move-right text-[#9BC0BF] transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right text-[#9BC0BF] transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
                     <p className="text-[15.5px] leading-[1.8] text-muted">{item}</p>
                   </div>
                 ))}

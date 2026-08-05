@@ -160,19 +160,19 @@ export default function BeforeAfter({
             {/* Sits outside the 2px divider so its width resolves against the
                 frame — short labels stay on one line, long ones wrap. */}
             <span
-              className="pointer-events-none absolute bottom-[7%] z-20 flex max-w-[min(84vw,340px)] -translate-x-1/2 flex-wrap justify-center gap-x-1.5 rounded-full bg-white/85 px-5 py-2 text-center font-sans text-[10px] uppercase leading-[1.5] tracking-[0.14em]"
+              className="pointer-events-none absolute bottom-[7%] z-20 flex max-w-[min(84vw,340px)] -translate-x-1/2 flex-wrap justify-center gap-x-1.5 rounded-full border-[0.5px] border-white bg-gradient-to-r from-[#DCDDD7] via-[#F8F8F8] to-[#ECECEC] px-5 py-2 text-center font-sans text-[10px] uppercase leading-[1.5] tracking-[2px] text-[#14214B]"
               style={{ left: `${pos}%` }}
             >
-              <span className="text-muted">Procedure:</span>
-              <span className="whitespace-nowrap font-bold text-navy">{slide.procedure}</span>
+              <span>Procedure:</span>
+              <span className="whitespace-nowrap">{slide.procedure}</span>
             </span>
 
             {labelStyle === 'bottom' ? (
               <>
-                <span className="pointer-events-none absolute bottom-[6%] left-[6%] z-10 font-serif text-[22px] text-white text-shadow-hero sm:text-[30px]">
+                <span className="pointer-events-none absolute bottom-[6%] left-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
                   Before
                 </span>
-                <span className="pointer-events-none absolute bottom-[6%] right-[6%] z-10 font-serif text-[22px] text-white text-shadow-hero sm:text-[30px]">
+                <span className="pointer-events-none absolute bottom-[6%] right-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
                   After
                 </span>
               </>
@@ -204,7 +204,7 @@ export default function BeforeAfter({
             type="button"
             onClick={() => go(-1)}
             aria-label="Previous result"
-            className="absolute left-1 top-1/2 z-30 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-rose/70 text-white transition-colors hover:bg-rose md:left-0 md:h-11 md:w-11"
+            className="absolute left-1 top-1/2 z-30 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-[#D8A7B7] text-white transition-colors hover:bg-rose-deep md:left-0 md:h-11 md:w-11"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -213,7 +213,7 @@ export default function BeforeAfter({
             type="button"
             onClick={() => go(1)}
             aria-label="Next result"
-            className="absolute right-1 top-1/2 z-30 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-rose/70 text-white transition-colors hover:bg-rose md:right-0 md:h-11 md:w-11"
+            className="absolute right-1 top-1/2 z-30 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-[#D8A7B7] text-white transition-colors hover:bg-rose-deep md:right-0 md:h-11 md:w-11"
           >
             <ChevronRight className="h-4 w-4" />
           </button>

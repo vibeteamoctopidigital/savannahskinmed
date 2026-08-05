@@ -34,12 +34,15 @@ const config: Config = {
         aqua: '#EFF6F6',
         sage: '#6E9A94',
         teal: { DEFAULT: '#4E9A97', dark: '#41827F' },
-        ink: '#2A2F3A',
+        ink: '#141518',
         muted: '#4a5568',
       },
       fontFamily: {
-        serif: ['"Bodoni 72"', 'var(--font-playfair)', 'Georgia', 'serif'],
-        sans: ['"Avenir"', 'var(--font-manrope)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        /* The live site self-hosts its own 'Bodoni-72' webfont and falls
+           back straight to sans-serif (not serif) if it fails to load —
+           matched here via the generated next/font/local variable. */
+        serif: ['var(--font-playfair)', 'sans-serif'],
+        sans: ['var(--font-manrope)', 'sans-serif'],
       },
       letterSpacing: {
         widest2: '0.22em',

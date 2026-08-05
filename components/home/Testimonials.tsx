@@ -37,11 +37,11 @@ const reviews = [
 function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & { className?: string }) {
   return (
     <article
-      className={`flex h-full flex-col items-center rounded-2xl bg-white p-6 text-center transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl sm:p-8 md:items-start md:rounded-xl md:p-9 md:text-left ${className}`}
+      className={`flex h-full flex-col items-center rounded-[20px] bg-white p-6 text-center transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl sm:p-8 md:items-start md:p-9 md:text-left ${className}`}
     >
-      <QuoteMark className="h-6 w-8 text-teal sm:h-8 sm:w-11 md:h-6 md:w-8" />
+      <QuoteMark className="h-6 w-8 text-[#519B98] sm:h-8 sm:w-11 md:h-6 md:w-8" />
 
-      <p className="mt-5 flex-1 text-[16px] leading-[1.6] text-muted md:mt-5">
+      <p className="mt-5 flex-1 text-[14px] leading-[1.6] text-[#111214] md:mt-5">
         {quote}
       </p>
 
@@ -50,7 +50,7 @@ function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & 
           <GoogleGlyph className="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px] md:h-[18px] md:w-[18px]" />
         </span>
         <div>
-          <p className="font-sans text-[16px] font-semibold text-navy">
+          <p className="font-sans text-[16px] font-bold text-ink">
             {name}
           </p>
           <div className="mt-1 flex justify-center gap-[2px] text-[#F5A623] sm:gap-[3px] md:mt-0.5 md:justify-start">
@@ -117,7 +117,7 @@ export default function Testimonials() {
     <section className="relative px-4 sm:px-6 lg:px-8">
       {/* Full-bleed photo, tinted with the panel's own rose so it reads as a
           colored band with a faint portrait watermark, not a bare photo. */}
-   <div className="container relative py-12 sm:py-14 lg:py-[104px] mb-16 rounded-[32px] overflow-hidden">
+   <div className="container relative py-12 sm:py-14 lg:py-[104px] mb-16 rounded-[20px] overflow-hidden">
        <div className="absolute inset-0">
         <Image
           src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg"
@@ -135,11 +135,13 @@ export default function Testimonials() {
         <Reveal>
           <div className="flex flex-col items-center gap-6 text-center sm:gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="flex items-start flex-col gap-2 sm:gap-3 lg:gap-2">
-              <p className="eyebrow mb-3 text-white sm:mb-4">Patient Testimonials</p>
-              <h2 className="font-serif font-medium text-[32px] leading-[1.2] sm:text-[48px] sm:leading-[48px] text-white text-shadow-hero [text-wrap:initial]">
+              <p className="mb-3 font-sans text-[14px] uppercase tracking-[2.8px] text-white sm:mb-4">
+                Patient Testimonials
+              </p>
+              <h2 className="font-serif font-medium text-[36px] leading-[1.1] sm:text-[48px] text-white text-shadow-hero [text-wrap:initial]">
                 Real Results, True Confidence
               </h2>
-              <p className=" mt-4 text-[15px] leading-[1.7] text-white sm:mt-5 sm:text-[16px] sm:leading-[1.75] lg:text-[14.5px] lg:leading-[1.85]">
+              <p className="mt-4 text-[16px] leading-[1.5] text-white sm:mt-5">
                 Our clients love their transformations. See how we&rsquo;ve helped them look and
                 feel their best.
               </p>

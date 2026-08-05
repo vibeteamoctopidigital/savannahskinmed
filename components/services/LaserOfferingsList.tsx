@@ -29,7 +29,7 @@ export default function LaserOfferingsList() {
         <Reveal>
           <div className="mx-auto max-w-[900px] rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-20">
             <div className="text-center">
-              <h2 className="display-3 mb-4 text-navy">Laser Hair Removal Offerings</h2>
+              <h2 className="mb-5 font-serif text-[36px] sm:text-[48px] leading-[1.1] text-[#051E5C]">Laser Hair Removal Offerings</h2>
               <p className="mx-auto max-w-[650px] text-[16px] leading-[1.8] text-muted">
                 From small areas like the upper lip to larger zones such as the back or legs, our advanced laser technology effectively reduces unwanted hair safely and efficiently. We provide customized treatments committed to quality, precision, and safety.
               </p>

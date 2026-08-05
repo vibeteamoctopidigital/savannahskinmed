@@ -52,20 +52,16 @@ export default function ServicesSection() {
             <Reveal key={href} delay={i * 70} className="h-full">
               <Link
                 href={href}
-                className={`group flex h-full items-center gap-5 rounded-lg px-6 py-[26px] transition-colors duration-300 sm:px-8 ${
-                  i % 2 === 0 ? 'bg-mint hover:bg-mint/60' : 'bg-aqua hover:bg-aqua/60'
-                }`}
+                className="group flex h-full items-center gap-5 rounded-[10px] bg-gradient-to-r from-[#F9F8F6] to-[#F7F8F2] px-6 py-[26px] transition-colors duration-300 sm:px-8"
               >
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-sage/45 text-sage">
+                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-[#519B98]/45 text-[#519B98]">
                   <Icon className="h-7 w-7" />
                 </span>
 
-                <span className="flex-1 font-sans font-medium text-[18px] text-navy">
-                  {label}
-                </span>
+                <span className="flex-1 font-serif text-[24px] text-[#0B2055]">{label}</span>
 
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-rose-light text-white transition-all duration-300 group-hover:bg-rose-deep group-hover:translate-x-0.5">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-right-icon lucide-chevron-right w-5 h-5"><path d="m9 18 6-6-6-6"/></svg>
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#D8A7B7] text-white transition-all duration-300 group-hover:bg-rose-deep group-hover:translate-x-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-right-icon lucide-chevron-right w-5 h-5"><path d="m9 18 6-6-6-6"/></svg>
                 </span>
               </Link>
             </Reveal>

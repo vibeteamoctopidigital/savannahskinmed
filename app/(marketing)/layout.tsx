@@ -3,7 +3,7 @@ import Script from 'next/script';
 
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
-import { manrope, playfair } from '@/lib/fonts';
+import { manrope } from '@/lib/fonts';
 import { getSiteSettings } from '@/lib/data/siteSettings';
 import { getFooterData } from '@/lib/data/footer';
 import { OrganizationJsonLd } from '@/lib/seo';
@@ -46,7 +46,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const [settings, footer] = await Promise.all([getSiteSettings(), getFooterData()]);
 
   return (
-    <html lang="en" className={`${playfair.variable} ${manrope.variable}`}>
+    <html
+      lang="en"
+      className={manrope.variable}
+      style={{ '--font-playfair': "'Bodoni-72', sans-serif" } as React.CSSProperties}
+    >
       <head>
         {/* Without JS the scroll-reveal elements must not stay hidden. */}
         <noscript>

@@ -16,20 +16,22 @@ export default function ExpertsSection() {
         />
       </div>
 
-      <div className="flex items-center bg-cream px-6 py-16 sm:px-10 lg:px-[86px] lg:py-20">
+      <div className="flex items-center bg-[#F7F8F2] px-6 py-16 sm:px-10 lg:px-[86px] lg:py-20">
         <Reveal className="mx-auto max-w-[560px] text-left lg:max-w-none">
-          <p className="eyebrow mb-4  text-black">Who We Are</p>
+          <p className="mb-4 font-sans text-[14px] font-bold uppercase tracking-[2.8px] text-[#0B2055]">
+            Who We Are
+          </p>
 
-          <h2 className="display-2">
+          <h2 className="font-serif font-medium text-[36px] leading-[1.1] sm:text-[48px] text-[#0B2055]">
             Experts In Aesthetic <br className="hidden lg:inline" /> Excellence
           </h2>
 
-          <p className="mt-6 text-[16px] leading-[1.6] text-muted lg:text-[16px] lg:leading-[1.6]">
+          <p className="mt-6 text-[16px] leading-[1.5] text-[#0B2055]">
             Committed to enhancing your beauty and confidence through advanced aesthetic
             treatments.
           </p>
 
-          <p className="mt-5 text-[16px] lg:max-w-[540px] leading-[1.6] text-muted lg:text-[16px] lg:leading-[1.6]">
+          <p className="mt-5 text-[16px] lg:max-w-[540px] leading-[1.5] text-[#0B2055]">
             Our licensed team uses years of clinical experience to develop a customized skin care
             plan tailored to your skin goals and comfort levels. Experience personalized skincare
             like never before.

@@ -23,9 +23,9 @@ export default function ElevateCta() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/12 to-black/22 sm:hidden" />
       <div className=" shell sm:container mx-auto relative z-10 py-16">
         <Reveal className="mx-auto container text-center sm:text-left">
-          <h2 className="display-2 text-white text-shadow-hero text-[48px] ">Elevate And Enhance</h2>
+          <h2 className="display-2 text-white text-shadow-hero">Elevate And Enhance</h2>
 
-          <p className=" mt-5 min-w-[400px] text-[18px] leading-[1.6] text-white text-shadow-hero">
+          <p className="mt-5 min-w-[400px] text-[20px] leading-[1.5] text-white text-shadow-hero">
             Start your journey toward a more radiant, youthful appearance.
           </p>
 
