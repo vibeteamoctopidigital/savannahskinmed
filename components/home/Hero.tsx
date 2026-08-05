@@ -30,7 +30,7 @@ export default function Hero() {
             <br className="hidden lg:block" /> Precision And Care
           </h1>
 
-          <p className="mx-auto mt-7 max-w-[645px] animate-fadeUp text-[20px] leading-[1.7] text-white text-shadow-hero [animation-delay:120ms] lg:mx-0">
+          <p className="mx-auto mt-7 max-w-[645px] animate-fadeUp text-[18px] leading-[1.6] text-white text-shadow-hero [animation-delay:120ms] lg:mx-0">
             Customized medical aesthetic solutions to enhance your glow and restore youthful
             skin.
           </p>

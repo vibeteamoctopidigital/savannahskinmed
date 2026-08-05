@@ -60,12 +60,12 @@ export default function ServicesSection() {
                   <Icon className="h-7 w-7" />
                 </span>
 
-                <span className="flex-1 font-serif text-[18px] leading-snug text-navy sm:text-[21px]">
+                <span className="flex-1 font-sans font-medium text-[18px] text-navy">
                   {label}
                 </span>
 
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-rose-light text-white transition-all duration-300 group-hover:bg-rose-deep group-hover:translate-x-0.5">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-right-icon lucide-chevron-right w-5 h-5"><path d="m9 18 6-6-6-6"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-right-icon lucide-chevron-right w-5 h-5"><path d="m9 18 6-6-6-6"/></svg>
                 </span>
               </Link>
             </Reveal>

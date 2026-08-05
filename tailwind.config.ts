@@ -15,14 +15,14 @@ const config: Config = {
     extend: {
       colors: {
         navy: {
-          DEFAULT: '#13285C',
+          DEFAULT: '#14214b',
           deep: '#0C1D45',
           soft: '#2B4179',
         },
         /* Sampled from the site's own rose panel artwork (contact-bg.jpg) */
         rose: {
           DEFAULT: '#BE8596',
-          light: '#E3A7B7',
+          light: '#D4A5B4',
           pale: '#F3DDE3',
           deep: '#B0798A',
         },
@@ -35,7 +35,7 @@ const config: Config = {
         sage: '#6E9A94',
         teal: { DEFAULT: '#4E9A97', dark: '#41827F' },
         ink: '#2A2F3A',
-        muted: '#5C6474',
+        muted: '#4a5568',
       },
       fontFamily: {
         serif: ['"Bodoni 72"', 'var(--font-playfair)', 'Georgia', 'serif'],

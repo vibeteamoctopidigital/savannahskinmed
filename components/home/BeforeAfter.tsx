@@ -61,11 +61,11 @@ export default function BeforeAfter({
 
   // Advance automatically, but never while the visitor is interacting with it.
   useEffect(() => {
-    if (paused) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const timer = setInterval(() => go(1), AUTOPLAY_MS);
-    return () => clearInterval(timer);
+    // Autoplay disabled as per request
+    // if (paused) return;
+    // if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // const timer = setInterval(() => go(1), AUTOPLAY_MS);
+    // return () => clearInterval(timer);
   }, [paused, go]);
 
   const setFromClientX = useCallback((clientX: number) => {

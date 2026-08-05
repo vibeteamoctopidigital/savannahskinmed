@@ -25,7 +25,7 @@ export default function ElevateCta() {
         <Reveal className="mx-auto container text-center sm:text-left">
           <h2 className="display-2 text-white text-shadow-hero text-[48px] ">Elevate And Enhance</h2>
 
-          <p className=" mt-5 min-w-[400px] text-[15px] leading-[1.75] text-white text-shadow-hero lg:text-[20px] lg:leading-[1.85]">
+          <p className=" mt-5 min-w-[400px] text-[18px] leading-[1.6] text-white text-shadow-hero">
             Start your journey toward a more radiant, youthful appearance.
           </p>
 

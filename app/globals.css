@@ -16,7 +16,7 @@
      as a darker, slightly heavier weight than plain "muted" gray/regular —
      matching the reference design's actual boldness and color. */
   body {
-    @apply bg-white font-sans text-[16px] font-normal leading-[24px] text-ink antialiased;
+    @apply bg-white font-sans text-[16px] font-normal leading-[1.6] text-muted antialiased;
   }
 
   /* Scroll-reveal starting state — see components/ui/Reveal.tsx */
@@ -41,7 +41,7 @@
   h2,
   h3,
   h4 {
-    @apply font-serif font-medium text-navy;
+    @apply font-serif font-normal text-navy;
     text-wrap: balance;
   }
 
@@ -56,11 +56,11 @@
   /* Sized so the hero headline breaks where the reference does:
      3 lines at 393px, 2 from 430px, 2 at tablet, 2 at desktop. */
   .display-1 {
-    @apply font-serif font-semibold text-[34px] leading-[1.15] sm:text-[48px] lg:text-[64px] lg:leading-[70px];
+    @apply font-serif font-normal text-[34px] leading-[1.2] sm:text-[48px] lg:text-[56px] lg:leading-[1.2];
   }
 
   .display-2 {
-    @apply font-serif font-semibold text-[30px] leading-[1.2] sm:text-[40px] lg:text-[48px] lg:leading-[56px];
+    @apply font-serif font-normal text-[30px] leading-[1.2] sm:text-[40px] lg:text-[36px] lg:leading-[1.2];
   }
 
   .display-3 {

@@ -24,12 +24,12 @@ export default function ExpertsSection() {
             Experts In Aesthetic <br className="hidden lg:inline" /> Excellence
           </h2>
 
-          <p className="mt-6 text-[16px] leading-[1.8] lg:text-[14.5px] lg:leading-[1.9]">
+          <p className="mt-6 text-[16px] leading-[1.6] text-muted lg:text-[16px] lg:leading-[1.6]">
             Committed to enhancing your beauty and confidence through advanced aesthetic
             treatments.
           </p>
 
-          <p className="mt-5 text-[16px] lg:max-w-[540px] leading-[1.8] lg:text-[14.5px] lg:leading-[1.9]">
+          <p className="mt-5 text-[16px] lg:max-w-[540px] leading-[1.6] text-muted lg:text-[16px] lg:leading-[1.6]">
             Our licensed team uses years of clinical experience to develop a customized skin care
             plan tailored to your skin goals and comfort levels. Experience personalized skincare
             like never before.

@@ -126,7 +126,7 @@ export default async function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[14px] text-black transition-colors duration-300 hover:text-rose-deep"
+                    className="font-sans text-[14px] leading-[2] text-muted transition-colors duration-300 hover:text-rose-deep"
                   >
                     {link.label}
                   </Link>
@@ -143,7 +143,7 @@ export default async function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[14px] text-black transition-colors duration-300 hover:text-rose-deep"
+                    className="font-sans text-[14px] leading-[2] text-muted transition-colors duration-300 hover:text-rose-deep"
                   >
                     {link.label}
                   </Link>
