@@ -38,8 +38,8 @@ const config: Config = {
         muted: '#5C6474',
       },
       fontFamily: {
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
-        sans: ['var(--font-manrope)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['"Bodoni 72"', 'var(--font-playfair)', 'Georgia', 'serif'],
+        sans: ['"Avenir"', 'var(--font-manrope)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         widest2: '0.22em',
