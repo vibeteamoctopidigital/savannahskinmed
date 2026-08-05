@@ -21,11 +21,11 @@ export default function ElevateCta() {
       />
  <div className="absolute inset-0 bg-black/25 sm:hidden" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/12 to-black/22 sm:hidden" />
-      <div className=" shell sm:container mx-auto relative z-10 py-16">
-        <Reveal className="mx-auto container text-center sm:text-left">
-          <h2 className="display-2 text-white text-shadow-hero">Elevate And Enhance</h2>
+      <div className="shell relative z-10 py-16">
+        <Reveal className="text-center sm:text-left">
+          <h2 className="font-serif font-medium text-[48px] leading-[1.1] text-white ">Elevate And Enhance</h2>
 
-          <p className="mt-5 min-w-[400px] text-[20px] leading-[1.5] text-white text-shadow-hero">
+          <p className="mt-5 text-[18px] sm:text-[20px] leading-[1.5] text-white ">
             Start your journey toward a more radiant, youthful appearance.
           </p>
 

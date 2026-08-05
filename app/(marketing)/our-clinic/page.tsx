@@ -54,7 +54,7 @@ export default function OurClinicPage() {
               Welcome To Savannah Age Management Medicine
             </p>
 
-            <h2 className="display-2 [text-wrap:initial] font-bold">
+            <h2 className="display-1v2 [text-wrap:initial] font-bold">
               A Destination For Bespoke
               <br className="hidden sm:block" /> Aesthetic Care
             </h2>
@@ -113,14 +113,13 @@ export default function OurClinicPage() {
 
             <Reveal delay={100}>
               <div className="mx-auto max-w-[460px] text-center lg:mx-0 lg:text-left">
-                <p className="eyebrow mb-4 text-navy-deep font-semibold text-[16px]">Cutting-Edge Technology</p>
+                <p className="eyebrow mb-4 text-navy font-semibold text-[14px]">Cutting-Edge Technology</p>
 
-                <h2 className="display-2 [text-wrap:initial] font-medium">
+                <h2 className="display-1v2 [text-wrap:initial] font-medium">
                   Crafting Beauty With
                   <br className="hidden sm:block" /> Precision And Passion
                 </h2>
-
-                <p className="mt-6 text-[15px] leading-[1.9]">
+                <p className="mt-6 text-[16px] text-[#0b2055] leading-[1.9]">
                   Our highly trained professionals are masters of their craft, with years of
                   specialized training and a dedication to the art and science of age management.
                   With a passion for excellence, they stay at the forefront of the latest
@@ -139,15 +138,15 @@ export default function OurClinicPage() {
     {/* Text block – on desktop: left, on mobile: below image (due to reverse) */}
     <div className="flex items-center py-16 lg:py-24 lg:pr-14 xl:pl-24 lg:w-1/2">
       <Reveal className="mx-auto w-full text-center lg:text-left pl-4">
-        <p className="eyebrow mb-4 text-navy-soft-deep font-bold text-[14px]">
+        <p className="eyebrow mb-4 text-[#0b2055] font-bold text-[14px]">
           Synergistic Wellness
         </p>
 
-        <h2 className="display-2 [text-wrap:initial] font-bold">
+        <h2 className="display-1v2 [text-wrap:initial] font-bold">
           The Inside-Out Approach
         </h2>
 
-        <p className="mt-6 text-[15px] leading-[1.9]">
+        <p className="mt-6 text-[16px] text-[#0b2055] ffont-semibold leading-[1.9]">
           At Savannah Age Management Medicine, we believe that true transformation begins
           from the inside out. Our regenerative therapies, including Bioidentical Hormone
           Replacement Therapy (BHRT) and medical weight loss, work in harmony with aesthetic

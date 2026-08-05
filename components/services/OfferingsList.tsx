@@ -32,7 +32,7 @@ const offerings = [
 
 export default function OfferingsList() {
   return (
-    <section id="offerings" className="section bg-mist pt-8 lg:pt-16">
+    <section id="offerings" className="section  pt-8 lg:pt-16">
       <div className="shell relative z-20 ">
         <Reveal>
           <div className="mx-auto min-w-full rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
@@ -41,20 +41,20 @@ export default function OfferingsList() {
               <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
                 Discover advanced facials tailored to your skin's unique needs at transparent prices.
               </p>
-              <div className="mx-auto mt-8 flex w-full max-w-[720px] items-center justify-center rounded-full bg-[#f1f1ee] px-8 py-4">
-                <span className="font-sans text-[15px] font-bold tracking-widest text-navy uppercase">
+              <div className="mx-auto mt-8 flex w-full max-w-[1065px] items-center justify-center rounded-full bg-[#f1f1ee] px-8 py-4">
+                <span className="font-sans text-[16px] font-bold tracking-widest text-navy uppercase">
                   Treatments
                 </span>
               </div>
             </div>
 
-            <div className="mx-auto mt-12 flex max-w-[680px] flex-col gap-9 text-left text-[15.5px] leading-[1.8] text-ink">
+            <div className="mx-auto mt-12 flex max-w-[870px] flex-col gap-9 text-left text-[15.5px] leading-[1.8] text-ink">
               {offerings.map((offering, i) => (
                 <div key={i}>
-                  <h3 className="font-sans text-[17px] font-bold text-navy">
+                  <h3 className="font-sans text-[24px] font-bold text-black">
                     {offering.title}
                   </h3>
-                  <p className="mt-2 text-muted">
+                  <p className="mt-2 text-[#111214]">
                     {offering.description}
                   </p>
                 </div>
@@ -64,7 +64,7 @@ export default function OfferingsList() {
             <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
               <Link
                 href="/iv-infusion-therapy-vitamin-injections"
-                className="inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
+                className="inline-flex items-center gap-2 font-medium text-[14px] text-[#8a8f99] transition-colors hover:text-rose"
               >
                 <span aria-hidden>&larr;</span>
                 IV INFUSION THERAPY
@@ -75,7 +75,7 @@ export default function OfferingsList() {
               </BookAppointmentButton>
               <Link
                 href="/injectables-wrinkle-prevention"
-                className="inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
+                className="inline-flex items-center gap-2 font-medium text-[14px] text-[#8a8f99] transition-colors hover:text-rose"
               >
                 INJECTABLES &amp; WRINKLE PREVENTION
                 <span aria-hidden>&rarr;</span>

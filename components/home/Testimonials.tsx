@@ -39,7 +39,7 @@ function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & 
     <article
       className={`flex h-full flex-col items-center rounded-[20px] bg-white p-6 text-center transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl sm:p-8 md:items-start md:p-9 md:text-left ${className}`}
     >
-      <QuoteMark className="h-6 w-8 text-[#519B98] sm:h-8 sm:w-11 md:h-6 md:w-8" />
+     <svg xmlns="http://www.w3.org/2000/svg" width="46" height="31" viewBox="0 0 46 31" fill="none"><path d="M45.3998 22.8944C45.3998 25.1366 44.5478 27.0648 42.8437 28.6792C41.2294 30.2039 39.2114 30.9662 36.7899 30.9662C33.4715 30.9662 30.6912 29.8003 28.4491 27.4684C26.2966 25.1366 25.2204 22.1321 25.2204 18.455C25.2204 11.7285 27.8213 6.93031 33.0231 4.06036C36.7899 1.99758 39.8392 0.966187 42.1711 0.966187C43.1576 0.966187 43.6509 1.32493 43.6509 2.04242C43.6509 2.67022 43.1128 3.11865 42.0365 3.38771C34.5926 5.36081 30.8706 9.08278 30.8706 14.5536C30.8706 16.9752 31.4984 19.0379 32.754 20.742C32.9334 17.6926 34.8617 16.168 38.5388 16.168C40.5119 16.168 42.1262 16.8406 43.3818 18.1859C44.7271 19.4415 45.3998 21.011 45.3998 22.8944ZM20.6464 22.8944C20.6464 25.1366 19.7944 27.0648 18.0904 28.6792C16.476 30.2039 14.5029 30.9662 12.1711 30.9662C8.763 30.9662 5.98273 29.8003 3.83026 27.4684C1.6778 25.0469 0.601562 21.9976 0.601562 18.3204C0.601562 11.6837 3.20246 6.93031 8.40425 4.06036C12.1711 1.99758 15.1756 0.966187 17.4177 0.966187C18.4043 0.966187 18.8975 1.32493 18.8975 2.04242C18.8975 2.67022 18.3594 3.11865 17.2832 3.38771C9.92892 5.36081 6.25179 9.12762 6.25179 14.6882C6.25179 17.02 6.87959 19.0379 8.1352 20.742C8.31457 17.6926 10.198 16.168 13.7854 16.168C15.7585 16.168 17.3729 16.8406 18.6285 18.1859C19.9738 19.4415 20.6464 21.011 20.6464 22.8944Z" fill="#519B98"></path></svg>
 
       <p className="mt-5 flex-1 text-[14px] leading-[1.6] text-[#111214] md:mt-5">
         {quote}
@@ -64,7 +64,7 @@ function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & 
   );
 }
 
-export default function Testimonials() {
+export default function Testimonials({width}:{width?:string}) {
   const [index, setIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -114,13 +114,13 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="relative px-4 sm:px-6 lg:px-8">
+    <section className={`${width === "full" ? "relative " : "px-4  lg:px-8"}`}>
       {/* Full-bleed photo, tinted with the panel's own rose so it reads as a
           colored band with a faint portrait watermark, not a bare photo. */}
-   <div className="container relative py-12 sm:py-14 lg:py-[104px] mb-16 rounded-[20px] overflow-hidden">
+   <div className={`${width === "full" ? "w-full px-0" : "container rounded-[20px] mb-16" } relative py-12 sm:py-14 lg:py-[104px]   overflow-hidden`}>
        <div className="absolute inset-0">
         <Image
-          src="https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg"
+          src= {width === "full" ?  "/testimonial-2-bg.jpg" : "https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg"}
           alt=""
           fill
           sizes="100vw"

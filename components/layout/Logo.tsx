@@ -27,7 +27,7 @@ export default function Logo({ variant = 'light', className = '', src }: LogoPro
           alt="Savannah Age Management Medicine"
          
           
-          className="h-auto w-[192px]"
+          className="h-auto w-full"
         />
       ) : (
         /* The artwork is white-on-transparent, so its alpha drives a navy mask. */

@@ -26,7 +26,7 @@ const socialIcons: Record<string, typeof FacebookIcon> = {
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="mb-6 font-sans text-[15px] font-semibold text-navy">{children}</h3>
+    <h3 className="mb-4 font-sans text-[14px] font-bold text-navy">{children}</h3>
   );
 }
 
@@ -39,7 +39,7 @@ export default async function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.05fr_1.35fr_0.9fr_1.25fr] lg:gap-10">
           {/* ---------------- Brand ---------------- */}
           <div>
-            <Logo variant="dark" src={siteSettings.logoUrl || undefined} />
+            <Logo variant="dark" src={siteSettings.logoUrl || undefined} className="lg:w-[227px] lg:h-[192px]" />
 
             <ul className="mt-7 flex items-center gap-3">
               {footer.socials.map((social) => {
@@ -80,11 +80,11 @@ export default async function Footer() {
           <div>
             <ColumnHeading>Contact Info</ColumnHeading>
 
-            <div className="space-y-7">
+            <div className="space-y-6">
               {footer.locations.map((location) => (
                 <div key={location.city}>
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <p className="font-sans text-[14px] font-semibold text-black">
+                    <p className="font-sans text-[14px] font-bold text-navy">
                       {location.city}
                     </p>
                     {location.badge && (
@@ -94,15 +94,15 @@ export default async function Footer() {
                     )}
                   </div>
 
-                  <p className="mt-2 flex items-start gap-2.5 text-[14px] text-black">
+                  <p className="mt-2 flex items-start gap-2.5 text-[14px] text-navy">
                     <PinIcon className="mt-[3px] h-4 w-4 shrink-0" />
                     <span>{location.addressLines.join(', ')}</span>
                   </p>
 
-                  <p className="mt-4 font-sans text-[13px] font-semibold text-black">
+                  <p className="mt-4 font-sans text-[13px] font-semibold text-navy">
                     Office Hours
                   </p>
-                  <p className="mt-1.5 flex items-start gap-2.5 text-[14px] text-black">
+                  <p className="mt-1.5 flex items-start gap-2.5 text-[14px] text-navy">
                     <ClockIcon className="mt-[3px] h-4 w-4 shrink-0" />
                     <span>
                       {location.hoursShort.map((entry, i) => (
@@ -121,12 +121,12 @@ export default async function Footer() {
           {/* ---------------- Quick links ---------------- */}
           <div>
             <ColumnHeading>Quick Links</ColumnHeading>
-            <ul className="space-y-[18px]">
+            <ul className="space-y-[12px]">
               {footer.quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-sans text-[14px] leading-[2] text-muted transition-colors duration-300 hover:text-rose-deep"
+                    className="font-sans text-[14px] leading-relaxed text-navy transition-colors duration-300 hover:text-rose-deep"
                   >
                     {link.label}
                   </Link>
@@ -138,12 +138,12 @@ export default async function Footer() {
           {/* ---------------- Services ---------------- */}
           <div>
             <ColumnHeading>Services</ColumnHeading>
-            <ul className="space-y-[18px]">
+            <ul className="space-y-[12px]">
               {footer.footerServices.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-sans text-[14px] leading-[2] text-muted transition-colors duration-300 hover:text-rose-deep"
+                    className="font-sans text-[14px] leading-relaxed text-navy transition-colors duration-300 hover:text-rose-deep"
                   >
                     {link.label}
                   </Link>

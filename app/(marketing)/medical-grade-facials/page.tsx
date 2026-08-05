@@ -50,19 +50,24 @@ export default function MedicalGradeFacialsPage() {
         position="center"
       />
       
-      <OfferingsList />
+      <div className='bg-[#F7F8F2]'>
+        <OfferingsList />
       
       <BeforeAfter 
         eyebrow="BEFORE & AFTER PROCEDURES"
         title="Results You Can See, Confidence You Can Feel"
         slides={facialSlides}
+        bg='bg-[#F7F8F2]'
       />
+      </div>
       
-      <FaqAccordion faqs={facialFaqs} />
+      <div className='bg-[#F7F8F2] w-full'>
+        <FaqAccordion faqs={facialFaqs}  noTopPadding/>
+      </div>
       
       <ExpertProfile />
       
-      <Testimonials />
+      <Testimonials  width='full'/>
       
       <ElevateCta />
     </>

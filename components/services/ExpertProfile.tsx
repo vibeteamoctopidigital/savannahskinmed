@@ -20,9 +20,9 @@ export default function ExpertProfile({}) {
             </div>
 
             <div className="text-left md:pt-2">
-              <h2 className="font-serif text-[36px] text-navy md:text-[42px]">Rebecca Spacek</h2>
+              <h2 className="font-serif text-[36px] text-navy sm:display-1v2">Rebecca Spacek</h2>
 
-              <div className="mt-6 space-y-5 text-[16px] leading-[1.8] text-muted">
+              <div className="mt-6 space-y-5 text-[16px] leading-[1.8] text-[#0b2055]">
                 <p>
                   Rebecca Spacek is an Assistant Cosmetic Laser Practitioner, a Master Cosmetologist, and has been a professional Aesthetician and Certified Lasographer for 22 years.
                 </p>

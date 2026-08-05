@@ -50,7 +50,7 @@ export default function LaserHairRemovalPage() {
         position="center"
       />
       
-      <LaserHairRemovalOfferings/>
+    <LaserHairRemovalOfferings/>
       {/* <LaserOfferingsList /> */}
       
       <BeforeAfter 

@@ -19,8 +19,8 @@ export default function Hero() {
       />
 
       {/* Added a subtle dark overlay to improve text readability */}
-      <div className="absolute inset-0 bg-black/20" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
+      {/* <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" /> */}
 
       <div className="shell relative z-10 pt-20">
         {/* Centred through tablet, left-aligned from desktop up. */}
@@ -43,8 +43,11 @@ export default function Hero() {
               className="group inline-flex items-center gap-4 font-sans text-[13px] font-medium uppercase tracking-widest2 text-white"
             >
               View Treatments
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-navy transition-transform duration-300 group-hover:translate-x-1">
-                <ArrowRight className="h-3.5 w-3.5" />
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-white text-navy transition-transform duration-300 group-hover:translate-x-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 26" fill="none">
+<circle cx="12.5" cy="13.4171" r="12.5" fill="white"/>
+<path d="M11.043 8.43225L16.0278 13.4171L11.043 18.4019" stroke="#D8A7B7"/>
+</svg>
               </span>
             </Link>
           </div>

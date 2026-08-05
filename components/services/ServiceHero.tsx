@@ -46,7 +46,7 @@ export default function ServiceHero({
               {eyebrow}
             </p>
           )}
-          <h1 className="animate-fadeUp text-white text-shadow-hero [text-wrap:initial] [animation-delay:100ms] font-serif text-[44px] leading-[1.12] sm:text-[48px] lg:text-[56px]">
+          <h1 className="animate-fadeUp text-white text-shadow-hero [text-wrap:initial] [animation-delay:100ms] font-serif text-[44px] leading-[1.12] sm:text-[48px] lg:text-[64px]">
             {title}
           </h1>
 
