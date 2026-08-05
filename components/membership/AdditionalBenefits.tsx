@@ -21,7 +21,7 @@ export default function AdditionalBenefits() {
           <p className="eyebrow mb-3 text-navy font-semibold uppercase tracking-widest2 text-[13px]">
             EXTEND YOUR RESULTS
           </p>
-          <h2 className="font-serif text-[38px] sm:text-[46px] text-navy font-normal">
+          <h2 className="font-serif text-[38px] sm:text-[46px] text-navy font-medium">
             Additional Benefits
           </h2>
         </Reveal>
@@ -35,7 +35,7 @@ export default function AdditionalBenefits() {
 </svg>
              </div>
               <div>
-                <h3 className="text-[22px] sm:text-[24px] font-serif text-navy font-normal mb-2.5">
+                <h3 className="text-[22px] sm:text-[24px] font-serif text-navy font-medium mb-2.5">
                   {benefit.title}
                 </h3>
                 <p className="text-[15px] sm:text-[15.5px] leading-[1.7] text-[#334e68]">
