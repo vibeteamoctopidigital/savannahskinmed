@@ -1,9 +1,11 @@
 import React from 'react'
-
-const PRP and Microneedling = () => {
+import TextHero from '@/components/TextHero';
+const PRPMicroneedling = () => {
   return (
-    <div>PRP and Microneedling</div>
+    <>
+        <TextHero title="PRP and Microneedling" />
+    </>
   )
 }
 
-export default PRP and Microneedling
+export default PRPMicroneedling

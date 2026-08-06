@@ -18,7 +18,7 @@ export default function TextHero({
 
     <h1 className="display-1 animate-fadeUp text-white sm:text-[54px] text-[34px] mt-5 ">{title}</h1>
         {intro && (
-          <p className="mx-auto mt-5 max-w-[780px] animate-fadeUp text-[19px] leading-[1.65] text-white text-shadow-hero [animation-delay:120ms] sm:mt-6 sm:text-[20px] sm:leading-[1.7] lg:text-[21px]">
+          <p className="mx-auto mt-5 max-w-[780px] animate-fadeUp text-[19px] leading-[1.65] text-white  [animation-delay:120ms] sm:mt-6 sm:text-[20px] sm:leading-[1.7] lg:text-[21px]">
             {intro}
           </p>
         )}
