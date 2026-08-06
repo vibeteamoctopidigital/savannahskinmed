@@ -18,6 +18,8 @@ export default function AestheticMembershipProgramPage() {
     <main>
       <PageJsonLd route="/aesthetic-membership-program" isService />
       <MembershipHero />
+
+      
       <BeautyWithoutGuesswork />
       <MemberBenefits />
       <MembershipOptions />

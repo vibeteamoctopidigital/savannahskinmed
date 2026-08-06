@@ -32,7 +32,7 @@ export default function OfferCard({ card }: { card: SpecialCardData }) {
        
           <>
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
-            <p className="absolute bottom-5 left-6 max-w-[300px] right-6 font-bold  text-[48px] leading-tight text-white">
+            <p className="absolute bottom-5 left-6 max-w-[300px] right-6 font-bold  sm:text-[48px] text-[25px] leading-tight text-white">
               {card.title || card.headline}
             </p>
           </>

@@ -21,19 +21,19 @@ export default function ContactInfo() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-0">
           {/* ---------------- Details ---------------- */}
           <Reveal>
-            <h2 className="text-center text-[36px] font-bold leading-[1.1] sm:text-[48px] lg:text-left">
+            <h2 className="text-center text-[36px] font-medium leading-[1.1]  lg:text-left">
               Contact Information
             </h2>
 
             <div className="mt-9 space-y-6">
               <Row label="Phone:">
-                <TrackedPhoneLink href={site.phoneHref} className="hover:text-rose-deep text-[16px]">
+                <TrackedPhoneLink href={site.phoneHref} className="hover:text-rose-deep font-semibold text-[16px] text-navy">
                   {site.phone}
                 </TrackedPhoneLink>
               </Row>
 
               <Row label="Email:">
-                <a href={site.emailHref} className="hover:text-rose-deep ">
+                <a href={site.emailHref} className="hover:text-rose-deep text-[16px] font-semibold text-navy">
                   {site.email}
                 </a>
               </Row>
@@ -56,7 +56,7 @@ export default function ContactInfo() {
                         {location.hours.map((entry) => (
                           <div key={entry.days} className="contents">
                             <dt>{entry.days}</dt>
-                            <dd className="font-sans font-semibold text-navy">{entry.time}</dd>
+                            <dd className="font-sans font-bold text-[14px] text-navy">{entry.time}</dd>
                           </div>
                         ))}
                       </dl>

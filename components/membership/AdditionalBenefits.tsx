@@ -16,12 +16,12 @@ const additionalBenefits = [
 export default function AdditionalBenefits() {
   return (
     <section >
-      <div className="max-w-[1245px] mx-auto bg-[#F7F8F2] py-16 sm:py-20 lg:py-24 lg:px-20 sm:px-6 px-4">
+      <div className="sm:max-w-[1245px] w-[85%] mx-auto bg-[#F7F8F2] py-16 sm:py-20 lg:py-24 lg:px-20 sm:px-6 px-4">
         <Reveal className="mb-10 sm:mb-12 text-center md:text-left">
           <p className="eyebrow mb-3 text-navy font-bold uppercase tracking-widest2 text-[14px]">
             EXTEND YOUR RESULTS
           </p>
-          <h2 className="font-serif text-[38px] sm:text-[48px] text-navy font-medium">
+          <h2 className="font-serif text-[38px] sm:text-[48px] sm:leading-normal leading-[38px] text-navy font-medium">
             Additional Benefits
           </h2>
         </Reveal>

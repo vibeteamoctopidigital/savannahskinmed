@@ -3,7 +3,7 @@ import RequestButton from '@/components/booking/RequestButton';
 
 export default function MembershipHero() {
   return (
-    <section className="relative flex min-h-[480px] items-center overflow-hidden bg-[#b9bcc2] py-16 lg:h-[85vh] lg:min-h-[600px] lg:max-h-[880px] lg:py-0">
+    <section className="relative flex min-h-[700px] items-center overflow-hidden bg-[#b9bcc2] py-16 lg:h-[85vh] lg:min-h-[600px] lg:max-h-[880px] lg:py-0">
       <Image
         src="/images/banner-16-bg.jpg"
         alt="Aesthetic Membership Program"
@@ -15,7 +15,7 @@ export default function MembershipHero() {
       />
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 sm:bg-gradient-to-r sm:from-black/40 sm:via-black/10 sm:to-transparent" />
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="hidden sm:absolute inset-0 bg-black/30" />
 
       <div className="mx-auto relative z-10 pt-10 lg:pt-20">
         <div className="text-center">

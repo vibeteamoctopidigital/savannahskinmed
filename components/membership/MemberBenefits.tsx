@@ -118,7 +118,7 @@ export default function MemberBenefits() {
           {benefits.map((benefit, index) => (
             <Reveal
               key={index}
-              className="rounded-[18px] bg-white p-7 sm:p-8 shadow-sm flex items-start gap-5 sm:gap-6"
+              className="rounded-[18px] bg-white p-7 sm:p-8 shadow-sm flex sm:flex-row flex-col sm:text-left text-center sm:items-start items-center gap-5 sm:gap-6"
             >
               <div className="shrink-0 flex h-[54px] w-[54px] items-center justify-center rounded-full border border-[#5a8680] text-[#3d6e68]">
                 {benefit.icon}

@@ -49,9 +49,9 @@ export default function ContactForm() {
           />
 
           <Reveal className="relative z-10 mx-auto max-w-[680px] text-center">
-            <h2 className="display-2 text-white">Get In Touch With Us!</h2>
+            <h2 className="display-1v2 text-white">Get In Touch With Us!</h2>
 
-            <p className="mx-auto mt-5 max-w-[600px] text-[15px] leading-[1.85] text-white/95">
+            <p className="mx-auto mt-5 max-w-[600px] text-[20px] leading-[1.85] text-white/95">
               We&rsquo;re here to answer your questions, address your concerns, and help you take
               the first step toward better health and wellness. Reach out to us today!
             </p>
