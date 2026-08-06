@@ -387,14 +387,18 @@ export default function BeforeAfter({
             </span>
 
             {labelStyle === 'bottom' ? (
-              <>
-                <span className="pointer-events-none absolute sm:bottom-[6%] top-[0%] left-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
-                  Before
-                </span>
-                <span className="pointer-events-none absolute sm:bottom-[6%] top-[0%] right-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
-                  After
-                </span>
-              </>
+         <>
+  {/* Before Label */}
+  <span className="pointer-events-none absolute top-[6%] sm:top-auto sm:bottom-[6%] left-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
+    Before
+  </span>
+
+  {/* After Label */}
+  <span className="pointer-events-none absolute top-[6%] sm:top-auto sm:bottom-[6%] right-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
+    After
+  </span>
+</>
+
             ) : (
               <>
                 <span className="pointer-events-none absolute top-4 left-1/4 z-10 -translate-x-1/2 rounded-full bg-sage px-12 py-1 font-sans text-[14px] font-bold text-white shadow-md sm:top-6 sm:px-16 sm:py-1.5 sm:text-[16px]">
