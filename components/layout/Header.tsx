@@ -97,10 +97,10 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                     <Link
                       href={item.href}
                       aria-current={isActive(item.href) ? 'page' : undefined}
-                      className={`block rounded-md px-4 py-2 font-sans text-[13px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
+                      className={`block rounded-md px-4 py-2 font-sans text-[14px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 ${
                         isActive(item.href)
                           ? scrolled ? 'text-navy' : 'text-white'
-                          : scrolled ? 'text-navy/80 hover:text-navy' : 'text-white/85 hover:text-white'
+                          : scrolled ? 'text-navy/80 hover:text-navy' : 'text-white hover:text-white'
                       }`}
                     >
                       {item.label}
@@ -121,10 +121,10 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                     aria-expanded={desktopOpen}
                     aria-haspopup="true"
                     onClick={() => setDesktopOpen((v) => !v)}
-                    className={`flex items-center gap-1.5 rounded-md px-4 py-2 font-sans text-[13px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
+                    className={`flex items-center gap-1.5 rounded-md px-4 py-2 font-sans text-[14px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 ${
                       desktopOpen || isActive('/services')
                         ? scrolled ? 'text-navy' : 'text-white'
-                        : scrolled ? 'text-navy/80 hover:text-navy' : 'text-white/85 hover:text-white'
+                        : scrolled ? 'text-navy/80 hover:text-navy' : 'text-white hover:text-white'
                     }`}
                   >
                     {item.label}

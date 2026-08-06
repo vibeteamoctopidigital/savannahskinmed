@@ -42,7 +42,7 @@ export default function SectionHeading({
         <p
           className={`mt-4 sm:mt-5 font-sans text-[16px] sm:text-[18px] lg:text-[20px] leading-[1.5] ${
             tone === 'white' ? 'text-white' : 'text-ink'
-          } ${centered ? 'mx-auto max-w-[620px]' : ''}`}
+          } ${centered ? 'mx-auto max-w-[700px]' : ''}`}
         >
           {intro}
         </p>
