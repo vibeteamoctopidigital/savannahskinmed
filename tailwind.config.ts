@@ -64,10 +64,30 @@ const config: Config = {
           '0%': { opacity: '0', transform: 'translateY(-8px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        slideInRight: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        slideOutRight: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        fadeInBlack: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '0.5' },
+        },
+        fadeOutBlack: {
+          '0%': { opacity: '0.5' },
+          '100%': { opacity: '0' },
+        },
       },
       animation: {
         fadeUp: 'fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
         menuIn: 'menuIn 0.22s ease-out both',
+        slideInRight: 'slideInRight 0.35s ease-out both',
+        slideOutRight: 'slideOutRight 0.35s ease-in both',
+        fadeInBlack: 'fadeInBlack 0.35s ease-out both',
+        fadeOutBlack: 'fadeOutBlack 0.35s ease-in both',
       },
     },
   },

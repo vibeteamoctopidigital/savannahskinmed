@@ -24,9 +24,11 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
   const pathname = usePathname();
   const [desktopOpen, setDesktopOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileClosing, setMobileClosing] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mobileCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -38,22 +40,38 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
   // Route changes should always dismiss any open navigation surface.
   useEffect(() => {
     setMobileOpen(false);
+    setMobileClosing(false);
     setDesktopOpen(false);
     setMobileServicesOpen(false);
+    if (mobileCloseTimer.current) clearTimeout(mobileCloseTimer.current);
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    document.body.style.overflow = mobileOpen && !mobileClosing ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [mobileOpen]);
+  }, [mobileOpen, mobileClosing]);
+
+  const closeMobileDrawer = () => {
+    setMobileClosing(true);
+    if (mobileCloseTimer.current) clearTimeout(mobileCloseTimer.current);
+    mobileCloseTimer.current = setTimeout(() => {
+      setMobileOpen(false);
+      setMobileClosing(false);
+    }, 350);
+  };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
       setDesktopOpen(false);
-      setMobileOpen(false);
+      setMobileClosing(true);
+      if (mobileCloseTimer.current) clearTimeout(mobileCloseTimer.current);
+      mobileCloseTimer.current = setTimeout(() => {
+        setMobileOpen(false);
+        setMobileClosing(false);
+      }, 350);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -196,7 +214,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
 
           <button
             type="button"
-            onClick={() => setMobileOpen((v) => !v)}
+            onClick={() => mobileOpen ? closeMobileDrawer() : setMobileOpen(true)}
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             className={`grid h-12 w-12 place-items-center transition-opacity hover:opacity-75 lg:hidden ${
@@ -210,22 +228,26 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
       </header>
 
       {/* ---------------- Mobile drawer ---------------- */}
-      {mobileOpen && (
+      {(mobileOpen || mobileClosing) && (
         <>
           {/* Backdrop */}
-          <div 
-            className="fixed inset-0 z-[60] bg-black/50 transition-opacity lg:hidden"
-            onClick={() => setMobileOpen(false)}
+          <div
+            className={`fixed inset-0 z-[60] bg-black/50 lg:hidden ${
+              mobileClosing ? 'animate-fadeOutBlack' : 'animate-fadeInBlack'
+            }`}
+            onClick={() => !mobileClosing && closeMobileDrawer()}
             aria-hidden="true"
           />
 
           {/* Drawer */}
-          <div className="fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col bg-white shadow-2xl lg:hidden">
+          <div className={`fixed inset-y-0 right-0 z-[70] flex w-[85%] max-w-sm flex-col bg-white shadow-2xl lg:hidden ${
+            mobileClosing ? 'animate-slideOutRight' : 'animate-slideInRight'
+          }`}>
             {/* Drawer Header */}
             <div className="flex h-[70px] sm:h-[76px] items-center border-b border-navy/10 px-6 lg:h-[92px]">
-              <button 
+              <button
                 type="button"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => closeMobileDrawer()}
                 aria-label="Close menu"
                 className="flex items-center gap-4 text-navy transition-opacity hover:opacity-75"
               >
