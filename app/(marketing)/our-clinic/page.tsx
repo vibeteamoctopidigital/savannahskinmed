@@ -54,12 +54,12 @@ export default function OurClinicPage() {
               Welcome To Savannah Age Management Medicine
             </p>
 
-            <h2 className="display-1v2 [text-wrap:initial] font-bold">
+            <h2 className="display-1v2 [text-wrap:initial] font-medium">
               A Destination For Bespoke
               <br className="hidden sm:block" /> Aesthetic Care
             </h2>
 
-            <p className="mx-auto mt-6 max-w-[840px] text-[15px] leading-[1.9]">
+            <p className="mx-auto mt-6 max-w-[840px] text-[20px] leading-[1.9]">
               At Savannah Age Management Medicine, we offer cutting-edge science and dedicated
               experts to enhance your natural beauty. Our philosophy is simple: beauty is
               timeless, and every individual deserves to feel confident. Through a curated
@@ -142,11 +142,11 @@ export default function OurClinicPage() {
           Synergistic Wellness
         </p>
 
-        <h2 className="display-1v2 [text-wrap:initial] font-bold">
+        <h2 className="display-1v2 [text-wrap:initial] font-medium">
           The Inside-Out Approach
         </h2>
 
-        <p className="mt-6 text-[16px] text-[#0b2055] font-semibold leading-[1.9]">
+        <p className="mt-6 text-[16px] text-[#0b2055] font-normal leading-[1.9]">
           At Savannah Age Management Medicine, we believe that true transformation begins
           from the inside out. Our regenerative therapies, including Bioidentical Hormone
           Replacement Therapy (BHRT) and medical weight loss, work in harmony with aesthetic

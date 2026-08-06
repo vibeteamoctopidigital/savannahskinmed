@@ -60,7 +60,7 @@ export default function SpecialsContent({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActive(tab.slug)}
-                  className={`min-w-[128px] rounded-full border px-8 py-3 font-serif text-[15px] transition-colors duration-300 ${
+                  className={`min-w-[190px] rounded-full border px-8 py-3 font-serif text-[24px] transition-colors duration-300 ${
                     isActive
                       ? 'border-navy bg-navy text-white'
                       : 'border-navy/20 bg-transparent text-navy hover:border-navy/50 hover:bg-navy/5'
@@ -83,10 +83,10 @@ export default function SpecialsContent({
             No offers are running at this location right now. Check back soon.
           </p>
         ) : (
-          <div className="grid gap-8 sm:grid-cols-2">
+          <div className="grid gap-8 sm:grid-cols-2 min-w-full">
             
             {visible.map((card, i) => (
-              <Reveal key={card.id} delay={(i % 2) * 90}>
+              <Reveal key={card.id} delay={(i % 2) * 90} className='bg-transparent'>
                 <OfferCard card={card} />
               </Reveal>
             ))}

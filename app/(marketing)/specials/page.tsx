@@ -13,6 +13,7 @@ export const revalidate = 300;
 
 export default async function AestheticSpecialsPage() {
   const { settings, cards, membershipPromo } = await getSpecialsPageData();
+console.log(settings,cards);
 
   return (
     <>

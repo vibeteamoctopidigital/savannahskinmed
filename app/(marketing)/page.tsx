@@ -20,7 +20,9 @@ export default function HomePage() {
       <ServicesSection />
       <BeforeAfter />
       <Testimonials />
-      <ExpertsSection />
+      <div className='pt-10'>
+        <ExpertsSection />
+      </div>
       <ElevateCta />
     </>
   );

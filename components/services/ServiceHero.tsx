@@ -46,12 +46,14 @@ export default function ServiceHero({
               {eyebrow}
             </p>
           )}
-          <h1 className="animate-fadeUp text-white text-shadow-hero [text-wrap:initial] [animation-delay:100ms] font-serif text-[44px] leading-[1.12] sm:text-[48px] lg:text-[64px]">
+          <h1 className="animate-fadeUp text-white 
+           [text-wrap:initial] [animation-delay:100ms] font-serif text-[44px] leading-[1.12] sm:text-[48px] lg:text-[64px]">
             {title}
           </h1>
 
           {intro && (
-            <p className="mx-auto mt-5 sm:mt-6 max-w-[580px] animate-fadeUp text-[19px] sm:text-[20px] lg:text-[21px] leading-[1.65] sm:leading-[1.7] text-white text-shadow-hero [animation-delay:150ms] px-2 sm:px-0">
+            <p className="mx-auto mt-5 sm:mt-6 max-w-[580px] animate-fadeUp text-[19px] sm:text-[20px] lg:text-[21px] leading-[1.65] sm:leading-[1.7] text-white 
+             [animation-delay:150ms] px-2 sm:px-0">
               {intro}
             </p>
           )}

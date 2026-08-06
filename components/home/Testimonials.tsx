@@ -100,10 +100,10 @@ export default function Testimonials({width,imageUrl}:{width?:string,imageUrl?:s
   };
 
   return (
-    <section className={`${width === "full" ? "relative " : "px-4  lg:px-8"}`}>
+    <section className={`${width === "full" ? "relative " : "px-4  lg:px-8 max-w-[1250px] mx-auto"}`}>
       {/* Full-bleed photo, tinted with the panel's own rose so it reads as a
           colored band with a faint portrait watermark, not a bare photo. */}
-   <div className={`${width === "full" ? "w-full px-0" : "container rounded-[20px] mb-16" } relative py-12 sm:py-14 lg:py-[104px]   overflow-hidden`}>
+   <div className={`${width === "full" ? "w-full px-0" : "min-w-[1250px] min-h-[765px] mx-auto rounded-[20px] mb-16" } relative py-12 sm:py-14 lg:py-[104px]   overflow-hidden`}>
        <div className="absolute inset-0">
         <Image
           src= { width === "full" ?   "/testimonial-2-bg.jpg" : imageUrl ? `${imageUrl}` : "https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg"}
