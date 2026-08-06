@@ -59,15 +59,16 @@ export default function LaserRejuvenationOfferings() {
             <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
               <Link
                 href="/injectables-wrinkle-prevention"
-                className="font-medium cursor-pointer transition-colors hover:text-rose"
+                className="flex items-center gap-2 font-bold cursor-pointer text-gray-400 transition-colors"
               >
-                &larr; WRINKLE PREVENTION
+                                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+
+ WRINKLE PREVENTION
               </Link>
-              <Link
-                href="/iv-infusion-therapy-vitamin-injections"
-                className="font-medium cursor-pointer transition-colors hover:text-rose"
-              >
-                IV INFUSION THERAPY &rarr;
+          
+
+               <Link href="/iv-infusion-therapy-vitamin-injections/" className=" flex items-center gap-2 font-bold cursor-pointer text-gray-400 transition-colors">
+                IV INFUSION THERAPY   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
               </Link>
             </div>
           </div>

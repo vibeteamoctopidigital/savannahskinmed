@@ -91,14 +91,19 @@ export default function IvInfusionContent() {
             </div>
 
             <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
-              <Link href="/laser-skin-rejuvenation" className="font-bold  cursor-pointer hover:text-rose transition-colors text-[#555555]">
-                &larr; LASER SKIN REJUVENATION
+              <Link href="/laser-skin-rejuvenation" className="flex items-center gap-2 font-bold cursor-pointer text-gray-400 transition-colors">
+               
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+
+                LASER SKIN REJUVENATION
               </Link>
               <BookAppointmentButton className="rounded-full bg-navy w-[273px] h-[50px] py-3 text-[14px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
               </BookAppointmentButton>
-              <Link href="/vaginal-rejuvenation" className="font-bold  cursor-pointer hover:text-rose transition-colors text-[#555555]">
-                VAGINAL REJUVENATION &rarr;
+              <Link href="/vaginal-rejuvenation" className="flex items-center gap-2 font-bold cursor-pointer text-gray-400 transition-colors">
+                VAGINAL REJUVENATION 
+
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
               </Link>
             </div>
           </div>

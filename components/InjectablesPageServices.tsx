@@ -113,9 +113,9 @@ export default function NeurotoxinsAndFillerOfferings() {
               <span aria-hidden>&larr;</span>
               LASER HAIR REMOVAL
             </Link>
-            <BookAppointmentButton className="inline-flex items-center gap-2 rounded-full bg-navy px-8 py-3 text-[13px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
+            <BookAppointmentButton className="inline-flex items-center gap-2 rounded-full bg-navy text-[14px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
               BOOK APPOINTMENT
-              <span aria-hidden>&rarr;</span>
+          
             </BookAppointmentButton>
             <Link
               href="/laser-skin-rejuvenation"

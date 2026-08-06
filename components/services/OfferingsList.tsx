@@ -66,19 +66,20 @@ export default function OfferingsList() {
                 href="/iv-infusion-therapy-vitamin-injections"
                 className="inline-flex items-center gap-2 font-medium text-[14px] text-[#8a8f99] transition-colors hover:text-rose"
               >
-                <span aria-hidden>&larr;</span>
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+
                 IV INFUSION THERAPY
               </Link>
-              <BookAppointmentButton className="inline-flex items-center gap-2 rounded-full bg-navy px-8 py-3 text-[13px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
+              <BookAppointmentButton className="inline-flex items-center gap-2 rounded-full bg-navy  text-[14px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
-                <span aria-hidden>&rarr;</span>
+             
               </BookAppointmentButton>
               <Link
                 href="/injectables-wrinkle-prevention"
                 className="inline-flex items-center gap-2 font-medium text-[14px] text-[#8a8f99] transition-colors hover:text-rose"
               >
                 INJECTABLES &amp; WRINKLE PREVENTION
-                <span aria-hidden>&rarr;</span>
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
               </Link>
             </div>
           </div>
