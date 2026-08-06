@@ -380,7 +380,7 @@ export default function BeforeAfter({
                 Sits outside the 2px divider so its width resolves against
                 the frame — short labels stay on one line, long ones wrap. */}
             <span
-              className="pointer-events-none absolute bottom-[7%] left-1/2 z-20 flex max-w-[min(84vw,340px)] -translate-x-1/2 flex-wrap justify-center gap-x-1.5 rounded-full border-[0.5px] border-white bg-gradient-to-r from-[#DCDDD7] via-[#F8F8F8] to-[#ECECEC] px-2 py-1 text-center font-sans text-[9px] uppercase leading-[1.5] tracking-[2px] text-[#14214B]"
+              className="pointer-events-none absolute bottom-[7%] left-1/2 z-20 flex max-w-[min(84vw,340px)] -translate-x-1/2 flex-wrap justify-center gap-x-1.5 rounded-full border-[0.5px] border-white bg-gradient-to-r from-[#DCDDD7] via-[#F8F8F8] to-[#ECECEC] px-2 py-1 sm:py-2 text-center font-sans  sm:text-[10px] text-[9px] uppercase leading-[1.5] tracking-[2px] text-[#14214B]"
             >
               <span>Procedure:</span>
               <span className="whitespace-nowrap">{slide.procedure}</span>
