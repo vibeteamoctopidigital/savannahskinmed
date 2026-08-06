@@ -17,7 +17,7 @@ export default function MembershipCta() {
               around you.
             </p>
 
-            <RequestButton withArrow>Request More Details</RequestButton>
+            <RequestButton>Request More Details</RequestButton>
           </Reveal>
         </div>
 
