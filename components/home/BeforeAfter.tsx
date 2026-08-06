@@ -380,7 +380,7 @@ export default function BeforeAfter({
                 Sits outside the 2px divider so its width resolves against
                 the frame — short labels stay on one line, long ones wrap. */}
             <span
-              className="pointer-events-none absolute bottom-[7%] left-1/2 z-20 flex max-w-[min(84vw,340px)] -translate-x-1/2 flex-wrap justify-center gap-x-1.5 rounded-full border-[0.5px] border-white bg-gradient-to-r from-[#DCDDD7] via-[#F8F8F8] to-[#ECECEC] px-5 py-2 text-center font-sans text-[10px] uppercase leading-[1.5] tracking-[2px] text-[#14214B]"
+              className="pointer-events-none absolute bottom-[7%] left-1/2 z-20 flex max-w-[min(84vw,340px)] -translate-x-1/2 flex-wrap justify-center gap-x-1.5 rounded-full border-[0.5px] border-white bg-gradient-to-r from-[#DCDDD7] via-[#F8F8F8] to-[#ECECEC] px-2 py-1 text-center font-sans text-[9px] uppercase leading-[1.5] tracking-[2px] text-[#14214B]"
             >
               <span>Procedure:</span>
               <span className="whitespace-nowrap">{slide.procedure}</span>
@@ -388,10 +388,10 @@ export default function BeforeAfter({
 
             {labelStyle === 'bottom' ? (
               <>
-                <span className="pointer-events-none absolute bottom-[6%] left-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
+                <span className="pointer-events-none absolute sm:bottom-[6%] top-[0%] left-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
                   Before
                 </span>
-                <span className="pointer-events-none absolute bottom-[6%] right-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
+                <span className="pointer-events-none absolute sm:bottom-[6%] top-[0%] right-[6%] z-10 font-serif text-[32px] text-white text-shadow-hero">
                   After
                 </span>
               </>

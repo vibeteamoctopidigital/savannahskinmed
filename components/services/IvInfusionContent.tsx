@@ -19,7 +19,6 @@ export default function IvInfusionContent() {
                 <span className="font-sans text-[20px] font-bold text-black">Service</span>
               </div>
             </div>
-
             <div className="mt-12 flex w-full flex-col gap-8 text-center text-[15.5px] leading-[1.8] text-ink md:w-[80%] md:mx-auto md:text-left">
               <div>
                 <h3 className="font-sans text-[22px] font-bold text-black">
@@ -29,7 +28,6 @@ export default function IvInfusionContent() {
                   A systemic hydration therapy that restores balance, replenishes fluids, and ensures essential nutrients reach every cell for maximum health benefits.
                 </p>
               </div>
-
               <div>
                 <h3 className="font-sans text-[22px] font-bold text-black">
                   Immunity Boost Infusion

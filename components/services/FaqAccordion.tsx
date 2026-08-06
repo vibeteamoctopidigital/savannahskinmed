@@ -53,7 +53,7 @@ export default function FaqAccordion({ faqs, noTopPadding = false }: FaqAccordio
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="pr-10 pt-3.5 sm:pt-4 text-sm sm:text-[16px] leading-relaxed sm:leading-[1.8] text-muted">
+                        <div className="pr-0 pt-3.5 sm:pt-4 text-sm sm:text-[16px] leading-relaxed sm:leading-[1.8] text-muted">
                           {faq.answer}
                         </div>
                       </div>
