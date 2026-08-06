@@ -21,17 +21,17 @@ export default function ContactInfo() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-0">
           {/* ---------------- Details ---------------- */}
           <Reveal>
-            <h2 className="display-3">Contact Information</h2>
+            <h2 className="sm:text-[36px] font-bold text-24">Contact Information</h2>
 
             <div className="mt-9 space-y-6">
               <Row label="Phone:">
-                <TrackedPhoneLink href={site.phoneHref} className="hover:text-rose-deep">
+                <TrackedPhoneLink href={site.phoneHref} className="hover:text-rose-deep text-[16px]">
                   {site.phone}
                 </TrackedPhoneLink>
               </Row>
 
               <Row label="Email:">
-                <a href={site.emailHref} className="hover:text-rose-deep">
+                <a href={site.emailHref} className="hover:text-rose-deep ">
                   {site.email}
                 </a>
               </Row>
@@ -40,14 +40,14 @@ export default function ContactInfo() {
                 <div className="space-y-7">
                   {locations.map((location) => (
                     <div key={location.city}>
-                      <p className="font-sans text-[14px] font-semibold text-navy">
+                      <p className="font-sans text-[16px] font-semibold text-navy">
                         {location.city}
                       </p>
                       {location.address.map((line) => (
                         <p key={line}>{line}</p>
                       ))}
 
-                      <p className="mt-4 font-sans text-[14px] font-semibold text-navy">
+                      <p className="mt-4 font-sans text-[16px] font-semibold text-navy">
                         Office Hours
                       </p>
                       <dl className="mt-1.5 grid grid-cols-[minmax(78px,auto)_1fr] gap-x-6 gap-y-1.5">

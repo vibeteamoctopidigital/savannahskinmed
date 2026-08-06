@@ -33,14 +33,14 @@ export default function SectionHeading({
       )}
 
       <h2
-        className={`font-serif font-medium text-[36px] leading-[1.1] sm:text-[48px] [text-wrap:initial] ${tone === 'white' ? 'text-white' : 'text-navy'}`}
+        className={`font-serif font-medium text-[36px] leading-[1.1] sm:text-[36px] lg:text-[48px] [text-wrap:initial] ${tone === 'white' ? 'text-white' : 'text-navy'}`}
       >
         {title}
       </h2>
 
       {intro && (
         <p
-          className={`mt-5 font-sans text-[20px] leading-[1.5] ${
+          className={`mt-4 sm:mt-5 font-sans text-[16px] sm:text-[18px] lg:text-[20px] leading-[1.5] ${
             tone === 'white' ? 'text-white' : 'text-ink'
           } ${centered ? 'mx-auto max-w-[620px]' : ''}`}
         >

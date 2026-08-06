@@ -17,7 +17,7 @@ export default function ExpertsSection() {
       </div>
 
       <div className="flex items-center bg-[#F7F8F2] px-6 py-16 sm:px-10 lg:px-[86px] lg:py-20">
-        <Reveal className="mx-auto max-w-[560px] text-left lg:max-w-none">
+        <Reveal className="mx-auto max-w-[560px] text-center lg:max-w-none lg:text-left">
           <p className="mb-4 font-sans text-[14px] font-bold uppercase tracking-[2.8px] text-[#0B2055]">
             Who We Are
           </p>

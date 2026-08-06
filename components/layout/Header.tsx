@@ -187,11 +187,11 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
             href={site.phoneHref}
             onClick={trackClickToCall}
             aria-label={`Call ${site.phone}`}
-            className={`grid h-9 w-9 sm:h-10 sm:w-10 place-items-center transition-opacity hover:opacity-75 xl:hidden ${
+            className={`grid h-10 w-10 place-items-center transition-opacity hover:opacity-75 xl:hidden ${
               scrolled ? 'text-navy' : 'text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)]'
             }`}
           >
-            <PhoneIcon className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
+            <PhoneIcon className="h-[25px] w-[25px]" />
           </a>
 
           <button
@@ -199,11 +199,11 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
             onClick={() => setMobileOpen((v) => !v)}
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            className={`grid h-9 w-9 sm:h-10 sm:w-10 place-items-center transition-opacity hover:opacity-75 lg:hidden ${
+            className={`grid h-12 w-12 place-items-center transition-opacity hover:opacity-75 lg:hidden ${
               scrolled ? 'text-navy' : 'text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)]'
             }`}
           >
-            {mobileOpen ? <CloseIcon className="h-5 w-5 sm:h-6 sm:w-6" /> : <MenuIcon className="h-5 w-5 sm:h-6 sm:w-6" />}
+            {mobileOpen ? <CloseIcon className="h-8 w-8" /> : <MenuIcon className="h-8 w-8" />}
           </button>
         </div>
       </div>

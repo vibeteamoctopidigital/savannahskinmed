@@ -24,13 +24,13 @@ export default function FaqAccordion({ faqs, noTopPadding = false }: FaqAccordio
     <section className={`section  ${noTopPadding ? 'pt-0' : ''}`}>
    
         <Reveal>
-          <h2 className="sm:display-1v2 text-center text-navy text-2xl  font-medium">
+          <h2 className="sm:display-1v2 text-center text-navy text-[36px] font-medium">
             Frequently Asked Questions
           </h2>
         </Reveal>
 
         <Reveal>
-          <div className="mx-auto  mt-8 sm:mt-12 sm:max-w-[1255px] w-[88%] rounded-[10px] sm:rounded-[32px] bg-white p- xs:p-8 sm:p-20 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)]">
+          <div className="mx-auto  mt-8 sm:mt-12 sm:max-w-[1255px] w-full rounded-[10px] sm:rounded-[32px] bg-white p-6 sm:p-20 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)]">
             <div className="divide-y divide-navy/10">
               {faqs.map((faq, idx) => {
                 const isOpen = openIndex === idx;
@@ -38,12 +38,12 @@ export default function FaqAccordion({ faqs, noTopPadding = false }: FaqAccordio
                   <div key={idx} className="py-8 first:pt-0 last:pb-0">
                     <button
                       onClick={() => setOpenIndex(isOpen ? null : idx)}
-                      className="flex w-full items-start gap-3 xs:gap-4 text-left"
+                      className="flex w-full items-start gap-3 sm:gap-4 text-left"
                     >
                   
                        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8 shrink-0 text-navy transition-transform duration-300" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path></svg>
                       
-                      <span className="font-serif text-[22px] xs:text-[19px] sm:text-[32px] leading-tight text-navy">
+                      <span className="font-serif text-[19px] sm:text-[32px] leading-tight text-navy">
                         {faq.question}
                       </span>
                     </button>
@@ -53,7 +53,7 @@ export default function FaqAccordion({ faqs, noTopPadding = false }: FaqAccordio
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="pl-9 xs:pl-10 pt-3.5 xs:pt-4 text-sm xs:text-[16px] leading-relaxed xs:leading-[1.8] text-muted">
+                        <div className="pl-9 sm:pl-10 pt-3.5 sm:pt-4 text-sm sm:text-[16px] leading-relaxed sm:leading-[1.8] text-muted">
                           {faq.answer}
                         </div>
                       </div>

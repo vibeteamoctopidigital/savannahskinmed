@@ -15,7 +15,7 @@ export default function LaserRejuvenationConsultation() {
             </div>
 
             <div className="relative z-10 mx-auto container">
-              <h2 className="font-serif  text-white text-[32px] sm:display-1v2">
+              <h2 className="font-serif  text-white text-[36px] sm:display-1v2">
                 Book Your Aesthetic Consultation Today
               </h2>
               <p className="mt-6 text-[16px] leading-[1.8] sm:text-[18px]">
