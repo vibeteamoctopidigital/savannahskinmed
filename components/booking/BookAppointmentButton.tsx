@@ -31,7 +31,7 @@ export default function BookAppointmentButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`group inline-flex items-center  justify-center gap-3 rounded-full sm:px-10 px-6 py-[15px] font-sans text-[13px] font-medium uppercase tracking-widest2 transition-colors duration-300 ${variants[variant]} ${className}`}
+        className={`group inline-flex items-center w-[273px] h-[50px]  justify-center gap-3 rounded-full  py-[15px] font-bold font-sans text-[14px]  uppercase tracking-widest2 transition-colors duration-300 ${variants[variant]} ${className}`}
       >
         {children}
         {/* <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" /> */}

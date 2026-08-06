@@ -65,11 +65,11 @@ export default function HowItWorks() {
           </div>
 
           {/* Text Side */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 py-16 lg:px-16 xl:px-20 lg:py-20 bg-[#F7F8F2]">
+          <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 py-12 lg:px-16 xl:px-20 lg:py-16 bg-[#F7F8F2]">
             <Reveal className="mx-auto max-w-[480px] lg:mx-0">
               <div className="text-left">
-                <p className="eyebrow mb-4 text-navy font-semibold text-[14px]">SIMPLE. STRUCTURED. EFFECTIVE.</p>
-                <h2 className="display-3 sm:text-[40px] mb-6 text-navy font-bold">How It Works</h2>
+                <p className="eyebrow mb-2 text-navy font-semibold text-[14px]">SIMPLE. STRUCTURED. EFFECTIVE.</p>
+                <h2 className=" sm:text-[48px] mb-4 text-navy ">How It Works</h2>
               </div>
 
               <div className="space-y-8">
@@ -79,8 +79,8 @@ export default function HowItWorks() {
                       {step.number}
                     </div>
                     <div>
-                      <h3 className="text-[18px] font-sans font-semibold text-navy mb-1.5">{step.title}</h3>
-                      <p className="text-[15px] leading-[1.65] text-muted">{step.description}</p>
+                      <h3 className="text-[24px] font-sans font-semibold text-navy mb-1.5">{step.title}</h3>
+                      <p className="text-[16px] leading-[1.65] text-muted">{step.description}</p>
                     </div>
                   </div>
                 ))}

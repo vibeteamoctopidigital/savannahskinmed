@@ -28,7 +28,7 @@ export default function VaginalRejuvenationPage() {
       
       <DrCollinsProfile />
 
-      <Testimonials />
+    
 
       <ElevateCta />
     </>

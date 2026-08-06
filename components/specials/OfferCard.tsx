@@ -19,7 +19,7 @@ export default function OfferCard({ card }: { card: SpecialCardData }) {
       : 'Special offer';
 
   return (
-    <div className="group overflow-hidden rounded-[18px] bg-white shadow-card transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-navy/15">
+    <div className="group overflow-hidden rounded-[18px] bg-transparent shadow-card transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-navy/15">
    
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
@@ -39,7 +39,7 @@ export default function OfferCard({ card }: { card: SpecialCardData }) {
         )}
       </div>
 
-      <div className="p-7 sm:p-8">
+      <div className="p-7 sm:p-8 bg-transparent">
         {card.variant === 'TIERS' ? (
           <>
             <div className="space-y-5">

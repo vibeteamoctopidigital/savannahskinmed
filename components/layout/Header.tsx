@@ -177,7 +177,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
           <a
             href={site.phoneHref}
             onClick={trackClickToCall}
-            className="hidden rounded-full bg-navy px-7 py-[13px] font-sans text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-navy-deep xl:inline-block"
+            className="hidden rounded-full w-[263px] h-[50px]  items-center justify-center bg-navy px-7 py-[13px] font-sans text-[14px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-navy-deep lg:flex"
           >
             Call: {site.phone}
           </a>

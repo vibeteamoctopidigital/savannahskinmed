@@ -13,6 +13,7 @@ type Plan = {
   subtitle: string;
   features: PlanFeature[];
   bg: string;
+  btmTitle: string;
 };
 
 const essentialsFeatures: PlanFeature[] = [
@@ -54,6 +55,8 @@ const plans: Plan[] = [
     subtitle: 'For patients who want predictable, routine injectable care.',
     features: essentialsFeatures,
     bg: 'bg-rose',
+    btmTitle: '3-month minimum term required',
+    
   },
   {
     tierLabel: 'Membership Tier 02',
@@ -62,6 +65,8 @@ const plans: Plan[] = [
     subtitle: 'For patients ready for real, visible skin transformation.',
     features: skinRevivalFeatures,
     bg: 'bg-[#14214B]',
+    btmTitle: '6-month minimum term required',
+
   },
 ];
 
@@ -85,13 +90,14 @@ function CheckIcon({ className = '' }: { className?: string }) {
 function PlanCard({ plan }: { plan: Plan }) {
   return (
     <Reveal className={`relative overflow-hidden rounded-[20px] text-white ${plan.bg}`}>
-      <div className="p-8 sm:p-10 md:p-12">
-        <div className="text-center">
-          <p className="eyebrow text-white/85">{plan.tierLabel}</p>
+      <div className="p-8 sm:p-10 md:p-12 flex flex-col justify-between h-full">
+        <div>
+          <div className="text-center">
+          <p className="eyebrow text-white text-[14px] font-bold">{plan.tierLabel}</p>
           <p className="mt-4 font-serif  text-[25px] text-white">{plan.name}</p>
-          <div className="mt-2 font-serif text-[32px] leading-none text-white sm:text-[36px]">
+          <div className="mt-2 font-serif text-[32px] leading-none text-white sm:text-[48px]">
             {plan.price}
-            <span className="text-[16px]"> / month</span>
+            <span className="text-[48px]"> / month</span>
           </div>
           <p className="mx-auto mt-4 max-w-[280px] text-[16px] leading-[1.6] text-white/90">
             {plan.subtitle}
@@ -113,8 +119,9 @@ function PlanCard({ plan }: { plan: Plan }) {
             </li>
           ))}
         </ul>
+        </div>
 
-        <p className="mt-10 text-center text-[12px] text-white/60">*6 month minimum commitment</p>
+        <p className="mt-10 text-center justify-end text-[14px] italic text-white/60">{plan.btmTitle}</p>
       </div>
     </Reveal>
   );
@@ -129,7 +136,7 @@ export default function MembershipOptions() {
           <h2 className="display-2 text-navy">Membership Options</h2>
         </Reveal>
 
-        <div className="mb-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="mb-12 grid grid-cols-1 max-w-[1245px] mx-auto gap-6 lg:grid-cols-2">
           {plans.map((plan) => (
             <PlanCard key={plan.name} plan={plan} />
           ))}

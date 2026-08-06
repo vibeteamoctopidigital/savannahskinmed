@@ -6,9 +6,9 @@ export default function DrCollinsProfile() {
      <section className="section bg-white">
       
         <Reveal>
-          <div className="mx-auto flex container flex-col items-start gap-10 md:flex-row md:gap-16">
+          <div className="mx-auto flex shell flex-col items-start gap-10 md:flex-row md:gap-20">
             <div className="relative shrink-0 overflow-hidden rounded-full">
-              <div className="relative h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px]">
+              <div className="relative h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] md:h-[500px] md:w-[500px]">
                  <Image
                   src="/images/team-6-img.png"
                   alt="Harry S. Collins, DO, FACOG, Medical Director"
@@ -19,10 +19,10 @@ export default function DrCollinsProfile() {
               </div>
             </div>
 
-            <div className="text-left md:pt-2">
-              <h2 className="font-serif text-[36px] text-navy md:text-[42px]"> Harry S. Collins, DO, FACOG, Medical Director</h2>
+            <div className="text-left md:pt-2 max-w-[680px]">
+              <h2 className="font-bold text-[36px] text-navy md:text-[48px]"> Harry S. Collins, DO, FACOG, Medical Director</h2>
 
-              <div className="mt-6 space-y-5 text-[16px] leading-[1.8] text-muted">
+              <div className="mt-6 space-y-5 text-[16px] leading-[1.8] text-[#0b2055]">
                 Dr. Collins is a graduate and prior affiliate of The Laser Vaginal Rejuvenation
                   Institute of Los Angeles, training under Dr. David Matlock (Dr. 90210) who pioneered the
                   trademarked procedure Laser Vaginal Rejuvenation. Throughout his medical career, Dr. Collins
@@ -35,7 +35,7 @@ export default function DrCollinsProfile() {
               </div>
             </div>
           </div>
-        </Reveal>
+      </Reveal>
      
     </section>
   );

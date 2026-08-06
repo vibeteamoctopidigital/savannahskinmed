@@ -15,7 +15,7 @@ export default function MembershipHero() {
       />
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 sm:bg-gradient-to-r sm:from-black/40 sm:via-black/10 sm:to-transparent" />
-      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-0 bg-black/30" />
 
       <div className="mx-auto relative z-10 pt-10 lg:pt-20">
         <div className="text-center">

@@ -38,13 +38,13 @@ export default function SpecialsContent({
   );
 
   return (
-    <section className="section bg-cream">
+    <section className="section bg-[#F7F8F2]">
      
 
      
       <div className="shell">
         <Reveal className="mb-12 text-center">
-          <h2 className="display-3 mb-8 text-6xl font-semibold">Select Your Location</h2>
+          <h2 className="display-3 mb-8 sm:text-[48px] font-medium">Select Your Location</h2>
 
           <div
             role="tablist"
@@ -73,11 +73,11 @@ export default function SpecialsContent({
           </div>
         </Reveal>
       </div>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1065px] mx-auto px-4 sm:px-6 lg:px-8">
 <MembershipPromoBanner promo={membershipPromo} />
 
       </div>
-      <div className="shell max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-14">
+      <div className="max-w-[1065px]  bg-transparent mx-auto px-4 sm:px-6 lg:px-8 mt-14">
         {visible.length === 0 ? (
           <p className="py-10 text-center text-[15px] text-muted">
             No offers are running at this location right now. Check back soon.

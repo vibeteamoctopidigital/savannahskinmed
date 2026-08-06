@@ -4,7 +4,7 @@ import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 
 export default function IvInfusionContent() {
   return (
-    <section id="offerings" className="section bg-mist pt-8 lg:pt-16">
+    <section id="offerings" className="section  pt-8 lg:pt-16">
       <div className="shell relative ">
         <Reveal>
           <div className="mx-auto container rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
@@ -12,11 +12,11 @@ export default function IvInfusionContent() {
               <h2 className="mb-5 font-serif text-[36px] sm:text-[48px] leading-[1.1] text-[#051E5C]">
                 IV Infusion Therapy & Vitamin <br/> Injections Offerings
               </h2>
-              <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
+              <p className="mx-auto max-w-[800px] text-[16px] leading-[1.8] text-black">
                 Custom-designed therapies to enhance your overall health, boost immunity, improve skin radiance, and support mental clarity and physical stamina.
               </p>
-              <div className="mx-auto mt-8 w-full rounded-full bg-slate-100 py-4 text-center">
-                <span className="font-sans text-[15px] font-bold text-navy">Service</span>
+              <div className="mx-auto  mt-8 w-[1044px] rounded-full bg-[#F5F5F5] py-4 text-center">
+                <span className="font-sans text-[20px] font-bold text-black">Service</span>
               </div>
             </div>
 
@@ -91,13 +91,13 @@ export default function IvInfusionContent() {
             </div>
 
             <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
-              <Link href="/laser-skin-rejuvenation" className="font-medium cursor-pointer hover:text-rose transition-colors">
+              <Link href="/laser-skin-rejuvenation" className="font-bold  cursor-pointer hover:text-rose transition-colors text-[#555555]">
                 &larr; LASER SKIN REJUVENATION
               </Link>
-              <BookAppointmentButton className="rounded-full bg-navy px-8 py-3 text-[13px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
+              <BookAppointmentButton className="rounded-full bg-navy w-[273px] h-[50px] py-3 text-[14px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
               </BookAppointmentButton>
-              <Link href="/vaginal-rejuvenation" className="font-medium cursor-pointer hover:text-rose transition-colors">
+              <Link href="/vaginal-rejuvenation" className="font-bold  cursor-pointer hover:text-rose transition-colors text-[#555555]">
                 VAGINAL REJUVENATION &rarr;
               </Link>
             </div>

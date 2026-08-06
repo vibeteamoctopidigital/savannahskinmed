@@ -103,13 +103,13 @@ const benefits = [
 ];
 export default function MemberBenefits() {
   return (
-    <section className="bg-[#F7F8F2] py-16 sm:py-20 lg:py-24">
-      <div className="shell max-w-[1080px]">
+    <section className="bg-[#F7F8F2] py-16 sm:py-20 lg:pt-0 lg:pb-16">
+      <div className="shell max-w-[1250px]">
         <Reveal className="text-center mb-12">
-          <p className="eyebrow mb-3 text-navy font-semibold uppercase tracking-widest2 text-[13px]">
+          <p className="eyebrow mb-3 text-navy font-semibold uppercase tracking-widest2 text-[14px]">
             MORE VALUE, EVERY VISIT
           </p>
-          <h2 className="font-serif text-[38px] sm:text-[46px] text-navy font-medium">
+          <h2 className="font-serif text-[38px] sm:text-[48px] text-navy font-medium">
             Member Benefits
           </h2>
         </Reveal>
@@ -124,7 +124,7 @@ export default function MemberBenefits() {
                 {benefit.icon}
               </div>
               <div>
-                <h3 className="text-[22px] sm:text-[23px] font-serif text-navy font-medium mb-2">
+                <h3 className="text-[22px] sm:text-[24px] font-serif text-navy font-medium mb-2">
                   {benefit.title}
                 </h3>
                 <p className="text-[15px] sm:text-[15.5px] leading-[1.65] text-[#334e68]">
@@ -135,8 +135,8 @@ export default function MemberBenefits() {
           ))}
         </div>
  <Reveal className="mx-auto max-w-[760px] mt-10 text-center">
-            <h3 className="mb-4 font-serif text-[22px] text-navy">Membership Terms</h3>
-            <p className="text-[14.5px] leading-[1.75] text-muted">
+            <h3 className="mb-4 font-serif text-[24px] text-navy">Membership Terms</h3>
+            <p className="text-[16px] leading-[1.75] text-navy">
               Credits roll forward each month and in the event that the membership is cancelled
               outstanding credits can be refunded or used within 90 days. Aesthetic Essentials is
               a 3-month minimum commitment. Skin Revival is a 6-month minimum commitment.

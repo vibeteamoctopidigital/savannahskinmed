@@ -25,7 +25,7 @@ export default function IvInfusionTherapyPage() {
       
       <IvInfusionContent />
       
-      <Testimonials />
+      <Testimonials  width='full' imageUrl='/testimonial-2-bg.jpg'/>
       
       <ElevateCta />
     </>

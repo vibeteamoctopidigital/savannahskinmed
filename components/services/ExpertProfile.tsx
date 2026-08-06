@@ -20,7 +20,7 @@ export default function ExpertProfile({}) {
             </div>
 
             <div className="text-left md:pt-2">
-              <h2 className="font-serif text-[28px] sm:text-[36px] lg:text-[40px] text-navy font-medium">Rebecca Spacek</h2>
+              <h2 className="font-serif text-[28px] sm:text-[36px] lg:text-[48px] text-navy font-medium">Rebecca Spacek</h2>
 
               <div className="mt-6 space-y-5 text-[14px] sm:text-[16px] leading-[1.8] text-[#0b2055]">
                 <p>

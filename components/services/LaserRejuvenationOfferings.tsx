@@ -35,7 +35,7 @@ export default function LaserRejuvenationOfferings() {
               <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8]">
                 We offer a number of state-of-the-art laser and non-laser procedures, designed to provide a range of solutions based on comfort level, price point, and number of desired treatments.
               </p>
-              <div className="mt-8 rounded-full bg-[#FAF9F5] max-w-[1050px] py-3.5 text-center font-sans text-[16px] sm:text-[17px] font-semibold text-navy">
+              <div className="mt-8 rounded-full bg-[#F5F5F5] max-w-[1050px] py-3.5 text-center font-sans text-[16px] sm:text-[17px] font-semibold text-navy">
                 Treatments
               </div>
             </div>

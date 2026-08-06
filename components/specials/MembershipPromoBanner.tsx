@@ -10,7 +10,7 @@ export default function MembershipPromoBanner({ promo }: { promo: MembershipProm
       : '/images/grid-9-img.jpg';
 
   return (
-    <div className="relative overflow-hidden min-h-[580px] sm:min-h-[500px] flex items-center bg-gradient-to-r from-[#a97c5c] to-[#e9caa4]">
+    <div className="relative overflow-hidden  sm:max-h-[560px] flex items-center bg-gradient-to-r from-[#a97c5c] to-[#e9caa4]">
       <Image
         src={imageSrc}
         alt="Aesthetic Membership Program"

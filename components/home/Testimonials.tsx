@@ -46,8 +46,8 @@ function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & 
       </p>
 
       <div className="mt-6 flex flex-col items-center gap-3 sm:mt-8 md:mt-7 md:flex-row md:items-center md:gap-3.5">
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white shadow-md sm:h-11 sm:w-11 md:h-9 md:w-9">
-          <GoogleGlyph className="h-[18px] w-[18px] sm:h-[30px] sm:w-[30px] md:h-[35px] md:w-[35px] " />
+        <span className="flex  shrink-0 p-2 place-items-center rounded-full bg-white   shadow-md ">
+          <GoogleGlyph className="h-[20px] w-[20px] sm:h-[40px] sm:w-[40px] " />
         </span>
         <div>
           <p className="font-sans text-[16px] font-bold text-ink">
@@ -55,7 +55,7 @@ function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & 
           </p>
           <div className="mt-1 flex justify-center gap-[2px] text-[#F5A623] sm:gap-[3px] md:mt-0.5 md:justify-start">
             {Array.from({ length: 5 }).map((_, i) => (
-              <StarIcon key={i} className="h-4 w-4 sm:h-[18px] sm:w-[18px] md:h-3.5 md:w-3.5" />
+              <StarIcon key={i} className="h-4 w-4 sm:h-[26px] sm:w-[26px]" />
             ))}
           </div>
         </div>
@@ -75,21 +75,7 @@ export default function Testimonials({width,imageUrl}:{width?:string,imageUrl?:s
     scrollRef.current.scrollTo({ left: i * (childWidth + gap), behavior: 'smooth' });
   };
 
-  useEffect(() => {
-    // Autoplay disabled as per request
-    /*
-    const timer = setInterval(() => {
-      if (!scrollRef.current) return;
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      if (scrollLeft + clientWidth >= scrollWidth - 10) {
-        scrollTo(0);
-      } else {
-        scrollTo(index + 1);
-      }
-    }, 3000);
-    return () => clearInterval(timer);
-    */
-  }, [index]);
+ 
 
   const handleScroll = () => {
     if (!scrollRef.current) return;
@@ -138,7 +124,7 @@ export default function Testimonials({width,imageUrl}:{width?:string,imageUrl?:s
               <p className="mb-3 font-sans text-[14px] uppercase tracking-[2.8px] text-white sm:mb-4">
                 Patient Testimonials
               </p>
-              <h2 className="font-serif font-medium text-[36px] leading-[1.1] sm:text-[48px] text-white text-shadow-hero [text-wrap:initial]">
+              <h2 className="font-serif font-medium text-[36px] leading-[1.1] sm:text-[48px] text-white  [text-wrap:initial]">
                 Real Results, True Confidence
               </h2>
               <p className="mt-4 text-[16px] leading-[1.5] text-white sm:mt-5">
