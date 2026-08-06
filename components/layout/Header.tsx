@@ -245,7 +245,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                       <li key={item.href}>
                         <Link
                           href={item.href}
-                          className="font-sans text-[13px] sm:text-[15px] font-medium uppercase tracking-[0.02em] text-navy"
+                          className="font-sans text-[16px] font-medium uppercase tracking-[0.02em] text-navy"
                         >
                           {item.label}
                         </Link>
@@ -259,7 +259,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                         type="button"
                         onClick={() => setMobileServicesOpen((v) => !v)}
                         aria-expanded={mobileServicesOpen}
-                        className="flex w-full items-center justify-between font-sans text-[13px] sm:text-[15px] font-medium uppercase tracking-[0.02em] text-navy"
+                        className="flex w-full items-center justify-between font-sans text-[16px] font-medium uppercase tracking-[0.02em] text-navy"
                       >
                         {item.label}
                         <ChevronDown
@@ -277,7 +277,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
                                 href={service.href}
                                 target={service.href.startsWith('http') ? '_blank' : undefined}
                                 rel={service.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                className={`block font-sans text-[12px] sm:text-[14px] transition-colors ${
+                                className={`block font-sans text-[15px] leading-snug transition-colors ${
                                   service.label === 'Health & Wellness Services'
                                     ? 'font-semibold text-navy'
                                     : 'text-navy/80 hover:text-navy'

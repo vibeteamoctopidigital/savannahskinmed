@@ -73,7 +73,7 @@ export default function BeforeAfter({
   const slide = slides[index];
 
   return (
-    <section className={`section ${bg || 'bg-white'} pt-4 lg:pt-8`}>
+    <section className={`section ${bg || 'bg-white'} px-4 pt-4 sm:px-6 lg:px-8 lg:pt-8`}>
 
         <Reveal>
           <SectionHeading

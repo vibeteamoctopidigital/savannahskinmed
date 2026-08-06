@@ -44,7 +44,7 @@ export default function SpecialsContent({
      
       <div className="shell">
         <Reveal className="mb-12 text-center">
-          <h2 className="display-3 mb-8 sm:text-[48px] font-medium">Select Your Location</h2>
+          <h2 className="mb-8 text-[36px] font-medium leading-[1.1] sm:text-[48px]">Select Your Location</h2>
 
           <div
             role="tablist"

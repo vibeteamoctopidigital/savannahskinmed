@@ -38,9 +38,9 @@ const neurotoxinUses = [
 
 export default function NeurotoxinsAndFillerOfferings() {
   return (
-    <section id="offerings" className="section bg-[] pt-8 lg:pt-16">
+    <section id="offerings" className="section bg-[] pt-8 lg:pt-16 ">
       <Reveal>
-        <div className="mx-auto max-w-[1260px] rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
+        <div className="mx-auto sm:max-w-[1260px] w-[85%]  rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
           <div className="text-center">
             <h2 className="mb-5 font-serif text-[36px] sm:text-[48px] leading-[1.1] text-[#051E5C]">Neurotoxins And Filler</h2>
             <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
@@ -53,7 +53,7 @@ export default function NeurotoxinsAndFillerOfferings() {
             </div>
           </div>
 
-          <div className="mx-auto mt-12 w-full max-w-[870px] text-left">
+          <div className="mx-auto mt-12 w-full max-w-[870px] text-center md:text-left">
             {/* Dermal Filler */}
             <div>
               <h3 className="font-sans text-[24px] font-bold text-black">Dermal Filler</h3>
@@ -89,9 +89,9 @@ export default function NeurotoxinsAndFillerOfferings() {
               </p>
               <div className="mt-4 flex flex-col gap-3">
                 {neurotoxinUses.map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
+                  <div key={i} className="flex items-start gap-3 ">
                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right text-[#9BC0BF] transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-                    <p className="text-[15.5px] leading-[1.8] text-black">{item}</p>
+                    <p className="text-[15.5px] leading-[1.8] text-black text-left">{item}</p>
                   </div>
                 ))}
               </div>
@@ -101,27 +101,27 @@ export default function NeurotoxinsAndFillerOfferings() {
             </div>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
-            <Link
-              href="/laser-hair-removal"
-              className="inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
-            >
-                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+        <div className="mt-12 flex flex-col sm:flex-row flex-wrap items-center sm:items-start justify-center sm:justify-between gap-4 sm:gap-0 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
+  <Link
+    href="/laser-hair-removal"
+    className="hidden sm:inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+    LASER HAIR REMOVAL
+  </Link>
 
-              LASER HAIR REMOVAL
-            </Link>
-            <BookAppointmentButton className="inline-flex items-center gap-2 rounded-full bg-navy  text-[14px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
-              BOOK APPOINTMENT
-           </BookAppointmentButton>
-           
-            <Link
-              href="/laser-skin-rejuvenation"
-              className="inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
-            >
-              LASER SKIN REJUVENATION
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
-            </Link>
-          </div>
+  <BookAppointmentButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 text-[14px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
+    BOOK APPOINTMENT
+  </BookAppointmentButton>
+
+  <Link
+    href="/laser-skin-rejuvenation"
+    className="hidden sm:inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
+  >
+    LASER SKIN REJUVENATION
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+  </Link>
+</div>
         </div>
       </Reveal>
     </section>

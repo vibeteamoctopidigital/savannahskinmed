@@ -51,20 +51,20 @@ export default async function OurExpertsPage() {
       </section>
 
 <Reveal>
-          <div className="mx-auto  pt-8 sm:pt-16 flex shell flex-col items-start gap-10 md:flex-row md:gap-20">
+          <div className="mx-auto  pt-8 sm:pt-16 flex shell flex-col items-center gap-10 md:flex-row md:items-start md:gap-20">
             <div className="relative shrink-0 overflow-hidden rounded-full">
-              <div className="relative h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] md:h-[500px] md:w-[500px]">
+              <div className="relative h-[240px] w-[240px] min-[430px]:h-[280px] min-[430px]:w-[280px] sm:h-[340px] sm:w-[340px] md:h-[500px] md:w-[500px]">
                  <Image
                   src="/images/team-6-img.png"
                   alt="Harry S. Collins, DO, FACOG, Medical Director"
                   fill
-                  sizes="(max-width: 768px) 340px, 400px"
+                  sizes="(max-width: 640px) 280px, (max-width: 768px) 340px, 500px"
                   className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               </div>
             </div>
 
-            <div className="text-left md:pt-2 max-w-[680px]">
+            <div className="text-center md:pt-2 md:text-left max-w-[680px]">
               <h2 className="font-normal text-[36px] text-navy md:text-[50px]"> Harry S. Collins, DO, FACOG, Medical Director</h2>
 <p className="mt-2 text-[18px] sm:text-[22px] font-medium tracking-widest2 text-navy">
   Age Management Medicine Specialist
@@ -94,17 +94,17 @@ export default async function OurExpertsPage() {
             return (
               <div
                 key={member.id}
-                className={`flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-x-14 lg:gap-y-0  rounded-[32px] bg-white p-8 sm:p-12 lg:p-14 shadow-sm border border-navy/[0.04]
+                className={`flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-x-14 lg:gap-y-0  rounded-[20px] sm:rounded-[32px] bg-white p-6 sm:p-12 lg:p-14 shadow-sm border border-navy/[0.04]
                 }`}
               >
-                <div className="relative flex h-[240px] w-[240px] shrink-0 items-center justify-center overflow-hidden rounded-full border-[6px] border-white bg-navy/5 shadow-xl sm:h-[280px] sm:w-[280px] lg:h-[320px] lg:w-[320px]">
+                <div className="relative flex h-[190px] w-[190px] shrink-0 items-center justify-center overflow-hidden rounded-full border-[6px] border-white bg-navy/5 shadow-xl min-[430px]:h-[230px] min-[430px]:w-[230px] sm:h-[280px] sm:w-[280px] lg:h-[320px] lg:w-[320px]">
                   {member.image ? (
                     <Image
                       src={member.image}
                       alt={member.imageAlt || member.name}
                       fill
                       className="object-cover object-top"
-                      sizes="(max-width: 768px) 240px, 320px"
+                      sizes="(max-width: 640px) 230px, (max-width: 1024px) 280px, 320px"
                     />
                   ) : (
                     <span className="text-[14px] font-medium text-muted">No Photo</span>

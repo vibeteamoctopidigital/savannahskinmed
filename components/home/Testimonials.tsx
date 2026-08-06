@@ -103,7 +103,7 @@ export default function Testimonials({width,imageUrl}:{width?:string,imageUrl?:s
     <section className={`${width === "full" ? "relative " : "px-4  lg:px-8 max-w-[1250px] mx-auto"}`}>
       {/* Full-bleed photo, tinted with the panel's own rose so it reads as a
           colored band with a faint portrait watermark, not a bare photo. */}
-   <div className={`${width === "full" ? "w-full px-0" : "min-w-[1250px] min-h-[765px] mx-auto rounded-[20px] mb-16" } relative py-12 sm:py-14 lg:py-[104px]   overflow-hidden`}>
+   <div className={`${width === "full" ? "w-full px-0" : "w-full max-w-[1250px] min-h-[520px] sm:min-h-[765px] mx-auto rounded-[20px] mb-16" } relative py-12 sm:py-14 lg:py-[104px]   overflow-hidden`}>
        <div className="absolute inset-0">
         <Image
           src= { width === "full" ?   "/testimonial-2-bg.jpg" : imageUrl ? `${imageUrl}` : "https://res.cloudinary.com/khs2rcsr/image/upload/v1785839017/testimonial-bg_cchaq8.jpg"}
@@ -119,8 +119,8 @@ export default function Testimonials({width,imageUrl}:{width?:string,imageUrl?:s
 
       <div className="shell-wide relative z-10 px-4 sm:px-6 lg:px-16">
         <Reveal>
-          <div className="flex flex-col items-center gap-6 text-center sm:gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="flex items-start flex-col gap-2 sm:gap-3 lg:gap-2">
+          <div className="flex flex-col items-center gap-6 text-center sm:gap-8 lg:flex-row lg:items-end lg:justify-between lg:text-left">
+            <div className="flex items-center flex-col gap-2 sm:gap-3 lg:items-start lg:gap-2">
               <p className="mb-3 font-sans text-[14px] uppercase tracking-[2.8px] text-white sm:mb-4">
                 Patient Testimonials
               </p>

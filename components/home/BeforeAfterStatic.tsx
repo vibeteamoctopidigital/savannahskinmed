@@ -33,12 +33,14 @@ export default function BeforeAfterStatic({
 
   return (
     <section className={`section ${bg || 'bg-white'} pt-4 lg:pt-8`}>
-      <Reveal>
-        <SectionHeading
-          eyebrow={eyebrow}
-          title={title}
-        />
-      </Reveal>
+      <div className="px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <SectionHeading
+            eyebrow={eyebrow}
+            title={title}
+          />
+        </Reveal>
+      </div>
 
       <div className="mx-auto mt-12 max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <Reveal>
@@ -73,8 +75,8 @@ export default function BeforeAfterStatic({
                   className="object-cover"
                 />
                 {/* Procedure Label Overlay */}
-                <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm border border-white/60 rounded-full px-6 sm:px-8 py-2 sm:py-2.5">
-                  <p className="font-sans text-[11px] sm:text-[12px] font-medium uppercase tracking-widest text-navy whitespace-nowrap">
+                <div className="absolute bottom-4 sm:bottom-6 left-1/2 w-max max-w-[88%] -translate-x-1/2 bg-white/90 backdrop-blur-sm border border-white/60 rounded-full px-6 sm:px-8 py-2 sm:py-2.5">
+                  <p className="text-center font-sans text-[11px] sm:text-[12px] font-medium uppercase tracking-widest text-navy">
                     Procedure: <span className="font-bold">{slide.procedure}</span>
                   </p>
                 </div>

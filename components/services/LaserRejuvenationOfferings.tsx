@@ -40,7 +40,7 @@ export default function LaserRejuvenationOfferings() {
               </div>
             </div>
 
-            <div className="mx-auto mt-12 max-w-[852px] flex flex-col gap-8 text-left text-[15.5px] leading-[1.8] text-ink">
+            <div className="mx-auto mt-12 max-w-[852px] flex flex-col gap-8 text-center md:text-left text-[15.5px] leading-[1.8] text-ink">
               {offerings.map((offering, i) => (
                 <div key={i} className="flex items-start gap-3">
                  
@@ -56,7 +56,7 @@ export default function LaserRejuvenationOfferings() {
               ))}
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
+            <div className="mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
               <Link
                 href="/injectables-wrinkle-prevention"
                 className="flex items-center gap-2 font-bold cursor-pointer text-gray-400 transition-colors"

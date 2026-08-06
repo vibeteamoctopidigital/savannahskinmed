@@ -48,7 +48,7 @@ export default function OfferingsList() {
               </div>
             </div>
 
-            <div className="mx-auto mt-12 flex max-w-[870px] flex-col gap-9 text-left text-[14px] sm:text-[15.5px] leading-[1.8] text-ink">
+            <div className="mx-auto mt-12 flex max-w-[870px] flex-col gap-9 text-center md:text-left text-[14px] sm:text-[15.5px] leading-[1.8] text-ink">
               {offerings.map((offering, i) => (
                 <div key={i}>
                   <h3 className="font-sans text-[20px] sm:text-[24px] font-bold text-black">
@@ -78,7 +78,7 @@ export default function OfferingsList() {
                 href="/injectables-wrinkle-prevention"
                 className="inline-flex items-center gap-2 font-medium text-[14px] text-[#8a8f99] transition-colors hover:text-rose"
               >
-                INJECTABLES &amp; WRINKLE PREVENTION
+                WRINKLE PREVENTION
                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
               </Link>
             </div>

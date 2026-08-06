@@ -222,13 +222,13 @@ export default function ServicesSection() {
                             <Reveal key={href} delay={i * 70} className="h-full">
                                 <Link
                                     href={href}
-                                    className="group flex h-full items-center gap-5 rounded-[10px] bg-gradient-to-r from-[#F9F8F6] to-[#F7F8F2] px-6 py-[26px] transition-colors duration-300 sm:px-8"
+                                    className="group flex h-full flex-col items-center gap-4 rounded-[10px] bg-gradient-to-r from-[#F9F8F6] to-[#F7F8F2] px-6 py-8 text-center transition-colors duration-300 sm:flex-row sm:gap-5 sm:px-8 sm:py-[26px] sm:text-left"
                                 >
                                     <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-[#519B98]/45 text-[#519B98]">
                                         {svgContent}
                                     </span>
 
-                                    <span className="flex-1 font-serif text-[24px] text-[#0B2055]">
+                                    <span className="font-serif text-[20px] text-[#0B2055] sm:flex-1 sm:text-[24px]">
                                         {label}
                                     </span>
 

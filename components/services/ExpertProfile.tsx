@@ -8,19 +8,19 @@ export default function ExpertProfile({}) {
         <Reveal>
           <div className="shell flex flex-col items-center md:items-start gap-10 md:flex-row md:gap-16">
             <div className="relative shrink-0 overflow-hidden rounded-full">
-              <div className="relative h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px]">
+              <div className="relative h-[240px] w-[240px] min-[430px]:h-[280px] min-[430px]:w-[280px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px]">
                 <Image
                   src="/images/photo-content-10-img.jpg"
                   alt="Rebecca Spacek - Licensed Aesthetician"
                   fill
-                  sizes="(max-width: 768px) 340px, 400px"
+                  sizes="(max-width: 640px) 280px, (max-width: 768px) 340px, 400px"
                   className="object-cover object-top"
                 />
               </div>
             </div>
 
-            <div className="text-left md:pt-2">
-              <h2 className="font-serif text-[28px] sm:text-[36px] lg:text-[48px] text-navy font-medium">Rebecca Spacek</h2>
+            <div className="text-center md:pt-2 md:text-left">
+              <h2 className="font-serif text-[36px]  lg:text-[48px] text-navy font-medium">Rebecca Spacek</h2>
 
               <div className="mt-6 space-y-5 text-[14px] sm:text-[16px] leading-[1.8] text-[#0b2055]">
                 <p>

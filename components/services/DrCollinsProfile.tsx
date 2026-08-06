@@ -6,20 +6,20 @@ export default function DrCollinsProfile() {
      <section className="section bg-white">
       
         <Reveal>
-          <div className="mx-auto flex shell flex-col items-start gap-10 md:flex-row md:gap-20">
+          <div className="mx-auto flex shell flex-col items-center gap-10 md:flex-row md:items-start md:gap-20">
             <div className="relative shrink-0 overflow-hidden rounded-full">
-              <div className="relative h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] md:h-[500px] md:w-[500px]">
+              <div className="relative h-[240px] w-[240px] min-[430px]:h-[280px] min-[430px]:w-[280px] sm:h-[340px] sm:w-[340px] md:h-[500px] md:w-[500px]">
                  <Image
                   src="/images/team-6-img.png"
                   alt="Harry S. Collins, DO, FACOG, Medical Director"
                   fill
-                  sizes="(max-width: 768px) 340px, 400px"
+                  sizes="(max-width: 640px) 280px, (max-width: 768px) 340px, 500px"
                   className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               </div>
             </div>
 
-            <div className="text-left md:pt-2 max-w-[680px]">
+            <div className="text-center md:pt-2 md:text-left max-w-[680px]">
               <h2 className="font-bold text-[36px] text-navy md:text-[48px]"> Harry S. Collins, DO, FACOG, Medical Director</h2>
 
               <div className="mt-6 space-y-5 text-[16px] leading-[1.8] text-[#0b2055]">

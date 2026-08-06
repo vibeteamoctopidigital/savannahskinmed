@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function IvInfusionTherapyPage() {
   return (
-    <>
+    <section className='bg-[#F7F8F2]'>
       <PageJsonLd route="/iv-infusion-therapy-vitamin-injections" isService />
       <ServiceHero
         eyebrow="SERVICES"
@@ -28,6 +28,6 @@ export default function IvInfusionTherapyPage() {
       <Testimonials  width='full' imageUrl='/testimonial-2-bg.jpg'/>
       
       <ElevateCta />
-    </>
+    </section>
   );
 }

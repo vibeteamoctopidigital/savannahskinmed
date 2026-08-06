@@ -43,22 +43,22 @@ export default function LaserHairRemovalOfferings() {
               ))}
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
+            <div className="mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
               <Link
                 href="/medical-grade-facials"
-                className="inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
+                className="hidden sm:inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
               >
                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
 
                 MEDICAL-GRADE FACIALS
               </Link>
-              <BookAppointmentButton className="inline-flex items-center gap-2 rounded-full bg-navy text-[14px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
+              <BookAppointmentButton className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 text-[14px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
                
               </BookAppointmentButton>
               <Link
                 href="/injectables-wrinkle-prevention"
-                className="inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
+                className="hidden sm:inline-flex items-center gap-2 font-medium text-[#8a8f99] transition-colors hover:text-rose"
               >
                 WRINKLE PREVENTION
                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>

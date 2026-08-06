@@ -43,12 +43,12 @@ export default function VaginalRejuvenationOfferings() {
               <p className="mx-auto  text-[16px] leading-[1.8] text-[#555a64]">
                 In-office rejuvenation treatments help stimulate blood flow, regeneration in the vaginal region. Treatment is delivered using a small wand, which is inserted into the vagina and gently rotated, delivering pulses to the surrounding tissues.
               </p>
-              <div className="mx-auto mt-8 w-[1044px] rounded-full bg-[#F5F5F5] py-4 text-center">
-                <span className="font-sans text-[20px] font-bold text-black">Vaginal rejuvenation offers a variety of benefits, including the following:</span>
+              <div className="mx-auto mt-8 w-full max-w-[1044px] rounded-full bg-[#F5F5F5] px-6 py-4 text-center">
+                <span className="font-sans text-[16px] sm:text-[20px] font-bold text-black">Vaginal rejuvenation offers a variety of benefits, including the following:</span>
               </div>
             </div>
 
-            <div className="mt-12 flex flex-col w-[80%] mx-auto gap-8 text-[15.5px] leading-[1.8] text-ink">
+            <div className="mt-12 flex w-full flex-col gap-8 text-center md:w-[80%] md:mx-auto md:text-left text-[15.5px] leading-[1.8] text-ink">
               <div>
                 <h3 className="font-sans text-[24px] font-bold text-black">
                  Vaginal Tightening & Incontinence Reduction
@@ -99,17 +99,17 @@ export default function VaginalRejuvenationOfferings() {
               
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[14px] uppercase tracking-widest2 text-navy">
-              <Link href="/iv-infusion-therapy-vitamin-injections/" className="  flex items-center gap-2 font-bold cursor-pointer text-gray-400 transition-colors">
+            <div className="mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-between gap-4 border-t border-haze pt-8 text-[14px] uppercase tracking-widest2 text-navy">
+              <Link href="/iv-infusion-therapy-vitamin-injections/" className=" hidden sm:flex items-center gap-2 font-bold cursor-pointer text-gray-400 transition-colors">
         
                 
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
                 IV Infusion Therapy
               </Link>
-              <BookAppointmentButton className="rounded-full bg-navy py-3 text-[14px] w-[273px] h-[50px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
+              <BookAppointmentButton className="rounded-full bg-navy py-3 text-[10px] w-full max-w-[273px] h-[50px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
               </BookAppointmentButton>
-              <Link href="/medical-grade-Ffacials/" className=" flex items-center gap-2 font-bold cursor-pointer text-gray-400 transition-colors">
+              <Link href="/medical-grade-facials" className=" hidden sm:flex items-center gap-2 font-bold cursor-pointer text-gray-400 transition-colors">
                 Medical-Grade Facials  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right-icon lucide-move-right  transition-transform duration-300 group-hover:translate-x-1"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
               </Link>
             </div>

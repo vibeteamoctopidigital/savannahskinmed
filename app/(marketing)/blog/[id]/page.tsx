@@ -174,7 +174,7 @@ export default async function BlogPostDetailPage({ params }: { params: Promise<P
                 View Specials
               </Link>
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="rounded-xl border border-navy/20 bg-white px-6 py-3 text-sm font-medium text-navy transition-colors hover:bg-cream/50"
               >
                 Contact Our Clinic

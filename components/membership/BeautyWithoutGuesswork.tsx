@@ -17,10 +17,10 @@ export default function BeautyWithoutGuesswork() {
           <div className="overflow-hidden rounded-[20px]  bg-white">
             <div className="flex flex-col md:flex-row">
               {/* Text Side */}
-              <div className="order-2 flex w-full flex-col justify-center px-8 py-18 md:order-1 md:w-1/2 md:p-14 lg:p-16">
-                <div className="text-left">
+              <div className="order-2 flex w-full flex-col justify-center px-8 py-16 md:order-1 md:w-1/2 md:p-14 lg:p-16">
+                <div className="text-center md:text-left">
                   <p className="eyebrow mb-4 text-navy text-[14px] font-bold">WHY MEMBERSHIP</p>
-                  <h3 className="text-[24px] font-medium mb-6  sm:text-[48px] leading-[48px]">Consistency That Delivers Results</h3>
+                  <h3 className="mb-6 text-[36px] font-medium leading-[1.1] sm:text-[48px]">Consistency That Delivers Results</h3>
                   <p className="mb-8 text-[20px] leading-[1.75] text-navy">
                     Consistency is  the key to real, lasting results. With monthly credits, exclusive pricing, and built-in perks, your treatments become part of a seamless routine&mdash;not a one-time decision.
                   </p>
