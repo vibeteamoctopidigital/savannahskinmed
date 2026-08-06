@@ -11,10 +11,17 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata('/injectables-wrinkle-prevention');
 }
 
-const injectablesSlides: BeforeAfterSlide[] = [
-  { before: 39, after: 40, procedure: 'Dysport' },
-];
 
+
+const injectablesSlides: BeforeAfterSlide[] = [
+  { before: 55, after: 56, procedure: 'CO2 Laser Resurfacing' },
+  { before: 57, after: 58, procedure: 'CO2 Laser Resurfacing' },
+  { before: 25, after: 26, procedure: 'Non Ablative Laser - Hyperpigmentation' },
+  { before: 27, after: 28, procedure: 'Non Ablative Laser - Hyperpigmentation' },
+  { before: 29, after: 30, procedure: 'Non Ablative Laser - Hyperpigmentation' },
+  { before: 31, after: 32, procedure: 'Microneedling' },
+  { before: 33, after: 34, procedure: 'Microneedling' },
+];
 export default function InjectablesPage() {
   return (
     <section className='bg-[#F1F3EC]'>

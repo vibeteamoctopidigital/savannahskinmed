@@ -15,12 +15,12 @@ export default function Hero() {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[65%_20%] sm:object-[70%_center] lg:object-[72%_center]"
+       className="object-cover   object-[80%_15%] sm:object-[70%_center] lg:object-[72%_center]"
       />
 
       {/* Subtle dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/30 sm:bg-black/20 lg:bg-black/10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent sm:bg-gradient-to-r sm:from-black/40 sm:via-black/10 sm:to-transparent" />
+      <div className="sm:hidden absolute inset-0 bg-black/30 sm:bg-black/20 lg:bg-black/10" />
+      <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent sm:bg-gradient-to-r sm:from-black/40 sm:via-black/10 sm:to-transparent" />
 
       <div className="shell relative z-10 pt-24 sm:pt-28 lg:pt-20">
         {/* Centred through tablet, left-aligned from desktop up. */}
