@@ -28,7 +28,7 @@ export default function MembershipHero() {
           </p>
 
           <div className="mt-9 flex flex-col animate-fadeUp items-center justify-center gap-y-6 sm:flex-row sm:gap-x-8 [animation-delay:240ms]">
-            <RequestButton withArrow>Request More Details</RequestButton>
+            <RequestButton >Request More Details</RequestButton>
           </div>
         </div>
       </div>

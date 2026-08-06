@@ -143,7 +143,7 @@ export default function MembershipOptions() {
         </div>
 
         <Reveal className="text-center">
-          <RequestButton withArrow>Request More Details</RequestButton>
+          <RequestButton >Request More Details</RequestButton>
         </Reveal>
       </div>
     </section>

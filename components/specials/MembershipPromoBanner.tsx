@@ -44,7 +44,7 @@ export default function MembershipPromoBanner({ promo }: { promo: MembershipProm
           </ul>
 
           <div className="mt-9 flex justify-center sm:justify-start">
-            <RequestButton withArrow>
+            <RequestButton >
               {promo.ctaLabel}
             </RequestButton>
           </div>
