@@ -132,8 +132,8 @@ export default function MembershipOptions() {
     <section className="section bg-white" id="membership-options">
       <div className="container">
         <Reveal className="mb-16 text-center">
-          <p className="eyebrow mb-4 text-navy font-medium text-[16px]">CHOOSE YOUR PLAN</p>
-          <h2 className="display-2 text-navy">Membership Options</h2>
+          <p className="eyebrow mb-4 text-navy font-semibold text-[16px]">CHOOSE YOUR PLAN</p>
+          <h2 className="display-1v2 text-navy">Membership Options</h2>
         </Reveal>
 
         <div className="mb-12 grid grid-cols-1 max-w-[1245px] mx-auto gap-6 lg:grid-cols-2">

@@ -7,7 +7,7 @@ export default function MembershipCta() {
     <section className="bg-white">
       <div className="flex flex-col lg:flex-row min-h-[560px]">
         {/* Text Side */}
-        <div className="order-2 w-full lg:order-1 lg:w-1/2 flex flex-col justify-center px-8 py-16 lg:px-16 xl:px-20 lg:py-20 bg-[#F7F8F2]">
+        <div className="order-2 w-full lg:order-1 lg:w-1/2 flex flex-col justify-center px-4 py-16 lg:px-16 xl:px-20 lg:py-20 bg-[#F7F8F2]">
           <Reveal className="max-w-[500px] mx-auto lg:mx-0 lg:ml-[70px] text-center lg:text-left">
             <p className="eyebrow mb-4 text-navy font-semibold text-[14px]">GET STARTED</p>
             <h2 className="mb-6 text-[36px] leading-[1.1] text-navy sm:text-[48px]">Ready To Experience Membership?</h2>

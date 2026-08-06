@@ -100,7 +100,7 @@ export default function Header({ logoUrl }: { logoUrl?: string }) {
       >
 
  
-      <div className={`mx-auto flex items-center justify-between py-4 px-4 sm:py-5 sm:px-6 lg:min-h-[110px] lg:px-12 max-w-7xl ${scrolled ? 'lg:py-3' : 'lg:py-6'}`}>
+      <div className={`mx-auto flex items-center justify-between py-4 px-4 sm:py-5 sm:px-6 lg:min-h-[110px] lg:px-12 shell ${scrolled ? 'lg:py-3' : 'lg:py-6'}`}>
         <Logo variant={scrolled ? 'dark' : 'light'} src={logoUrl} />
 
         {/* ---------------- Desktop navigation ---------------- */}

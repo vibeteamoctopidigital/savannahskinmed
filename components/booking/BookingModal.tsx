@@ -12,6 +12,7 @@ const LOCATIONS = ['Pooler / Savannah', 'Statesboro'];
 type BookingModalProps = {
   open: boolean;
   onClose: () => void;
+  title?:string
 };
 
 function Field({
@@ -88,7 +89,7 @@ function SelectField({
   );
 }
 
-export default function BookingModal({ open, onClose }: BookingModalProps) {
+export default function BookingModal({ open, onClose,title }: BookingModalProps) {
   const [step, setStep] = useState<1 | 2>(1);
   const [sent, setSent] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -191,7 +192,7 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
         </button>
 
         <h2 id="booking-title" className="display-3 !text-[20px] sm:!text-[26px] lg:!text-[30px] text-center text-white">
-          Book Appointment
+           {title || "Book Appointment" }
         </h2>
 
         {sent ? (
