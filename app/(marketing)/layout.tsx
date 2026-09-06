@@ -38,6 +38,18 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         'Redefining beauty with precision and care — medical-grade aesthetics tailored to you.',
       type: 'website',
+      images: [
+        {
+          url: '/social-preview.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'Savannah Age Management Medicine — Redefining Beauty With Precision And Care',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: ['/social-preview.jpg'],
     },
   };
 }

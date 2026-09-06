@@ -24,7 +24,7 @@ function robotsFor(directive: ResolvedPageSeo['robots']): Metadata['robots'] {
 }
 
 /** Default social-preview image — an existing site photo, not new content. */
-const DEFAULT_OG_IMAGE = '/images/banner-bg.jpg';
+const DEFAULT_OG_IMAGE = '/social-preview.jpg';
 
 /** Builds a page's `generateMetadata()` return value from its DB override
  * (falling back to the route's hardcoded default title/description when a
