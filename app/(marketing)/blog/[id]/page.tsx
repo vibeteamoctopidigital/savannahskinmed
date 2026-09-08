@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { getBlogPostById } from '@/lib/data/blog';
-import { SITE_URL } from '@/lib/siteUrl';
+import { resolveSiteAssetUrl, SITE_URL } from '@/lib/siteUrl';
 
 type Params = { id: string };
 
@@ -14,12 +14,30 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   if (!post) return {};
 
   const canonical = `${SITE_URL}/blog/${post.id}`;
+  const fallbackOgImageUrl = await resolveSiteAssetUrl('/social-preview.jpg');
+  const ogImage =
+    post.image
+      ? { url: post.image, width: 1200, height: 630, alt: post.imageAlt || post.title }
+      : { url: fallbackOgImageUrl, width: 1200, height: 640, alt: post.title };
+
   return {
+    metadataBase: new URL(SITE_URL),
     title: post.title,
     description: post.description,
     alternates: { canonical },
-    openGraph: { title: post.title, description: post.description, url: canonical, type: 'article' },
-    twitter: { card: 'summary_large_image', title: post.title, description: post.description },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: canonical,
+      type: 'article',
+      images: [ogImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: [ogImage.url],
+    },
   };
 }
 
