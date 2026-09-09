@@ -14,7 +14,7 @@ export default function AdminLoginPage() {
       <div className={`w-full max-w-[400px] ${cardClass} sm:p-10`}>
         <h1 className="mb-1 font-serif text-[26px] text-navy">Admin Login</h1>
         <p className="mb-8 text-[14px] text-muted">
-          Savannah Age Management Medicine
+          Savannah Age Management Medicine.
         </p>
         <AdminLoginForm />
       </div>
