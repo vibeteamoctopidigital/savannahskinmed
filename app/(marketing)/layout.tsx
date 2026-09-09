@@ -7,7 +7,7 @@ import { manrope } from '@/lib/fonts';
 import { getSiteSettings } from '@/lib/data/siteSettings';
 import { getFooterData } from '@/lib/data/footer';
 import { OrganizationJsonLd } from '@/lib/seo';
-import { SITE_URL } from '@/lib/siteUrl';
+import { resolveSiteAssetUrl, SITE_URL } from '@/lib/siteUrl';
 import '@/app/globals.css';
 
 // Safety net so the DB-backed Footer picks up admin edits (or a newly
@@ -16,7 +16,10 @@ import '@/app/globals.css';
 export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await getSiteSettings();
+  const [settings, ogImageUrl] = await Promise.all([
+    getSiteSettings(),
+    resolveSiteAssetUrl('/social-preview.jpg'),
+  ]);
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -38,18 +41,19 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         'Redefining beauty with precision and care — medical-grade aesthetics tailored to you.',
       type: 'website',
+      siteName: 'Savannah Age Management Medicine',
       images: [
         {
-          url: '/social-preview.jpg',
+          url: ogImageUrl,
           width: 1200,
-          height: 630,
+          height: 640,
           alt: 'Savannah Age Management Medicine — Redefining Beauty With Precision And Care',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      images: ['/social-preview.jpg'],
+      images: [ogImageUrl],
     },
   };
 }

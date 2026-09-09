@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { cache } from 'react';
 
 import { getResolvedPageSeo, type ResolvedPageSeo } from '@/lib/data/pageSeo';
-import { SITE_URL } from '@/lib/siteUrl';
+import { resolveSiteAssetUrl, SITE_URL } from '@/lib/siteUrl';
 
 /** Deduped per-request: `generateMetadata` and the page body both resolve
  * the same route's SEO row without hitting the database twice. */
@@ -23,7 +23,8 @@ function robotsFor(directive: ResolvedPageSeo['robots']): Metadata['robots'] {
   }
 }
 
-/** Default social-preview image — an existing site photo, not new content. */
+/** Default social-preview image — an existing site photo, not new content.
+ * Actual file dimensions are 1200×640 (matches what the tag below declares). */
 const DEFAULT_OG_IMAGE = '/social-preview.jpg';
 
 /** Builds a page's `generateMetadata()` return value from its DB override
@@ -33,7 +34,8 @@ export async function buildPageMetadata(route: string): Promise<Metadata> {
   const seo = await resolvePageSeo(route);
 
   const canonical = seo.canonicalUrl || `${SITE_URL}${route === '/' ? '' : route}`;
-  const ogImage = { url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: seo.title };
+  const ogImageUrl = await resolveSiteAssetUrl(DEFAULT_OG_IMAGE);
+  const ogImage = { url: ogImageUrl, width: 1200, height: 640, alt: seo.title };
 
   return {
     title: seo.title,
@@ -45,13 +47,15 @@ export async function buildPageMetadata(route: string): Promise<Metadata> {
       title: seo.title,
       description: seo.description,
       url: canonical,
+      type: 'website',
+      siteName: 'Savannah Age Management Medicine',
       images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
       title: seo.title,
       description: seo.description,
-      images: [DEFAULT_OG_IMAGE],
+      images: [ogImageUrl],
     },
   };
 }
