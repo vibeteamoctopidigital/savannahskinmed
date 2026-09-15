@@ -14,6 +14,23 @@ const nextConfig = {
     ],
     
   },
+  async headers() {
+    return [
+      // Site-wide default — mirrors the `<meta name="robots">` default set
+      // in app/(marketing)/layout.tsx so crawlers get the same signal from
+      // the HTTP header as from the page itself.
+      {
+        source: '/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'index, follow' }],
+      },
+      // Admin backend must never be indexed — overrides the rule above
+      // (later matching rules win on duplicate header keys).
+      {
+        source: '/admin/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
