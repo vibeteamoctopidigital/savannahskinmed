@@ -15,6 +15,53 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata('/our-experts');
 }
 
+type AwardBadge = { rank: 'Winner' | 'Runner-Up'; category: string };
+
+/** "Best of Savannah 2026" (Savannah Magazine) results, matched against the
+ * live team roster by name so a badge only shows up for doctors who
+ * actually placed — everyone else on the team renders with no badge. */
+const AWARDS_2026: { name: string; badges: AwardBadge[] }[] = [
+  {
+    name: 'Harry S. Collins',
+    badges: [
+      { rank: 'Winner', category: 'Functional Medicine Specialist' },
+      { rank: 'Winner', category: 'Hormone Specialist' },
+    ],
+  },
+  {
+    name: 'Evelia Johnsen',
+    badges: [
+      { rank: 'Runner-Up', category: 'Functional Medicine Specialist' },
+      { rank: 'Runner-Up', category: 'Hormone Specialist' },
+    ],
+  },
+  {
+    name: 'Emily Sellars',
+    badges: [{ rank: 'Runner-Up', category: 'Weight-Loss Specialist' }],
+  },
+];
+
+function getAwardBadges(memberName: string): AwardBadge[] {
+  const match = AWARDS_2026.find((award) => memberName.includes(award.name));
+  return match?.badges ?? [];
+}
+
+function AwardBadgeList({ badges, className = '' }: { badges: AwardBadge[]; className?: string }) {
+  if (badges.length === 0) return null;
+  return (
+    <div className={`flex flex-wrap justify-center gap-2 lg:justify-start ${className}`}>
+      {badges.map((badge, i) => (
+        <span
+          key={i}
+          className="inline-flex items-center rounded-full border border-teal-600/30 bg-teal-50 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-teal-700"
+        >
+          2026 {badge.rank} · {badge.category}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default async function OurExpertsPage() {
   const teamMembers = await getTeamMembers();
 
@@ -69,6 +116,7 @@ export default async function OurExpertsPage() {
 <p className="mt-2 text-[18px] sm:text-[22px] font-medium tracking-widest2 text-navy">
   Age Management Medicine Specialist
 </p>
+              <AwardBadgeList badges={getAwardBadges('Harry S. Collins')} className="mt-5" />
               <div className="mt-6 space-y-5 text-[16px] leading-[1.8] text-[#0b2055]">
           Doctor Harry Collins is a Life Fellow of the American College of Obstetricians and Gynecologists. Dr. Collins received his certification in Age Management Medicine with the nationally renowned Cenegenics Medical Institute. Cenegenics' certification in Age Management Medicine is jointly sponsored by Cenegenics Education and Research Foundation (CERF) and the Foundation for Care Management in Las Vegas, Nevada. CERF and the Foundation for Care Management are accredited with honors by seven sponsoring organizations including the American Medical Association and American Board of Medical Specialties. He graduated from the University of Colorado (Denver) with distinction, earning a BA in biology. He went on to earn his Doctor of Osteopathic Medicine degree from Kansas City University of Medicine and Biosciences. After completing an internship in family medicine at Womack Army Medical Center (Fort Bragg, North Carolina), he completed a residency in obstetrics and gynecology at Walter Reed Army Medical Center in Washington, DC.
               </div>
@@ -125,6 +173,7 @@ export default async function OurExpertsPage() {
                       {member.highlight}
                     </p>
                   )}
+                  <AwardBadgeList badges={getAwardBadges(member.name)} className="mt-4" />
                   <div className="mt-6 space-y-5 text-[16px] leading-[1.85] text-navy">
                     {member.bio.split('\n\n').map((paragraph, i) => {
                       // Some bios lead with a pull-quote instead of using the
