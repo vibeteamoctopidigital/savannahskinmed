@@ -18,8 +18,12 @@ function robotsFor(directive: ResolvedPageSeo['robots']): Metadata['robots'] {
       return { index: false, follow: false };
     case 'INHERIT':
     default:
-      // Omit entirely — the root layout's site-wide default (index, follow) applies.
-      return undefined;
+      // Set explicitly rather than omitted: Next.js only inherits a metadata
+      // field from the layout when the page's generateMetadata doesn't
+      // include the key at all, and this object always includes `robots`
+      // (previously `undefined` here), so the tag was being dropped instead
+      // of falling back to the layout's index/follow default.
+      return { index: true, follow: true };
   }
 }
 
