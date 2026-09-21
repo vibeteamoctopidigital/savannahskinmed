@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { getBlogPostById } from '@/lib/data/blog';
-import { resolveSiteAssetUrl, SITE_URL } from '@/lib/siteUrl';
+import { normalizeCanonicalUrl, resolveSiteAssetUrl, SITE_URL } from '@/lib/siteUrl';
 
 type Params = { id: string };
 
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const post = await getBlogPostById(id);
   if (!post) return {};
 
-  const canonical = `${SITE_URL}/blog/${post.id}`;
+  const canonical = normalizeCanonicalUrl(`${SITE_URL}/blog/${post.id}`);
   const fallbackOgImageUrl = await resolveSiteAssetUrl('/social-preview.jpg');
   const ogImage =
     post.image
