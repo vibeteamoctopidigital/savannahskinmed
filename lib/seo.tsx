@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { cache } from 'react';
 
 import { getResolvedPageSeo, type ResolvedPageSeo } from '@/lib/data/pageSeo';
-import { resolveSiteAssetUrl, SITE_URL } from '@/lib/siteUrl';
+import { normalizeCanonicalUrl, resolveSiteAssetUrl, SITE_URL } from '@/lib/siteUrl';
 
 /** Deduped per-request: `generateMetadata` and the page body both resolve
  * the same route's SEO row without hitting the database twice. */
@@ -37,7 +37,10 @@ const DEFAULT_OG_IMAGE = '/social-preview.jpg';
 export async function buildPageMetadata(route: string): Promise<Metadata> {
   const seo = await resolvePageSeo(route);
 
-  const canonical = seo.canonicalUrl || `${SITE_URL}${route === '/' ? '' : route}`;
+  const defaultCanonical = `${SITE_URL}${route}`;
+  // Normalized here, at the single point of use, so a stored override with a
+  // stray trailing slash (or a missing root slash) can never reach the page.
+  const canonical = normalizeCanonicalUrl(seo.canonicalUrl.trim() || defaultCanonical, defaultCanonical);
   const ogImageUrl = await resolveSiteAssetUrl(DEFAULT_OG_IMAGE);
   const ogImage = { url: ogImageUrl, width: 1200, height: 640, alt: seo.title };
 
