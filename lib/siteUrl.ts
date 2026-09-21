@@ -2,6 +2,24 @@ import { headers } from 'next/headers';
 
 export const SITE_URL = 'https://www.savannahskinmed.com';
 
+/** Normalizes a canonical/OG URL to the exact form the page is served at:
+ * no trailing slash on any path (Next 308-redirects `/foo/` -> `/foo`),
+ * except the bare root, which is always `https://host/`. Accepts absolute
+ * URLs or site-relative paths (e.g. an admin-entered override), and falls
+ * back to `fallback` if the value can't be parsed. */
+export function normalizeCanonicalUrl(url: string, fallback: string = SITE_URL): string {
+  let parsed: URL;
+  try {
+    parsed = new URL(url, SITE_URL);
+  } catch {
+    parsed = new URL(fallback, SITE_URL);
+  }
+  if (parsed.pathname !== '/') {
+    parsed.pathname = parsed.pathname.replace(/\/+$/, '') || '/';
+  }
+  return parsed.href;
+}
+
 /** Resolves a site-local asset path (e.g. `/social-preview.jpg`) to an
  * absolute URL for OG/Twitter meta tags.
  *
