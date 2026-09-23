@@ -9,10 +9,32 @@ import { submitBooking } from '@/app/actions/submissions';
 
 const LOCATIONS = ['Pooler / Savannah', 'Statesboro'];
 
+const HIGHLEVEL_WEBHOOK_URL =
+  'https://services.leadconnectorhq.com/hooks/TCgWNSOqArBjmBL22qrU/webhook-trigger/92b8b77f-2205-41e5-b434-459a7829b9d0';
+
+/**
+ * Add the EXACT ACRM page tags here when you have the client's
+ * page -> tag reference list.
+ *
+ * Example:
+ *
+ * '/services/hormone-therapy': 'hormone-therapy',
+ * '/services/weight-management': 'weight-management',
+ *
+ * Until a page is mapped here, the lead will still receive
+ * the required "website-leads" tag.
+ */
+const PAGE_TAGS: Record<string, string> = {
+  // '/': 'homepage',
+  // '/services/hormone-therapy': 'hormone-therapy',
+  // '/services/weight-management': 'weight-management',
+  // '/services/iv-therapy': 'iv-therapy',
+};
+
 type BookingModalProps = {
   open: boolean;
   onClose: () => void;
-  title?:string
+  title?: string;
 };
 
 function Field({
@@ -31,6 +53,7 @@ function Field({
       <label htmlFor={id} className="sr-only">
         {label}
       </label>
+
       <input
         id={id}
         name={id}
@@ -63,6 +86,7 @@ function SelectField({
       >
         {label}
       </label>
+
       <select
         id={id}
         name={id}
@@ -75,12 +99,14 @@ function SelectField({
             {placeholder}
           </option>
         )}
+
         {options.map((option) => (
           <option key={option} value={option} className="bg-navy text-white">
             {option}
           </option>
         ))}
       </select>
+
       <span
         aria-hidden="true"
         className="pointer-events-none absolute bottom-1.5 sm:bottom-2.5 right-3 sm:right-4 border-x-[5px] border-t-[6px] border-x-transparent border-t-white"
@@ -89,13 +115,18 @@ function SelectField({
   );
 }
 
-export default function BookingModal({ open, onClose,title }: BookingModalProps) {
+export default function BookingModal({
+  open,
+  onClose,
+  title,
+}: BookingModalProps) {
   const [step, setStep] = useState<1 | 2>(1);
   const [sent, setSent] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [stepOneData, setStepOneData] = useState<FormData | null>(null);
+
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -114,15 +145,19 @@ export default function BookingModal({ open, onClose,title }: BookingModalProps)
         onClose();
         return;
       }
+
       if (e.key !== 'Tab') return;
 
       // Keep focus inside the dialog.
       const focusable = panelRef.current?.querySelectorAll<HTMLElement>(
         'button, input, select, textarea, a[href]',
       );
+
       if (!focusable?.length) return;
+
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
+
       if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
         last.focus();
@@ -133,6 +168,7 @@ export default function BookingModal({ open, onClose,title }: BookingModalProps)
     };
 
     window.addEventListener('keydown', onKey);
+
     return () => {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = previous;
@@ -151,22 +187,194 @@ export default function BookingModal({ open, onClose,title }: BookingModalProps)
 
   if (!open || !mounted) return null;
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  const data = new FormData(event.currentTarget);
-    setError(null);
-    setSubmitting(true);
-    const result = await submitBooking(data);
-    setSubmitting(false);
-    if (result.ok) {
-      setSent(true);
-    } else {
-      setError(result.error);
+  /**
+   * Get page-specific ACRM tag.
+   *
+   * Example:
+   *
+   * /services/hormone-therapy
+   * -> hormone-therapy
+   *
+   * If the exact page has not been added to PAGE_TAGS yet,
+   * only "website-leads" will be sent.
+   */
+  const getPageTag = () => {
+    const pathname =
+      window.location.pathname.replace(/\/$/, '') || '/';
+
+    return PAGE_TAGS[pathname] || null;
+  };
+
+  /**
+   * Send lead directly to the HighLevel inbound webhook.
+   *
+   * This happens AFTER submitBooking() succeeds.
+   *
+   * The webhook response does NOT control the booking success state.
+   * submitBooking() remains the existing source of truth.
+   */
+  const sendToHighLevel = async (data: FormData) => {
+    const pageTag = getPageTag();
+
+    // Every website lead gets this tag.
+    const tags = 'website-leads'
+
+    // Add page-specific tag when configured
+
+    const payload = {
+      // Patient information
+      name: String(data.get('name') || ''),
+      email: String(data.get('email') || ''),
+      phone: String(data.get('phone') || ''),
+
+      // Appointment information
+      location: String(data.get('location') || ''),
+      service: String(data.get('service') || ''),
+
+      // Website information
+      website: 'savannahskinmed',
+      website_name: 'savannahskinmed',
+      website_domain: 'savannahskinmed.com',
+
+      // Current page / source
+      page_url: window.location.href,
+      page_path: window.location.pathname,
+      referrer_url: document.referrer || '',
+
+      // Lead source
+      source: 'Age Management Website',
+      source_type: 'website',
+      form_name: 'Book Appointment',
+      form_type: 'appointment_request',
+
+      // ACRM / HighLevel tags
+      tags,
+
+      // Also send these common fields for webhook/workflow mapping
+      tag: tags.join(', '),
+      lead_source: 'website',
+      lead_source_detail: 'booking_modal',
+
+      // Browser information
+      user_agent: navigator.userAgent,
+      language: navigator.language || '',
+      screen_width: window.screen.width,
+      screen_height: window.screen.height,
+
+      // Submission time
+      submitted_at: new Date().toISOString(),
+    };
+
+    try {
+      const response = await fetch(HIGHLEVEL_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      /**
+       * Keep the webhook response available for debugging,
+       * but DO NOT use it to change the existing booking result.
+       */
+      const responseText = await response.text();
+
+      console.log('[HighLevel] Webhook response:', {
+        status: response.status,
+        ok: response.ok,
+        response: responseText,
+        payload,
+      });
+
+      if (!response.ok) {
+        console.error(
+          '[HighLevel] Webhook returned an error:',
+          response.status,
+          responseText,
+        );
+      }
+    } catch (webhookError) {
+      /**
+       * Do not break the existing booking confirmation
+       * if HighLevel temporarily fails.
+       */
+      console.error(
+        '[HighLevel] Webhook request failed:',
+        webhookError,
+      );
     }
   };
 
-  // Portalled to <body>: hero/reveal ancestors carry a CSS transform, which
-  // would otherwise become the containing block for this fixed overlay.
+  const handleSubmit = async (
+    event: FormEvent<HTMLFormElement>,
+  ) => {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+
+    setError(null);
+    setSubmitting(true);
+
+    try {
+      /**
+       * EXISTING BOOKING SUBMISSION
+       */
+      const result = await submitBooking(data);
+
+      /**
+       * Keep existing behavior exactly the same.
+       */
+      if (!result.ok) {
+        setSubmitting(false);
+        setError(result.error);
+        return;
+      }
+
+      /**
+       * BOOKING SUCCESSFUL
+       *
+       * Now send the same patient to HighLevel.
+       *
+       * This includes:
+       * - name
+       * - email
+       * - phone
+       * - location
+       * - service
+       * - website
+       * - page URL
+       * - referrer
+       * - browser data
+       * - website-leads tag
+       * - page-specific tag
+       */
+      await sendToHighLevel(data);
+
+      /**
+       * Existing success behavior.
+       *
+       * Webhook response does NOT change this.
+       */
+      setSubmitting(false);
+      setSent(true);
+    } catch (submitError) {
+      console.error(
+        '[Booking] Submission error:',
+        submitError,
+      );
+
+      setSubmitting(false);
+
+      setError(
+        'Something went wrong while submitting your request. Please try again.',
+      );
+    }
+  };
+
+  // Portalled to <body>: hero/reveal ancestors carry a CSS transform,
+  // which would otherwise become the containing block for this fixed overlay.
   return createPortal(
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/40 px-4 py-4 backdrop-blur-md sm:py-8"
@@ -191,8 +399,11 @@ export default function BookingModal({ open, onClose,title }: BookingModalProps)
           <CloseIcon className="h-5 w-5" />
         </button>
 
-        <h2 id="booking-title" className="display-3 !text-[20px] sm:!text-[26px] lg:!text-[30px] text-center text-white">
-           {title || "Book Appointment" }
+        <h2
+          id="booking-title"
+          className="display-3 !text-[20px] sm:!text-[26px] lg:!text-[30px] text-center text-white"
+        >
+          {title || 'Book Appointment'}
         </h2>
 
         {sent ? (
@@ -201,6 +412,7 @@ export default function BookingModal({ open, onClose,title }: BookingModalProps)
               Thank you — your request has been received. Our team will contact you shortly to
               confirm your appointment.
             </p>
+
             <button
               type="button"
               onClick={onClose}
@@ -210,28 +422,52 @@ export default function BookingModal({ open, onClose,title }: BookingModalProps)
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="mt-2 sm:mt-4 space-y-1 sm:space-y-2">
-           <div className="space-y-3 sm:space-y-4">
-                <Field id="name" label="Name" autoComplete="name" />
-                <Field id="email" label="E-mail Address" type="email" autoComplete="email" />
-                <Field id="phone" label="Phone" type="tel" autoComplete="tel" />
+          <form
+            onSubmit={handleSubmit}
+            className="mt-2 sm:mt-4 space-y-1 sm:space-y-2"
+          >
+            <div className="space-y-3 sm:space-y-4">
+              <Field
+                id="name"
+                label="Name"
+                autoComplete="name"
+              />
 
-                <SelectField
-                  id="location"
-                  label="Which location are you interested in?"
-                  options={LOCATIONS}
-                />
+              <Field
+                id="email"
+                label="E-mail Address"
+                type="email"
+                autoComplete="email"
+              />
 
-                <SelectField
-                  id="service"
-                  label="Service:"
-                  placeholder="Choose A Service"
-                  options={footerServices.map((service) => service.label)}
-                />
-              </div>
+              <Field
+                id="phone"
+                label="Phone"
+                type="tel"
+                autoComplete="tel"
+              />
+
+              <SelectField
+                id="location"
+                label="Which location are you interested in?"
+                options={LOCATIONS}
+              />
+
+              <SelectField
+                id="service"
+                label="Service:"
+                placeholder="Choose A Service"
+                options={footerServices.map(
+                  (service) => service.label,
+                )}
+              />
+            </div>
 
             {error && (
-              <p role="alert" className="text-[13px] text-rose-light">
+              <p
+                role="alert"
+                className="text-[13px] text-rose-light"
+              >
                 {error}
               </p>
             )}
