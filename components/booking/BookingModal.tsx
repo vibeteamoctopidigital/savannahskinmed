@@ -248,10 +248,9 @@ export default function BookingModal({
       form_type: 'appointment_request',
 
       // ACRM / HighLevel tags
-      tags,
 
       // Also send these common fields for webhook/workflow mapping
-      tag: tags.join(', '),
+      tag: tags,
       lead_source: 'website',
       lead_source_detail: 'booking_modal',
 
